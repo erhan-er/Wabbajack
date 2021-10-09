@@ -3,9 +3,9 @@
 # **High Level Features**
 * Creating Account (Student & Club Manager) With Id or Bilkent Mail
 * Club Manager Features 
-  > Create, cancel and edit events 
-  > Adding new members to the club and deleting members from club 
-  > Rank members ( manager, assistant manager, departmant manager if there is a department, etc.)
+  >Create, cancel and edit events 
+  >Adding new members to the club and deleting members from club 
+  >Rank members ( manager, assistant manager, departmant manager if there is a department, etc.)
 * Filtering Events 
   > Date 
   > Club 
