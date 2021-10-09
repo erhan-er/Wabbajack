@@ -10,8 +10,11 @@
   > Rank members ( manager, assistant manager, departmant manager if there is a department, etc.)
 * Filtering Events 
   > Date 
+  > 
   > Club 
+  > 
   > Category 
+  > 
   > Place
 * Follow and Join clubs
   > To get notifications about coming events, user needs to follow or join to club
