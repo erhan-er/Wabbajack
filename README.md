@@ -16,11 +16,11 @@
 * Favoring Filter Types
 * Showing all events user attended
 
-If we can accomplish features given above, we will try to do these features also
-* Adding GE 250/1 points to the users
-* Showing all old events
-* Adding other users as friends
-* Invite other people to events
-* Chat
+*If we can accomplish features given above, we will try to do these features also*
+> * Adding GE 250/1 points to the users
+> * Showing all old events
+> * Adding other users as friends
+> * Invite other people to events
+> * Chat
 
 
