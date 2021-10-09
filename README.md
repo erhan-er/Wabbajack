@@ -7,13 +7,10 @@
   > 2. Adding new members to the club and deleting members from club
   > 3. Rank members ( manager, assistant manager, departmant manager if there is a department, etc.)
 * Filtering Events 
-  > Date 
-  > 
-  > Club 
-  > 
-  > Category 
-  > 
-  > Place
+  > 1. Date 
+  > 2. Club 
+  > 3. Category 
+  > 4. Place
 * Follow and Join clubs
   > To get notifications about coming events, user needs to follow or join to club
 * Favoring Filter Types
