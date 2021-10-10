@@ -19,8 +19,10 @@ In this project, we are planning to create a mobile app which both students and 
   > > 
   > Follow and Join clubs
   > > To get notifications about coming events, user needs to follow or join to club
-  > > Favoring Filter Types
-  > > Showing all events user attended
+  > > 
+  > Favoring Filter Types
+  > >
+  > Showing all events user attended
 
 *If we can accomplish features given above, we will try to do these features also*
 > * Adding GE 250/1 points to the users
