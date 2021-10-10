@@ -11,18 +11,18 @@ In this project, we are planning to create a mobile app which both students and 
   > 2. Adding new members to the club and deleting members from club
   > 3. Assigning certain roles to members ( manager, assistant manager, departmant manager if there is a department, etc.)
 * Student Features
-  > Filtering Events 
+  > 1. Filtering Events 
   > > 1. Date 
   > > 2. Club 
   > > 3. Category 
   > > 4. Place
   > > 
-  > Follow and Join clubs
+  > 2. Follow and Join clubs
   > > To get notifications about upcoming events, user needs to follow or join to club
   > > 
-  > Favoring Filter Types
+  > 3. Favoring Filter Types
   > >
-  > Showing all events user attended
+  > 4. Showing all events user attended
 
 *If we can accomplish features given above, we will try to implement the following features as well:*
 > * Adding GE 250/1 points to the users
