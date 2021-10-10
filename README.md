@@ -16,6 +16,7 @@ In this project, we are planning to create a mobile app which both students and 
   > > 2. Club 
   > > 3. Category 
   > > 4. Place
+  > > 
   > Follow and Join clubs
   > > To get notifications about coming events, user needs to follow or join to club
   > Favoring Filter Types
