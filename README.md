@@ -1,7 +1,7 @@
 # ***Wabbajack***
 
-# **General Description**
-In this project, we are planning to create a mobile app which both students and club managers can use. Students will be able to see all the club events, follow & join clubs and get notifications 
+# **General Description of the Project**
+In this project, we are planning to create a mobile app which both students and club managers can use. Students will be able to see all the club events, search the events by name and filter them. Also, they can follow & join clubs and get notifications about upcoming events. On the other side, club managers will be able to create, cancel and update events belonging to their clubs. Moreover, they can accept join requests coming from students and arrange rankings between club members.
 
 
 # **High Level Features**
@@ -24,7 +24,7 @@ In this project, we are planning to create a mobile app which both students and 
   > >
   > Showing all events user attended
 
-*If we can accomplish features given above, we will try to do these features also*
+*If we can accomplish features given above, we will try to implement the following features as well:*
 > * Adding GE 250/1 points to the users
 > * Showing all old events
 > * Adding other users as friends
