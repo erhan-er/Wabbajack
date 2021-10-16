@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## Getting Started
 
-All necessary source code in lib file.
+All necessary source code is in lib file.
 
 This project is a starting point for a Flutter application.
 
