@@ -35,7 +35,7 @@ const style = makeStyles({
    text_field: {
       width: "90%",
       height: "42px",
-      marginTop: "42px",
+      marginTop: "200px",
    },
    forget_password: {
       marginTop: "20px",
@@ -67,8 +67,8 @@ const login_box = () => {
          <div className = {classes.login_text}>LOGIN</div>
          <Box className = {classes.login_box}>
             <Box className = {classes.text_field_box}>
-               <TextField className = {classes.text_field} label = "Email" type = "email" required/>
-               <TextField className = {classes.text_field} label = "Password" type = "password" required />
+               <TextField className = {classes.text_field} margin = "normal" label = "Email" type = "email" required/>
+               <TextField className = {classes.text_field} margin = "normal" label = "Password" type = "password" required />
                <Button variant = "text" className = {classes.forget_password}>Forget Password?</Button>
             </Box>
             <Box className = {classes.button_box}>
