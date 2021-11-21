@@ -1,13 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 
-import LoginPage from "./login_page/login_page";
-import Home from "./main_page/home";
+import LoginPage from "./Pages/LoginPage";
+import Home from "./Pages/Home";
+import AppBar from "./Components/AppBar";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <AppBar />
     </div>
   );
 }
