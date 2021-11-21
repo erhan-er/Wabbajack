@@ -59,7 +59,7 @@ const style = makeStyles({
 
 });
 
-const login_box = () => {
+function LoginBox () {
    const classes = style();
 
    return (
@@ -80,4 +80,4 @@ const login_box = () => {
    );
 }
 
-export default login_box
+export default LoginBox

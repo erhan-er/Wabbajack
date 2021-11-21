@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
@@ -88,7 +87,7 @@ const style = makeStyles({
    },
 });
 
-const activity_accordion = ({place, date, time}) => {
+function ActivityAccordion ({place, date, time}) {
 
    const classes = style();
 
@@ -128,4 +127,4 @@ const activity_accordion = ({place, date, time}) => {
    );
 }
 
-export default activity_accordion
+export default ActivityAccordion

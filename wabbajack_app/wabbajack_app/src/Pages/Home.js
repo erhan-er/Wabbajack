@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Accordion from "../Components/activity_accordion";
+import Accordion from "../Components/ActivityAccordion";
 
 const home = () => {
    var activity1 = {place: "B Building", date: "20/11/2021", time: "18:00"};
