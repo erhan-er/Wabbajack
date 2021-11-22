@@ -8,8 +8,23 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-function Menu ({open, setIsOpen}) {
+function Menu ({open, setIsOpen, userType}) {
    
+   var studentMenu = ["Create Event", "Followed Clubs" , "Home", "JoinedClubs", "My Information",
+                     "See All Clubs", "See All Events", "See All Students", "See All Friends",
+                     "Settings"];
+
+   var presidentMenu = ["Budget", "Create Event", "Followed Clubs", "Home", "Joined Clubs",
+                        "My Club", "My Information", "See All Club Members", "See All Clubs",
+                        "See All Events", "See All Students", "See All Friends", "Settings"];
+
+   function ChooseUserType ( userType ) {
+      if (userType === "Student")
+         return studentMenu;
+      else
+         return presidentMenu;
+   }
+
    function list () {
       return (
          <Box
@@ -19,19 +34,18 @@ function Menu ({open, setIsOpen}) {
             onKeyDown={() => {setIsOpen(false)}}
          >
             <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-               <ListItem button key={text}>
-                  <ListItemText primary={text} />
+               <ListItem>
+                  Menu
                </ListItem>
-            ))}
-            </List>
-            <Divider />
-            <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-               <ListItem button key={text}>
-                  <ListItemText primary={text} />
-               </ListItem>
-            ))}
+               <Divider />
+               { ChooseUserType( userType ).map((text, index) => (
+                  <Box>
+                     <ListItem button key={text}>
+                        <ListItemText primary={text} />
+                     </ListItem>
+                     <Divider />
+                  </Box>
+               ))}
             </List>
          </Box>
       );
