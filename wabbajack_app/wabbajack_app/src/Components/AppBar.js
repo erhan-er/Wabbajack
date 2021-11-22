@@ -104,7 +104,7 @@ function AppBar ({PageName = "Wabbajack"}) {
                </Box>
             </Toolbar>
          </ModifiedAppBar>
-         <Menu open = {isOpen} setIsOpen = {setIsOpen}/>
+         <Menu open = {isOpen} setIsOpen = {setIsOpen} userType = {"President"}/>
       </Box>
    );
 }
