@@ -67,6 +67,25 @@ function AppBar ({PageName = "Wabbajack"}) {
 
    const [isOpen, setIsOpen] = useState(false);
 
+   function searchBar (PageName) {
+      if ( PageName === "Home" 
+         | PageName === "EventDetail" 
+         | PageName === "Budget" 
+         | PageName === "Settings") {
+         return;
+      }
+      else if ( PageName === "AllEvents") {
+         return (
+            <Search>
+               <SearchIconWrapper>
+                  <SearchIcon />
+               </SearchIconWrapper>
+               <StyledInputBase />
+            </Search>
+         );
+      }
+   }
+
    return (
       <Box> 
          <ModifiedAppBar position = "static">
@@ -76,12 +95,9 @@ function AppBar ({PageName = "Wabbajack"}) {
                </Typography>
                <Box />
                <Box sx={{ flexGrow: 1 }} />
-               <Search>
-                  <SearchIconWrapper>
-                     <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase />
-               </Search>
+               {
+                  searchBar(PageName)
+               }
                <Box sx = {{display: {xs: "none", md: "flex"}}}>
                   <IconButton
                      size="large"

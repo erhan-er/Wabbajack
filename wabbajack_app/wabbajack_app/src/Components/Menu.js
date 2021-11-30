@@ -7,6 +7,7 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { Outlet, Link } from "react-router-dom";
 
 function Menu ({open, setIsOpen, userType}) {
    
@@ -38,14 +39,22 @@ function Menu ({open, setIsOpen, userType}) {
                   Menu
                </ListItem>
                <Divider />
-               { ChooseUserType( userType ).map((text, index) => (
+               { /*ChooseUserType( userType ).map((text, index) => (
                   <Box>
                      <ListItem button key={text}>
                         <ListItemText primary={text} />
                      </ListItem>
                      <Divider />
                   </Box>
-               ))}
+               ))*/}
+               <Box>
+                  <Link to = "/">
+                     <ListItem button >
+                        <ListItemText  primary={"LoginPage"} />
+                     </ListItem>
+                  </Link>
+                  <Divider />
+               </Box>
             </List>
          </Box>
       );
@@ -71,6 +80,7 @@ function Menu ({open, setIsOpen, userType}) {
          {
             showMenu(open)
          }
+         
       </div>
    );
 }

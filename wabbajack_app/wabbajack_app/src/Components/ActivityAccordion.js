@@ -7,12 +7,15 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Link } from "react-router-dom";
 
 const ModifiedAccordion = styled((props) => (
    <Accordion {...props}/>
 ))(({theme}) => ({
    backgroundColor: "#000080",
+   borderRadius: "20px",
    '&:(:last-child)': {
+      borderRadius: "20px",
       marginBottom: 0,
    },
 }));
@@ -20,7 +23,7 @@ const ModifiedAccordion = styled((props) => (
 const style = makeStyles({
    accordion: {
       marginBottom: "1rem",
-      borderRadius: "20px",
+      //borderRadius: "20px",
       border: "2px solid #000080",
       backgroundColor: "#000080",
    },
@@ -119,9 +122,11 @@ function ActivityAccordion ({place, date, time}) {
                <div>Date: {date}</div>
                <div>Time: {time}</div>
             </div>
-            <div className = {classes.button_box}>
-               <Button className = {classes.button} variant = "contained" color= "info" endIcon = {<ArrowForwardIosIcon />}>See Details</Button>
-            </div>
+            <Link to = "../Pages/TestPage">
+               <div className = {classes.button_box}>
+                  <Button className = {classes.button} variant = "contained" color= "info" endIcon = {<ArrowForwardIosIcon />}>See Details</Button>
+               </div>
+            </Link>
          </AccordionDetails>
       </ModifiedAccordion>
    );
