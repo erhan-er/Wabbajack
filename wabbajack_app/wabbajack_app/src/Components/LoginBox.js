@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { makeStyles } from '@mui/styles';
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 const style = makeStyles({
    outer_box: {
@@ -72,7 +73,9 @@ function LoginBox () {
                <Button variant = "text" className = {classes.forget_password}>Forget Password?</Button>
             </Box>
             <Box className = {classes.button_box}>
-               <Button variant = "contained" color = "success" className = {classes.button}>Sign in</Button>
+               <Link to = "/Home">
+                  <Button variant = "contained" color = "success" className = {classes.button}>Sign in</Button>
+               </Link>
                <Button variant = "contained" color = "info" className = {classes.button}>About</Button>
             </Box>
          </Box>

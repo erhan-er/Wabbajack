@@ -1,14 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import { render } from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import LoginPage from "./Pages/LoginPage";
+import Home from "./Pages/Home";
+import Test from "./Pages/TestPage";
+
+const rootElement = document.getElementById("root");
+render(
+  <App />,
+  rootElement
 );
 
 // If you want to start measuring performance in your app, pass a function
