@@ -31,7 +31,7 @@ function SeeAllStudents() {
 
    return (
       <Box className={classes.root}>
-         <AppBar />
+         <AppBar PageName = {"See All Students"}/>
          <Box className={classes.flex_box}>
             <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
             <Box className={classes.friend_box}><FriendBox {...student1} /></Box>

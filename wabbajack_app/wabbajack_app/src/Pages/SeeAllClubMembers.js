@@ -17,7 +17,7 @@ const style = makeStyles({
    },
 });
 
-function SeeAllMembers () {
+function SeeAllClubMembers () {
    const classes = style();
    const member = {PersonImage: Photo, Name: "Erhan Er", Id: "21800000", Role: "Student"}
    return (
@@ -32,4 +32,4 @@ function SeeAllMembers () {
    );
 }
 
-export default SeeAllMembers
+export default SeeAllClubMembers
