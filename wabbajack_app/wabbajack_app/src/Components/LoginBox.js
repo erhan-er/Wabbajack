@@ -31,7 +31,8 @@ const style = makeStyles({
       flexDirection: "column",
       width: "60%",
       margin: "0",
-      position: "relative",
+      marginTop: "4rem",
+      position: "relative"
    },
    text_field: {
       width: "90%",
@@ -42,41 +43,45 @@ const style = makeStyles({
       marginTop: "20px",
       position: "absolute",
       left: "24px",
-      bottom: "60px",
+      bottom: "-10px",
       textDecoration: "underline",
    },
    button_box: {
-      width: "40%",
+      width: "100px",
+      height: "100px",
       display: "flex",
       alignItems: "center",
       flexDirection: "column",
-      
+      position: "absolute",
+      marginLeft: "750px",
+      marginTop: "5.8rem",
+      justifyContent: "space-around"
+
    },
    button: {
       width: "100px",
       height: "42px",
-      marginTop: "45px",
    },
 
 });
 
-function LoginBox () {
+function LoginBox() {
    const classes = style();
 
    return (
-      <Box className = {classes.outer_box}>
-         <div className = {classes.login_text}>LOGIN</div>
-         <Box className = {classes.login_box}>
-            <Box className = {classes.text_field_box}>
-               <TextField className = {classes.text_field} margin = "normal" label = "Email" type = "email" required/>
-               <TextField className = {classes.text_field} margin = "normal" label = "Password" type = "password" required />
-               <Button variant = "text" className = {classes.forget_password}>Forget Password?</Button>
+      <Box className={classes.outer_box}>
+         <div className={classes.login_text}>LOGIN</div>
+         <Box className={classes.login_box}>
+            <Box className={classes.text_field_box}>
+               <TextField className={classes.text_field} margin="normal" label="Email" type="email" required />
+               <TextField className={classes.text_field} margin="normal" label="Password" type="password" required />
+               <Button variant="text" className={classes.forget_password}>Forget Password?</Button>
             </Box>
-            <Box className = {classes.button_box}>
-               <Link to = "/Home">
-                  <Button variant = "contained" color = "success" className = {classes.button}>Sign in</Button>
+            <Box className={classes.button_box}>
+               <Link to="/Home">
+                  <Button variant="contained" color="success" className={classes.button}>Sign in</Button>
                </Link>
-               <Button variant = "contained" color = "info" className = {classes.button}>About</Button>
+               <Button variant="contained" color="info" className={classes.button}>About</Button>
             </Box>
          </Box>
       </Box>
