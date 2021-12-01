@@ -39,14 +39,16 @@ function Menu ({open, setIsOpen, userType}) {
                   Menu
                </ListItem>
                <Divider />
-               { /*ChooseUserType( userType ).map((text, index) => (
+               { ChooseUserType( userType ).map((text, index) => (
                   <Box>
+                     <Link to = "/{text.replace(/ /g, '-'}">
                      <ListItem button key={text}>
-                        <ListItemText primary={text} />
+                        <ListItemText primary={text.replace(/ /g, "-")} />
                      </ListItem>
+                     </Link>
                      <Divider />
                   </Box>
-               ))*/}
+               ))}
                <Box>
                   <Link to = "/">
                      <ListItem button >
