@@ -17,11 +17,15 @@ const style = makeStyles({
       marginTop: "5rem",
    },
 
+   accordion_box: {
+      marginBottom: "2rem",
+   },
+
    see_all_button: {
       width: "100%",
       height: "42px",
-      alignItems: "center",
-      textDecorationLine: "none"
+      textDecorationLine: "none",
+
    }
 });
 
@@ -34,9 +38,11 @@ function Home() {
       <Box className={classes.root}>
          <AppBar PageName={"Home"} />
          <Box className={classes.activity_box}>
-            <Accordion {...activity1} PageName = {"Budget"}/>
-            <Accordion {...activity2} />
-            <Accordion {...activity3} />
+            <Box className = {classes.accordion_box}>
+               <Accordion {...activity1} PageName = {"Budget"}/>
+               <Accordion {...activity2} />
+               <Accordion {...activity3} />
+            </Box>
             <Link to="/See-All-Events">
                <Button variant="contained" color="info" className={classes.see_all_button}>See All Events</Button>
             </Link>

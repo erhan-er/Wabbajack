@@ -14,9 +14,12 @@ const ModifiedAccordion = styled((props) => (
 ))(({theme}) => ({
    backgroundColor: "#000080",
    borderRadius: "20px",
-   '&:(:last-child)': {
+   '&:not(:last-child)': {
       borderRadius: "20px",
-      marginBottom: 0,
+      marginBottom: "1rem",
+   },
+   '&:not(:first-child)': {
+      borderRadius: "20px",
    },
 }));
 
