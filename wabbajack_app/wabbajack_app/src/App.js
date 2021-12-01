@@ -9,6 +9,7 @@ import SeeAllClubMembers from "./Pages/SeeAllClubMembers";
 import TestPage from "./Pages/TestPage";
 import { Outlet } from "react-router-dom";
 import LoginBox from "./Components/LoginBox";
+import Budget from "./Pages/Budget";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/See-All-Club-Members" element={<SeeAllClubMembers />} />
           <Route path="/See-All-Events" element={<SeeAllEvents />} />
           <Route path="/See-All-Club-Members" element={<SeeAllClubMembers />} />
+          <Route path="/Budget" element={<Budget />} />
         </Routes>
       </div>
     </BrowserRouter>
