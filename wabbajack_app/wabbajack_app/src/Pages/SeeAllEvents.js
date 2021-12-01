@@ -25,9 +25,9 @@ const style = makeStyles({
 
 function SeeAllEvents() {
    const classes = style();
-   var activity1 = { place: "B Building", date: "20/11/2021", time: "18:00" };
-   var activity2 = { place: "A Building", date: "30/11/2021", time: "20:00" };
-   var activity3 = { place: "EA Building", date: "31/12/2021", time: "22:00" };
+   var activity1 = { activityName: "Activity 1", place: "B Building", date: "20/11/2021", time: "18:00", expense: "5000" };
+   var activity2 = { activityName: "Activity 2", place: "A Building", date: "30/11/2021", time: "20:00" };
+   var activity3 = { activityName: "Activity 3", place: "EA Building", date: "31/12/2021", time: "22:00" };
    return (
       <Box className={classes.root}>
          <AppBar PageName={"All Events"} />

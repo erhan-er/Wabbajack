@@ -34,23 +34,25 @@ const style = makeStyles({
    },
 
    activity_summary: {
-      position: "relative",
+      display: "flex",
+      justifyContent: "space-between",
       color: "#ffff7f",
       width: "90%",
    },
 
    activity_name: {
-      position: "absolute",
       fontSize: "16px",
-      left: "1rem",
    },
 
    activity_date: {
-      position: "absolute",
       fontSize: "16px",
-      left: "12rem",
    },
    
+   activity_budget: {
+      fontSize: "16px",
+      width: "200px",
+   },
+
    activity_detail: {
       marginTop: "-8px",
       width: "90%",
@@ -90,7 +92,7 @@ const style = makeStyles({
    },
 });
 
-function ActivityAccordion ({place, date, time}) {
+function ActivityAccordion ({activityName, place, date, time, PageName, expense}) {
 
    const classes = style();
 
@@ -100,8 +102,9 @@ function ActivityAccordion ({place, date, time}) {
             expandIcon={<ExpandMoreIcon className = {classes.expand_icon}/>}
          >
             <div className = {classes.activity_summary}>
-               <div className = {classes.activity_name}>Activity 1</div>
-               <div>Date: 20/11/2021</div>
+               <div className = {classes.activity_name}>{activityName}</div>
+               <div className = {classes.activity_date}>Date: {date}</div>
+               {PageName == "Budget"? <div className = {classes.activity_budget}>Expense: ₺{expense}</div> : <div className = {classes.activity_budget}></div>}
             </div>
          </AccordionSummary>
          <AccordionDetails className = {classes.activity_detail}>
