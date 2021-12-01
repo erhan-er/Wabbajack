@@ -7,6 +7,7 @@ import TestPage from "./Pages/TestPage";
 import { Outlet } from "react-router-dom";
 import LoginBox from "./Components/LoginBox";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SeeAllMembers from './Pages/SeeAllMembers';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route exact path = "/" element = {<LoginPage />}/>
             <Route path = "/Home" element = {<Home />} />
+            <Route path = "/See-All-Members" element = {<SeeAllMembers />} />
           </Routes>
         </div>
     </BrowserRouter>

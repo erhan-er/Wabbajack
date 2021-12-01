@@ -24,7 +24,7 @@ function Home () {
    var activity3 = {place: "EA Building", date: "31/12/2021", time: "22:00"};
    return (
       <Box className = {classes.root}>
-         <AppBar />
+         <AppBar pageName = {"Home"}/>
          <Box className = {classes.activity_box}>
             <Accordion {...activity1}/>
             <Accordion {...activity2}/>
