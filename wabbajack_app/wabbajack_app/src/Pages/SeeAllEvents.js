@@ -4,7 +4,6 @@ import Accordion from "../Components/ActivityAccordion";
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import Button from "@mui/material/Button";
-import { Link } from 'react-router-dom';
 
 const style = makeStyles({
    root: {
@@ -21,28 +20,36 @@ const style = makeStyles({
       width: "100%",
       height: "42px",
       alignItems: "center",
-      textDecorationLine: "none"
    }
 });
 
-function Home() {
+function SeeAllEvents() {
    const classes = style();
    var activity1 = { place: "B Building", date: "20/11/2021", time: "18:00" };
    var activity2 = { place: "A Building", date: "30/11/2021", time: "20:00" };
    var activity3 = { place: "EA Building", date: "31/12/2021", time: "22:00" };
    return (
       <Box className={classes.root}>
-         <AppBar PageName={"Home"} />
+         <AppBar PageName={"All Events"} />
          <Box className={classes.activity_box}>
             <Accordion {...activity1} />
             <Accordion {...activity2} />
             <Accordion {...activity3} />
-            <Link to="/See-All-Events">
-               <Button variant="contained" color="info" className={classes.see_all_button}>See All Events</Button>
-            </Link>
+            <Accordion {...activity1} />
+            <Accordion {...activity2} />
+            <Accordion {...activity3} />
+            <Accordion {...activity1} />
+            <Accordion {...activity2} />
+            <Accordion {...activity3} />
+            <Accordion {...activity1} />
+            <Accordion {...activity2} />
+            <Accordion {...activity3} />
+            <Accordion {...activity1} />
+            <Accordion {...activity2} />
+            <Accordion {...activity3} />
          </Box>
-      </Box >
+      </Box>
    );
 }
 
-export default Home
+export default SeeAllEvents

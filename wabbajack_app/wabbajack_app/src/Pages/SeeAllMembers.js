@@ -17,16 +17,16 @@ const style = makeStyles({
    },
 });
 
-function SeeAllMembers () {
+function SeeAllMembers() {
    const classes = style();
-   const member = {PersonImage: Photo, Name: "Erhan Er", Id: "21800000", Role: "Student"}
+   const member = { PersonImage: Photo, Name: "Erhan Er", Id: "21800000", Role: "Student" }
    return (
-      <Box className = {classes.root}>
-         <AppBar PageName = {"See All Members"}/>
-         <Box className = {classes.member_box}>
-            <Box className = {classes.member}><Member  {...member} /></Box>
-            <Box className = {classes.member}><Member  {...member} /></Box>
-            <Box className = {classes.member}><Member  {...member} /></Box>
+      <Box className={classes.root}>
+         <AppBar PageName={"All Members"} />
+         <Box className={classes.member_box}>
+            <Box className={classes.member}><Member  {...member} /></Box>
+            <Box className={classes.member}><Member  {...member} /></Box>
+            <Box className={classes.member}><Member  {...member} /></Box>
          </Box>
       </Box>
    );
