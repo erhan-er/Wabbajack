@@ -9,11 +9,17 @@ const style = makeStyles({
    root: {
       
    },
-
+   
    activity_box: {
       margin: "0 auto",
       width: "90%",
       marginTop: "5rem",
+   },
+
+   see_all_button:{
+      width: "100%",
+      height: "42px",
+      alignItems: "center",
    }
 });
 
@@ -29,6 +35,7 @@ function Home () {
             <Accordion {...activity1}/>
             <Accordion {...activity2}/>
             <Accordion {...activity3}/>
+            <Button variant = "contained" color = "info" className = {classes.see_all_button}>See All Events</Button>
          </Box>
       </Box>
    );

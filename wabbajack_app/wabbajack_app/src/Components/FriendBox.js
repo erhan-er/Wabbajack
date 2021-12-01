@@ -40,8 +40,15 @@ const style = makeStyles({
    }
 });
 
-function FriendBox ({PersonImage, Name, Id}) {
-
+function FriendBox ({PersonImage, Name, Id, PageName}) {
+   function ButtonType(PageName){
+      if (PageName == "SeeAllFriends"){
+         return <Button className = {classes.button} variant = "contained" color = "error">Remove Friend</Button>
+      }
+      else{
+         return <Button className = {classes.button} variant = "contained" color = "success">Add Friend</Button>
+      }
+   }
    const classes = style();
 
    return (
@@ -52,7 +59,7 @@ function FriendBox ({PersonImage, Name, Id}) {
                {Name}
             </Box>
             <Box className = {classes.button_box}>
-               <Button className = {classes.button} variant = "contained" color = "success">Add Friend</Button>
+               {ButtonType(PageName)}
             </Box>
          </Box>
       </Box>
