@@ -11,7 +11,7 @@ import { Outlet, Link } from "react-router-dom";
 
 function Menu ({open, setIsOpen, userType}) {
    
-   var studentMenu = ["Create Event", "Followed Clubs" , "Home", "JoinedClubs", "My Information",
+   var studentMenu = ["Create Event", "Followed Clubs" , "Home", "Joined Clubs", "My Information",
                      "See All Clubs", "See All Events", "See All Students", "See All Friends",
                      "Settings"];
 
@@ -39,14 +39,14 @@ function Menu ({open, setIsOpen, userType}) {
                   Menu
                </ListItem>
                <Divider />
-               { /*ChooseUserType( userType ).map((text, index) => (
+               { ChooseUserType( userType ).map((text, index) => (
                   <Box>
                      <ListItem button key={text}>
                         <ListItemText primary={text} />
                      </ListItem>
                      <Divider />
                   </Box>
-               ))*/}
+               ))}
                <Box>
                   <Link to = "/">
                      <ListItem button >
