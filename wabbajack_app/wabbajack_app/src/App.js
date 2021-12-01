@@ -17,6 +17,7 @@ function App() {
           <Route exact path="/" element={<LoginPage />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/See-All-Students" element={<SeeAllStudents />} />
+          <Route path="/See-All-Members" element={<SeeAllMembers />} />
         </Routes>
       </div>
     </BrowserRouter>
