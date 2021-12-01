@@ -3,6 +3,7 @@ import './App.css';
 import LoginPage from "./Pages/LoginPage";
 import Home from "./Pages/Home";
 import SeeAllStudents from './Pages/SeeAllStudents';
+import SeeAllMembers from "./Pages/SeeAllMembers";
 import AppBar from "./Components/AppBar";
 import TestPage from "./Pages/TestPage";
 import { Outlet } from "react-router-dom";
