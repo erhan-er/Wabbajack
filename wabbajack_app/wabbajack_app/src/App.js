@@ -3,7 +3,6 @@ import './App.css';
 import LoginPage from "./Pages/LoginPage";
 import Home from "./Pages/Home";
 import SeeAllStudents from './Pages/SeeAllStudents';
-import SeeAllMembers from "./Pages/SeeAllMembers";
 import AppBar from "./Components/AppBar";
 import SeeAllEvents from './Pages/SeeAllEvents';
 import SeeAllClubMembers from "./Pages/SeeAllClubMembers";
@@ -20,7 +19,7 @@ function App() {
           <Route exact path="/" element={<LoginPage />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/See-All-Students" element={<SeeAllStudents />} />
-          <Route path="/See-All-Members" element={<SeeAllMembers />} />
+          <Route path="/See-All-Club-Members" element={<SeeAllClubMembers />} />
           <Route path="/See-All-Events" element={<SeeAllEvents />} />
           <Route path="/See-All-Club-Members" element={<SeeAllClubMembers />} />
         </Routes>
