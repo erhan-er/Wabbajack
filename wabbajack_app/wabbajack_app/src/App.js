@@ -6,6 +6,7 @@ import SeeAllStudents from './Pages/SeeAllStudents';
 import SeeAllMembers from "./Pages/SeeAllMembers";
 import AppBar from "./Components/AppBar";
 import SeeAllEvents from './Pages/SeeAllEvents';
+import SeeAllClubMembers from "./Pages/SeeAllClubMembers";
 import TestPage from "./Pages/TestPage";
 import { Outlet } from "react-router-dom";
 import LoginBox from "./Components/LoginBox";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/See-All-Students" element={<SeeAllStudents />} />
           <Route path="/See-All-Members" element={<SeeAllMembers />} />
           <Route path="/See-All-Events" element={<SeeAllEvents />} />
+          <Route path="/See-All-Club-Members" element={<SeeAllClubMembers />} />
         </Routes>
       </div>
     </BrowserRouter>
