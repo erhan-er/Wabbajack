@@ -13,13 +13,19 @@ const style = makeStyles({
    },
 
    flex_box: {
-      width: "50%",
+      margin: "0 auto",
+      width: "80%",
       display: "flex",
       flexDirection: "row",
-      flexWrap: "wrap"
+      flexWrap: "wrap",
+   },
+
+   friend_box: {
+      marginTop: "1rem",
    },
 
    pagination: {
+      marginTop: "20px",
       width: "90%",
       display: "flex",
       justifyContent: "center",
@@ -38,20 +44,18 @@ function SeeAllFriends() {
 
    return (
       <Box className={classes.root}>
-         <AppBar PageName={"All Friends"} />
-         <Box>
-            <Box className={classes.flex_box}>
-               <FriendBox {...student1} />
-               <FriendBox {...student1} />
-               <FriendBox {...student1} />
-               <FriendBox {...student1} />
-               <FriendBox {...student1} />
-               <FriendBox {...student1} />
-               <FriendBox {...student1} />
-               <FriendBox {...student1} />
-               <FriendBox {...student1} />
-               <FriendBox {...student1} />
-            </Box>
+         <AppBar PageName={"All Students"} />
+         <Box className={classes.flex_box}>
+            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
+            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
+            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
+            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
+            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
+            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
+            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
+            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
+            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
+            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
             <Box className = {classes.pagination}>
                <Pagination 
                   count={10} 
@@ -65,9 +69,7 @@ function SeeAllFriends() {
                />
             </Box>
          </Box>
-         
-         
-      </Box>
+      </Box >
    )
 }
 export default SeeAllFriends
