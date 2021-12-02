@@ -43,7 +43,7 @@ const style = makeStyles({
 function FriendBox ({PersonImage, Name, Id, PageName}) {
    function ButtonType(PageName){
       if (PageName === "SeeAllFriends"){
-         return <Button className = {classes.button} variant = "contained" color = "error">Remove Friend</Button>
+         return <Button className = {classes.button} variant = "contained" color = "error">Remove</Button>
       }
       else{
          return <Button className = {classes.button} variant = "contained" color = "success">Add Friend</Button>

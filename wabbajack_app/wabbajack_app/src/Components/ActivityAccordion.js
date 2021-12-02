@@ -128,7 +128,7 @@ function ActivityAccordion ({activityName, place, date, time, PageName, expense}
                <div>Date: {date}</div>
                <div>Time: {time}</div>
             </div>
-            <Link to = "../Pages/TestPage">
+            <Link to = "/Event-Page">
                <div className = {classes.button_box}>
                   <Button className = {classes.button} variant = "contained" color= "info" endIcon = {<ArrowForwardIosIcon />}>See Details</Button>
                </div>

@@ -13,17 +13,28 @@ function Menu ({open, setIsOpen, userType}) {
    
    var studentMenu = ["Create Event", "Followed Clubs" , "Home", "Joined Clubs", "My Information",
                      "See All Clubs", "See All Events", "See All Students", "See All Friends",
-                     "Settings"];
+                     "Settings", "Logout"];
 
    var presidentMenu = ["Budget", "Create Event", "Followed Clubs", "Home", "Joined Clubs",
                         "My Club", "My Information", "See All Club Members", "See All Clubs",
-                        "See All Events", "See All Students", "See All Friends", "Settings"];
+                        "See All Events", "See All Students", "See All Friends", "Settings", "Logout"];
+
+   var adminMenu = ["Add User", "Add Clubs", "Event Requests", "Settings", "Logout"];
+
+   var allMenu = ["Add Clubs", "Add User", "Budget", "Create Event", "Event Requests", 
+                  "Followed Clubs", "Home", "Joined Clubs", "My Club", "My Information", 
+                  "See All Club Members", "See All Clubs", "See All Events", "See All Students", 
+                  "See All Friends", "Settings", "Logout"];
 
    function ChooseUserType ( userType ) {
       if (userType === "Student")
          return studentMenu;
-      else
+      else if ( userType === "President")
          return presidentMenu;
+      else if ( userType === "Admin")
+         return adminMenu;
+      else
+         return allMenu;
    }
 
    function list () {

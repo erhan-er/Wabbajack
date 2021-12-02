@@ -103,7 +103,7 @@ const style = makeStyles({
    },
 });
 
-function ClubAccordion({ clubName, description, clubImage }) {
+function ClubAccordion({ clubName, description, clubImage}) {
 
    const classes = style();
 
@@ -120,15 +120,10 @@ function ClubAccordion({ clubName, description, clubImage }) {
             <img src={clubImage} alt={clubName} className={classes.club_logo} />
             <div className={classes.club_detail_part1}>
                <div className={classes.details}>
-                  <strong>Description:</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
+                  <strong>Description:</strong>{description}
                </div>
             </div>
-            <Link to="../Club-Page">
+            <Link to= "/Club-Page" state= {{clubName, description, clubImage}}>
                <div className={classes.button_box}>
                   <Button className={classes.button} variant="contained" color="info" endIcon={<ArrowForwardIosIcon />}>See Details</Button>
                </div>

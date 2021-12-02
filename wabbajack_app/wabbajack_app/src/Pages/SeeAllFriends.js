@@ -4,6 +4,7 @@ import AppBar from "../Components/AppBar";
 import FriendBox from "../Components/FriendBox";
 import Box from '@mui/material/Box';
 import Photo from "../Images/image.jpg"
+import Photo2 from "../Images/bingus.jpg"
 import { makeStyles } from '@mui/styles';
 import Pagination from '@mui/material/Pagination';
 
@@ -39,22 +40,25 @@ function SeeAllFriends() {
       setPage(value);
    };
 
-   var student1 = { PersonImage: Photo, Name: "Erhan Er", Id: "21800000", PageName: "SeeAllFriends" };
+   var student1 = { PersonImage: Photo, Name: "Friend 1", Id: "21800000", PageName: "SeeAllFriends" };
+   var student2 = { PersonImage: Photo2, Name: "Friend 2", Id: "21800000", PageName: "SeeAllFriends" };
+   var student3 = { PersonImage: Photo, Name: "Friend 3", Id: "21800000", PageName: "SeeAllFriends" };
+   var student4 = { PersonImage: Photo2, Name: "Friend 4", Id: "21800000", PageName: "SeeAllFriends" };
+   var student5 = { PersonImage: Photo, Name: "Friend 5", Id: "21800000", PageName: "SeeAllFriends" };
 
+   var studentArr = [student1, student2, student3, student4, student5, student1, student2, student3, student4, student5];
+
+   console.log(studentArr);
    return (
       <Box className={classes.root}>
-         <AppBar PageName={"All Students"} />
+         <AppBar PageName={"All Friends"} />
          <Box className={classes.flex_box}>
-            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
-            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
-            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
-            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
-            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
-            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
-            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
-            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
-            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
-            <Box className={classes.friend_box}><FriendBox {...student1} /></Box>
+            {studentArr.map((student, item) => {
+               return (
+                  <Box className={classes.friend_box}><FriendBox {...student} /></Box>
+               );
+              
+            })}
             <Box className = {classes.pagination}>
                <Pagination 
                   count={10} 

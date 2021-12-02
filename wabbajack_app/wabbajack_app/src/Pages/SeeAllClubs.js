@@ -41,9 +41,9 @@ function SeeAllClubs() {
    };
 
    const activityArr = [];
-   var activity1 = { clubName: "Club 1", clubImage: Photo };
-   var activity2 = { clubName: "Club 2", clubImage: Photo };
-   var activity3 = { clubName: "Club 3", clubImage: Photo };
+   var activity1 = { clubName: "Club 1", clubImage: Photo, description: "description of club 1" };
+   var activity2 = { clubName: "Club 2", clubImage: Photo, description: "description of club 2 " };
+   var activity3 = { clubName: "Club 3", clubImage: Photo, description: "description of club 3" };
 
    for (let i = 0; i < 20; i++) {
       if (i % 2 === 0)
@@ -61,7 +61,7 @@ function SeeAllClubs() {
             {activityArr.map((item, index) => {
                if (index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
                   return (
-                     <Accordion {...item} />
+                     <Accordion {...item}/>
                   );
                }
             })}
