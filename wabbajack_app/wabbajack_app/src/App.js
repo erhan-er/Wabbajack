@@ -12,6 +12,7 @@ import { Outlet } from "react-router-dom";
 import LoginBox from "./Components/LoginBox";
 import Budget from "./Pages/Budget";
 import SeeAllClubs from './Pages/SeeAllClubs';
+import SeeAllFriends from './Pages/SeeAllFriends';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/Budget" element={<Budget />} />
           <Route path="/Club-Page" element={<ClubPage />} />
           <Route path="/See-All-Clubs" element={<SeeAllClubs />} />
+          <Route path="/See-All-Friends" element={<SeeAllFriends />} />
         </Routes>
       </div>
     </BrowserRouter>
