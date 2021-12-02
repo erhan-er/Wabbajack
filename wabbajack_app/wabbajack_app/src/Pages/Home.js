@@ -39,7 +39,7 @@ function Home() {
          <AppBar PageName={"Home"} />
          <Box className={classes.activity_box}>
             <Box className = {classes.accordion_box}>
-               <Accordion {...activity1} PageName = {"Budget"}/>
+               <Accordion {...activity1} PageName = {"Home"}/>
                <Accordion {...activity2} />
                <Accordion {...activity3} />
             </Box>

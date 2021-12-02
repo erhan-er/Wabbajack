@@ -12,6 +12,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Menu from "./Menu";
+import { Link } from "react-router-dom";
 
 const ModifiedAppBar = styled((props) => (
    <Appbar {...props}/>
@@ -91,7 +92,7 @@ function AppBar ({PageName = "Wabbajack"}) {
          <ModifiedAppBar position = "static">
             <Toolbar>
                <Typography>
-                  {PageName}
+                  <Link to = "/Home" style={{color: "#ffff7f", textDecoration: "none", fontSize: "1.5rem"}}>{PageName}</Link>
                </Typography>
                <Box />
                <Box sx={{ flexGrow: 1 }} />
@@ -120,7 +121,7 @@ function AppBar ({PageName = "Wabbajack"}) {
                </Box>
             </Toolbar>
          </ModifiedAppBar>
-         <Menu open = {isOpen} setIsOpen = {setIsOpen} userType = {"President"}/>
+         <Menu open = {isOpen} setIsOpen = {setIsOpen} userType = {"All Menu"}/>
       </Box>
    );
 }

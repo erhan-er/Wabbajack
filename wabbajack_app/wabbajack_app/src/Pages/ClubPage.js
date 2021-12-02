@@ -1,4 +1,5 @@
 import { Box } from "@mui/system";
+import { useLocation } from "react-router-dom";
 import * as React from "react";
 import Photo from "../Images/Bilkent.png";
 import Member from "../Components/Member";
@@ -80,6 +81,8 @@ const style = makeStyles({
 
 function ClubPage() {
    const classes = style();
+   const location = useLocation();
+   console.log(location.state);
    var activity1 = { activityName: "Activity 1", place: "B Building", date: "20/11/2021", time: "18:00", expense: "5000" };
    var activity2 = { activityName: "Activity 2", place: "A Building", date: "30/11/2021", time: "20:00" };
    var activity3 = { activityName: "Activity 3", place: "EA Building", date: "31/12/2021", time: "22:00" };
@@ -90,14 +93,9 @@ function ClubPage() {
          <Box className={classes.flex_box}>
             <img src={Photo} className={classes.img}></img>
             <Box>
-               <Box className={classes.text_field}><strong>CLUB NAME</strong></Box>
+               <Box className={classes.text_field}><strong> {location.state.clubName} </strong></Box>
                <Box className={classes.description_field}>
-                  <strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
+                  <strong>Description:</strong> {location.state.description}
                </Box>
                <Box className={classes.description_field}>
                   <strong>President:</strong> Erhan Er
