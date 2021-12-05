@@ -19,13 +19,14 @@ import SeeAllEvents from './Pages/SeeAllEvents';
 import SeeAllFriends from './Pages/SeeAllFriends';
 import SeeAllStudents from './Pages/SeeAllStudents';
 import Settings from "./Pages/Settings";
+import Box from "@mui/material/Box";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <Box className="App">
         <Routes>
           <Route path="/Add-Clubs" element={<AddClubs />} />
           <Route path="/Add-User" element={<AddUser />} />
@@ -47,7 +48,7 @@ function App() {
           <Route path="/See-All-Students" element={<SeeAllStudents />} />
           <Route path="/Settings" element={<Settings />} />
         </Routes>
-      </div>
+      </Box>
     </BrowserRouter>
 
   );

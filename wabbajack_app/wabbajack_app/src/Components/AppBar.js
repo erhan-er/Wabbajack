@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { useState} from "react";
+import { useState } from "react";
 import { styled, alpha } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 import Appbar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,107 +18,70 @@ import { Link } from "react-router-dom";
 const ModifiedAppBar = styled((props) => (
    <Appbar {...props}/>
 ))(({theme}) => ({
+   width: "100%",
    backgroundColor: "#000080",
    color: "#ffff7f",
-   fontSize: "2rem",
+   fontSize: "1rem",
 }));
 
-const Search = styled('div')(({ theme }) => ({
-   position: 'relative',
-   borderRadius: theme.shape.borderRadius,
-   backgroundColor: alpha(theme.palette.common.white, 1),
-   '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.75),
+const ModifiedIconButton = styled((props) => (
+   <IconButton {...props}/>
+))(({theme}) => ({
+   ":hover" : {
+      backgroundColor: "#ffff7f"
+   }
+}))
+const style = makeStyles({
+   root: {
+
    },
-   marginRight: theme.spacing(2),
-   marginLeft: 0,
-   color: "#000080",
-   width: '100%',
-   [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
+
+   page_name: {
+      color: "#ffff7f",
+      textDecoration: "none"
    },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-   color: "#000080",
-   padding: theme.spacing(0, 2),
-   height: '100%',
-   position: 'absolute',
-   pointerEvents: 'none',
-   display: 'flex',
-   alignItems: 'center',
-   justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-   color: 'inherit',
-   '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('md')]: {
-         width: '20ch',
-      },
-   },
-}));
-
+});
 function AppBar ({PageName = "Wabbajack"}) {
-
+   const classes = style();
    const [isOpen, setIsOpen] = useState(false);
 
-   function searchBar (PageName) {
-      if ( PageName === "Home" 
-         | PageName === "EventDetail" 
-         | PageName === "Budget" 
-         | PageName === "Settings") {
-         return;
-      }
-      else if ( PageName === "AllEvents") {
-         return (
-            <Search>
-               <SearchIconWrapper>
-                  <SearchIcon />
-               </SearchIconWrapper>
-               <StyledInputBase />
-            </Search>
-         );
-      }
-   }
-
    return (
-      <Box> 
+      <Box sx = {{flexGrow: 1}}> 
          <ModifiedAppBar position = "static">
             <Toolbar>
-               <Typography>
+               <Typography className = {classes.page_name}>
                   <Link to = "/Home" style={{color: "#ffff7f", textDecoration: "none", fontSize: "1.5rem"}}>{PageName}</Link>
                </Typography>
                <Box />
                <Box sx={{ flexGrow: 1 }} />
-               {
-                  searchBar(PageName)
-               }
-               <Box sx = {{display: {xs: "none", md: "flex"}}}>
-                  <IconButton
+               <Box sx = {{display: { xs: "flex"}, justifyContent: "space-between"}}>
+                  <ModifiedIconButton
+                     size = "large"
+                     color = "inherit"
+                     sx = {{marginRight: "2.5vw", backgroundColor: "#f1f2f3"}}
+                  >
+                     <SearchIcon sx = {{color: "#000080"}}/>
+                  </ModifiedIconButton>
+                  <ModifiedIconButton
                      size="large"
                      aria-label="show 17 new notifications"
                      color="inherit"
+                     sx = {{marginRight: "2.5vw", backgroundColor: "#f1f2f3"}}
                   >
-                     <Badge badgeContent={9} color="error">
-                        <NotificationsIcon />
+                     <Badge badgeContent={9} color="warning">
+                        <NotificationsIcon sx = {{color: "#000080"}}/>
                      </Badge>
-                  </IconButton>
-                  <IconButton
+                  </ModifiedIconButton>
+                  <ModifiedIconButton
                      size = "large"
                      edge = "end"
                      color = "inherit"
                      aria-label = "open menu"
+                     sx = {{marginRight: "1vw", backgroundColor: "#f1f2f3"}}
                      onClick = {() => setIsOpen(true)}
                   >
-                     <MenuIcon />
-                  </IconButton>
+                     <MenuIcon sx = {{color: "#000080"}}/>
+                  </ModifiedIconButton>
                </Box>
             </Toolbar>
          </ModifiedAppBar>
