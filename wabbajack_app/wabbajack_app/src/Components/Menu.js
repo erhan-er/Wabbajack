@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useState, useEffect } from "react";
+import { makeStyles } from '@mui/styles';
 import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -9,8 +11,36 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Outlet, Link } from "react-router-dom";
 
+const style = makeStyles({
+   root: {
+
+   },
+
+   drawer: {
+      //height: "20px",
+      //maxHeight: "2vw",
+      "@media screen and (max-width: 720px)": {
+         maxHeight: "40vw",
+      },
+   },
+});
+
 function Menu ({open, setIsOpen, userType}) {
    
+   const classes = style();
+   const [size, setSize] = useState(window.innerWidth);
+
+   const checkSize = () => {
+      setSize(window.innerWidth);
+   }
+
+   useEffect (() => {
+      window.addEventListener("resize", checkSize);
+      return () => {
+         window.removeEventListener("resize", checkSize);
+      };
+   });
+
    var studentMenu = ["Create Event", "Followed Clubs" , "Home", "Joined Clubs", "My Information",
                      "See All Clubs", "See All Events", "See All Students", "See All Friends",
                      "Settings", "Logout"];
@@ -37,10 +67,11 @@ function Menu ({open, setIsOpen, userType}) {
          return allMenu;
    }
 
-   function list () {
+   function list (size, open) {
       return (
          <Box
-            sx={{ width: 250 }}
+            className = {classes.drawer}
+            sx={{ width: size < 720? "auto" : 350 }}
             role="presentation"
             onClick={() => {setIsOpen(false)}}
             onKeyDown={() => {setIsOpen(false)}}
@@ -69,11 +100,12 @@ function Menu ({open, setIsOpen, userType}) {
       if ( open ) {
          return (
             <Drawer 
-               anchor = "right"
+               className = {classes.drawer}
+               anchor = { size >= 720? "right" : "top"}
                open = {open}
                onClose = {() => {setIsOpen(false)}}
             >
-               {list(open)}
+               {list(size, open)}
             </Drawer>
          );
       }
