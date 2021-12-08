@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
-
+import { connect } from "react-redux"; 
 const style = makeStyles({
    root: {
 
@@ -51,4 +51,8 @@ function Home() {
    );
 }
 
-export default Home
+const mapStateToProps = state => {
+   console.log(state);
+   return {};
+}
+export default connect(mapStateToProps)(Home);

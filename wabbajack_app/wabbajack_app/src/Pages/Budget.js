@@ -3,7 +3,6 @@ import AppBar from "../Components/AppBar";
 import Accordion from "../Components/ActivityAccordion";
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
-import Button from "@mui/material/Button";
 
 
 const style = makeStyles({

@@ -8,7 +8,6 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Link } from "react-router-dom";
-import { height } from '@mui/system';
 
 const ModifiedAccordion = styled((props) => (
    <Accordion {...props} />
@@ -19,7 +18,7 @@ const ModifiedAccordion = styled((props) => (
       borderRadius: "20px",
       marginBottom: "1rem",
    },
-   '&:not(:first-child)': {
+   '&:not(:first-of-type)': {
       borderRadius: "20px",
    },
 }));
@@ -71,10 +70,6 @@ const style = makeStyles({
 
    club_detail_part1: {
       width: "50%",
-   },
-
-   club_name: {
-      fontSize: "2rem"
    },
 
    information: {

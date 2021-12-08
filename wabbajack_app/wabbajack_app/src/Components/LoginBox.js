@@ -36,7 +36,6 @@ const style = makeStyles({
       alignItems: "center",
       flexDirection: "column",
       width: "100%",
-      flexDirection: "column",
    },
    text_field: {
       width: "90%",
