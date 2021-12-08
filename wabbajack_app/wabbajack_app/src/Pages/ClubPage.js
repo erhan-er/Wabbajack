@@ -2,13 +2,11 @@ import { Box } from "@mui/system";
 import { useLocation } from "react-router-dom";
 import * as React from "react";
 import Photo from "../Images/Bilkent.png";
-import Member from "../Components/Member";
 import AppBar from "../Components/AppBar";
 import { makeStyles } from "@mui/styles";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ActivityAccordion from "../Components/ActivityAccordion";
-import { fabClasses } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -91,7 +89,7 @@ function ClubPage() {
          <AppBar PageName={"Club's Page"} />
          {/**IMAGE AND DESCRIPTION*/}
          <Box className={classes.flex_box}>
-            <img src={Photo} className={classes.img}></img>
+            <img src={Photo} className={classes.img} alt = {location.state.clubName}></img>
             <Box>
                <Box className={classes.text_field}><strong> {location.state.clubName} </strong></Box>
                <Box className={classes.description_field}>

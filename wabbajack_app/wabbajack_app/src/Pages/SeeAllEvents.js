@@ -4,9 +4,7 @@ import AppBar from "../Components/AppBar";
 import Accordion from "../Components/ActivityAccordion";
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
-import Button from "@mui/material/Button";
 import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 
 const style = makeStyles({
    root: {
@@ -63,6 +61,9 @@ function SeeAllEvents() {
                      <Accordion {...item} />
                   );
                }
+               return (
+                  <Accordion {...item} />
+               );
             })}
             <Box className = {classes.pagination}>
                <Pagination 

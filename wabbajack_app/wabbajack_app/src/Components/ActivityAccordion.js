@@ -18,7 +18,7 @@ const ModifiedAccordion = styled((props) => (
       borderRadius: "20px",
       marginBottom: "1rem",
    },
-   '&:not(:first-child)': {
+   '&:not(:first-of-type)': {
       borderRadius: "20px",
    },
 }));
@@ -107,7 +107,7 @@ function ActivityAccordion ({activityName, place, date, time, PageName, expense}
             <div className = {classes.activity_summary}>
                <div className = {classes.activity_name}>{activityName}</div>
                <div className = {classes.activity_date}>Date: {date}</div>
-               {PageName == "Budget"? <div className = {classes.activity_budget}>Expense: ₺{expense}</div> : <div className = {classes.activity_budget}></div>}
+               {PageName === "Budget"? <div className = {classes.activity_budget}>Expense: ₺{expense}</div> : <div className = {classes.activity_budget}></div>}
             </div>
          </AccordionSummary>
          <AccordionDetails className = {classes.activity_detail}>

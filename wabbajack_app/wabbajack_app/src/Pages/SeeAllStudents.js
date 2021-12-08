@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import Photo from "../Images/image.jpg"
 import Photo2 from "../Images/bingus.jpg"
 import { makeStyles } from '@mui/styles';
-import { margin } from '@mui/system';
 import Pagination from '@mui/material/Pagination';
 
 const style = makeStyles({

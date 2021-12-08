@@ -5,9 +5,7 @@ import Accordion from "../Components/ClubAccordion";
 import Photo from "../Images/Bilkent.png";
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
-import Button from "@mui/material/Button";
 import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 
 const style = makeStyles({
    root: {
@@ -61,9 +59,12 @@ function SeeAllClubs() {
             {activityArr.map((item, index) => {
                if (index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
                   return (
-                     <Accordion {...item}/>
+                     <Accordion {...item} key = {index}/>
                   );
                }
+               return (
+                  <Accordion {...item} key = {index}/>
+               );
             })}
             <Box className={classes.pagination}>
                <Pagination
