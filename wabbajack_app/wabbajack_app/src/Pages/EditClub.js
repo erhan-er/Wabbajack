@@ -25,7 +25,7 @@ function AddClubs () {
       <Box className = {classes.root}>
          <AppBar PageName = {"Add Clubs"}/>
          <Box className = {classes.body}>
-            <EditClub PageName = {"Add Club"}/>
+            <EditClub PageName = {"Edit Club"}/>
          </Box>
       </Box>
    );
