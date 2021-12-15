@@ -5,7 +5,7 @@ import AddUser from "./Pages/AddUser";
 import Budget from "./Pages/Budget";
 import ClubPage from './Pages/ClubPage';
 import CreateEvent from './Pages/CreateEvent';
-import EditClub from "./Pages/EditClub";
+import EditClubs from "./Pages/EditClubs";
 import EventPage from "./Pages/EventPage";
 import EventRequests from "./Pages/EventRequests";
 import FollowedClubs from "./Pages/FollowedClubs";
@@ -48,7 +48,7 @@ function App() {
             <Route path="/Budget" element={<Budget />} />
             <Route path="/Club-Page" element={<ClubPage />} />
             <Route path="/Create-Event" element={<CreateEvent />} />
-            <Route path = "/Edit-Club" element={<EditClub />}/>
+            <Route path = "/Edit-Club" element={<EditClubs />}/>
             <Route path="/Event-Page" element={<EventPage />} />
             <Route path="/Event-Requests" element={<EventRequests />} />
             <Route path="/Followed-Clubs" element={<FollowedClubs />} />

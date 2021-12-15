@@ -39,17 +39,17 @@ const style = makeStyles({
       display: "flex",
       justifyContent: "space-between",
       flexDirection: "row",
-      "@media screen and (max-width: 720px)": {
+      "@media screen and (max-width: 960px)": {
          flexDirection: "column",
       },
    },
 
    image: {
-      width: "20%",
+      width: "40%",
       borderRadius: "10px",
       border: "solid 1px rgba(0, 0, 0, 0.5)",
-      height: "120px",
-      "@media screen and (max-width: 720px)": {
+      height: "480px",
+      "@media screen and (max-width: 960px)": {
          width: "100%",
       },
    },
@@ -62,12 +62,28 @@ const style = makeStyles({
       color: "rgba(0, 0, 0, 0.5)",
    },
 
+   image_input: {
+      width: "90%",
+      height: "24px",
+   },
+
+   preview_button: {
+      marginTop: "2vw",
+      marginBottom: "2vw",
+   },
+
+   image_preview: {
+      maxWidth: "480px",
+      maxHeight: "480px",
+      borderRadius: "10px",
+   },
+
    links: {
-      width: "75%",
+      width: "50%",
       borderRadius: "10px",
       border: "solid 1px rgba(0, 0, 0, 0.5)", 
       height: "480px",
-      "@media screen and (max-width: 720px)": {
+      "@media screen and (max-width: 960px)": {
          marginTop: "2vw",
          width: "100%",
          height: "720px",
@@ -94,7 +110,7 @@ const style = makeStyles({
       justifyContent: "space-evenly",
       height: "100%",
       flexWrap: "wrap",
-      "@media screen and (max-width: 720px)": {
+      "@media screen and (max-width: 960px)": {
          justifyContent: "center",
          flexDirection: "row",
       },
@@ -105,7 +121,7 @@ const style = makeStyles({
       height: "96px",
       border: "solid 1px rgba(0, 0, 0, 0.5)",
       borderRadius: "10px",
-      "@media screen and (max-width: 720px)": {
+      "@media screen and (max-width: 960px)": {
          width: "90%",
       },
    },
@@ -137,6 +153,9 @@ const style = makeStyles({
 function EditClub ({ClubName = "Club Name", Description = "Description", Links, PageName}) {
 
    const classes = style();
+   function preview( url ) {
+      document.getElementById("image").src = url;
+   }
 
    return (
       <Box className = {classes.root}>
@@ -154,11 +173,13 @@ function EditClub ({ClubName = "Club Name", Description = "Description", Links, 
          <Box className = {classes.bottom_body}>
             <Box className = {classes.image}>
                <Box className = {classes.image_header}>
-                  Upload Image: If the image is not uploaded, Bilkent's logo will be shown to users.
+                  Enter An Image URL: If the image is not uploaded, Bilkent's logo will be shown to users.
                </Box>
                <Box sx = {{marginTop: "20px"}}>
-                  <input type="file" />
+                  <input type="url" id = "imageURL" className = {classes.image_input}/>
+                  <Button variant = "contained" color = "primary" className = {classes.preview_button} onClick = {() => preview(document.getElementById("imageURL").value)}>Preview</Button>
                </Box>
+               <img  alt="Enter An URL" id = "image" className = {classes.image_preview}/>
             </Box>
             <Box className = {classes.links}>
                <Box className = {classes.social_media_header}>Social Media</Box>
@@ -220,7 +241,7 @@ function EditClub ({ClubName = "Club Name", Description = "Description", Links, 
                </Box>
             </Box>
          </Box>
-         <Button variant = "contained" color = "success" sx = {{marginTop: "2vw", width: "100%", height: "42px",}}>{PageName === "Edit Club"? "Edit Club" : "Add Club"}</Button>
+         <Button variant = "contained" color = "success" sx = {{marginTop: "2vw", marginBottom: "5vw", width: "100%", height: "42px",}}>{PageName === "Edit Club"? "Edit Club" : "Add Club"}</Button>
       </Box>     
    );
 }

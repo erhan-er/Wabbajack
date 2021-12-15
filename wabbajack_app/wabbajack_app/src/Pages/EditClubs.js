@@ -17,7 +17,7 @@ const style = makeStyles({
    }
 });
 
-function AddClubs () {
+function EditClubs () {
    
    const classes = style();
 
@@ -34,4 +34,4 @@ function AddClubs () {
 const mapStateToProps = state => {
    console.log(state);
 };
-export default connect(mapStateToProps)(AddClubs);
+export default connect(mapStateToProps)(EditClubs);
