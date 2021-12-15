@@ -126,7 +126,10 @@ const style = makeStyles({
       maxWidth: "98%",
       height: "100%",
       resize: "none",
-
+      "&:focus": {
+         border: "none",
+         outline: "none",
+      },
    },
 
 });
