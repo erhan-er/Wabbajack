@@ -16,125 +16,149 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 const style = makeStyles({
    root: {
-
    },
 
-   img: {
-      width: "350px",
-      height: "350pxpx",
-      borderRadius: "10px",
-      marginTop: "1rem",
-      marginLeft: "4.2rem",
-   },
-
-   activity_box: {
+   body: {
+      marginTop: "50px",
       margin: "0 auto",
       width: "90%",
-   },
-
-   see_all_button: {
-      width: "300px",
-      height: "42px",
+      display: "flex",
       alignItems: "center",
-      textDecorationLine: "none"
+      flexDirection: "column",
    },
 
-   text_field: {
-      width: "250px",
-      height: "42px",
-      textDecoration: "none",
-      fontSize: "25px",
-      color: "#000080",
-      alignItems: "center",
-      display: "flex"
-   },
-
-   description_field: {
-      width: "500px",
-      marginTop: "2rem",
-      textDecoration: "none",
-      fontSize: "18px",
-      textAlign: "left",
-   },
-
-   social_media_text: {
-      width: "300px",
-      marginTop: "2rem",
-      textDecoration: "none",
-      fontSize: "18px",
-      textAlign: "center",
-   },
-
-   flex_box: {
-      width: "90%",
+   club_info: {
+      width: "100%",
       display: "flex",
       flexDirection: "row",
       justifyContent: "space-between",
-      marginLeft: "5.9rem",
-      marginTop: "2rem",
-      marginBottom: "1rem",
-      alignItems: "center",
+      "@media screen and (max-width: 1080px)": {
+         flexDirection: "column",
+         alignItems: "center",
+      },
+   }, 
+
+   image: {
+      width: "250px",
+      height: "250px",
    },
+
+   club_description_box: {
+      marginLeft: "25px",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      "@media screen and (max-width: 1080px)": {
+         marginLeft: 0,
+         marginTop: "25px",
+      },
+   },
+
+   club_description: {
+      width: "100%",
+      textAlign: "justify",
+      "@media screen and (max-width: 1080px)": {
+         textAlign: "center",
+      },
+   },
+
+   club_social_media: {
+      width: "100%",
+      marginTop: "25px",
+   },
+
+   link_box: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center"
+   },
+
+   upcoming_events: {
+      marginTop: "25px",
+   },
+
+   old_events: {
+      marginTop: "25px",
+   },
+
+   event_box_header: {
+      display: "flex",
+      justifyContent: "space-between",
+      marginBottom: "10px",
+   },
+
+   event_box_header_title: {
+      fontSize: "24px",
+      color: "#000080",
+   }
 });
 
 function ClubPage() {
+
    const classes = style();
    const location = useLocation();
-   console.log(location.state);
+
    var activity1 = { activityName: "Activity 1", place: "B Building", date: "20/11/2021", time: "18:00", expense: "5000" };
    var activity2 = { activityName: "Activity 2", place: "A Building", date: "30/11/2021", time: "20:00" };
    var activity3 = { activityName: "Activity 3", place: "EA Building", date: "31/12/2021", time: "22:00" };
+
    return (
       <Box className={classes.root}>
          <AppBar PageName={"Club's Page"} />
-         {/**IMAGE AND DESCRIPTION*/}
-         <Box className={classes.flex_box}>
-            <img src={Photo} className={classes.img} alt = {location.state.clubName}></img>
-            <Box>
-               <Box className={classes.text_field}><strong> {location.state.clubName} </strong></Box>
-               <Box className={classes.description_field}>
-                  <strong>Description:</strong> {location.state.description}
-               </Box>
-               <Box className={classes.description_field}>
-                  <strong>President:</strong> Erhan Er
+         <Box className = {classes.body}>
+            <Box className = {classes.club_info}>
+               <img src = {Photo} alt = {location.state.clubName} className = {classes.image} />
+               <Box className = {classes.club_description_box}>
+                  <Box className = {classes.club_description}>
+                     <Box sx = {{fontSize: "36px"}}><strong> {location.state.clubName} </strong></Box>
+                     <Box><strong>Description:</strong> {location.state.description}</Box>
+                     <Box sx = {{fontSize: "18px", marginTop: "5px"}}><strong>President:</strong> Erhan Er</Box>
+                  </Box>
+                  <Box className = {classes.club_social_media}>
+                     <Box sx = {{display: "flex", justifyContent: "center"}}><strong>Social Media Accounts</strong></Box>
+                     <Box className = {classes.link_box}>
+                        <IconButton size="large"><FacebookIcon fontSize="large" /></IconButton>
+                        <IconButton size="large"><WhatsAppIcon fontSize="large" /></IconButton>
+                        <IconButton size="large"><TwitterIcon fontSize="large" /></IconButton>
+                        <IconButton size="large"><LinkedInIcon fontSize="large" /></IconButton>
+                        <IconButton size="large"><InstagramIcon fontSize="large" /></IconButton>
+                     </Box>
+                  </Box>
                </Box>
             </Box>
-            <Box>
-               <Box className={classes.social_media_text}><strong>Social Media Accounts</strong></Box>
-               <IconButton size="large"><FacebookIcon fontSize="large" /></IconButton>
-               <IconButton size="large"><WhatsAppIcon fontSize="large" /></IconButton>
-               <IconButton size="large"><TwitterIcon fontSize="large" /></IconButton>
-               <IconButton size="large"><LinkedInIcon fontSize="large" /></IconButton>
-               <IconButton size="large"><InstagramIcon fontSize="large" /></IconButton>
+
+            <Box className = {classes.upcoming_events}>
+               <Box className = {classes.event_box_header}>
+                  <Box className = {classes.event_box_header_title}>Upcoming Events</Box>
+                  <Box>
+                     <Link to="/See-All-Events">
+                        <Button variant="contained" color="info" size = "large">See All Upcoming Events</Button>
+                     </Link>
+                  </Box>
+               </Box>
+               <Box>
+                  <ActivityAccordion {...activity1} />
+                  <ActivityAccordion {...activity2} />
+                  <ActivityAccordion {...activity3} />
+               </Box>   
             </Box>
-         </Box>
-         {/**UPCOMING EVENTS*/}
-         <Box className={classes.flex_box}>
-            <div className={classes.text_field} > Upcoming Events </div>
-            <div>
-               <Link to="/See-All-Events">
-                  <Button variant="contained" color="info" className={classes.see_all_button}>See All Upcoming Events</Button>
-               </Link>
-            </div>
-         </Box>
-         <Box className={classes.activity_box}>
-            <ActivityAccordion {...activity1} />
-            <ActivityAccordion {...activity2} />
-            <ActivityAccordion {...activity3} />
-         </Box>
-         {/**OLD EVENTS*/}
-         <Box className={classes.flex_box}>
-            <div className={classes.text_field} > Old Events </div>
-            <div>
-               <Link to="/See-All-Events">
-                  <Button variant="contained" color="info" className={classes.see_all_button}>See All Old Events</Button>
-               </Link>
-            </div>
-         </Box>
-         <Box className={classes.activity_box}>
-            <ActivityAccordion {...activity1} />
-            <ActivityAccordion {...activity2} />
-            <ActivityAccordion {...activity3} />
+            <Box className = {classes.old_events}>
+               <Box className = {classes.event_box_header}>
+                  <Box className = {classes.event_box_header_title}> Old Events </Box>
+                  <Box>
+                     <Link to="/See-All-Events">
+                        <Button variant="contained" color="info" size = "large">See All Old Events</Button>
+                     </Link>
+                  </Box>
+               </Box>
+               <Box>
+                  <ActivityAccordion {...activity1} />
+                  <ActivityAccordion {...activity2} />
+                  <ActivityAccordion {...activity3} />
+               </Box>
+               
+            </Box>
+            
          </Box>
       </Box >
    );
