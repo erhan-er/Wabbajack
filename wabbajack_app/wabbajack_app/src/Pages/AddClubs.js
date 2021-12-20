@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import AppBar from "../Components/AppBar";
 import Box from '@mui/material/Box';
 
-import EditClub from "../Components/EditClub";
+import AddClubComponent from "../Components/AddClubComponent";
 import { makeStyles } from "@mui/styles";
 
 const style = makeStyles({
@@ -25,7 +25,7 @@ function AddClubs () {
       <Box className = {classes.root}>
          <AppBar PageName = {"Add Clubs"}/>
          <Box className = {classes.body}>
-            <EditClub PageName = {"Add Club"}/>
+            <AddClubComponent PageName = {"Add Club"}/>
          </Box>
       </Box>
    );

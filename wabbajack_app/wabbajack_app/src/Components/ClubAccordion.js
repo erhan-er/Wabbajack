@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeStyles } from '@mui/styles';
 import { styled } from '@mui/material/styles';
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -23,10 +24,15 @@ const ModifiedAccordion = styled((props) => (
    },
 }));
 
+const ModifiedAccordionDetails = styled((props) => (
+   <AccordionDetails {...props}/>
+))(({theme}) => ({
+   padding: 5,
+}));
+
 const style = makeStyles({
    accordion: {
-      marginBottom: "1rem",
-      //borderRadius: "20px",
+      marginBottom: "10px",
       border: "2px solid #000080",
       backgroundColor: "#000080",
    },
@@ -65,36 +71,51 @@ const style = makeStyles({
       display: "flex",
       flexDirection: "row",
       position: "relative",
-      justifyContent: "space-between"
+      justifyContent: "space-between",
+      "@media screen and (max-width: 960px)": {
+         margin: 0,
+         width: "90%",
+         alignItems: "center",
+         flexDirection: "column",
+         textAlign: "justify",
+         margin: "0 auto",
+      }
    },
 
-   club_detail_part1: {
-      width: "50%",
-   },
-
-   information: {
-      width: "35%",
-      marginLeft: "5rem",
-      lineHeight: "2rem",
+   club_detail_box: {
+      width: "75%",
+      "@media screen and (max-width: 960px)": {
+         marginTop: "10px",
+         width: "100%",
+      }
    },
 
    button_box: {
       display: "flex",
       alignItems: "end",
+      "@media screen and (max-width: 960px)": {
+         width: "100%",
+      }
    },
 
    button: {
-
-      marginTop: "5rem",
-      marginLeft: "1rem",
-      height: "3rem",
-      width: "12.5rem",
+      marginTop: "20px",
+      marginLeft: "10px",
+      height: "42px",
+      width: "192px",
+      "@media screen and (max-width: 960px)": {
+         margin: 0,
+         marginTop: "10px",
+         width: "100%",
+      }
    },
 
    club_logo: {
-      width: "150px",
-      height: "150px",
-
+      width: "200px",
+      height: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
    },
 });
 
@@ -111,19 +132,17 @@ function ClubAccordion({ clubName, description, clubImage}) {
                <div className={classes.club_name}>{clubName}</div>
             </div>
          </AccordionSummary>
-         <AccordionDetails className={classes.club_detail}>
-            <img src={clubImage} alt={clubName} className={classes.club_logo} />
-            <div className={classes.club_detail_part1}>
+         <ModifiedAccordionDetails className={classes.club_detail}>
+            <Box className={classes.club_logo}><img src={clubImage} alt={clubName} style = {{height: "150px", width: "150px"}}/></Box>
+            <div className={classes.club_detail_box}>
                <div className={classes.details}>
                   <strong>Description:</strong>{description}
                </div>
             </div>
-            <Link to= "/Club-Page" state= {{clubName, description, clubImage}}>
-               <div className={classes.button_box}>
-                  <Button className={classes.button} variant="contained" color="info" endIcon={<ArrowForwardIosIcon />}>See Details</Button>
-               </div>
+            <Link to= "/Club-Page" state= {{clubName, description, clubImage}} className={classes.button_box}>
+               <Button className={classes.button} variant="contained" color="info" endIcon={<ArrowForwardIosIcon />}>See Details</Button>
             </Link>
-         </AccordionDetails>
+         </ModifiedAccordionDetails>
       </ModifiedAccordion >
    );
 }

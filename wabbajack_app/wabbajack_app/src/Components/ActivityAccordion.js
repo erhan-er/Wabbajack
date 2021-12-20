@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeStyles } from '@mui/styles';
 import { styled } from '@mui/material/styles';
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -23,6 +24,14 @@ const ModifiedAccordion = styled((props) => (
    },
 }));
 
+const ModifiedAccordionDetails = styled((props) => (
+   <AccordionDetails {...props}/>
+))(({theme}) => ({
+   "@media screen and (max-width: 960px)": {
+      padding: 0,
+   },
+}));
+
 const style = makeStyles({
    accordion: {
       marginBottom: "1rem",
@@ -33,14 +42,14 @@ const style = makeStyles({
 
    expand_icon: {
       color: "#ffff7f",
-      fontSize: "3rem",
+      fontSize: "32px",
    },
 
    activity_summary: {
       display: "flex",
       justifyContent: "space-between",
       color: "#ffff7f",
-      width: "90%",
+      width: "100%",
    },
 
    activity_name: {
@@ -59,16 +68,25 @@ const style = makeStyles({
    activity_detail: {
       marginTop: "-8px",
       width: "90%",
-      borderRadius: "0 0 15px 15px",
       color: "#ffff7f",
       textAlign: "left",
       display: "flex",
       flexDirection: "row",
-      position: "relative",
+      "@media screen and (max-width: 960px)": {
+         margin: 0,
+         width: "90%",
+         alignItems: "center",
+         flexDirection: "column",
+         margin: "0 auto",
+      }
    },
 
-   activity_detail_part1: {
+   activity_detail_description: {
       width: "50%",
+      "@media screen and (max-width: 960px)": {
+         width: "100%",
+         textAlign: "justify",
+      }
    },
 
    club_name: {
@@ -79,19 +97,31 @@ const style = makeStyles({
       width: "35%",
       marginLeft: "5rem",
       lineHeight: "2rem",
+      "@media screen and (max-width: 960px)": {
+         width: "100%",
+         margin: 0,
+         marginTop: "15px",
+      }
    },
 
    button_box: {
       display: "flex",
       alignItems: "end",
+      "@media screen and (max-width: 960px)": {
+         width: "100%",
+      }
    },
 
    button: {
-      
-      marginTop: "5rem",
-      marginLeft: "1rem",
-      height: "3rem",
-      width: "12.5rem",
+      marginTop: "5vw",
+      marginLeft: "1vw",
+      height: "42px",
+      width: "256px",
+      "@media screen and (max-width: 960px)": {
+         marginBottom: "10px",
+         margin: 0,
+         width: "100%",
+      }
    },
 });
 
@@ -104,36 +134,34 @@ function ActivityAccordion ({activityName, place, date, time, PageName, expense}
          <AccordionSummary
             expandIcon={<ExpandMoreIcon className = {classes.expand_icon}/>}
          >
-            <div className = {classes.activity_summary}>
-               <div className = {classes.activity_name}>{activityName}</div>
-               <div className = {classes.activity_date}>Date: {date}</div>
-               {PageName === "Budget"? <div className = {classes.activity_budget}>Expense: ₺{expense}</div> : <div className = {classes.activity_budget}></div>}
-            </div>
+            <Box className = {classes.activity_summary}>
+               <Box className = {classes.activity_name}>{activityName}</Box>
+               <Box className = {classes.activity_date}>Date: {date}</Box>
+               {PageName === "Budget"? <Box className = {classes.activity_budget}>Expense: ₺{expense}</Box>: ""}
+            </Box>
          </AccordionSummary>
-         <AccordionDetails className = {classes.activity_detail}>
-            <div className = {classes.activity_detail_part1}>
-               <div className = {classes.club_name}>Club Name</div>
-               <div className = {classes.details}>
+         <ModifiedAccordionDetails className = {classes.activity_detail}>
+            <Box className = {classes.activity_detail_description}>
+               <Box className = {classes.club_name}>Club Name</Box>
+               <Box className = {classes.details}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
                   malesuada lacus ex, sit amet blandit leo lobortis eget.
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
                   malesuada lacus ex, sit amet blandit leo lobortis eget.
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
                   malesuada lacus ex, sit amet blandit leo lobortis eget.
-               </div>
-            </div>
+               </Box>
+            </Box>
 
-            <div className = {classes.information}>
-               <div>Place: {place}</div>
-               <div>Date: {date}</div>
-               <div>Time: {time}</div>
-            </div>
-            <Link to = "/Event-Page">
-               <div className = {classes.button_box}>
+            <Box className = {classes.information}>
+               <Box>Place: {place}</Box>
+               <Box>Date: {date}</Box>
+               <Box>Time: {time}</Box>
+            </Box>
+               <Link to = "/Event-Page" className = {classes.button_box}>
                   <Button className = {classes.button} variant = "contained" color= "info" endIcon = {<ArrowForwardIosIcon />}>See Details</Button>
-               </div>
-            </Link>
-         </AccordionDetails>
+               </Link>
+         </ModifiedAccordionDetails>
       </ModifiedAccordion>
    );
 }
