@@ -30,7 +30,7 @@ const style = makeStyles({
    },
 });
 
-function JoinedClubs () {
+function IgnoredClubs() {
    const classes = style();
    const [pageSize, setPageSize] = useState(10);
    const [page, setPage] = React.useState(1);
@@ -54,7 +54,7 @@ function JoinedClubs () {
 
    return (
       <Box className={classes.root}>
-         <AppBar PageName={"Joined Clubs"} />
+         <AppBar PageName={"Ignored Clubs"} />
          <Box className={classes.club_box}>
             {activityArr.map((item, index) => {
                if (index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
@@ -83,4 +83,4 @@ function JoinedClubs () {
    );
 }
 
-export default JoinedClubs
+export default IgnoredClubs

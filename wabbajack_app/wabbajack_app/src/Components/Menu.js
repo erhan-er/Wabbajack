@@ -50,7 +50,7 @@ function Menu ({open, setIsOpen, userType}) {
    var adminMenu = ["Add User", "Add Clubs", "Event Requests", "Settings", "Logout"];
 
    var allMenu = ["Add Clubs", "Add User", "Budget", "Create Event", "Event Requests", 
-                  "Followed Clubs", "Home", "Joined Clubs", "My Club", "My Information", 
+                  "Followed Clubs", "Home", "Ignored Clubs", "Joined Clubs", "My Club", "My Information", 
                   "See All Club Members", "See All Clubs", "See All Events", "See All Students", 
                   "See All Friends", "Settings", "Logout"];
 

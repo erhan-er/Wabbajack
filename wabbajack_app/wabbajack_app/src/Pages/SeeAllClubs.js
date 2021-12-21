@@ -79,7 +79,6 @@ function SeeAllClubs() {
                />
             </Box>
          </Box>
-
       </Box>
    );
 }
