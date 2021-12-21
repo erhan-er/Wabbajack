@@ -10,6 +10,7 @@ import EventPage from "./Pages/EventPage";
 import EventRequests from "./Pages/EventRequests";
 import FollowedClubs from "./Pages/FollowedClubs";
 import Home from "./Pages/Home";
+import IgnoredClubs from "./Pages/IgnoredClubs";
 import JoinedClubs from "./Pages/JoinedClubs";
 import LoginPage from "./Pages/LoginPage";
 import MyClub from "./Pages/MyClub";
@@ -48,11 +49,12 @@ function App() {
             <Route path="/Budget" element={<Budget />} />
             <Route path="/Club-Page" element={<ClubPage />} />
             <Route path="/Create-Event" element={<CreateEvent />} />
-            <Route path = "/Edit-Club" element={<EditClubs />}/>
+            <Route path="/Edit-Club" element={<EditClubs />}/>
             <Route path="/Event-Page" element={<EventPage />} />
             <Route path="/Event-Requests" element={<EventRequests />} />
             <Route path="/Followed-Clubs" element={<FollowedClubs />} />
             <Route path="/Home" element={<Home />} />
+            <Route path="/Ignored-Clubs" element = {<IgnoredClubs />} />
             <Route path="/Joined-Clubs" element={<JoinedClubs />} />
             <Route exact path="/" element={<LoginPage />} />
             <Route path="/My-Club" element={<MyClub />} />
