@@ -8,6 +8,7 @@ namespace ClubManagerBackup.Dtos
         public int ID { get; set; }
         public string Name { get; set; }
         public string ClubDescription { get; set; }
-        public List<User> StudentsClubMembers { get; set; }
+        //public List<User> StudentsClubMembers { get; set; }
+        public int ClubBudget{ get; set; }
     }
 }

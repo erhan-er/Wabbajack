@@ -21,10 +21,11 @@ namespace ClubManagerBackup.Context
             context.Add(entity);
         }
 
-        public async Task AddClub(Club newClub)
+        public async Task<Club> AddClub(Club newClub)
         {
             await context.Clubs.AddAsync(newClub);
             await context.SaveChangesAsync();
+            return newClub;
         }
 
         public async Task<bool> ClubExists(string clubName)
