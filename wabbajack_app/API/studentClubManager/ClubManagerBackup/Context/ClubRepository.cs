@@ -58,5 +58,13 @@ namespace ClubManagerBackup.Context
         {
             return context.SaveChanges() > 0;
         }
+
+        public async Task<Club> UpdateClub(Club clubToUpdate)
+        {
+            context.Clubs.Update(clubToUpdate);
+            await context.SaveChangesAsync();
+            return clubToUpdate;
+        }
+
     }
 }

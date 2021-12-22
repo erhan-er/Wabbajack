@@ -60,7 +60,7 @@ namespace ClubManagerBackup.Controllers
       [HttpPost("updateevent")]
       public async Task<IActionResult> UpdateEvent([FromBody] EventDto eventDto)
       {
-         var eventToUpdate = (Event)GetEventByID(eventDto.ClubID);
+         var eventToUpdate = (Event)GetEventByID(eventDto.ClubID); 
          eventToUpdate.Name = eventDto.Name;
          eventToUpdate.Description = eventDto.Description;
          var updatedEvent = await eventRepository.UpdateEvent(eventToUpdate);
