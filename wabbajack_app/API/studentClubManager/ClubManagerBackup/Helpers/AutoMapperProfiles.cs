@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Helpers
 {
-    public class AutoMapperProfiles : Profile
-    {
-        public AutoMapperProfiles()
-        {
-            CreateMap<User, UserDto>();
-        }
-    }
+   public class AutoMapperProfiles : Profile
+   {
+      public AutoMapperProfiles()
+      {
+         CreateMap<User, UserDto>();
+         CreateMap<Event, EventDto>();
+      }
+   }
 }

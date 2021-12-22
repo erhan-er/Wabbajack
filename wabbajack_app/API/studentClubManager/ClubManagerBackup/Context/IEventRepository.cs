@@ -12,6 +12,7 @@ namespace ClubManagerBackup.Context
       void Delete<T>(T entity) where T : class;
       bool SaveAll<T>(T entity);
       Task<Event> AddEvent(Event newEvent);
+      Task<Event> UpdateEvent(Event eventToUpdate);
       Task<bool> EventExists(string eventName);
 
       List<Event> GetEvents();
