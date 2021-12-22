@@ -29,7 +29,8 @@ const ModifiedIconButton = styled((props) => (
    ":hover" : {
       backgroundColor: "#ffff7f"
    }
-}))
+}));
+
 const style = makeStyles({
    root: {
 
@@ -40,6 +41,7 @@ const style = makeStyles({
       textDecoration: "none"
    },
 });
+
 function AppBar ({PageName = "Wabbajack"}) {
    const classes = style();
    const [isOpen, setIsOpen] = useState(false);

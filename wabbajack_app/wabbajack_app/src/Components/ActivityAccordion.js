@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeStyles } from '@mui/styles';
-import { styled } from '@mui/material/styles';
+import { makeStyles, styled } from '@mui/styles';
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Accordion from '@mui/material/Accordion';
