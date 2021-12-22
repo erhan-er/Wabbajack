@@ -24,10 +24,11 @@ namespace ClubManagerBackup.Controllers
       private IConfiguration configuration;
       private IMapper mapper;
 
-      public EventController(IEventRepository eventRepository, IConfiguration configuration)
+      public EventController(IEventRepository eventRepository, IConfiguration configuration, IMapper mapper)
       {
          this.eventRepository = eventRepository;
          this.configuration = configuration;
+         this.mapper = mapper;
       }
 
       [HttpPost("addevent")]
@@ -45,6 +46,10 @@ namespace ClubManagerBackup.Controllers
 
          var eventToCreate = new Event
          {
+            ClubID = eventDto.ClubID,
+            EventCost = eventDto.Cost,
+            Capacity = eventDto.Capacity,
+            UserID = eventDto.UserId,
             Name = eventDto.Name,
             Description = eventDto.Description
          };
@@ -52,6 +57,15 @@ namespace ClubManagerBackup.Controllers
          return StatusCode(201);
       }
 
+      [HttpPost("updateevent")]
+      public async Task<IActionResult> UpdateEvent([FromBody] EventDto eventDto)
+      {
+         var eventToUpdate = (Event)GetEventByID(eventDto.ClubID);
+         eventToUpdate.Name = eventDto.Name;
+         eventToUpdate.Description = eventDto.Description;
+         var updatedEvent = await eventRepository.UpdateEvent(eventToUpdate);
+         return StatusCode(201);
+      }
 
       [HttpGet]
       public IActionResult GetEvents()

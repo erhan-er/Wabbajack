@@ -22,6 +22,14 @@ namespace ClubManagerBackup.Context
          await context.SaveChangesAsync();
          return newEvent;
       }
+
+      public async Task<Event> UpdateEvent(Event eventToUpdate)
+      {
+         context.Events.Update(eventToUpdate);
+         await context.SaveChangesAsync();
+         return eventToUpdate;
+      }
+
       public void Add<T>(T entity) where T : class
       {
          context.Add(entity);
