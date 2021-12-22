@@ -4,6 +4,8 @@ import TextField from '@mui/material/TextField';
 import { makeStyles } from '@mui/styles';
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from 'react';
 
 const style = makeStyles({
    outer_box: {
@@ -63,19 +65,40 @@ const style = makeStyles({
 
 function LoginBox() {
    const classes = style();
+   var Email;
+   var Password;
+   function handleClick() {
+      Email = document.getElementById("Email").value;
+      Password = document.getElementById("Password").value;
+      console.log(Email);
+      console.log(Password);
+   }
+   /*
+   useEffect(() => {
+      
+   },Email, Password);*/
+   
+   axios.post("LİNK", {
+      email: Email,
+      password:  Password
+   }).then((response) => {
+      console.log(response);
+   }, (error) => {
+      console.log(error);
+   });
 
    return (
       <Box className={classes.outer_box}>
          <div className={classes.login_text}>LOGIN</div>
          <Box className={classes.login_box}>
             <Box className={classes.text_field_box}>
-               <TextField className={classes.text_field}  margin = "normal" label="Email" type="email" required />
-               <TextField className={classes.text_field}  margin = "normal" label="Password" type="password" required />
+               <TextField className={classes.text_field} id = "Email" margin = "normal" label="Email" type="email" required />
+               <TextField className={classes.text_field} id = "Password" margin = "normal" label="Password" type="password" required />
             </Box>
             <Box className={classes.button_box}>
-               <Link to="/Home">
-                  <Button variant="contained" color = "warning" className={classes.button}>Sign in</Button>
-               </Link>
+               {/*<Link to="/Home">*/}
+                  <Button variant="contained" color = "warning" className={classes.button} onClick = {() => handleClick()}>Sign in</Button>
+               {/*</Link>*/}
                <Button variant="contained" color="info" className={classes.button}>About</Button>
             </Box>
             <Box>
