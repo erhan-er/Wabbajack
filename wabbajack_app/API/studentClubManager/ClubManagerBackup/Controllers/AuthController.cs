@@ -15,74 +15,74 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Auth")]
-    public class AuthController : Controller
-    {
-        private IAuthRepository authRepository;
-        private IConfiguration configuration;
+   [Produces("application/json")]
+   [Route("api/Auth")]
+   public class AuthController : Controller
+   {
+      private IAuthRepository authRepository;
+      private IConfiguration configuration;
 
-        public AuthController(IAuthRepository authRepository, IConfiguration configuration)
-        {
-            this.authRepository = authRepository;
-            this.configuration = configuration;
-        }
+      public AuthController(IAuthRepository authRepository, IConfiguration configuration)
+      {
+         this.authRepository = authRepository;
+         this.configuration = configuration;
+      }
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody]RegisterDto registerDto)
-        {
-            if (await authRepository.UserExists(registerDto.Name))
-            {
-                ModelState.AddModelError("Name", "Name already exists");
-            }
+      [HttpPost("register")]
+      public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
+      {
+         if (await authRepository.UserExists(registerDto.Name))
+         {
+            ModelState.AddModelError("Name", "Name already exists");
+         }
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+         if (!ModelState.IsValid)
+         {
+            return BadRequest(ModelState);
+         }
 
-            var userToCreate = new User
-            {
-                Name = registerDto.Name,
-                Mail = registerDto.Mail,
-                Department = registerDto.Department,
-                Discriminator = registerDto.Discriminator
-            };
+         var userToCreate = new User
+         {
+            Name = registerDto.Name,
+            Mail = registerDto.Mail,
+            Department = registerDto.Department,
+            Discriminator = registerDto.Discriminator
+         };
 
-            var createdUser = await authRepository.Register(userToCreate, registerDto.Password);
-            return StatusCode(201);
-        }
+         var createdUser = await authRepository.Register(userToCreate, registerDto.Password);
+         return StatusCode(201);
+      }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody]LoginDto loginDto)
-        {
-            var user = await authRepository.Login(loginDto.Name, loginDto.Password);
+      [HttpPost("login")]
+      public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+      {
+         var user = await authRepository.Login(loginDto.Name, loginDto.Password);
 
-            if (user == null)
-            {
-                return Unauthorized();
-            }
+         if (user == null)
+         {
+            return Unauthorized();
+         }
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(configuration.GetSection("AppSettings:Token").Value);
+         var tokenHandler = new JwtSecurityTokenHandler();
+         var key = Encoding.ASCII.GetBytes(configuration.GetSection("AppSettings:Token").Value);
 
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
+         var tokenDescriptor = new SecurityTokenDescriptor
+         {
+            Subject = new ClaimsIdentity(new Claim[]
+             {
                     new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
                     new Claim(ClaimTypes.Name, user.Name)
-                }),
-                Expires = DateTime.Now.AddDays(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
-            };
+             }),
+            Expires = DateTime.Now.AddDays(1),
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
+         };
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
+         var token = tokenHandler.CreateToken(tokenDescriptor);
+         var tokenString = tokenHandler.WriteToken(token);
 
-            return Ok(tokenString);
-        }
+         return Ok(tokenString);
+      }
 
 
-    }
+   }
 }

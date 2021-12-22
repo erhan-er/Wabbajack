@@ -20,67 +20,68 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup
 {
-    public class Startup
-    {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+   public class Startup
+   {
+      public Startup(IConfiguration configuration)
+      {
+         Configuration = configuration;
+      }
 
-        public IConfiguration Configuration { get; }
+      public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
+      // This method gets called by the runtime. Use this method to add services to the container.
+      public void ConfigureServices(IServiceCollection services)
+      {
+         var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
+         services.AddControllers();
+         services.AddSwaggerGen(c =>
+         {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "ClubManagerBackup", Version = "v1" });
+         });
+         services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+         services.AddAutoMapper(typeof(Startup));
+         services.AddMvc();
+         /*    .AddJsonOptions(opt =>
+         {
+             opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+         });*/
+         services.AddCors();
+         services.AddScoped<IEventRepository, EventRepository>();
+         services.AddScoped<IUserRepository, UserRepository>();
+         services.AddScoped<IAuthRepository, AuthRepository>();
+         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+         {
+            options.TokenValidationParameters = new TokenValidationParameters
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ClubManagerBackup", Version = "v1" });
-            });
-            services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddAutoMapper(typeof(Startup));
-            services.AddMvc();
-            /*    .AddJsonOptions(opt =>
-            {
-                opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            });*/
-            services.AddCors();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
-        }
+               ValidateIssuerSigningKey = true,
+               IssuerSigningKey = new SymmetricSecurityKey(key),
+               ValidateIssuer = false,
+               ValidateAudience = false
+            };
+         });
+      }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ClubManagerBackup v1"));
-            }
+      // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+      public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+      {
+         if (env.IsDevelopment())
+         {
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ClubManagerBackup v1"));
+         }
 
-            app.UseHttpsRedirection();
+         app.UseHttpsRedirection();
 
-            app.UseRouting();
+         app.UseRouting();
 
-            app.UseAuthorization();
-            app.UseAuthentication();
+         app.UseAuthorization();
+         app.UseAuthentication();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-        }
-    }
+         app.UseEndpoints(endpoints =>
+         {
+            endpoints.MapControllers();
+         });
+      }
+   }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClubManagerBackup.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211221145712_mig8")]
-    partial class mig8
+    [Migration("20211221192031_mig9")]
+    partial class mig9
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
