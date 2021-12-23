@@ -6010,24 +6010,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\OSMAN SEMİH\\.nuget\\packages\\": {}
+    "C:\\Users\\Arda\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\OSMAN SEMİH\\Desktop\\Repos\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj",
+      "projectUniqueName": "C:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj",
       "projectName": "ClubManagerBackup",
-      "projectPath": "C:\\Users\\OSMAN SEMİH\\Desktop\\Repos\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj",
-      "packagesPath": "C:\\Users\\OSMAN SEMİH\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\OSMAN SEMİH\\Desktop\\Repos\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\obj\\",
+      "projectPath": "C:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj",
+      "packagesPath": "C:\\Users\\Arda\\.nuget\\packages\\",
+      "outputPath": "C:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\OSMAN SEMİH\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Arda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -6113,7 +6115,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }
