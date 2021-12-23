@@ -67,6 +67,14 @@ namespace ClubManagerBackup.Controllers
          return StatusCode(201);
       }
 
+      [HttpPost("deleteevent")]
+      public async Task<IActionResult> DeleteEvent([FromBody] EventDto eventDto)
+      {
+         var eventToDelete = eventRepository.GetEventByID(eventDto.ID);
+         await eventRepository.DeleteEvent(eventToDelete);
+         return StatusCode(201);
+      }
+
       [HttpGet]
       public IActionResult GetEvents()
       {

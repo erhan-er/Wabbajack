@@ -23,6 +23,12 @@ namespace ClubManagerBackup.Context
          return newEvent;
       }
 
+      public async Task DeleteEvent(Event eventToDelete)
+      {
+         context.Events.Remove(eventToDelete);
+         await context.SaveChangesAsync();
+      }
+
       public async Task<Event> UpdateEvent(Event eventToUpdate)
       {
          context.Events.Update(eventToUpdate);

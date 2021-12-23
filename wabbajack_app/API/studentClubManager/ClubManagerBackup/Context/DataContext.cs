@@ -15,7 +15,7 @@ namespace ClubManagerBackup.Context
       }
       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
       {
-         optionsBuilder.UseSqlServer(@"server=DESKTOP-H2OS28M\SQLEXPRESS;database=ClubManagerDb; integrated security=true;");
+         optionsBuilder.UseSqlServer(@"server=LAPTOP-6G581D4A\SQLEXPRESS;database=ClubManagerDb; integrated security=true;");
       }
 
       protected override void OnModelCreating(ModelBuilder modelBuilder)
