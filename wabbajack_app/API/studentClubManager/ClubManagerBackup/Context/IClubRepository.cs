@@ -8,12 +8,7 @@ namespace ClubManagerBackup.Context
 {
     public interface IClubRepository
     {
-        void Add<T>(T entity) where T : class;
-        void Delete<T>(T entity) where T : class;
-        bool SaveAll<T>(T entity);
-
         List<Club> GetClubs();
-
         Club GetClubById(int id);
         Club GetClubByName(string name);
         Task<bool>  ClubExists(string clubName);

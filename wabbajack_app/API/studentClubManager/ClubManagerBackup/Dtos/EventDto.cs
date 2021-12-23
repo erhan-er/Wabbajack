@@ -14,8 +14,6 @@ namespace ClubManagerBackup.Dtos
       public int Cost { get; set; }
       public int Capacity { get; set; }
       public int UserId { get; set; }
-
       public string Discriminator = "Event";
-
    }
 }

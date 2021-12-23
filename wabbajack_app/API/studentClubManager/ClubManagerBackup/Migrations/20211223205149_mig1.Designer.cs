@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClubManagerBackup.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211221192031_mig9")]
-    partial class mig9
+    [Migration("20211223205149_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -252,6 +252,9 @@ namespace ClubManagerBackup.Migrations
                     b.Property<int>("AdminID")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("StudentID1")
                         .HasColumnType("int");
 
@@ -283,16 +286,11 @@ namespace ClubManagerBackup.Migrations
                 {
                     b.HasBaseType("ClubManagerBackup.Entities.User");
 
-                    b.Property<int?>("AdminID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Role")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("StudentID")
                         .HasColumnType("int");
-
-                    b.HasIndex("AdminID");
 
                     b.HasIndex("StudentID");
 
@@ -395,21 +393,15 @@ namespace ClubManagerBackup.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ClubManagerBackup.Entities.Student", "Student")
+                    b.HasOne("ClubManagerBackup.Entities.Student", null)
                         .WithMany("CreatedEvents")
                         .HasForeignKey("StudentID1");
 
                     b.Navigation("Admin");
-
-                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("ClubManagerBackup.Entities.Student", b =>
                 {
-                    b.HasOne("ClubManagerBackup.Entities.Admin", null)
-                        .WithMany("Accounts")
-                        .HasForeignKey("AdminID");
-
                     b.HasOne("ClubManagerBackup.Entities.Student", null)
                         .WithMany("Friends")
                         .HasForeignKey("StudentID");
@@ -436,8 +428,6 @@ namespace ClubManagerBackup.Migrations
 
             modelBuilder.Entity("ClubManagerBackup.Entities.Admin", b =>
                 {
-                    b.Navigation("Accounts");
-
                     b.Navigation("RequestedEvents");
                 });
 
