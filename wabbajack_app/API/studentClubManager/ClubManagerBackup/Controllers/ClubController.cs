@@ -74,6 +74,14 @@ namespace ClubManagerBackup.Controllers
             return StatusCode(201);
         }
 
+        [HttpPost("deleteClub")]
+        public async Task<ActionResult> DeleteClub([FromBody] ClubDto clubDto)
+        {
+            var clubToDelete = clubRepository.GetClubByName(clubDto.Name);
+            await clubRepository.RemoveClub(clubToDelete);
+            return StatusCode(201);
+        }
+
 
     }
 }

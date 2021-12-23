@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClubManagerBackup.Dtos;
 using ClubManagerBackup.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -71,6 +72,13 @@ namespace ClubManagerBackup.Context
             await context.SaveChangesAsync();
             return clubToUpdate;
         }
+
+        public async Task RemoveClub( Club clubToDelete)
+        {
+            context.Clubs.Remove(clubToDelete);
+            await context.SaveChangesAsync();
+        }
+
 
     }
 }
