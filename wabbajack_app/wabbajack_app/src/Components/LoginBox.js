@@ -42,7 +42,7 @@ const style = makeStyles({
    text_field: {
       width: "90%",
       height: "42px",
-      
+
    },
    forget_password: {
       marginTop: "2rem",
@@ -54,7 +54,7 @@ const style = makeStyles({
       display: "flex",
       flexDirection: "row",
       justifyContent: "space-evenly",
-   
+
    },
    button: {
       width: "100px",
@@ -63,7 +63,7 @@ const style = makeStyles({
 
 });
 
-function LoginBox() {
+function LoginBox({ setEmail, setPassword, handleLoginRequest }) {
    const classes = style();
    var Email;
    var Password;
@@ -73,36 +73,30 @@ function LoginBox() {
       console.log(Email);
       console.log(Password);
    }
-   /*
-   useEffect(() => {
-      
-   },Email, Password);*/
-   
-   axios.post("LİNK", {
-      email: Email,
-      password:  Password
-   }).then((response) => {
-      console.log(response);
-   }, (error) => {
-      console.log(error);
-   });
+
+   function handleLogin() {
+      setEmail(document.getElementById("Email").value);
+      setPassword(document.getElementById("Password").value);
+
+      handleLoginRequest();
+   }
 
    return (
       <Box className={classes.outer_box}>
          <div className={classes.login_text}>LOGIN</div>
          <Box className={classes.login_box}>
             <Box className={classes.text_field_box}>
-               <TextField className={classes.text_field} id = "Email" margin = "normal" label="Email" type="email" required />
-               <TextField className={classes.text_field} id = "Password" margin = "normal" label="Password" type="password" required />
+               <TextField className={classes.text_field} id="Email" margin="normal" label="Email" type="email" required />
+               <TextField className={classes.text_field} id="Password" margin="normal" label="Password" type="password" required />
             </Box>
             <Box className={classes.button_box}>
                {/*<Link to="/Home">*/}
-                  <Button variant="contained" color = "warning" className={classes.button} onClick = {() => handleClick()}>Sign in</Button>
+               <Button variant="contained" color="warning" className={classes.button} onClick={() => handleLogin()}>Sign in</Button>
                {/*</Link>*/}
                <Button variant="contained" color="info" className={classes.button}>About</Button>
             </Box>
             <Box>
-               <Button variant="text" color = "error" className={classes.forget_password}>Forget Password?</Button>
+               <Button variant="text" color="error" className={classes.forget_password}>Forget Password?</Button>
             </Box>
          </Box>
       </Box>
