@@ -27,7 +27,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import rootReducer from "./Reducer/reducer";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
@@ -43,6 +43,10 @@ function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    handleLoginRequest();
+  }, [email, password]);
 
   async function handleLoginRequest() {
     setSubmitted(true)
@@ -86,7 +90,7 @@ function App() {
             <Route path="/Home" element={<Home />} />
             <Route path="/Ignored-Clubs" element={<IgnoredClubs />} />
             <Route path="/Joined-Clubs" element={<JoinedClubs />} />
-            <Route exact path="/" element={<LoginPage setEmail={setEmail} setPassword={setPassword} handleLoginRequest={handleLoginRequest} />} />
+            <Route exact path="/" element={<LoginPage setEmail={setEmail} setPassword={setPassword} /*handleLoginRequest={handleLoginRequest}*/ />} />
             <Route path="/My-Club" element={<MyClub />} />
             <Route path="/My-Information" element={<MyInformation />} />
             <Route path="/See-All-Club-Members" element={<SeeAllClubMembers />} />
