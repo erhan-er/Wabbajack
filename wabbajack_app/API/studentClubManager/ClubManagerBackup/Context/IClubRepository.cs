@@ -15,8 +15,10 @@ namespace ClubManagerBackup.Context
         List<Club> GetClubs();
 
         Club GetClubById(int id);
+        Club GetClubByName(string name);
         Task<bool>  ClubExists(string clubName);
         Task<Club> AddClub(Club newClub);
+        Task<Club> UpdateClub(Club clubToUpdate);
 
     }
 }

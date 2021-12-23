@@ -66,6 +66,16 @@ namespace ClubManagerBackup.Controllers
            return  StatusCode(201);
         }
 
+        [HttpPost("updateClub")]
+        public async Task<ActionResult> UpdateClub([FromBody] string name, string description, int budget)
+        {
+            var clubToUpdate = clubRepository.GetClubByName(name);
+            clubToUpdate.ClubDescription = description;
+            clubToUpdate.ClubBudget = budget;
+            var updatedClub = await clubRepository.UpdateClub(clubToUpdate);
+            return StatusCode(201);
+        }
+
 
     }
 }

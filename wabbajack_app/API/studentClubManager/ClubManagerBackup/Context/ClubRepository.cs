@@ -48,6 +48,12 @@ namespace ClubManagerBackup.Context
             return club;
         }
 
+        public Club GetClubByName(string name)
+        {
+            var club = context.Clubs.FirstOrDefault(c => c.Name == name);
+            return club;
+        }
+
         public List<Club> GetClubs()
         {
             var clubs = context.Clubs.ToList();
@@ -58,5 +64,13 @@ namespace ClubManagerBackup.Context
         {
             return context.SaveChanges() > 0;
         }
+
+        public async Task<Club> UpdateClub(Club clubToUpdate)
+        {
+            context.Clubs.Update(clubToUpdate);
+            await context.SaveChangesAsync();
+            return clubToUpdate;
+        }
+
     }
 }
