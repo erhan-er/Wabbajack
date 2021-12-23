@@ -21,5 +21,8 @@ namespace ClubManagerBackup.Context
         Task<Club> UpdateClub(Club clubToUpdate);
         Task RemoveClub(Club clubToDelete);
 
+        Task AddMember( User student, string clubName);
+
+
     }
 }

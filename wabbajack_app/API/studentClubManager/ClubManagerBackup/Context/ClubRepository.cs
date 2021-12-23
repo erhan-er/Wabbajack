@@ -79,6 +79,13 @@ namespace ClubManagerBackup.Context
             await context.SaveChangesAsync();
         }
 
+        public async Task AddMember( User student, string clubName)
+        {
+            var currentClub = await context.Clubs.FirstOrDefaultAsync( c => c.Name == clubName);
+            currentClub.StudentsClubMembers.Add(student);
+            await context.SaveChangesAsync();
+        }
+
 
     }
 }
