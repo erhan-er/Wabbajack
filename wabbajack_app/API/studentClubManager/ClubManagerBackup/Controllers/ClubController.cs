@@ -26,7 +26,7 @@ namespace ClubManagerBackup.Controllers
         [HttpGet]
         public IActionResult GetClubs()
         {
-            Console.WriteLine("hey");
+            
             var clubs = this.clubRepository.GetClubs();
             var clubsToReturn = mapper.Map<List<ClubDto>>(clubs);
             return Ok(clubsToReturn);
@@ -43,7 +43,7 @@ namespace ClubManagerBackup.Controllers
         [HttpPost("addClub")]
         public async Task<IActionResult> AddClub([FromBody] ClubDto clubDto)
         {
-            Console.WriteLine("hey");
+            
             if (await clubRepository.ClubExists(clubDto.Name))
             {
                 ModelState.AddModelError("Name", "Name already exists");
@@ -67,15 +67,14 @@ namespace ClubManagerBackup.Controllers
         }
 
         [HttpPost("updateClub")]
-        public async Task<ActionResult> UpdateClub([FromBody] string name, string description, int budget)
+        public async Task<ActionResult> UpdateClub([FromBody] ClubDto clubDto)
         {
-            var clubToUpdate = clubRepository.GetClubByName(name);
-            clubToUpdate.ClubDescription = description;
-            clubToUpdate.ClubBudget = budget;
-            var updatedClub = await clubRepository.UpdateClub(clubToUpdate);
+            var clubToUpdate = clubRepository.GetClubByName( clubDto.Name);
+            clubToUpdate.ClubDescription = clubDto.ClubDescription;
+            clubToUpdate.ClubBudget = clubDto.ClubBudget;
+            await clubRepository.UpdateClub(clubToUpdate);
             return StatusCode(201);
         }
-
 
     }
 }
