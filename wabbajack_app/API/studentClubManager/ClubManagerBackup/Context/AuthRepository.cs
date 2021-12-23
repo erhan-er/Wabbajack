@@ -7,76 +7,76 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
-    public class AuthRepository : IAuthRepository
-    {
-        private DataContext context;
+   public class AuthRepository : IAuthRepository
+   {
+      private DataContext context;
 
-        public AuthRepository(DataContext context)
-        {
-            this.context = context;
-        }
+      public AuthRepository(DataContext context)
+      {
+         this.context = context;
+      }
 
-        public async Task<User> Login(string userName, string password)
-        {
-            var user = await context.Users.FirstOrDefaultAsync(x => x.Name == userName);
-            if (user == null)
+      public async Task<User> Login(string userMail, string password)
+      {
+         var user = await context.Users.FirstOrDefaultAsync(x => x.Mail == userMail);
+         if (user == null)
+         {
+            return null;
+         }
+
+         if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+         {
+            return null;
+         }
+
+         return user;
+      }
+
+      private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+      {
+         using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+         {
+            var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            for (int i = 0; i < computedHash.Length; i++)
             {
-                return null;
+               if (computedHash[i] != passwordHash[i])
+               {
+                  return false;
+               }
             }
+            return true;
+         }
+      }
 
-            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
-            {
-                return null;
-            }
+      public async Task<User> Register(User user, string password)
+      {
+         byte[] passwordHash, passwordSalt;
+         CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
-            return user;
-        }
+         user.PasswordHash = passwordHash;
+         user.PasswordSalt = passwordSalt;
 
-        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
-        {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
-            {
-                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                for (int i = 0; i < computedHash.Length; i++)
-                {
-                    if (computedHash[i] != passwordHash[i])
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
-        }
+         await context.Users.AddAsync(user);
+         await context.SaveChangesAsync();
+         return user;
+      }
 
-        public async Task<User> Register(User user, string password)
-        {
-            byte[] passwordHash, passwordSalt;
-            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+      private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+      {
+         using (var hmac = new System.Security.Cryptography.HMACSHA512())
+         {
+            passwordSalt = hmac.Key;
+            passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+         }
+      }
 
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
-
-            await context.Users.AddAsync(user);
-            await context.SaveChangesAsync();
-            return user;
-        }
-
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
-            {
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            }
-        }
-
-        public async Task<bool> UserExists(string userName)
-        {
-            if (await context.Users.AnyAsync(x => x.Name == userName))
-            {
-                return true;
-            }
-            return false;
-        }
-    }
+      public async Task<bool> UserExists(string userName)
+      {
+         if (await context.Users.AnyAsync(x => x.Name == userName))
+         {
+            return true;
+         }
+         return false;
+      }
+   }
 }

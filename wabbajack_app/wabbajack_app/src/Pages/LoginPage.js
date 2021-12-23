@@ -1,11 +1,11 @@
 import * as React from 'react';
 import LoginBox from "../Components/LoginBox";
-function LoginPage () {
+function LoginPage({ setEmail, setPassword, handleLoginRequest }) {
 
    return (
       <div>
-         <LoginBox />
-      </div>      
+         <LoginBox setEmail={setEmail} setPassword={setPassword} handleLoginRequest={handleLoginRequest} />
+      </div>
    );
 }
 
