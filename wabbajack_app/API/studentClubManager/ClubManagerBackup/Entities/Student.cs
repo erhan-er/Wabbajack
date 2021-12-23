@@ -14,8 +14,6 @@ namespace ClubManagerBackup.Entities
             FollowedClubs = new List<Club>();
             AppliedEvents = new List<Event>();
             CreatedEvents = new List<StudentEvent>();
-            // IgnoredClubs = new List<Club>();
-            // OldEvents = new List<Event>();
             Friends = new List<Student>();
             Invitations = new List<Notification>();
         }
@@ -23,8 +21,6 @@ namespace ClubManagerBackup.Entities
         public List<Club> FollowedClubs { get; set; }
         public List<Event> AppliedEvents { get; set; }
         public List<StudentEvent> CreatedEvents { get; set; }
-        // public List<Club> IgnoredClubs { get; set; }
-        // public List<Event> OldEvents { get; set; }
         public List<Student> Friends { get; set; }
         public List<Notification> Invitations { get; set; }
     }

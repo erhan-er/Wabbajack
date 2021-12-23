@@ -23,15 +23,18 @@ namespace ClubManagerBackup.Controllers
       private IEventRepository eventRepository;
       private IConfiguration configuration;
       private IMapper mapper;
+        private Context.EventHandler eventHandler;
+        private DataContext context;
 
-      public EventController(IEventRepository eventRepository, IConfiguration configuration, IMapper mapper)
+      public EventController(IEventRepository eventRepository, IConfiguration configuration, IMapper mapper, DataContext context)
       {
          this.eventRepository = eventRepository;
          this.configuration = configuration;
+            this.context = context;
          this.mapper = mapper;
       }
 
-      [HttpPost("addevent")]
+      [HttpPost("create")]
       public async Task<IActionResult> AddEvent([FromBody] EventDto eventDto)
       {
          if (await eventRepository.EventExists(eventDto.Name))
@@ -44,20 +47,23 @@ namespace ClubManagerBackup.Controllers
             return BadRequest(ModelState);
          }
 
-         var eventToCreate = new Event
+         var eventToCreate = new StudentEvent
          {
             ClubID = eventDto.ClubID,
             EventCost = eventDto.Cost,
             Capacity = eventDto.Capacity,
             UserID = eventDto.UserId,
             Name = eventDto.Name,
-            Description = eventDto.Description
+            Description = eventDto.Description,
+            AdminID = 12,
+            IsApproved = true
          };
-         var createdEvent = await eventRepository.AddEvent(eventToCreate);
-         return StatusCode(201);
-      }
+            eventHandler = new Context.EventHandler(ClubEventCreator.getInstance());
+            var createdEvent = await eventHandler.CreateEvent(eventToCreate, context);
+            return StatusCode(201);
+        }
 
-      [HttpPost("updateevent")]
+      [HttpPost("update")]
       public async Task<IActionResult> UpdateEvent([FromBody] EventDto eventDto)
       {
          var eventToUpdate = eventRepository.GetEventByID(eventDto.ID);
@@ -67,7 +73,7 @@ namespace ClubManagerBackup.Controllers
          return StatusCode(201);
       }
 
-      [HttpPost("deleteevent")]
+      [HttpPost("delete")]
       public async Task<IActionResult> DeleteEvent([FromBody] EventDto eventDto)
       {
          var eventToDelete = eventRepository.GetEventByID(eventDto.ID);

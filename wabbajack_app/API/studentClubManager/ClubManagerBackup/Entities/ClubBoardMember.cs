@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Entities
 {
-    [NotMapped]
     public class ClubBoardMember : User
     {
         public ClubBoardMember()
