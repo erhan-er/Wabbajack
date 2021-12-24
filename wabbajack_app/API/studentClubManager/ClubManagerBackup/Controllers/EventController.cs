@@ -50,9 +50,11 @@ namespace ClubManagerBackup.Controllers
          var eventToCreate = new StudentEvent
          {
             ClubID = eventDto.ClubID,
-            EventCost = eventDto.Cost,
+            Cost = eventDto.Cost,
             Capacity = eventDto.Capacity,
             UserID = eventDto.UserId,
+            PlaceID = eventDto.PlaceID,
+            CategoryID = eventDto.CategoryID,
             Name = eventDto.Name,
             Description = eventDto.Description,
             AdminID = 12,
