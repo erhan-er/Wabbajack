@@ -16,6 +16,9 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Controllers
 {
+   /// <summary>
+   /// Controller class for Events.
+   /// </summary>
    [Produces("application/json")]
    [Route("api/Events")]
    public class EventController : Controller
@@ -26,6 +29,13 @@ namespace ClubManagerBackup.Controllers
       private Context.EventHandler eventHandler;
       private DataContext context;
 
+      /// <summary>
+      /// Constructor for EventController.
+      /// </summary>
+      /// <param name="eventRepository">EventRepository reference.</param>
+      /// <param name="configuration">Configuration reference.</param>
+      /// <param name="mapper">Mapper reference.</param>
+      /// <param name="context">Database reference.</param>
       public EventController(IEventRepository eventRepository, IConfiguration configuration, IMapper mapper, DataContext context)
       {
          this.eventRepository = eventRepository;

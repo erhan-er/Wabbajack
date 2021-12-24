@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
+   /// <summary>
+   /// Singleton class for Student Event Creator
+   /// </summary>
    public class StudentEventCreator : IEventHandler
    {
       private static StudentEventCreator instance = null;
@@ -32,7 +35,7 @@ namespace ClubManagerBackup.Context
       /// <summary>
       /// Creates student event.
       /// </summary>
-      /// <param name="newEvent">Event to be created.</param>
+      /// <param name="studentEvent">Event to be created.</param>
       /// <param name="context">Database to store the event.</param>
       /// <returns></returns>
       public async Task<Event> CreateEvent(StudentEvent studentEvent, DataContext context)

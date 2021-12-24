@@ -62,3 +62,14 @@ C:\Bilkent\CS319\Wabbajack\Wabbajack\wabbajack_app\API\studentClubManager\ClubMa
 C:\Bilkent\CS319\Wabbajack\Wabbajack\wabbajack_app\API\studentClubManager\ClubManagerBackup\obj\Debug\net5.0\ref\ClubManagerBackup.dll
 C:\Bilkent\CS319\Wabbajack\Wabbajack\wabbajack_app\API\studentClubManager\ClubManagerBackup\obj\Debug\net5.0\ClubManagerBackup.pdb
 C:\Bilkent\CS319\Wabbajack\Wabbajack\wabbajack_app\API\studentClubManager\ClubManagerBackup\obj\Debug\net5.0\ClubManagerBackup.genruntimeconfig.cache
+C:\Bilkent\CS319\Wabbajack\Wabbajack\wabbajack_app\API\studentClubManager\ClubManagerBackup\bin\Debug\net5.0\ClubManagerBackup.xml
+C:\Users\Arda\Downloads\net5.0\appsettings.Development.json
+C:\Users\Arda\Downloads\net5.0\appsettings.json
+C:\Users\Arda\Downloads\net5.0\ClubManagerBackup.exe
+C:\Users\Arda\Downloads\net5.0\ClubManagerBackup.deps.json
+C:\Users\Arda\Downloads\net5.0\ClubManagerBackup.runtimeconfig.json
+C:\Users\Arda\Downloads\net5.0\ClubManagerBackup.runtimeconfig.dev.json
+C:\Users\Arda\Downloads\net5.0\ClubManagerBackup.dll
+C:\Users\Arda\Downloads\net5.0\ref\ClubManagerBackup.dll
+C:\Users\Arda\Downloads\net5.0\ClubManagerBackup.pdb
+C:\Users\Arda\Downloads\net5.0\ClubManagerBackup.xml

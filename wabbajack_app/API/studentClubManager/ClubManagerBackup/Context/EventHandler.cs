@@ -7,19 +7,31 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
-    public class EventHandler
-    {
-        private IEventHandler eventHandler;
+   /// <summary>
+   /// Event Handler for Composite Design Pattern
+   /// </summary>
+   public class EventHandler
+   {
+      private IEventHandler eventHandler;
 
-        public EventHandler(IEventHandler eventHandler)
-        {
-            this.eventHandler = eventHandler;
-        }
+      /// <summary>
+      /// Constructor for EventHandler class.
+      /// </summary>
+      /// <param name="eventHandler">EventHandler interface.</param>
+      public EventHandler(IEventHandler eventHandler)
+      {
+         this.eventHandler = eventHandler;
+      }
 
-
-        public Task<Event> CreateEvent(StudentEvent newEvent, DataContext context)
-        {
-            return eventHandler.CreateEvent(newEvent, context);
-        }
-    }
+      /// <summary>
+      /// Creates event.
+      /// </summary>
+      /// <param name="newEvent">Event to be created.</param>
+      /// <param name="context">Database reference.</param>
+      /// <returns></returns>
+      public Task<Event> CreateEvent(StudentEvent newEvent, DataContext context)
+      {
+         return eventHandler.CreateEvent(newEvent, context);
+      }
+   }
 }

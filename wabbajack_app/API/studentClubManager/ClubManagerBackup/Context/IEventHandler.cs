@@ -7,8 +7,17 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
-    public interface IEventHandler
-    {
-        Task<Event> CreateEvent(StudentEvent newEvent, DataContext context);
-    }
+   /// <summary>
+   /// Interface for EventHandler
+   /// </summary>
+   public interface IEventHandler
+   {
+      /// <summary>
+      /// Creates event.
+      /// </summary>
+      /// <param name="newEvent">Event to be created.</param>
+      /// <param name="context">Database reference.</param>
+      /// <returns></returns>
+      Task<Event> CreateEvent(StudentEvent newEvent, DataContext context);
+   }
 }

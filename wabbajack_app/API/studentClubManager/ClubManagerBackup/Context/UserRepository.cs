@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
+   /// <summary>
+   /// Repository for Users
+   /// </summary>
    public class UserRepository : IUserRepository
    {
       private DataContext context;
 
+      /// <summary>
+      /// Constructor for UserRepository class
+      /// </summary>
+      /// <param name="context"></param>
       public UserRepository(DataContext context)
       {
          this.context = context;
@@ -62,7 +69,7 @@ namespace ClubManagerBackup.Context
       /// </summary>
       /// <typeparam name="T">Type of object:User.</typeparam>
       /// <param name="entity">Entity to be saved.</param>
-      /// <returns></returns>
+      /// <returns>Returns true if successful.</returns>
       public bool SaveAll<T>(T entity)
       {
          return context.SaveChanges() > 0;

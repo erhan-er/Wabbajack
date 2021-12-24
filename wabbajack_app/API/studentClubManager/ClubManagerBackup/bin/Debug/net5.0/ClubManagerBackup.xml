@@ -1,0 +1,878 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClubManagerBackup</name>
+    </assembly>
+    <members>
+        <member name="T:ClubManagerBackup.Context.AuthRepository">
+            <summary>
+            Repository for Authentication
+            </summary>
+        </member>
+        <member name="F:ClubManagerBackup.Context.AuthRepository.context">
+            <summary>
+            Database reference.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.AuthRepository.#ctor(ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Constructor for AuthRepository class.
+            </summary>
+            <param name="context">Database reference.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.AuthRepository.Login(System.String,System.String)">
+            <summary>
+            Tries to find user with given mail and password in database.
+            </summary>
+            <param name="userMail">Entered email adress of user that is trying to log in.</param>
+            <param name="password">Entered password of user that is trying to log in.</param>
+            <returns>Returns the user with entered mail and password. Returns null if user does not exists.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.AuthRepository.VerifyPasswordHash(System.String,System.Byte[],System.Byte[])">
+            <summary>
+            Checks if entered password of the user is same with user's password in the database.
+            </summary>
+            <param name="password">Entered password without encryption in login screen.</param>
+            <param name="passwordHash">Hashed password of user in the database.</param>
+            <param name="passwordSalt">Salted password of user in the database.</param>
+            <returns>Returns true if entered password matches the user's password in the database, else returns false.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.AuthRepository.Register(ClubManagerBackup.Entities.User,System.String)">
+            <summary>
+            Register users to the database by hashing their passwords.
+            </summary>
+            <param name="user">User that is to be registered.</param>
+            <param name="password">Password of the user to be registered.</param>
+            <returns>Returns registered user.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.AuthRepository.CreatePasswordHash(System.String,System.Byte[]@,System.Byte[]@)">
+            <summary>
+            Creates hashed and salted password with given password.
+            </summary>
+            <param name="password">Password to be hashed.</param>
+            <param name="passwordHash">Hashed password.</param>
+            <param name="passwordSalt">Salted password.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.AuthRepository.UserExists(System.String)">
+            <summary>
+            Checks if given user with user name exists in the database.
+            </summary>
+            <param name="userName">Username to be checked in the database.</param>
+            <returns>Returns true if user exists, else return false.</returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.CategoryRepository">
+            <summary>
+            Repository for Category
+            </summary>
+        </member>
+        <member name="F:ClubManagerBackup.Context.CategoryRepository.context">
+            <summary>
+            Database reference.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.CategoryRepository.#ctor(ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Constructor for Category Repository class
+            </summary>
+            <param name="context">Database reference.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.CategoryRepository.AddCategory(ClubManagerBackup.Entities.Category)">
+            <summary>
+            Adds new category to the database.
+            </summary>
+            <param name="newCategory">Category to be added.</param>
+            <returns>Returns added category.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.CategoryRepository.DeleteCategory(ClubManagerBackup.Entities.Category)">
+            <summary>
+            Deletes category from the database.
+            </summary>
+            <param name="categoryToDelete">Category to be deleted.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.CategoryRepository.GetCategoryByID(System.Int32)">
+            <summary>
+            Finds a category from the databse with given ID.
+            </summary>
+            <param name="ID">ID of the searched category.</param>
+            <returns>Returns category with given ID.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.CategoryRepository.GetCategories">
+            <summary>
+            Gets all categories from the database.
+            </summary>
+            <returns>Returns the list of all categories.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.CategoryRepository.CategoryExists(System.String)">
+            <summary>
+            Checks if category with given name exists in the database.
+            </summary>
+            <param name="categoryName">Category name to be checked.</param>
+            <returns>Returns true if category exists, else returns false.</returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.ClubEventCreator">
+            <summary>
+            Club Event Creator
+            </summary>
+        </member>
+        <member name="F:ClubManagerBackup.Context.ClubEventCreator.instance">
+            <summary>
+            Club Event Creator instance
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ClubEventCreator.getInstance">
+            <summary>
+            Gets singleton instance of ClubEventCreator object.
+            </summary>
+            <returns>Returns the ClubEventCreator.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ClubEventCreator.CreateEvent(ClubManagerBackup.Entities.StudentEvent,ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Creates club event.
+            </summary>
+            <param name="newEvent">Event to be created.</param>
+            <param name="context">Database to store the event.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.ClubRepository">
+            <summary>
+            Repository for Clubs
+            </summary>
+        </member>
+        <member name="F:ClubManagerBackup.Context.ClubRepository.context">
+            <summary>
+            Database reference.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ClubRepository.#ctor(ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Constructor for ClubRepository.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ClubRepository.AddClub(ClubManagerBackup.Entities.Club)">
+            <summary>
+            Adds new club to the database.
+            </summary>
+            <param name="newClub">New club to be added.</param>
+            <returns>Returns added club.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ClubRepository.ClubExists(System.String)">
+            <summary>
+            Checks if the club with given club name is exists in the database.
+            </summary>
+            <param name="clubName">Club name to be checked.</param>
+            <returns>Returns true if club exists, else return false.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ClubRepository.GetClubById(System.Int32)">
+            <summary>
+            Finds a club from the databse with given ID.
+            </summary>
+            <param name="id">ID of the searched club.</param>
+            <returns>Returns the club with given ID.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ClubRepository.GetClubByName(System.String)">
+            <summary>
+            Finds a club from the database with given name.
+            </summary>
+            <param name="name">Name of the searched club.</param>
+            <returns>Returns the with given name.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ClubRepository.GetClubs">
+            <summary>
+            Gets all clubs from the database.
+            </summary>
+            <returns>Returns the list of all clubs.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ClubRepository.UpdateClub(ClubManagerBackup.Entities.Club)">
+            <summary>
+            Updates the club data in the database.
+            </summary>
+            <param name="clubToUpdate">Club to be updated.</param>
+            <returns>Returns updated club.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ClubRepository.RemoveClub(ClubManagerBackup.Entities.Club)">
+            <summary>
+            Removes club from the database.
+            </summary>
+            <param name="clubToDelete">Club to be deleted.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.EventHandler">
+            <summary>
+            Event Handler for Composite Design Pattern
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.EventHandler.#ctor(ClubManagerBackup.Context.IEventHandler)">
+            <summary>
+            Constructor for EventHandler class.
+            </summary>
+            <param name="eventHandler">EventHandler interface.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.EventHandler.CreateEvent(ClubManagerBackup.Entities.StudentEvent,ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Creates event.
+            </summary>
+            <param name="newEvent">Event to be created.</param>
+            <param name="context">Database reference.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.EventRepository">
+            <summary>
+            Repository for Events
+            </summary>
+        </member>
+        <member name="F:ClubManagerBackup.Context.EventRepository.context">
+            <summary>
+            Database reference.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.EventRepository.#ctor(ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Constructor for EventRepository class
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.EventRepository.AddEvent(ClubManagerBackup.Entities.Event)">
+            <summary>
+            Adds new event to the database. 
+            </summary>
+            <param name="newEvent">New event to be added.</param>
+            <returns>Returns added event.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.EventRepository.DeleteEvent(ClubManagerBackup.Entities.Event)">
+            <summary>
+            Deletes event from the database.
+            </summary>
+            <param name="eventToDelete">Event to be deleted.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.EventRepository.UpdateEvent(ClubManagerBackup.Entities.Event)">
+            <summary>
+            Updates the event data in the database.
+            </summary>
+            <param name="eventToUpdate">Event to be updated.</param>
+            <returns>Returns updated event.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.EventRepository.GetEventByID(System.Int32)">
+            <summary>
+            Finds a event from the database with given ID.
+            </summary>
+            <param name="ID">ID of the searched event.</param>
+            <returns>Returns the with given ID.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.EventRepository.GetEvents">
+            <summary>
+            Gets all events in the database.
+            </summary>
+            <returns>Returns list of all events.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.EventRepository.EventExists(System.String)">
+            <summary>
+            Checks if event with given name exists in the database. 
+            </summary>
+            <param name="name">Name of the club to be checked.</param>
+            <returns>Returns true if event exists, else returns false.</returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.IAuthRepository">
+            <summary>
+            Interface for AuthRepository
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IAuthRepository.Register(ClubManagerBackup.Entities.User,System.String)">
+            <summary>
+            Register users to the database by hashing their passwords.
+            </summary>
+            <param name="user">User that is to be registered.</param>
+            <param name="password">Password of the user to be registered.</param>
+            <returns>Returns registered user.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IAuthRepository.Login(System.String,System.String)">
+            <summary>
+            Tries to find user with given mail and password in database.
+            </summary>
+            <param name="userMail">Entered email adress of user that is trying to log in.</param>
+            <param name="password">Entered password of user that is trying to log in.</param>
+            <returns>Returns the user with entered mail and password. Returns null if user does not exists.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IAuthRepository.UserExists(System.String)">
+            <summary>
+            Checks if given user with user name exists in the database.
+            </summary>
+            <param name="userName">Username to be checked in the database.</param>
+            <returns>Returns true if user exists, else return false.</returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.ICategoryRepository">
+            <summary>
+            Interface for CategoryRepository
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ICategoryRepository.AddCategory(ClubManagerBackup.Entities.Category)">
+            <summary>
+            Adds new category to the database.
+            </summary>
+            <param name="newCategory">Category to be added.</param>
+            <returns>Returns added category.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ICategoryRepository.DeleteCategory(ClubManagerBackup.Entities.Category)">
+            <summary>
+            Deletes category from the database.
+            </summary>
+            <param name="categoryToDelete">Category to be deleted.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ICategoryRepository.CategoryExists(System.String)">
+            <summary>
+            Checks if category with given name exists in the database.
+            </summary>
+            <param name="categoryName">Category name to be checked.</param>
+            <returns>Returns true if category exists, else returns false.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ICategoryRepository.GetCategories">
+            <summary>
+            Gets all categories from the database.
+            </summary>
+            <returns>Returns the list of all categories.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.ICategoryRepository.GetCategoryByID(System.Int32)">
+            <summary>
+            Finds a category from the databse with given ID.
+            </summary>
+            <param name="ID">ID of the searched category.</param>
+            <returns>Returns category with given ID.</returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.IClubRepository">
+            <summary>
+            Interface for ClubRepository
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IClubRepository.GetClubs">
+            <summary>
+            Gets all clubs from the database.
+            </summary>
+            <returns>Returns the list of all clubs.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IClubRepository.GetClubById(System.Int32)">
+            <summary>
+            Finds a club from the databse with given ID.
+            </summary>
+            <param name="id">ID of the searched club.</param>
+            <returns>Returns the club with given ID.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IClubRepository.GetClubByName(System.String)">
+            <summary>
+            Finds a club from the database with given name.
+            </summary>
+            <param name="name">Name of the searched club.</param>
+            <returns>Returns the with given name.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IClubRepository.ClubExists(System.String)">
+            <summary>
+            Checks if the club with given club name is exists in the database.
+            </summary>
+            <param name="clubName">Club name to be checked.</param>
+            <returns>Returns true if club exists, else return false.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IClubRepository.AddClub(ClubManagerBackup.Entities.Club)">
+            <summary>
+            Adds new club to the database.
+            </summary>
+            <param name="newClub">New club to be added.</param>
+            <returns>Returns added club.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IClubRepository.UpdateClub(ClubManagerBackup.Entities.Club)">
+            <summary>
+            Updates the club data in the database.
+            </summary>
+            <param name="clubToUpdate">Club to be updated.</param>
+            <returns>Returns updated club.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IClubRepository.RemoveClub(ClubManagerBackup.Entities.Club)">
+            <summary>
+            Removes club from the database.
+            </summary>
+            <param name="clubToDelete">Club to be deleted.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.IEventHandler">
+            <summary>
+            Interface for EventHandler
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IEventHandler.CreateEvent(ClubManagerBackup.Entities.StudentEvent,ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Creates event.
+            </summary>
+            <param name="newEvent">Event to be created.</param>
+            <param name="context">Database reference.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.IEventRepository">
+            <summary>
+            Interface for EventRepository
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IEventRepository.AddEvent(ClubManagerBackup.Entities.Event)">
+            <summary>
+            Adds new event to the database. 
+            </summary>
+            <param name="newEvent">New event to be added.</param>
+            <returns>Returns added event.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IEventRepository.UpdateEvent(ClubManagerBackup.Entities.Event)">
+            <summary>
+            Updates the event data in the database.
+            </summary>
+            <param name="eventToUpdate">Event to be updated.</param>
+            <returns>Returns updated event.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IEventRepository.DeleteEvent(ClubManagerBackup.Entities.Event)">
+            <summary>
+            Deletes event from the database.
+            </summary>
+            <param name="eventToDelete">Event to be deleted.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IEventRepository.EventExists(System.String)">
+            <summary>
+            Checks if event with given name exists in the database. 
+            </summary>
+            <param name="eventName">Name of the club to be checked.</param>
+            <returns>Returns true if event exists, else returns false.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IEventRepository.GetEvents">
+            <summary>
+            Gets all events in the database.
+            </summary>
+            <returns>Returns list of all events.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IEventRepository.GetEventByID(System.Int32)">
+            <summary>
+            Finds a event from the database with given ID.
+            </summary>
+            <param name="ID">ID of the searched event.</param>
+            <returns>Returns the with given ID.</returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.IPlaceRepository">
+            <summary>
+            Interface for PlaceRepository
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IPlaceRepository.AddPlace(ClubManagerBackup.Entities.Place)">
+            <summary>
+            Adds new place to the database. 
+            </summary>
+            <param name="newPlace">New place to be added.</param>
+            <returns>Returns added place.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IPlaceRepository.DeletePlace(ClubManagerBackup.Entities.Place)">
+            <summary>
+            Deletes place from the database.
+            </summary>
+            <param name="placeToDelete">Place to be deleted.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IPlaceRepository.PlaceExists(System.String)">
+            <summary>
+            Checks if place with given name exists in the database. 
+            </summary>
+            <param name="placeName">Name of the club to be checked.</param>
+            <returns>Returns true if place exists, else returns false.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IPlaceRepository.GetPlaces">
+            <summary>
+            Gets all places in the database.
+            </summary>
+            <returns>Returns list of all places.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IPlaceRepository.GetPlaceByID(System.Int32)">
+            <summary>
+            Finds a place from the database with given ID.
+            </summary>
+            <param name="ID">ID of the searched place.</param>
+            <returns>Returns the with given ID.</returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.IUserRepository">
+            <summary>
+            Interface for UserRepository
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IUserRepository.Add``1(``0)">
+            <summary>
+            Adds user to the database.
+            </summary>
+            <typeparam name="T">Type of object:User.</typeparam>
+            <param name="entity">User to be added</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IUserRepository.Delete``1(``0)">
+            <summary>
+            Deletes user from the database.
+            </summary>
+            <typeparam name="T">Type of object:User.</typeparam>
+            <param name="entity">User to be deleted.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IUserRepository.SaveAll``1(``0)">
+            <summary>
+            Save all changes to the database.
+            </summary>
+            <typeparam name="T">Type of object:User.</typeparam>
+            <param name="entity">Entity to be saved.</param>
+            <returns>Returns true if successful.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IUserRepository.GetUsers">
+            <summary>
+            Gets all users in the database.
+            </summary>
+            <returns>Returns list of all users.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IUserRepository.GetUserByID(System.Int32)">
+            <summary>
+            Finds a user from the database with given ID.
+            </summary>
+            <param name="ID">ID of the searched user.</param>
+            <returns>Returns the with given ID.</returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.PlaceRepository">
+            <summary>
+            Repository for Places
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.PlaceRepository.#ctor(ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Constructor for PlaceRepository class
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.PlaceRepository.AddPlace(ClubManagerBackup.Entities.Place)">
+            <summary>
+            Adds new place to the database. 
+            </summary>
+            <param name="newPlace">New place to be added.</param>
+            <returns>Returns added place.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.PlaceRepository.DeletePlace(ClubManagerBackup.Entities.Place)">
+            <summary>
+            Deletes place from the database.
+            </summary>
+            <param name="placeToDelete">Place to be deleted.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.PlaceRepository.GetPlaceByID(System.Int32)">
+            <summary>
+            Finds a place from the database with given ID.
+            </summary>
+            <param name="ID">ID of the searched place.</param>
+            <returns>Returns the with given ID.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.PlaceRepository.GetPlaces">
+            <summary>
+            Gets all places in the database.
+            </summary>
+            <returns>Returns list of all places.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.PlaceRepository.PlaceExists(System.String)">
+            <summary>
+            Checks if place with given name exists in the database. 
+            </summary>
+            <param name="placeName">Name of the club to be checked.</param>
+            <returns>Returns true if place exists, else returns false.</returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.StudentEventCreator">
+            <summary>
+            Singleton class for Student Event Creator
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.StudentEventCreator.getInstance">
+            <summary>
+            Gets singleton instance of StudentEventCreator object.
+            </summary>
+            <returns>Returns the StudentEventCreator.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.StudentEventCreator.CreateEvent(ClubManagerBackup.Entities.StudentEvent,ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Creates student event.
+            </summary>
+            <param name="studentEvent">Event to be created.</param>
+            <param name="context">Database to store the event.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Context.UserRepository">
+            <summary>
+            Repository for Users
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Context.UserRepository.#ctor(ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Constructor for UserRepository class
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.UserRepository.Add``1(``0)">
+            <summary>
+            Adds user to the database.
+            </summary>
+            <typeparam name="T">Type of object:User.</typeparam>
+            <param name="entity">User to be added</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.UserRepository.Delete``1(``0)">
+            <summary>
+            Deletes user from the database.
+            </summary>
+            <typeparam name="T">Type of object:User.</typeparam>
+            <param name="entity">User to be deleted.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Context.UserRepository.GetUserByID(System.Int32)">
+            <summary>
+            Finds a user from the database with given ID.
+            </summary>
+            <param name="ID">ID of the searched user.</param>
+            <returns>Returns the with given ID.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.UserRepository.GetUsers">
+            <summary>
+            Gets all users in the database.
+            </summary>
+            <returns>Returns list of all users.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.UserRepository.SaveAll``1(``0)">
+            <summary>
+            Save all changes to the database.
+            </summary>
+            <typeparam name="T">Type of object:User.</typeparam>
+            <param name="entity">Entity to be saved.</param>
+            <returns>Returns true if successful.</returns>
+        </member>
+        <member name="T:ClubManagerBackup.Controllers.AuthController">
+            <summary>
+            Controller class for Authentication
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.AuthController.#ctor(ClubManagerBackup.Context.IAuthRepository,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor for AuthController
+            </summary>
+            <param name="authRepository">AuthRepository reference.</param>
+            <param name="configuration">Configuration reference.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.AuthController.Register(ClubManagerBackup.Dtos.RegisterDto)">
+            <summary>
+            Registers user to the system.
+            </summary>
+            <param name="registerDto">Data transfer object of user to be registered.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.AuthController.Login(ClubManagerBackup.Dtos.LoginDto)">
+            <summary>
+            Logs in user to the system.
+            </summary>
+            <param name="loginDto">Data transfer object of user to be logged in.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Controllers.CategoryController">
+            <summary>
+            Controller class for Categories
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.CategoryController.#ctor(ClubManagerBackup.Context.ICategoryRepository,Microsoft.Extensions.Configuration.IConfiguration,AutoMapper.IMapper,ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Constructor for AuthController
+            </summary>
+            <param name="categoryRepository">CategoryRepository reference.</param>
+            <param name="configuration">Configuration reference.</param>
+            <param name="mapper">Mapper reference.</param>
+            <param name="context">Database reference.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.CategoryController.AddCategory(ClubManagerBackup.Entities.CategoryDto)">
+            <summary>
+            Adds category to the system.
+            </summary>
+            <param name="categoryDto">Data transfer object of category to be added.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.CategoryController.DeleteCategory(ClubManagerBackup.Entities.CategoryDto)">
+            <summary>
+            Deletes category from the system.
+            </summary>
+            <param name="categoryDto">Data transfer object of category to be deleted.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.CategoryController.GetCategories">
+            <summary>
+            Gets all categories in the system.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.CategoryController.GetCategoryByID(System.Int32)">
+            <summary>
+            Gets category with given ID.
+            </summary>
+            <param name="ID">ID of category to be searched.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Controllers.ClubController">
+            <summary>
+            Controller class for Clubs
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.ClubController.#ctor(ClubManagerBackup.Context.IClubRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor for ClubController 
+            </summary>
+            <param name="clubRepository">ClubRepository reference.</param>
+            <param name="mapper">Mapper reference.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.ClubController.GetClubs">
+            <summary>
+            Gets all clubs in the system.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.ClubController.GetClubById(System.Int32)">
+            <summary>
+            Gets club with given ID.
+            </summary>
+            <param name="id">ID of club to be searched.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.ClubController.AddClub(ClubManagerBackup.Dtos.ClubDto)">
+            <summary>
+            Adds club to the system.
+            </summary>
+            <param name="clubDto">Data transfer object of club to be added.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.ClubController.UpdateClub(ClubManagerBackup.Dtos.ClubDto)">
+            <summary>
+            Updates club in the system.
+            </summary>
+            <param name="clubDto">Data transfer object of club to be updated.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.ClubController.DeleteClub(ClubManagerBackup.Dtos.ClubDto)">
+            <summary>
+            Deletes club from the system.
+            </summary>
+            <param name="clubDto">Data transfer object of club to be deleted.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Controllers.EventController">
+            <summary>
+            Controller class for Events.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.EventController.#ctor(ClubManagerBackup.Context.IEventRepository,Microsoft.Extensions.Configuration.IConfiguration,AutoMapper.IMapper,ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Constructor for EventController.
+            </summary>
+            <param name="eventRepository">EventRepository reference.</param>
+            <param name="configuration">Configuration reference.</param>
+            <param name="mapper">Mapper reference.</param>
+            <param name="context">Database reference.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.EventController.AddEvent(ClubManagerBackup.Dtos.EventDto)">
+            <summary>
+            Adds event to the system.
+            </summary>
+            <param name="eventDto">Data transfer object of event to be added.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.EventController.UpdateEvent(ClubManagerBackup.Dtos.EventDto)">
+            <summary>
+            Updates event in the system.
+            </summary>
+            <param name="eventDto">Data transfer object of event to be updated.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.EventController.DeleteEvent(ClubManagerBackup.Dtos.EventDto)">
+            <summary>
+            Deletes event from the system.
+            </summary>
+            <param name="eventDto">Data transfer object of event to be deleted.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.EventController.GetEvents">
+            <summary>
+            Gets all events in the system.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.EventController.GetEventByID(System.Int32)">
+            <summary>
+            Gets event with given ID.
+            </summary>
+            <param name="ID">ID of event to be searched.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Controllers.PlaceController">
+            <summary>
+            Controller class for Places
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.PlaceController.#ctor(ClubManagerBackup.Context.IPlaceRepository,Microsoft.Extensions.Configuration.IConfiguration,AutoMapper.IMapper,ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Constructor for EventController.
+            </summary>
+            <param name="placeRepository">PlaceRepository reference.</param>
+            <param name="configuration">Configuration reference.</param>
+            <param name="mapper">Mapper reference.</param>
+            <param name="context">Database reference.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.PlaceController.AddPlace(ClubManagerBackup.Dtos.PlaceDto)">
+            <summary>
+            Adds place to the system.
+            </summary>
+            <param name="placeDto">Data transfer object of place to be added.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.PlaceController.DeletePlace(ClubManagerBackup.Dtos.PlaceDto)">
+            <summary>
+            Deletes place from the system.
+            </summary>
+            <param name="placeDto">Data transfer object of place to be deleted.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.PlaceController.GetPlaces">
+            <summary>
+            Gets all places in the system.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.PlaceController.GetPlaceByID(System.Int32)">
+            <summary>
+            Gets place with given ID.
+            </summary>
+            <param name="ID">ID of place to be searched.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Controllers.UserController">
+            <summary>
+            Controller class for Users
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.UserController.#ctor(ClubManagerBackup.Context.IUserRepository,AutoMapper.IMapper,ClubManagerBackup.Context.IEventRepository,ClubManagerBackup.Context.DataContext)">
+            <summary>
+            Constructor for EventController.
+            </summary>
+            <param name="userRepository">UserRepository reference.</param>
+            <param name="eventRepository">EventRepository reference.</param>
+            <param name="mapper">Mapper reference.</param>
+            <param name="context">Database reference.</param>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.UserController.GetUsers">
+            <summary>
+            Gets all events in the system.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.UserController.GetUserByID(System.Int32)">
+            <summary>
+            Gets event with given ID.
+            </summary>
+            <param name="ID">ID of event to be searched.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.UserController.AddEvent(ClubManagerBackup.Dtos.StudentEventDto)">
+            <summary>
+            Adds student event to the user.
+            </summary>
+            <param name="eventDto">Data transfer object of student event to be added.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

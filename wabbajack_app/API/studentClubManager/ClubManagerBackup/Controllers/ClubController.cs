@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ClubManagerBackup.Controllers
 {
+   /// <summary>
+   /// Controller class for Clubs
+   /// </summary>
    [Produces("application/json")]
    [Route("api/Clubs")]
    public class ClubController : Controller
@@ -17,6 +20,11 @@ namespace ClubManagerBackup.Controllers
       private IClubRepository clubRepository;
       private IMapper mapper;
 
+      /// <summary>
+      /// Constructor for ClubController 
+      /// </summary>
+      /// <param name="clubRepository">ClubRepository reference.</param>
+      /// <param name="mapper">Mapper reference.</param>
       public ClubController(IClubRepository clubRepository, IMapper mapper)
       {
          this.clubRepository = clubRepository;
@@ -38,7 +46,7 @@ namespace ClubManagerBackup.Controllers
       /// <summary>
       /// Gets club with given ID.
       /// </summary>
-      /// <param name="ID">ID of club to be searched.</param>
+      /// <param name="id">ID of club to be searched.</param>
       /// <returns></returns>
       [HttpGet("{id}")]
       public IActionResult GetClubById(int id)

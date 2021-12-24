@@ -8,10 +8,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClubManagerBackup.Context
 {
+   /// <summary>
+   /// Repository for Clubs
+   /// </summary>
    public class ClubRepository : IClubRepository
    {
+      /// <summary>
+      /// Database reference.
+      /// </summary>
       private DataContext context;
 
+      /// <summary>
+      /// Constructor for ClubRepository.
+      /// </summary>
+      /// <param name="context"></param>
       public ClubRepository(DataContext context)
       {
          this.context = context;
