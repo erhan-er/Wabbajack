@@ -28,6 +28,7 @@ import rootReducer from "./Reducer/reducer";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { useEffect, useState } from 'react';
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
 
@@ -42,17 +43,23 @@ function App() {
 
   var email = "";
   var password = "";
+  var loginSuccessfull = false;
+  const [signin, setSignin] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   function setEmailPassword(newEmail, newPassword) {
     email = newEmail;
     password = newPassword;
+    loginSuccessfull = true;
+    console.log(loginSuccessfull);
   }
-
+  
   async function handleLoginRequest() {
     setSubmitted(true)
     console.log(email)
     console.log(password)
+    console.log(loginSuccessfull);
+    /*
     axios.post('http://localhost:5000/api/auth/login', {
 
       "mail": email,
@@ -62,7 +69,7 @@ function App() {
       .then(function (response) {
         if (response.status === 200) {
           setSubmitted(false)
-          // setScreenNoNavbar("others")
+          loginSuccessfull = true;
         } else {
           console.log("Something went wrong")
         }
@@ -71,35 +78,35 @@ function App() {
       .catch(function (error) {
         console.log(error)
         setSubmitted(false)
-      })
-  }
-
+      })*/
+  } 
+  
   return (
     <Provider store={store}>
       <BrowserRouter>
         <Box className="App">
           <Routes>
-            <Route path="/Add-Clubs" element={<AddClubs />} />
-            <Route path="/Add-User" element={<AddUser />} />
-            <Route path="/Budget" element={<Budget />} />
-            <Route path="/Club-Page" element={<ClubPage />} />
-            <Route path="/Create-Event" element={<CreateEvent />} />
-            <Route path="/Edit-Club" element={<EditClubs />} />
-            <Route path="/Event-Page" element={<EventPage />} />
-            <Route path="/Event-Requests" element={<EventRequests />} />
-            <Route path="/Followed-Clubs" element={<FollowedClubs />} />
-            <Route path="/Home" element={<Home />} />
-            <Route path="/Ignored-Clubs" element={<IgnoredClubs />} />
-            <Route path="/Joined-Clubs" element={<JoinedClubs />} />
-            <Route exact path="/" element={<LoginPage setEmailPassword={setEmailPassword} handleLoginRequest={handleLoginRequest} />} />
-            <Route path="/My-Club" element={<MyClub />} />
-            <Route path="/My-Information" element={<MyInformation />} />
-            <Route path="/See-All-Club-Members" element={<SeeAllClubMembers />} />
-            <Route path="/See-All-Clubs" element={<SeeAllClubs />} />
-            <Route path="/See-All-Events" element={<SeeAllEvents />} />
-            <Route path="/See-All-Friends" element={<SeeAllFriends />} />
-            <Route path="/See-All-Students" element={<SeeAllStudents />} />
-            <Route path="/Settings" element={<Settings />} />
+            <Route path="/Add-Clubs" element={<ProtectedRoute authed = {signin}><AddClubs /></ProtectedRoute>} />
+            <Route path="/Add-User" element={<ProtectedRoute authed = {signin}><AddUser /></ProtectedRoute>} />
+            <Route path="/Budget" element={<ProtectedRoute authed = {signin}><Budget /></ProtectedRoute>} />
+            <Route path="/Club-Page" element={<ProtectedRoute authed = {signin}><ClubPage /></ProtectedRoute>} />
+            <Route path="/Create-Event" element={<ProtectedRoute authed = {signin}><CreateEvent /></ProtectedRoute>} />
+            <Route path="/Edit-Club" element={<ProtectedRoute authed = {signin}><EditClubs /></ProtectedRoute>} />
+            <Route path="/Event-Page" element={<ProtectedRoute authed = {signin}><EventPage /></ProtectedRoute>} />
+            <Route path="/Event-Requests" element={<ProtectedRoute authed = {signin}><EventRequests /></ProtectedRoute>} />
+            <Route path="/Followed-Clubs" element={<ProtectedRoute authed = {signin}><FollowedClubs /></ProtectedRoute>} />
+            <Route path="/Home" element={<ProtectedRoute authed = {signin}> <Home /> </ProtectedRoute>} />
+            <Route path="/Ignored-Clubs" element={<ProtectedRoute authed = {signin}><IgnoredClubs /></ProtectedRoute>} />
+            <Route path="/Joined-Clubs" element={<ProtectedRoute authed = {signin}><JoinedClubs /></ProtectedRoute>} />
+            <Route exact path="/" element={<LoginPage setEmailPassword={setEmailPassword} setSignin = {setSignin} handleLoginRequest={handleLoginRequest} />}/>
+            <Route path="/My-Club" element={<ProtectedRoute authed = {signin}><MyClub /></ProtectedRoute>} />
+            <Route path="/My-Information" element={<ProtectedRoute authed = {signin}><MyInformation /></ProtectedRoute>} />
+            <Route path="/See-All-Club-Members" element={<ProtectedRoute authed = {signin}><SeeAllClubMembers /></ProtectedRoute>} />
+            <Route path="/See-All-Clubs" element={<ProtectedRoute authed = {signin}><SeeAllClubs /></ProtectedRoute>} />
+            <Route path="/See-All-Events" element={<ProtectedRoute authed = {signin}><SeeAllEvents /></ProtectedRoute>} />
+            <Route path="/See-All-Friends" element={<ProtectedRoute authed = {signin}><SeeAllFriends /></ProtectedRoute>} />
+            <Route path="/See-All-Students" element={<ProtectedRoute authed = {signin}><SeeAllStudents /></ProtectedRoute>} />
+            <Route path="/Settings" element={<ProtectedRoute authed = {signin}><Settings /></ProtectedRoute>} />
           </Routes>
         </Box>
       </BrowserRouter>
