@@ -7,10 +7,20 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
+   /// <summary>
+   /// Repository for Events
+   /// </summary>
    public class EventRepository : IEventRepository
    {
+      /// <summary>
+      /// Database reference.
+      /// </summary>
       private DataContext context;
 
+      /// <summary>
+      /// Constructor for EventRepository class
+      /// </summary>
+      /// <param name="context"></param>
       public EventRepository(DataContext context)
       {
          this.context = context;

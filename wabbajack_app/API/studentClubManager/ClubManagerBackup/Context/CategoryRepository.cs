@@ -8,10 +8,20 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
+   /// <summary>
+   /// Repository for Category
+   /// </summary>
    public class CategoryRepository : ICategoryRepository
    {
+      /// <summary>
+      /// Database reference.
+      /// </summary>
       private DataContext context;
 
+      /// <summary>
+      /// Constructor for Category Repository class
+      /// </summary>
+      /// <param name="context">Database reference.</param>
       public CategoryRepository(DataContext context)
       {
          this.context = context;

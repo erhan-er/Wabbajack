@@ -10,18 +10,25 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ClubManagerBackup.Controllers
 {
+   /// <summary>
+   /// Controller class for Clubs
+   /// </summary>
    [Produces("application/json")]
    [Route("api/Clubs")]
    public class ClubController : Controller
    {
       private IClubRepository clubRepository;
-      private IUserRepository userRepository;
       private IMapper mapper;
 
-      public ClubController(IClubRepository clubRepository, IMapper mapper, IUserRepository userRepository)
+
+      /// <summary>
+      /// /// 
+      /// </summary>
+      /// <param name="clubRepository"></param>
+      /// <param name="mapper"></param>
+      public ClubController(IClubRepository clubRepository, IMapper mapper)
       {
          this.clubRepository = clubRepository;
-         this.userRepository = userRepository;
          this.mapper = mapper;
       }
 
@@ -40,7 +47,7 @@ namespace ClubManagerBackup.Controllers
       /// <summary>
       /// Gets club with given ID.
       /// </summary>
-      /// <param name="ID">ID of club to be searched.</param>
+      /// <param name="id">ID of club to be searched.</param>
       /// <returns></returns>
       [HttpGet("{id}")]
       public IActionResult GetClubById(int id)
@@ -108,12 +115,6 @@ namespace ClubManagerBackup.Controllers
          return StatusCode(201);
       }
 
-      [HttpPost("addMember")]
-      public async Task<ActionResult> AddMemberToStudent([FromBody] string clubName, [FromBody] int userId)
-      {
-         var student = userRepository.GetUserByID(userId);
-         await clubRepository.AddMember(student, clubName);
-         return StatusCode(201);
-      }
+
    }
 }

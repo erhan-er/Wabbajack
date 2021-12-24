@@ -16,6 +16,9 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Controllers
 {
+   /// <summary>
+   /// Controller class for Categories
+   /// </summary>
    [Produces("application/json")]
    [Route("api/Categories")]
    public class CategoryController : Controller
@@ -26,6 +29,13 @@ namespace ClubManagerBackup.Controllers
       private Context.EventHandler eventHandler;
       private DataContext context;
 
+      /// <summary>
+      /// Constructor for AuthController
+      /// </summary>
+      /// <param name="categoryRepository">CategoryRepository reference.</param>
+      /// <param name="configuration">Configuration reference.</param>
+      /// <param name="mapper">Mapper reference.</param>
+      /// <param name="context">Database reference.</param>
       public CategoryController(ICategoryRepository categoryRepository, IConfiguration configuration, IMapper mapper, DataContext context)
       {
          this.categoryRepository = categoryRepository;

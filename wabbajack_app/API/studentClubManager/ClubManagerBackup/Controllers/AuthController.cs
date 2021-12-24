@@ -16,6 +16,9 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Controllers
 {
+   /// <summary>
+   /// Controller class for Authentication
+   /// </summary>
    [Authorize]
    [Produces("application/json")]
    [Route("api/Auth")]
@@ -24,6 +27,11 @@ namespace ClubManagerBackup.Controllers
       private IAuthRepository authRepository;
       private IConfiguration configuration;
 
+      /// <summary>
+      /// Constructor for AuthController
+      /// </summary>
+      /// <param name="authRepository">AuthRepository reference.</param>
+      /// <param name="configuration">Configuration reference.</param>
       public AuthController(IAuthRepository authRepository, IConfiguration configuration)
       {
          this.authRepository = authRepository;

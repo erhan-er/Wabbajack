@@ -7,10 +7,20 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
+   /// <summary>
+   /// Repository for Authentication
+   /// </summary>
    public class AuthRepository : IAuthRepository
    {
+      /// <summary>
+      /// Database reference.
+      /// </summary>
       private DataContext context;
 
+      /// <summary>
+      /// Constructor for AuthRepository class.
+      /// </summary>
+      /// <param name="context">Database reference.</param>
       public AuthRepository(DataContext context)
       {
          this.context = context;

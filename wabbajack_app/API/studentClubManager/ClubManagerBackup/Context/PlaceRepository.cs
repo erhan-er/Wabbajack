@@ -8,10 +8,17 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
+   /// <summary>
+   /// Repository for Places
+   /// </summary>
    public class PlaceRepository : IPlaceRepository
    {
       private DataContext context;
 
+      /// <summary>
+      /// Constructor for PlaceRepository class
+      /// </summary>
+      /// <param name="context"></param>
       public PlaceRepository(DataContext context)
       {
          this.context = context;
@@ -22,7 +29,6 @@ namespace ClubManagerBackup.Context
       /// </summary>
       /// <param name="newPlace">New place to be added.</param>
       /// <returns>Returns added place.</returns>
-
       public async Task<Place> AddPlace(Place newPlace)
       {
          await context.Places.AddAsync(newPlace);

@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
+   /// <summary>
+   /// Club Event Creator
+   /// </summary>
    public class ClubEventCreator : IEventHandler
    {
+      /// <summary>
+      /// Club Event Creator instance
+      /// </summary>
       private static ClubEventCreator instance = null;
 
       private ClubEventCreator()

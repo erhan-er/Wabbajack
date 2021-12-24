@@ -16,6 +16,9 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Controllers
 {
+   /// <summary>
+   /// Controller class for Places
+   /// </summary>
    [Produces("application/json")]
    [Route("api/Places")]
    public class PlaceController : Controller
@@ -26,6 +29,13 @@ namespace ClubManagerBackup.Controllers
       private Context.EventHandler placeHandler;
       private DataContext context;
 
+      /// <summary>
+      /// Constructor for EventController.
+      /// </summary>
+      /// <param name="placeRepository">PlaceRepository reference.</param>
+      /// <param name="configuration">Configuration reference.</param>
+      /// <param name="mapper">Mapper reference.</param>
+      /// <param name="context">Database reference.</param>
       public PlaceController(IPlaceRepository placeRepository, IConfiguration configuration, IMapper mapper, DataContext context)
       {
          this.placeRepository = placeRepository;
