@@ -6,41 +6,66 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
-    public class UserRepository : IUserRepository
-    {
-        private DataContext context;
+   public class UserRepository : IUserRepository
+   {
+      private DataContext context;
 
-        public UserRepository(DataContext context)
-        {
-            this.context = context;
-        }
+      public UserRepository(DataContext context)
+      {
+         this.context = context;
+      }
 
 
-        public void Add<T>(T entity) where T : class
-        {
-            context.Add(entity);
-        }
+      /// <summary>
+      /// Adds user to the database.
+      /// </summary>
+      /// <typeparam name="T">Type of object:User.</typeparam>
+      /// <param name="entity">User to be added</param>
+      public void Add<T>(T entity) where T : class
+      {
+         context.Add(entity);
+      }
 
-        public void Delete<T>(T entity) where T : class
-        {
-            context.Remove(entity);
-        }
+      /// <summary>
+      /// Deletes user from the database.
+      /// </summary>
+      /// <typeparam name="T">Type of object:User.</typeparam>
+      /// <param name="entity">User to be deleted.</param>
+      public void Delete<T>(T entity) where T : class
+      {
+         context.Remove(entity);
+      }
 
-        public User GetUserByID(int ID)
-        {
-            var user = context.Users.FirstOrDefault(c => c.ID == ID);
-            return user;
-        }
+      /// <summary>
+      /// Finds a user from the database with given ID.
+      /// </summary>
+      /// <param name="ID">ID of the searched user.</param>
+      /// <returns>Returns the with given ID.</returns>
+      public User GetUserByID(int ID)
+      {
+         var user = context.Users.FirstOrDefault(c => c.ID == ID);
+         return user;
+      }
 
-        public List<User> GetUsers()
-        {
-            var users = context.Users.ToList();
-            return users;
-        }
+      /// <summary>
+      /// Gets all users in the database.
+      /// </summary>
+      /// <returns>Returns list of all users.</returns>
+      public List<User> GetUsers()
+      {
+         var users = context.Users.ToList();
+         return users;
+      }
 
-        public bool SaveAll<T>(T entity)
-        {
-            return context.SaveChanges() > 0;
-        }
-    }
+      /// <summary>
+      /// Save all changes to the database.
+      /// </summary>
+      /// <typeparam name="T">Type of object:User.</typeparam>
+      /// <param name="entity">Entity to be saved.</param>
+      /// <returns></returns>
+      public bool SaveAll<T>(T entity)
+      {
+         return context.SaveChanges() > 0;
+      }
+   }
 }

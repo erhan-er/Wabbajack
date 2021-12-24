@@ -16,6 +16,12 @@ namespace ClubManagerBackup.Context
          this.context = context;
       }
 
+      /// <summary>
+      /// Tries to find user with given mail and password in database.
+      /// </summary>
+      /// <param name="userMail">Entered email adress of user that is trying to log in.</param>
+      /// <param name="password">Entered password of user that is trying to log in.</param>
+      /// <returns>Returns the user with entered mail and password. Returns null if user does not exists.</returns>
       public async Task<User> Login(string userMail, string password)
       {
          var user = await context.Users.FirstOrDefaultAsync(x => x.Mail == userMail);
@@ -32,6 +38,13 @@ namespace ClubManagerBackup.Context
          return user;
       }
 
+      /// <summary>
+      /// Checks if entered password of the user is same with user's password in the database.
+      /// </summary>
+      /// <param name="password">Entered password without encryption in login screen.</param>
+      /// <param name="passwordHash">Hashed password of user in the database.</param>
+      /// <param name="passwordSalt">Salted password of user in the database.</param>
+      /// <returns>Returns true if entered password matches the user's password in the database, else returns false.</returns>
       private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
       {
          using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
@@ -48,6 +61,12 @@ namespace ClubManagerBackup.Context
          }
       }
 
+      /// <summary>
+      /// Register users to the database by hashing their passwords.
+      /// </summary>
+      /// <param name="user">User that is to be registered.</param>
+      /// <param name="password">Password of the user to be registered.</param>
+      /// <returns>Returns registered user.</returns>
       public async Task<User> Register(User user, string password)
       {
          byte[] passwordHash, passwordSalt;
@@ -61,6 +80,12 @@ namespace ClubManagerBackup.Context
          return user;
       }
 
+      /// <summary>
+      /// Creates hashed and salted password with given password.
+      /// </summary>
+      /// <param name="password">Password to be hashed.</param>
+      /// <param name="passwordHash">Hashed password.</param>
+      /// <param name="passwordSalt">Salted password.</param>
       private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
       {
          using (var hmac = new System.Security.Cryptography.HMACSHA512())
@@ -70,6 +95,11 @@ namespace ClubManagerBackup.Context
          }
       }
 
+      /// <summary>
+      /// Checks if given user with user name exists in the database.
+      /// </summary>
+      /// <param name="userName">Username to be checked in the database.</param>
+      /// <returns>Returns true if user exists, else return false.</returns>
       public async Task<bool> UserExists(string userName)
       {
          if (await context.Users.AnyAsync(x => x.Name == userName))
