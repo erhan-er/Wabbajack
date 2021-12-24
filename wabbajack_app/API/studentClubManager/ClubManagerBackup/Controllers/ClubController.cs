@@ -15,11 +15,13 @@ namespace ClubManagerBackup.Controllers
     public class ClubController : Controller
     {
         private IClubRepository clubRepository;
+        private IUserRepository userRepository;
         private IMapper mapper;
 
-        public ClubController( IClubRepository clubRepository, IMapper mapper)
+        public ClubController( IClubRepository clubRepository, IMapper mapper, IUserRepository userRepository )
         {
             this.clubRepository = clubRepository;
+            this.userRepository = userRepository;
             this.mapper = mapper;
         }
 
@@ -56,7 +58,7 @@ namespace ClubManagerBackup.Controllers
            {
               Name = clubDto.Name,
               ClubDescription = clubDto.ClubDescription,
-              //StudentsClubMembers = clubDto.StudentsClubMembers,
+              StudentsClubMembers = clubDto.StudentsClubMembers,
               ClubBudget= clubDto.ClubBudget
            };
 
@@ -82,6 +84,12 @@ namespace ClubManagerBackup.Controllers
             return StatusCode(201);
         }
 
-
+        [HttpPost("addMember")]
+        public async Task<ActionResult> AddMemberToStudent([FromBody] string clubName, [FromBody] int userId )
+        {
+            var student = userRepository.GetUserByID(userId);
+            await clubRepository.AddMember(student, clubName);
+            return StatusCode(201);
+        }
     }
 }
