@@ -7,29 +7,39 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
-    public class StudentEventCreator : IEventHandler
-    {
-        private static StudentEventCreator instance = null;
+   public class StudentEventCreator : IEventHandler
+   {
+      private static StudentEventCreator instance = null;
 
 
-        private StudentEventCreator()
-        {
-        }
+      private StudentEventCreator()
+      {
+      }
 
-        public static StudentEventCreator getInstance()
-        {
-            if (instance == null)
-            {
-                instance = new StudentEventCreator();
-            }
-            return instance;
-        }
+      /// <summary>
+      /// Gets singleton instance of StudentEventCreator object.
+      /// </summary>
+      /// <returns>Returns the StudentEventCreator.</returns>
+      public static StudentEventCreator getInstance()
+      {
+         if (instance == null)
+         {
+            instance = new StudentEventCreator();
+         }
+         return instance;
+      }
 
-        public async Task<Event> CreateEvent(StudentEvent studentEvent, DataContext context)
-        {
-            await context.StudentEvents.AddAsync(studentEvent);
-            await context.SaveChangesAsync();
-            return studentEvent;
-        }
-    }
+      /// <summary>
+      /// Creates student event.
+      /// </summary>
+      /// <param name="newEvent">Event to be created.</param>
+      /// <param name="context">Database to store the event.</param>
+      /// <returns></returns>
+      public async Task<Event> CreateEvent(StudentEvent studentEvent, DataContext context)
+      {
+         await context.StudentEvents.AddAsync(studentEvent);
+         await context.SaveChangesAsync();
+         return studentEvent;
+      }
+   }
 }

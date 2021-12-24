@@ -30,6 +30,11 @@ namespace ClubManagerBackup.Controllers
          this.configuration = configuration;
       }
 
+      /// <summary>
+      /// Registers user to the system.
+      /// </summary>
+      /// <param name="registerDto">Data transfer object of user to be registered.</param>
+      /// <returns></returns>
       [AllowAnonymous]
       [HttpPost("register")]
       public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
@@ -56,6 +61,11 @@ namespace ClubManagerBackup.Controllers
          return StatusCode(201);
       }
 
+      /// <summary>
+      /// Logs in user to the system.
+      /// </summary>
+      /// <param name="loginDto">Data transfer object of user to be logged in.</param>
+      /// <returns></returns>
       [AllowAnonymous]
       [HttpPost("login")]
       public async Task<IActionResult> Login([FromBody] LoginDto loginDto)

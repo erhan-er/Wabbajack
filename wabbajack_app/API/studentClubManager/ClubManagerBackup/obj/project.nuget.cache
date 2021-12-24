@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5KbrCUwq++d7TQXzgy8u+hEJDU1A/oomyw+4Ev/u1ws3016qbDepvmFBgORx2czhHz0SU0o+Kx2ytJybpArZiw==",
+  "dgSpecHash": "68o6VwwJiu5eBS4tUevvsCEctoxzbsUiZ4pBomQvlIM1jj2PUnKvizLNlHEhWH14D/X5RyfQEK8HR04mjYDiNQ==",
   "success": true,
-  "projectFilePath": "c:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj",
+  "projectFilePath": "C:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arda\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Arda\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

@@ -29,6 +29,10 @@ namespace ClubManagerBackup.Controllers
          this.context = context;
       }
 
+      /// <summary>
+      /// Gets all events in the system.
+      /// </summary>
+      /// <returns></returns>
       [HttpGet]
       public IActionResult GetUsers()
       {
@@ -37,7 +41,11 @@ namespace ClubManagerBackup.Controllers
          return Ok(usersToReturn);
       }
 
-      [HttpGet("{id}")]
+      /// <summary>
+      /// Gets event with given ID.
+      /// </summary>
+      /// <param name="ID">ID of event to be searched.</param>
+      /// <returns></returns>
       public IActionResult GetUserByID(int ID)
       {
          var user = userRepository.GetUserByID(ID);
@@ -45,7 +53,11 @@ namespace ClubManagerBackup.Controllers
          return Ok(userToReturn);
       }
 
-
+      /// <summary>
+      /// Adds student event to the user.
+      /// </summary>
+      /// <param name="eventDto">Data transfer object of student event to be added.</param>
+      /// <returns></returns>
       [HttpPost("create")]
       public async Task<IActionResult> AddEvent([FromBody] StudentEventDto eventDto)
       {

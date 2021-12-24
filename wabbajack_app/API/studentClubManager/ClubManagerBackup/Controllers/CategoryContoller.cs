@@ -34,8 +34,13 @@ namespace ClubManagerBackup.Controllers
          this.mapper = mapper;
       }
 
+      /// <summary>
+      /// Adds category to the system.
+      /// </summary>
+      /// <param name="categoryDto">Data transfer object of category to be added.</param>
+      /// <returns></returns>
       [HttpPost("add")]
-      public async Task<IActionResult> AddEvent([FromBody] CategoryDto categoryDto)
+      public async Task<IActionResult> AddCategory([FromBody] CategoryDto categoryDto)
       {
          if (await categoryRepository.CategoryExists(categoryDto.CategoryName))
          {
@@ -51,29 +56,42 @@ namespace ClubManagerBackup.Controllers
          {
             CategoryName = categoryDto.CategoryName,
          };
-         var createdEvent = await categoryRepository.AddCategory(categoryToCreate);
+         var createdCategory = await categoryRepository.AddCategory(categoryToCreate);
          return StatusCode(201);
       }
 
-
+      /// <summary>
+      /// Deletes category from the system.
+      /// </summary>
+      /// <param name="categoryDto">Data transfer object of category to be deleted.</param>
+      /// <returns></returns>
       [HttpPost("delete")]
-      public async Task<IActionResult> DeleteEvent([FromBody] CategoryDto categoryDto)
+      public async Task<IActionResult> DeleteCategory([FromBody] CategoryDto categoryDto)
       {
          var categoryToDelete = categoryRepository.GetCategoryByID(categoryDto.ID);
          await categoryRepository.DeleteCategory(categoryToDelete);
          return StatusCode(201);
       }
 
+      /// <summary>
+      /// Gets all categories in the system.
+      /// </summary>
+      /// <returns></returns>
       [HttpGet]
-      public IActionResult GetEvents()
+      public IActionResult GetCategories()
       {
          var categorys = categoryRepository.GetCategories();
          var categorysToReturn = mapper.Map<List<CategoryDto>>(categorys);
          return Ok(categorysToReturn);
       }
 
+      /// <summary>
+      /// Gets category with given ID.
+      /// </summary>
+      /// <param name="ID">ID of category to be searched.</param>
+      /// <returns></returns>
       [HttpGet("{id}")]
-      public IActionResult GetEventByID(int ID)
+      public IActionResult GetCategoryByID(int ID)
       {
          var category = categoryRepository.GetCategoryByID(ID);
          var categoryToReturn = mapper.Map<CategoryDto>(category);

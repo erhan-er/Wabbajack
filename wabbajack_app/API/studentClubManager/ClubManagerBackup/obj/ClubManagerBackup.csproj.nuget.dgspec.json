@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj": {}
+    "C:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj": {}
   },
   "projects": {
-    "c:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj": {
+    "C:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj",
+        "projectUniqueName": "C:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj",
         "projectName": "ClubManagerBackup",
-        "projectPath": "c:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj",
+        "projectPath": "C:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\ClubManagerBackup.csproj",
         "packagesPath": "C:\\Users\\Arda\\.nuget\\packages\\",
-        "outputPath": "c:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\obj\\",
+        "outputPath": "C:\\Bilkent\\CS319\\Wabbajack\\Wabbajack\\wabbajack_app\\API\\studentClubManager\\ClubManagerBackup\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Arda\\AppData\\Roaming\\NuGet\\NuGet.Config",

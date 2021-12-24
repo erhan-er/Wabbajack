@@ -23,17 +23,22 @@ namespace ClubManagerBackup.Controllers
       private IEventRepository eventRepository;
       private IConfiguration configuration;
       private IMapper mapper;
-        private Context.EventHandler eventHandler;
-        private DataContext context;
+      private Context.EventHandler eventHandler;
+      private DataContext context;
 
       public EventController(IEventRepository eventRepository, IConfiguration configuration, IMapper mapper, DataContext context)
       {
          this.eventRepository = eventRepository;
          this.configuration = configuration;
-            this.context = context;
+         this.context = context;
          this.mapper = mapper;
       }
 
+      /// <summary>
+      /// Adds event to the system.
+      /// </summary>
+      /// <param name="eventDto">Data transfer object of event to be added.</param>
+      /// <returns></returns>
       [HttpPost("create")]
       public async Task<IActionResult> AddEvent([FromBody] EventDto eventDto)
       {
@@ -60,11 +65,16 @@ namespace ClubManagerBackup.Controllers
             AdminID = 12,
             IsApproved = true
          };
-            eventHandler = new Context.EventHandler(ClubEventCreator.getInstance());
-            var createdEvent = await eventHandler.CreateEvent(eventToCreate, context);
-            return StatusCode(201);
-        }
+         eventHandler = new Context.EventHandler(ClubEventCreator.getInstance());
+         var createdEvent = await eventHandler.CreateEvent(eventToCreate, context);
+         return StatusCode(201);
+      }
 
+      /// <summary>
+      /// Updates event in the system.
+      /// </summary>
+      /// <param name="eventDto">Data transfer object of event to be updated.</param>
+      /// <returns></returns>
       [HttpPost("update")]
       public async Task<IActionResult> UpdateEvent([FromBody] EventDto eventDto)
       {
@@ -75,6 +85,11 @@ namespace ClubManagerBackup.Controllers
          return StatusCode(201);
       }
 
+      /// <summary>
+      /// Deletes event from the system.
+      /// </summary>
+      /// <param name="eventDto">Data transfer object of event to be deleted.</param>
+      /// <returns></returns>
       [HttpPost("delete")]
       public async Task<IActionResult> DeleteEvent([FromBody] EventDto eventDto)
       {
@@ -83,6 +98,10 @@ namespace ClubManagerBackup.Controllers
          return StatusCode(201);
       }
 
+      /// <summary>
+      /// Gets all events in the system.
+      /// </summary>
+      /// <returns></returns>
       [HttpGet]
       public IActionResult GetEvents()
       {
@@ -91,6 +110,11 @@ namespace ClubManagerBackup.Controllers
          return Ok(eventsToReturn);
       }
 
+      /// <summary>
+      /// Gets event with given ID.
+      /// </summary>
+      /// <param name="ID">ID of event to be searched.</param>
+      /// <returns></returns>
       [HttpGet("{id}")]
       public IActionResult GetEventByID(int ID)
       {
