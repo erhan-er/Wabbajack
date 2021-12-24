@@ -40,13 +40,14 @@ function App() {
 
   const store = createStore(rootReducer, dataStore);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  var email = "";
+  var password = "";
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    handleLoginRequest();
-  }, [email, password]);
+  function setEmailPassword(newEmail, newPassword) {
+    email = newEmail;
+    password = newPassword;
+  }
 
   async function handleLoginRequest() {
     setSubmitted(true)
@@ -90,7 +91,7 @@ function App() {
             <Route path="/Home" element={<Home />} />
             <Route path="/Ignored-Clubs" element={<IgnoredClubs />} />
             <Route path="/Joined-Clubs" element={<JoinedClubs />} />
-            <Route exact path="/" element={<LoginPage setEmail={setEmail} setPassword={setPassword} /*handleLoginRequest={handleLoginRequest}*/ />} />
+            <Route exact path="/" element={<LoginPage setEmailPassword={setEmailPassword} handleLoginRequest={handleLoginRequest} />} />
             <Route path="/My-Club" element={<MyClub />} />
             <Route path="/My-Information" element={<MyInformation />} />
             <Route path="/See-All-Club-Members" element={<SeeAllClubMembers />} />
