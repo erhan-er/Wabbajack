@@ -63,13 +63,14 @@ const style = makeStyles({
 
 });
 
-function LoginBox({ setEmailPassword, handleLoginRequest }) {
+function LoginBox({ setEmailPassword, setSignin, handleLoginRequest }) {
    const classes = style();
    
    function handleLogin() {
       console.log(document.getElementById("Email").value);
       console.log(document.getElementById("Password").value);
       setEmailPassword(document.getElementById("Email").value, document.getElementById("Password").value);
+      setSignin(true);
       handleLoginRequest();
    }
 
@@ -82,9 +83,9 @@ function LoginBox({ setEmailPassword, handleLoginRequest }) {
                <TextField className={classes.text_field} id="Password" margin="normal" label="Password" type="password" required />
             </Box>
             <Box className={classes.button_box}>
-               {/*<Link to="/Home">*/}
+               <Link to="/Home">
                <Button variant="contained" color="warning" className={classes.button} onClick={() => handleLogin()}>Sign in</Button>
-               {/*</Link>*/}
+               </Link>
                <Button variant="contained" color="info" className={classes.button}>About</Button>
             </Box>
             <Box>
