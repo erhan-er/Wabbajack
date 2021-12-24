@@ -63,16 +63,14 @@ const style = makeStyles({
 
 });
 
-function LoginBox({ setEmail, setPassword, /*handleLoginRequest*/ }) {
+function LoginBox({ setEmailPassword, handleLoginRequest }) {
    const classes = style();
    
    function handleLogin() {
       console.log(document.getElementById("Email").value);
       console.log(document.getElementById("Password").value);
-      setEmail(document.getElementById("Email").value);
-      setPassword(document.getElementById("Password").value);
-      
-      //handleLoginRequest();
+      setEmailPassword(document.getElementById("Email").value, document.getElementById("Password").value);
+      handleLoginRequest();
    }
 
    return (
@@ -80,10 +78,8 @@ function LoginBox({ setEmail, setPassword, /*handleLoginRequest*/ }) {
          <div className={classes.login_text}>LOGIN</div>
          <Box className={classes.login_box}>
             <Box className={classes.text_field_box}>
-               {/*<TextField className={classes.text_field} id="Email" margin="normal" label="Email" type="email" required />*/}
-               <input type="email" id = "Email" placeholder = "Email" className = {classes.text_field} />
-               {/*<TextField className={classes.text_field} id="Password" margin="normal" label="Password" type="password" required />*/}
-               <input type="password" id = "Password" placeholder = "Password" className = {classes.text_field} />
+               <TextField className={classes.text_field} id="Email" margin="normal" label="Email" type="email" required />
+               <TextField className={classes.text_field} id="Password" margin="normal" label="Password" type="password" required />
             </Box>
             <Box className={classes.button_box}>
                {/*<Link to="/Home">*/}
