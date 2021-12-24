@@ -18,11 +18,11 @@ namespace ClubManagerBackup.Entities
       public Club Club { get; set; }
       public int ClubID { get; set; }
       public DateTime Date { get; set; }
-      public Category Category { get; set; }
-      public Place Place { get; set; }
+      public int CategoryID { get; set; }
+      public int PlaceID { get; set; }
       public Notification Notification { get; set; }
       public string ImageURL { get; set; }
-      public int EventCost { get; set; } // changed from event budget
+      public int Cost { get; set; } // changed from event budget
       public int Capacity { get; set; }
       public List<User> Participants { get; set; }
       public ClubBoardMember ClubBoardMember { get; set; }

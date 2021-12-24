@@ -23,21 +23,17 @@ namespace ClubManagerBackup.Context
          return newEvent;
       }
 
+      public async Task DeleteEvent(Event eventToDelete)
+      {
+         context.Events.Remove(eventToDelete);
+         await context.SaveChangesAsync();
+      }
+
       public async Task<Event> UpdateEvent(Event eventToUpdate)
       {
          context.Events.Update(eventToUpdate);
          await context.SaveChangesAsync();
          return eventToUpdate;
-      }
-
-      public void Add<T>(T entity) where T : class
-      {
-         context.Add(entity);
-      }
-
-      public void Delete<T>(T entity) where T : class
-      {
-         context.Remove(entity);
       }
 
       public Event GetEventByID(int ID)
@@ -50,11 +46,6 @@ namespace ClubManagerBackup.Context
       {
          var events = context.Events.ToList();
          return events;
-      }
-
-      public bool SaveAll<T>(T entity)
-      {
-         return context.SaveChanges() > 0;
       }
 
       public async Task<bool> EventExists(string userName)

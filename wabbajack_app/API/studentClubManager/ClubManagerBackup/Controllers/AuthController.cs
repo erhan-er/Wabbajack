@@ -1,6 +1,7 @@
 ﻿using ClubManagerBackup.Context;
 using ClubManagerBackup.Dtos;
 using ClubManagerBackup.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Controllers
 {
+   [Authorize]
    [Produces("application/json")]
    [Route("api/Auth")]
    public class AuthController : Controller
@@ -28,6 +30,7 @@ namespace ClubManagerBackup.Controllers
          this.configuration = configuration;
       }
 
+      [AllowAnonymous]
       [HttpPost("register")]
       public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
       {
@@ -53,10 +56,11 @@ namespace ClubManagerBackup.Controllers
          return StatusCode(201);
       }
 
+      [AllowAnonymous]
       [HttpPost("login")]
       public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
       {
-         var user = await authRepository.Login(loginDto.Name, loginDto.Password);
+         var user = await authRepository.Login(loginDto.Mail, loginDto.Password);
 
          if (user == null)
          {
@@ -71,7 +75,7 @@ namespace ClubManagerBackup.Controllers
             Subject = new ClaimsIdentity(new Claim[]
              {
                     new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
-                    new Claim(ClaimTypes.Name, user.Name)
+                    new Claim(ClaimTypes.Email, user.Mail)
              }),
             Expires = DateTime.Now.AddDays(1),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)

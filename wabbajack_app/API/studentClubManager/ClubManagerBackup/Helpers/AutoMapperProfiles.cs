@@ -15,7 +15,8 @@ namespace ClubManagerBackup.Helpers
          CreateMap<User, UserDto>();
          CreateMap<Event, EventDto>();
          CreateMap<Club, ClubDto>();
-         CreateMap<UserDto, User>();
+         CreateMap<Place, PlaceDto>();
+         CreateMap<Category, CategoryDto>();
       }
    }
 }

@@ -17,10 +17,6 @@ namespace ClubManagerBackup.Context
             this.context = context;
 
         }
-        public void Add<T>(T entity) where T : class
-        {
-            context.Add(entity);
-        }
 
         public async Task<Club> AddClub(Club newClub)
         {
@@ -36,11 +32,6 @@ namespace ClubManagerBackup.Context
                 return true;
             }
             return false;
-        }
-
-        public void Delete<T>(T entity) where T : class
-        {
-            context.Remove(entity);
         }
 
         public Club GetClubById(int id)
@@ -59,11 +50,6 @@ namespace ClubManagerBackup.Context
         {
             var clubs = context.Clubs.ToList();
             return clubs;;
-        }
-
-        public bool SaveAll<T>(T entity)
-        {
-            return context.SaveChanges() > 0;
         }
 
         public async Task<Club> UpdateClub(Club clubToUpdate)
