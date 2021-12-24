@@ -6,6 +6,7 @@ import Budget from "./Pages/Budget";
 import ClubPage from './Pages/ClubPage';
 import CreateEvent from './Pages/CreateEvent';
 import EditClubs from "./Pages/EditClubs";
+import EventDetail from "./Pages/EventDetail";
 import EventPage from "./Pages/EventPage";
 import EventRequests from "./Pages/EventRequests";
 import FollowedClubs from "./Pages/FollowedClubs";
@@ -92,6 +93,7 @@ function App() {
             <Route path="/Club-Page" element={<ProtectedRoute authed = {signin}><ClubPage /></ProtectedRoute>} />
             <Route path="/Create-Event" element={<ProtectedRoute authed = {signin}><CreateEvent /></ProtectedRoute>} />
             <Route path="/Edit-Club" element={<ProtectedRoute authed = {signin}><EditClubs /></ProtectedRoute>} />
+            <Route path="/Event-Detail" element={<ProtectedRoute authed = {signin}><EventDetail /></ProtectedRoute>} />
             <Route path="/Event-Page" element={<ProtectedRoute authed = {signin}><EventPage /></ProtectedRoute>} />
             <Route path="/Event-Requests" element={<ProtectedRoute authed = {signin}><EventRequests /></ProtectedRoute>} />
             <Route path="/Followed-Clubs" element={<ProtectedRoute authed = {signin}><FollowedClubs /></ProtectedRoute>} />
