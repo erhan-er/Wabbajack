@@ -1185,7 +1185,7 @@
             </summary>
             <value>Image url of the event.</value>
         </member>
-        <member name="P:ClubManagerBackup.Entities.Event.Cost">
+        <member name="P:ClubManagerBackup.Entities.Event.EventCost">
             <summary>
             Cost of the event in the database.
             </summary>
@@ -1494,7 +1494,7 @@
             </summary>
             <value>ID of the event's category.</value>
         </member>
-        <member name="P:ClubManagerBackup.Dtos.EventDto.Cost">
+        <member name="P:ClubManagerBackup.Dtos.EventDto.EventCost">
             <summary>
             Cost of the event in the database.
             </summary>
@@ -1523,6 +1523,13 @@
             Image URL of the event in the database.
             </summary>
             <value>Image URL of the event.</value>
+            
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.EventDto.ClubBoardMemberID">
+            <summary>
+            ID of the club board member that created the event.
+            </summary>
+            <value>ID of the club board member that created the event.</value>
         </member>
         <member name="F:ClubManagerBackup.Dtos.EventDto.Discriminator">
             <summary>
@@ -1626,7 +1633,7 @@
             </summary>
             <value>Description of the student event.s</value>
         </member>
-        <member name="P:ClubManagerBackup.Dtos.StudentEventDto.Cost">
+        <member name="P:ClubManagerBackup.Dtos.StudentEventDto.EventCost">
             <summary>
             Cost of the student event in the database.
             </summary>
