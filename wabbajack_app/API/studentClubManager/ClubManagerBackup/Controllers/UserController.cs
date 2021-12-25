@@ -169,7 +169,7 @@ namespace ClubManagerBackup.Controllers
 
       }
 
-      [HttpPost("getjoinedevents")]
+      [HttpGet("getjoinedevents")]
       public IActionResult GetUserToClubs()
       {
          var userToClubs = userToClubRepository.GetUserToClubs();

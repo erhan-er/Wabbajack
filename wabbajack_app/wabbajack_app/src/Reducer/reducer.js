@@ -225,18 +225,16 @@ function reducer(state, action) {
          "name": action.payload.name,
          "description": action.payload.description
 
-      })
-         .then(function (response) {
-            if (response.status === 201) {
-               console.log("Event added!")
-            } else {
-               console.log("Something went wrong")
-            }
+      }).then(function (response) {
+         if (response.status === 201) {
+            console.log("Event added!")
+         } else {
+            console.log("Something went wrong")
+         }
 
-         })
-         .catch(function (error) {
-            console.log(error)
-         })
+      }).catch(function (error) {
+         console.log(error)
+      })
       console.log(action.payload);
       return state;
    }
