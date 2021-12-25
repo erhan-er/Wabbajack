@@ -125,7 +125,7 @@ const style = makeStyles({
    },
 });
 
-function ActivityAccordion ({ID, Name, Description, ClubID, Date, CategoryID = 0, PlaceID = 0, ImageURL = 0, EventCost = 0, Capacity = 0, PageName = "See All Events"}) {
+function ActivityAccordion ({id, name, description, clubID, date = 0, categoryID, placeID, imageURL, eventCost = 0, capacity = 0, PageName = "See All Events"}) {
 
    const classes = style();
 
@@ -135,23 +135,23 @@ function ActivityAccordion ({ID, Name, Description, ClubID, Date, CategoryID = 0
             expandIcon={<ExpandMoreIcon className = {classes.expand_icon}/>}
          >
             <Box className = {classes.activity_summary}>
-               <Box className = {classes.activity_name}>{Name}</Box>
-               <Box className = {classes.activity_date}>Date: {Date}</Box>
-               {PageName === "Budget"? <Box className = {classes.activity_budget}>Expense: ₺{EventCost}</Box>: ""}
+               <Box className = {classes.activity_name}>{name}</Box>
+               <Box className = {classes.activity_date}>Date: {date}</Box>
+               {PageName === "Budget"? <Box className = {classes.activity_budget}>Expense: ₺{eventCost}</Box>: ""}
             </Box>
          </AccordionSummary>
          <ModifiedAccordionDetails className = {classes.activity_detail}>
             <Box className = {classes.activity_detail_description}>
-               <Box className = {classes.club_name}>{ClubID}</Box>
-               <Box className = {classes.details}>{Description}</Box>
+               <Box className = {classes.club_name}>{clubID}</Box>
+               <Box className = {classes.details}>{description}</Box>
             </Box>
 
             <Box className = {classes.information}>
-               <Box>Place: {PlaceID}</Box>
-               <Box>Date: {Date}</Box>
+               <Box>Place: {placeID}</Box>
+               <Box>Date: {date}</Box>
                {/*<Box>Time: {Date}</Box>*/}
             </Box>
-               <Link to = "/Event-Detail" state = {{ID, Name, Description, ClubID, Date, CategoryID, PlaceID, NotificationID, ImageURL, EventCost, Capacity}} className = {classes.button_box}>
+               <Link to = "/Event-Detail" state = {{id, name, description, clubID, date, categoryID, placeID, imageURL, eventCost, capacity}} className = {classes.button_box}>
                   <Button className = {classes.button} variant = "contained" color= "info" endIcon = {<ArrowForwardIosIcon />}>See Details</Button>
                </Link>
          </ModifiedAccordionDetails>
