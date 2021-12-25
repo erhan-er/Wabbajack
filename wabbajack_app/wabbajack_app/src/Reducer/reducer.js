@@ -173,11 +173,12 @@ function reducer(state, action) {
    }
    if (action.type === CHANGE_PASSWORD) {
       console.log(action.payload);
-      axios.post('http://localhost:5000/api/users/' + action.payload.id + '/changepassword', {
+      axios.post('http://localhost:5000/api/users/' + state.myInfo.id + '/changepassword', {
 
          "mail": action.payload.email,
          "password": action.payload.newPassword,
-         "confirmpassword": action.payload.currentPassword
+         "confirmpassword": action.payload.confirmPassword,
+         "oldpassword": action.payload.currentPassword
 
       })
          .then(function (response) {
@@ -202,6 +203,32 @@ function reducer(state, action) {
    }
    if (action.type === CREATE_EVENT) {
       console.log("geldin");
+      axios.post('http://localhost:5000/api/events/create', {
+         "clubID": action.payload.clubId,
+         "eventCost": action.payload.budget,
+         "capacity": action.payload.capacity,
+         "userId": state.myInfo.id,
+         "clubBoardMemberID": state.myInfo.id,
+         "placeName": action.payload.building + "-" + action.payload.room,
+         "date": action.payload.date + " " + action.payload.time + ":00",
+         "categoryName": action.payload.category,
+         "clubname": action.payload.clubName,
+         "imageURL": action.payload.img,
+         "name": action.payload.name,
+         "description": action.payload.description
+
+      })
+         .then(function (response) {
+            if (response.status === 201) {
+               console.log("Event added!")
+            } else {
+               console.log("Something went wrong")
+            }
+
+         })
+         .catch(function (error) {
+            console.log(error)
+         })
       console.log(action.payload);
       return state;
    }
