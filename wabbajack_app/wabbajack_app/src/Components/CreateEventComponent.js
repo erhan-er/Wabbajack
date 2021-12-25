@@ -136,7 +136,7 @@ const style = makeStyles({
 
    number: {
       width: "80%",
-      marginTop: "10px",
+      marginTop: "5px",
       height: "36px",
       border: "solid 1px rgba(0, 0, 0, 0.5)",
       borderRadius: "10px",
@@ -219,7 +219,7 @@ function CreateEventComponent({ buildings, places, categories, clubs, myInfo, di
                                              capacity: document.getElementById("space").value,
                                              img: document.getElementById("image").value}})
    }
-   
+
    return (
       <Box className={classes.root}>
          <Box className={classes.body}>

@@ -25,10 +25,9 @@ const style = makeStyles({
 
    body: {
       display: "flex",
-      flexDirection: "row",
+      flexDirection: "column",
       justifyContent: "space-between",
       "@media screen and (max-width: 686px)": {
-         flexDirection: "column",
          alignItems: "center",
          height: "160px",
       },
@@ -36,7 +35,7 @@ const style = makeStyles({
 
    input: {
       height: "42px",
-      width: "20%",
+      width: "40%",
       borderRadius: "10px",
       border: "solid 1px rgba(0, 0, 0, 0.5)",
       "@media screen and (max-width: 686px)": {
@@ -44,11 +43,22 @@ const style = makeStyles({
       }
    },
    
+   top: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      marginBottom: "20px",
+   }, 
+
+   bottom: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between"
+   },
+
    button: {
-      width: "192px",
-      "@media screen and (max-width: 686px)": {
-         width: "100%",
-      }
+      marginTop: "20px",
+      width: "100%",
    },
 });
 
@@ -58,7 +68,11 @@ function EmailPasswordChange({dispatch}) {
    var text;
 
    function handleClick() {
-      dispatch({type: CHANGE_PASSWORD, payload: {newPassword: document.getElementById("newPassword").value, currentPassword: document.getElementById("confirmPassword").value, email: document.getElementById("email").value}});
+      dispatch({type: CHANGE_PASSWORD, payload: {
+                                                confirmPassword: document.getElementById("confirmPassword").value,
+                                                newPassword: document.getElementById("newPassword").value, 
+                                                currentPassword: document.getElementById("currentPassword").value, 
+                                                email: document.getElementById("email").value}});
    }
 
    return (
@@ -67,9 +81,14 @@ function EmailPasswordChange({dispatch}) {
             <Box className = {classes.text}>{text} Change</Box>
          </Box>
          <Box className = {classes.body}>
-            <input type = "email" placeholder = "Current Email" id = "email" className = {classes.input}/>
-            <input type = "password" placeholder = "New Password" id = "newPassword" className = {classes.input}/>
-            <input type = "password" placeholder = "Confirm Password" id = "confirmPassword" className = {classes.input}/>
+            <Box className = {classes.top}>
+               <input type = "email" placeholder = "Email" id = "email" className = {classes.input}/>
+               <input type = "password" placeholder = "Current Password" id = "currentPassword" className = {classes.input}/>
+            </Box>
+            <Box className = {classes.bottom}>
+               <input type = "password" placeholder = "New Password" id = "newPassword" className = {classes.input}/>
+               <input type = "password" placeholder = "Confirm Password" id = "confirmPassword" className = {classes.input}/>
+            </Box>
             <Button variant = "contained" color = "info" className = {classes.button} onClick = {() => handleClick()}>Change {text}</Button>
          </Box>
       </Box>
