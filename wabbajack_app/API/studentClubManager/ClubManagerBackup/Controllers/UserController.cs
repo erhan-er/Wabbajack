@@ -110,7 +110,18 @@ namespace ClubManagerBackup.Controllers
          var createdEvent = await eventHandler.CreateEvent(eventToCreate, context);
          return StatusCode(201);
       }
-
+      /// <summary>
+      /// Deletes user from the system.
+      /// </summary>
+      /// <param name="userDto">Data transfer object of user to be deleted.</param>
+      /// <returns></returns>
+      [HttpPost("delete")]
+      public async Task<IActionResult> DeleteUser([FromBody] UserDto userDto)
+      {
+         var userToDelete = userRepository.GetUserByMail(userDto.Mail);
+         await userRepository.DeleteUser(userToDelete);
+         return StatusCode(201);
+      }
 
    }
 }

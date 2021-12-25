@@ -66,13 +66,68 @@ function reducer(state, action) {
    }
    if (action.type === EDIT_CLUB) {
       console.log(action.payload);
+      axios.post('http://localhost:5000/api/clubs/edit', {
+         "name": action.payload.name,
+         "ClubDescription": action.payload.description,
+         "bugdet": 0,
+         "ImageURL": action.payload.img,
+         "ClubPresidentID": action.payload.id,
+         "Whatsapplink": action.payload.whatsapp,
+         "Telegramlink": action.payload.Telegram,
+         "Facebooklink": action.payload.Facebook,
+         "Instagramlink": action.payload.Ingstagram,
+         "Twitterlink": action.payload.Twitter,
+         "Linkedinlink": action.payload.Linkedin
+
+      })
+         .then(function (response) {
+            if (response.status === 201) {
+               console.log("Club edited!")
+            } else {
+               console.log("Something went wrong")
+            }
+
+         })
+         .catch(function (error) {
+            console.log(error)
+         })
       return state;
    }
 
    if (action === DELETE_USER) {
+      axios.post('http://localhost:5000/api/users/delete', {
+
+         "mail": action.payload.email
+      })
+         .then(function (response) {
+            if (response.status === 201) {
+               console.log("User deleted!")
+            } else {
+               console.log("Something went wrong")
+            }
+
+         })
+         .catch(function (error) {
+            console.log(error)
+         })
       return state;
    }
    if (action === DELETE_CLUB) {
+      axios.post('http://localhost:5000/api/clubs/delete', {
+         "name": action.payload.name,
+
+      })
+         .then(function (response) {
+            if (response.status === 201) {
+               console.log("Club deleted!")
+            } else {
+               console.log("Something went wrong")
+            }
+
+         })
+         .catch(function (error) {
+            console.log(error)
+         })
       return state;
    }
    if (action === ADD_FRIEND) {
@@ -115,6 +170,21 @@ function reducer(state, action) {
       return state;
    }
    if (action === ADD_CATEGORY) {
+      axios.post('http://localhost:5000/api/categories/add', {
+
+         "CategoryName": action.payload.CategoryName
+      })
+         .then(function (response) {
+            if (response.status === 201) {
+               console.log("Category added!")
+            } else {
+               console.log("Something went wrong")
+            }
+
+         })
+         .catch(function (error) {
+            console.log(error)
+         })
       return state;
    }
    if (action === FILTER_EVENTS) {

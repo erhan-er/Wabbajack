@@ -529,6 +529,19 @@
             <param name="ID">ID of the searched user.</param>
             <returns>Returns the with given ID.</returns>
         </member>
+        <member name="M:ClubManagerBackup.Context.IUserRepository.GetUserByMail(System.String)">
+            <summary>
+            Finds a user from the database with given mail.
+            </summary>
+            <param name="mail">Mail of the searched user.</param>
+            <returns>Returns the with given ID.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.IUserRepository.DeleteUser(ClubManagerBackup.Entities.User)">
+            <summary>
+            Deletes user from the database.
+            </summary>
+            <param name="userToDelete">User to be deleted.</param>
+        </member>
         <member name="T:ClubManagerBackup.Context.PlaceRepository">
             <summary>
             Repository for Places
@@ -626,9 +639,9 @@
         </member>
         <member name="M:ClubManagerBackup.Context.UserRepository.GetUserByMail(System.String)">
             <summary>
-            Finds a user from the database with given ID.
+            Finds a user from the database with given mail.
             </summary>
-            <param name="ID">ID of the searched user.</param>
+            <param name="mail">Mail of the searched user.</param>
             <returns>Returns the with given ID.</returns>
         </member>
         <member name="M:ClubManagerBackup.Context.UserRepository.GetUsers">
@@ -644,6 +657,12 @@
             <typeparam name="T">Type of object:User.</typeparam>
             <param name="entity">Entity to be saved.</param>
             <returns>Returns true if successful.</returns>
+        </member>
+        <member name="M:ClubManagerBackup.Context.UserRepository.DeleteUser(ClubManagerBackup.Entities.User)">
+            <summary>
+            Deletes user from the database.
+            </summary>
+            <param name="userToDelete">User to be deleted.</param>
         </member>
         <member name="T:ClubManagerBackup.Controllers.AuthController">
             <summary>
@@ -876,16 +895,22 @@
         </member>
         <member name="M:ClubManagerBackup.Controllers.UserController.GetUserByMail(System.String)">
             <summary>
-            Gets event with given ID.
+            Finds a user from the database with given mail.
             </summary>
-            <param name="">ID of event to be searched.</param>
-            <returns></returns>
+            <param name="mail">Mail of the searched user.</param>
         </member>
         <member name="M:ClubManagerBackup.Controllers.UserController.AddEvent(ClubManagerBackup.Dtos.StudentEventDto)">
             <summary>
             Adds student event to the user.
             </summary>
             <param name="eventDto">Data transfer object of student event to be added.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.UserController.DeleteUser(ClubManagerBackup.Dtos.UserDto)">
+            <summary>
+            Deletes user from the system.
+            </summary>
+            <param name="userDto">Data transfer object of user to be deleted.</param>
             <returns></returns>
         </member>
         <member name="T:ClubManagerBackup.Entities.CategoryDto">
@@ -1001,6 +1026,42 @@
             Club roles of the club.
             </summary>
             <value>Club roles.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.WhatsappLink">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.InstagramLink">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.FacebookLink">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.TelegramLink">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.LinkedinLink">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.TwitterLink">
+            <summary>
+            
+            </summary>
+            <value></value>
         </member>
         <member name="T:ClubManagerBackup.Entities.ClubBoardMember">
             <summary>
@@ -1347,6 +1408,42 @@
             Bugdet of the club in the database.
             </summary>
             <value>Bugdet of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.WhatsappLink">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.InstagramLink">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.FacebookLink">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.TelegramLink">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.LinkedinLink">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.TwitterLink">
+            <summary>
+            
+            </summary>
+            <value></value>
         </member>
         <member name="T:ClubManagerBackup.Dtos.EventDto">
             <summary>

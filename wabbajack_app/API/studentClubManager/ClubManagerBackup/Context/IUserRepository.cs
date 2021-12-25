@@ -53,5 +53,11 @@ namespace ClubManagerBackup.Context
       /// <param name="mail">Mail of the searched user.</param>
       /// <returns>Returns the with given ID.</returns>
       User GetUserByMail(string mail);
+
+      /// <summary>
+      /// Deletes user from the database.
+      /// </summary>
+      /// <param name="userToDelete">User to be deleted.</param>
+      Task DeleteUser(User userToDelete);
    }
 }
