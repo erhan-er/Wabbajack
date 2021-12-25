@@ -4,6 +4,9 @@ import Photo from "../Images/Bilkent.png"
 import { Box, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import JoinedUsers from "../Components/EventDetailJoinedUsers";
+import { useLocation } from "react-router-dom";
+import { connect } from "react-redux";
+import { JOIN_EVENT } from "../Reducer/actions";
 
 const style = makeStyles({
    root: {
@@ -137,34 +140,48 @@ const style = makeStyles({
 
 });
 
-function EventDetail() {
+function EventDetail({dispatch}) {
    const classes = style();
+   const location = useLocation();
 
    return(
       <Box className = {classes.root}>
          <Appbar PageName = {"Event Detail"}/>
          <Box className = {classes.body}>
             <Box className = {classes.detail}>
-               <img src={Photo} alt="Club Name" className = {classes.image}/>
+               <img src={location.state.ImageURL} alt="Club Name" className = {classes.image}/>
                <Box className = {classes.description_box}>
-                  <Box className = {classes.club_name}><strong>Club Name</strong></Box>
-                  <Box className = {classes.activity_name}><strong>Activity Name</strong></Box>
-                  <Box className = {classes.description}><strong>Description: </strong>description description description description description 
-                  description description description description description description 
-                  description description description description description description 
-                  description description description description description description 
-                  description description description description description description </Box>
+                  <Box className = {classes.club_name}><strong>{location.state.ClubID}</strong></Box>
+                  <Box className = {classes.activity_name}><strong>{location.state.Name}</strong></Box>
+                  <Box className = {classes.description}><strong>Description: </strong>{location.state.Description}</Box>
                   <Box className = {classes.info}>
-                     <Box className = {classes.date}><strong>Date: </strong>24/12/2021</Box>
-                     <Box className = {classes.time}><strong>Time: </strong>19:00</Box>
-                     <Box className = {classes.place}><strong>Place: </strong>B Building, BZ-01</Box>
-                     <Box className = {classes.category}><strong>Category: </strong>Sport</Box>
+                     <Box className = {classes.date}><strong>Date: </strong>{location.state.Date}</Box>
+                     {/*<Box className = {classes.time}><strong>Time: </strong>19:00</Box> */}
+                     <Box className = {classes.place}><strong>Place: </strong>{location.state.PlaceID}</Box>
+                     <Box className = {classes.category}><strong>Category: </strong>{location.state.CategoryID}</Box>
                   </Box>
                </Box>
             </Box>
             <Box className = {classes.button_box}>
                <Button variant = "contained" color = "success" className = {classes.button}>Invite Friends</Button>
-               <Button variant = "contained" color = "primary" className = {classes.button}>Join</Button>
+               <Button 
+                  variant = "contained" 
+                  color = "primary" 
+                  className = {classes.button} 
+                  onClick = {() => dispatch({type: JOIN_EVENT, payload:{ID: location.state.ID, 
+                                                                        Name: location.state.Name, 
+                                                                        Description: location.state.Description, 
+                                                                        ClubID: location.state.ClubID, 
+                                                                        Date: location.state.Date, 
+                                                                        CategoryID: location.state.CategoryID, 
+                                                                        PlaceID: location.state.PlaceID, 
+                                                                        NotificationID: location.state.NotificationID, 
+                                                                        ImageURL: location.state.ImageURL, 
+                                                                        EventCost: location.state.EventCost, 
+                                                                        Capacity: location.state.Capacity}})}
+               >
+                  Join
+               </Button>
             </Box>
             <Box className = {classes.border}></Box>
             <Box className = {classes.users}>
@@ -184,4 +201,7 @@ function EventDetail() {
    );
 }
 
-export default EventDetail
+const mapToStateToProps = state => {
+   return { state }
+}
+export default connect(mapToStateToProps)(EventDetail)
