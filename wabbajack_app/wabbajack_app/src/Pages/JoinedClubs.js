@@ -30,7 +30,7 @@ const style = makeStyles({
    },
 });
 
-function JoinedClubs () {
+function JoinedClubs ({ clubs }) {
    const classes = style();
    const [pageSize, setPageSize] = useState(10);
    const [page, setPage] = React.useState(1);
@@ -38,33 +38,19 @@ function JoinedClubs () {
       setPage(value);
    };
 
-   const activityArr = [];
-   var activity1 = { clubName: "Club 1", clubImage: Photo, description: "description of club 1" };
-   var activity2 = { clubName: "Club 2", clubImage: Photo, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." };
-   var activity3 = { clubName: "Club 3", clubImage: Photo, description: "description of club 3" };
-
-   for (let i = 0; i < 20; i++) {
-      if (i % 2 === 0)
-         activityArr[i] = activity2;
-      else if (i % 3 === 0)
-         activityArr[i] = activity3;
-      else
-         activityArr[i] = activity1;
-   }
-
    return (
       <Box className={classes.root}>
          <AppBar PageName={"Joined Clubs"} />
          <Box className={classes.club_box}>
-            {activityArr.map((item, index) => {
+            {clubs.map((item, index) => {
+               for ( let i = 0; i < item.studentsClubMembers.length; i++ ) {
+                  if ( myInfo.id === )
+               } 
                if (index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
                   return (
                      <Accordion {...item} key = {index}/>
                   );
                }
-               return (
-                  <Accordion {...item} key = {index}/>
-               );
             })}
             <Box className={classes.pagination}>
                <Pagination
@@ -82,5 +68,7 @@ function JoinedClubs () {
       </Box>
    );
 }
-
-export default JoinedClubs
+const mapStateToProps = state => {
+   return { clubs: state.clubs, myInfo: state.myInfo }
+}
+export default connect(mapStateToProps)(JoinedClubs)
