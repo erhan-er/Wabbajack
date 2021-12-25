@@ -44,7 +44,6 @@ function SeeAllClubs({ clubs }) {
          <AppBar PageName={"All Clubs"} />
          <Box className={classes.club_box}>
             {clubs.map((item, index) => {
-               console.log(item);
                if (index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
                   return (
                      <Accordion {...item} key = {index}/>
@@ -53,7 +52,7 @@ function SeeAllClubs({ clubs }) {
             })}
             <Box className={classes.pagination}>
                <Pagination
-                  count={10}
+                  count={clubs.length / 10}
                   color="primary"
                   size="large"
                   showFirstButton
@@ -68,6 +67,6 @@ function SeeAllClubs({ clubs }) {
    );
 }
 const mapStateToProps = state => {
-   return { clubs: state.clubs }
+   return { clubs: state.filteredClubs }
 }
 export default connect(mapStateToProps)(SeeAllClubs)

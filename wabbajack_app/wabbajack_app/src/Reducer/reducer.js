@@ -5,7 +5,8 @@ import {
    ADD_FRIEND, REMOVE_FRIEND, JOIN_CLUB, WITHDRAW_CLUB,
    FOLLOW_CLUB, UNFOLLOW_CLUB, IGNORE_CLUB, UNIGNORE_CLUB,
    JOIN_EVENT, WITHDRAW_EVENT, INVITE_FRIEND, CHANGE_PASSWORD, 
-   ADD_CATEGORY, FILTER_EVENTS, EDIT_CLUB, CREATE_EVENT
+   ADD_CATEGORY, FILTER_EVENTS, EDIT_CLUB, CREATE_EVENT,
+   CLUB_FILTER
 } from "./actions";
 
 function reducer(state, action) {
@@ -178,6 +179,10 @@ function reducer(state, action) {
    if (action.type === CREATE_EVENT) {
       return state;
    } 
+   if (action.type === CLUB_FILTER) {
+      var newFilteredEvents = state.filteredEvents.filter((event) => event.clubID === action.payload.id);
+      return {...state, filteredEvents: newFilteredEvents}
+   }
    return state;
 }
 

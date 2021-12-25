@@ -119,7 +119,7 @@ const style = makeStyles({
    },
 });
 
-function ClubAccordion({ clubName, description, clubImage}) {
+function ClubAccordion({ clubPresidentID, name, clubDescription, facebookLink, id, instagramLink, linkedinLink, telegramLink, whatsappLink, imageURL}) {
 
    const classes = style();
 
@@ -129,17 +129,17 @@ function ClubAccordion({ clubName, description, clubImage}) {
             expandIcon={<ExpandMoreIcon className={classes.expand_icon} />}
          >
             <div className={classes.club_summary}>
-               <div className={classes.club_name}>{clubName}</div>
+               <div className={classes.club_name}>{name}</div>
             </div>
          </AccordionSummary>
          <ModifiedAccordionDetails className={classes.club_detail}>
-            <Box className={classes.club_logo}><img src={clubImage} alt={clubName} style = {{height: "150px", width: "150px"}}/></Box>
+            <Box className={classes.club_logo}><img src={imageURL} alt={name} style = {{height: "150px", width: "150px"}}/></Box>
             <div className={classes.club_detail_box}>
                <div className={classes.details}>
-                  <strong>Description:</strong>{description}
+                  <strong>Description:</strong>{clubDescription}
                </div>
             </div>
-            <Link to= "/Club-Page" state= {{clubName, description, clubImage}} className={classes.button_box}>
+            <Link to= "/Club-Page" state= {{clubPresidentID, name, clubDescription, facebookLink, id, instagramLink, linkedinLink, telegramLink, whatsappLink, imageURL}} className={classes.button_box}>
                <Button className={classes.button} variant="contained" color="info" endIcon={<ArrowForwardIosIcon />}>See Details</Button>
             </Link>
          </ModifiedAccordionDetails>
