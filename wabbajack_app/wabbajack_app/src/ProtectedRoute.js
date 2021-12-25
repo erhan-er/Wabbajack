@@ -1,6 +1,6 @@
 import { Route, Navigate } from "react-router-dom";
-
-const ProtectedRoute = ({ children, authed, ...rest }) => {
+import { connect } from "react-redux";
+const ProtectedRoute = ({ children, signin }) => {
    console.log(authed);
    return(
          authed === true
@@ -8,4 +8,7 @@ const ProtectedRoute = ({ children, authed, ...rest }) => {
             : <Navigate to = {{pathname: "/"}} />
          )
 }
-export default ProtectedRoute
+const mapStateToProps = state => {
+   return { signin: state.signin }
+}
+export default connect(mapStateToProps)(ProtectedRoute)
