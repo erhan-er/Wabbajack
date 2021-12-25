@@ -118,5 +118,39 @@ namespace ClubManagerBackup.Context
          }
          return false;
       }
-   }
+
+        public async Task<User> ChangePassword(string userMail, string password)
+        {
+            var user = await context.Users.FirstOrDefaultAsync(x => x.Mail == userMail);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            context.Users.Update(user);
+            await context.SaveChangesAsync();
+            return user;
+        }
+
+        /// <summary>
+        /// Checks if given user with user name exists in the database.
+        /// </summary>
+        /// <param name="mail">Mail to be checked in the database.</param>
+        /// <returns>Returns true if user exists, else return false.</returns>
+        public async Task<bool> UserExistsWithMail(string mail)
+        {
+            if (await context.Users.AnyAsync(x => x.Mail == mail))
+            {
+                return true;
+            }
+            return false;
+        }
+    }
 }

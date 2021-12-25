@@ -60,6 +60,13 @@
             <param name="userName">Username to be checked in the database.</param>
             <returns>Returns true if user exists, else return false.</returns>
         </member>
+        <member name="M:ClubManagerBackup.Context.AuthRepository.UserExistsWithMail(System.String)">
+            <summary>
+            Checks if given user with user name exists in the database.
+            </summary>
+            <param name="mail">Mail to be checked in the database.</param>
+            <returns>Returns true if user exists, else return false.</returns>
+        </member>
         <member name="T:ClubManagerBackup.Context.CategoryRepository">
             <summary>
             Repository for Category
@@ -684,6 +691,13 @@
             <returns></returns>
         </member>
         <member name="M:ClubManagerBackup.Controllers.AuthController.Login(ClubManagerBackup.Dtos.LoginDto)">
+            <summary>
+            Logs in user to the system.
+            </summary>
+            <param name="loginDto">Data transfer object of user to be logged in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClubManagerBackup.Controllers.AuthController.ChangePassword(ClubManagerBackup.Dtos.ChangePasswordDto)">
             <summary>
             Logs in user to the system.
             </summary>
