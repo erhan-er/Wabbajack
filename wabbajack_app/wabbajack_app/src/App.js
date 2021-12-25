@@ -33,14 +33,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
 
-  const dataStore = {
-    myInfo: 0,
-    clubs: [],
-    students: [],
-    events: [],
-  };
-
-  const store = createStore(rootReducer, dataStore);
+  
 
   var email = "";
   var password = "";
@@ -48,6 +41,19 @@ function App() {
   //var signin = false;
   const [signin, setSignin] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [myInfo, setMyInfo] = useState(0);
+  const [clubs, setClubs] = useState([]);
+  const [students, setStudents] = useState([]);
+  const [events, setEvents] = useState([]);
+
+  const dataStore = {
+    myInfo: myInfo,
+    clubs: clubs,
+    students: students,
+    events: events,
+  };
+
+  const store = createStore(rootReducer, dataStore);
 
   function setEmailPassword(newEmail, newPassword) {
     email = newEmail;
@@ -81,6 +87,24 @@ function App() {
       })
   } 
   
+  function fetchClubs() {
+    axios.get("http://localhost:5000/api/clubs").then((res) => {
+      setClubs( new Array(res.data.length).fill(0));
+      const newClubs = res.data.map((club, index) => {
+        return { club: club }
+      });
+
+
+      setClubs(newClubs);
+    });
+  }
+
+  useEffect(() => {
+    console.log( "ne oldu");
+    fetchClubs();
+    console.log(clubs);
+  },[signin === true]);
+
   return (
     <Provider store={store}>
       <BrowserRouter>
