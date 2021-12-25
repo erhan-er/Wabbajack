@@ -136,7 +136,7 @@ function App() {
     axios.get("http://localhost:5000/api/events").then((res) => {
       setEvents( new Array(res.data.length).fill(0));
       const newEvents = res.data.map((event, index) => {
-        return events
+        return event
       });
 
 
