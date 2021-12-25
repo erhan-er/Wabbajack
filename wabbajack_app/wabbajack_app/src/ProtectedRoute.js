@@ -1,9 +1,9 @@
 import { Route, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 const ProtectedRoute = ({ children, signin }) => {
-   console.log(authed);
+   console.log(signin);
    return(
-         authed === true
+         signin === true
             ? children
             : <Navigate to = {{pathname: "/"}} />
          )
