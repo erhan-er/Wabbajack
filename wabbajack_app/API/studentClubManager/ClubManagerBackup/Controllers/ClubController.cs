@@ -62,7 +62,7 @@ namespace ClubManagerBackup.Controllers
       /// </summary>
       /// <param name="clubDto">Data transfer object of club to be added.</param>
       /// <returns></returns>
-      [HttpPost("addClub")]
+      [HttpPost("add")]
       public async Task<IActionResult> AddClub([FromBody] ClubDto clubDto)
       {
          if (await clubRepository.ClubExists(clubDto.Name))
@@ -100,7 +100,7 @@ namespace ClubManagerBackup.Controllers
       /// </summary>
       /// <param name="clubDto">Data transfer object of club to be updated.</param>
       /// <returns></returns>
-      [HttpPost("updateClub")]
+      [HttpPost("update")]
       public async Task<ActionResult> UpdateClub([FromBody] ClubDto clubDto)
       {
          var clubToUpdate = clubRepository.GetClubByName(clubDto.Name);
@@ -115,7 +115,7 @@ namespace ClubManagerBackup.Controllers
       /// </summary>
       /// <param name="clubDto">Data transfer object of club to be deleted.</param>
       /// <returns></returns>
-      [HttpPost("deleteClub")]
+      [HttpPost("delete")]
       public async Task<ActionResult> DeleteClub([FromBody] ClubDto clubDto)
       {
          var clubToDelete = clubRepository.GetClubByName(clubDto.Name);
