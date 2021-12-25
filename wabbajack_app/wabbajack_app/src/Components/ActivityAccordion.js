@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Link } from "react-router-dom";
 
+
 const ModifiedAccordion = styled((props) => (
    <Accordion {...props}/>
 ))(({theme}) => ({
@@ -124,7 +125,7 @@ const style = makeStyles({
    },
 });
 
-function ActivityAccordion ({activityName, place, date, time, PageName, expense}) {
+function ActivityAccordion ({PageName, ID, Name, Description, ClubID, Date, CategoryID, PlaceID, NotificationID, ImageURL, EventCost, Capacity, join}) {
 
    const classes = style();
 
@@ -134,30 +135,23 @@ function ActivityAccordion ({activityName, place, date, time, PageName, expense}
             expandIcon={<ExpandMoreIcon className = {classes.expand_icon}/>}
          >
             <Box className = {classes.activity_summary}>
-               <Box className = {classes.activity_name}>{activityName}</Box>
-               <Box className = {classes.activity_date}>Date: {date}</Box>
-               {PageName === "Budget"? <Box className = {classes.activity_budget}>Expense: ₺{expense}</Box>: ""}
+               <Box className = {classes.activity_name}>{Name}</Box>
+               <Box className = {classes.activity_date}>Date: {Date}</Box>
+               {PageName === "Budget"? <Box className = {classes.activity_budget}>Expense: ₺{EventCost}</Box>: ""}
             </Box>
          </AccordionSummary>
          <ModifiedAccordionDetails className = {classes.activity_detail}>
             <Box className = {classes.activity_detail_description}>
-               <Box className = {classes.club_name}>Club Name</Box>
-               <Box className = {classes.details}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget.
-               </Box>
+               <Box className = {classes.club_name}>{ClubID}</Box>
+               <Box className = {classes.details}>{Description}</Box>
             </Box>
 
             <Box className = {classes.information}>
-               <Box>Place: {place}</Box>
-               <Box>Date: {date}</Box>
-               <Box>Time: {time}</Box>
+               <Box>Place: {PlaceID}</Box>
+               <Box>Date: {Date}</Box>
+               {/*<Box>Time: {Date}</Box>*/}
             </Box>
-               <Link to = "/Event-Detail" className = {classes.button_box}>
+               <Link to = "/Event-Detail" state = {{ID, Name, Description, ClubID, Date, CategoryID, PlaceID, NotificationID, ImageURL, EventCost, Capacity}} className = {classes.button_box}>
                   <Button className = {classes.button} variant = "contained" color= "info" endIcon = {<ArrowForwardIosIcon />}>See Details</Button>
                </Link>
          </ModifiedAccordionDetails>

@@ -93,8 +93,7 @@ function reducer(state, action) {
          })
       return state;
    }
-
-   if (action === DELETE_USER) {
+   if (action.type === DELETE_USER) {
       axios.post('http://localhost:5000/api/users/delete', {
 
          "mail": action.payload.email
@@ -112,7 +111,7 @@ function reducer(state, action) {
          })
       return state;
    }
-   if (action === DELETE_CLUB) {
+   if (action.type === DELETE_CLUB) {
       axios.post('http://localhost:5000/api/clubs/delete', {
          "name": action.payload.name,
 
@@ -154,7 +153,9 @@ function reducer(state, action) {
    if (action === UNIGNORE_CLUB) {
       return state;
    }
-   if (action === JOIN_EVENT) {
+   if (action.type === JOIN_EVENT) {
+      console.log(action.payload);
+      
       return state;
    }
    if (action === WITHDRAW_EVENT) {
@@ -169,7 +170,7 @@ function reducer(state, action) {
    if (action === CHANGE_PASSWORD) {
       return state;
    }
-   if (action === ADD_CATEGORY) {
+   if (action.type === ADD_CATEGORY) {
       axios.post('http://localhost:5000/api/categories/add', {
 
          "CategoryName": action.payload.CategoryName
