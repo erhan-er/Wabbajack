@@ -51,6 +51,8 @@ function App() {
     clubs: clubs,
     students: students,
     events: events,
+    filteredEvents: events,
+    filteredClubs: clubs,
   };
 
   const store = createStore(rootReducer, dataStore);
