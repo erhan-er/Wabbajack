@@ -117,6 +117,9 @@ namespace ClubManagerBackup.Migrations
                     b.Property<int>("CategoryID")
                         .HasColumnType("int");
 
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ClubBoardMemberID")
                         .HasColumnType("int");
 

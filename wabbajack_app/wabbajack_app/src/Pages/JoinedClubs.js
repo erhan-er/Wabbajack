@@ -6,6 +6,7 @@ import Photo from "../Images/Bilkent.png";
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import Pagination from '@mui/material/Pagination';
+import { connect } from "react-redux";
 
 const style = makeStyles({
    root: {
@@ -30,7 +31,7 @@ const style = makeStyles({
    },
 });
 
-function JoinedClubs ({ clubs }) {
+function JoinedClubs({ clubs }) {
    const classes = style();
    const [pageSize, setPageSize] = useState(10);
    const [page, setPage] = React.useState(1);

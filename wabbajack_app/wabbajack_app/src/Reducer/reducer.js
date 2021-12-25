@@ -4,7 +4,7 @@ import {
    ADD_USER, ADD_CLUB, DELETE_USER, DELETE_CLUB,
    ADD_FRIEND, REMOVE_FRIEND, JOIN_CLUB, WITHDRAW_CLUB,
    FOLLOW_CLUB, UNFOLLOW_CLUB, IGNORE_CLUB, UNIGNORE_CLUB,
-   JOIN_EVENT, WITHDRAW_EVENT, INVITE_FRIEND, CHANGE_PASSWORD, 
+   JOIN_EVENT, WITHDRAW_EVENT, INVITE_FRIEND, CHANGE_PASSWORD,
    ADD_CATEGORY, FILTER_EVENTS, EDIT_CLUB, CREATE_EVENT,
    CLUB_FILTER
 } from "./actions";
@@ -156,7 +156,7 @@ function reducer(state, action) {
    }
    if (action.type === JOIN_EVENT) {
       console.log(action.payload);
-      
+
       return state;
    }
    if (action.type === WITHDRAW_EVENT) {
@@ -167,6 +167,24 @@ function reducer(state, action) {
    }
    if (action.type === CHANGE_PASSWORD) {
       console.log(action.payload);
+      axios.post('http://localhost:5000/api/users/' + action.payload.id + '/changepassword', {
+
+         "mail": action.payload.email,
+         "password": action.payload.newPassword,
+         "confirmpassword": action.payload.currentPassword
+
+      })
+         .then(function (response) {
+            if (response.status === 201) {
+               console.log("Password changed!")
+            } else {
+               console.log("Something went wrong")
+            }
+
+         })
+         .catch(function (error) {
+            console.log(error)
+         })
       console.log(state.myInfo);
       return state;
    }
@@ -178,10 +196,10 @@ function reducer(state, action) {
    }
    if (action.type === CREATE_EVENT) {
       return state;
-   } 
+   }
    if (action.type === CLUB_FILTER) {
       var newFilteredEvents = state.filteredEvents.filter((event) => event.clubID === action.payload.id);
-      return {...state, filteredEvents: newFilteredEvents}
+      return { ...state, filteredEvents: newFilteredEvents }
    }
    return state;
 }
