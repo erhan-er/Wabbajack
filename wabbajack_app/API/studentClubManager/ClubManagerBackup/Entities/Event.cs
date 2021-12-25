@@ -67,7 +67,7 @@ namespace ClubManagerBackup.Entities
       /// Cost of the event in the database.
       /// </summary>
       /// <value>Cost of the event.</value>
-      public int Cost { get; set; }
+      public int EventCost { get; set; }
       /// <summary>
       /// Capacity of the event in the database.
       /// </summary>

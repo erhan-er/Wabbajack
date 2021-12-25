@@ -29,7 +29,7 @@ namespace ClubManagerBackup.Dtos
       /// Cost of the student event in the database.
       /// </summary>
       /// <value>Cost of the student event.</value>
-      public int Cost { get; set; }
+      public int EventCost { get; set; }
       /// <summary>
       /// Capacity of the student event in the database.
       /// </summary>

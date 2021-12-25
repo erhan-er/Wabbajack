@@ -65,15 +65,16 @@ namespace ClubManagerBackup.Controllers
          var eventToCreate = new StudentEvent
          {
             ClubID = eventDto.ClubID,
-            Cost = eventDto.Cost,
+            EventCost = eventDto.EventCost,
             Capacity = eventDto.Capacity,
-            UserId = eventDto.UserID,
+            UserID = eventDto.UserId,
+            ClubBoardMemberID = eventDto.ClubBoardMemberID,
             PlaceID = eventDto.PlaceID,
             CategoryID = eventDto.CategoryID,
             ImageURL = eventDto.ImageURL,
             Name = eventDto.Name,
             Description = eventDto.Description,
-            AdminID = 12,
+            AdminID = 10, // to be changed
             IsApproved = true
          };
          eventHandler = new Context.EventHandler(ClubEventCreator.getInstance());
