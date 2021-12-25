@@ -96,7 +96,7 @@ namespace ClubManagerBackup.Context
       /// <param name="password">Password to be hashed.</param>
       /// <param name="passwordHash">Hashed password.</param>
       /// <param name="passwordSalt">Salted password.</param>
-      private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+      public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
       {
          using (var hmac = new System.Security.Cryptography.HMACSHA512())
          {

@@ -1209,7 +1209,7 @@
             </summary>
             <value>ID of the club board member that created the event.</value>
         </member>
-        <member name="P:ClubManagerBackup.Entities.Event.UserID">
+        <member name="P:ClubManagerBackup.Entities.Event.UserId">
             <summary>
             
             </summary>
@@ -1512,7 +1512,7 @@
             </summary>
             <value>ID of the event's owner club.</value>
         </member>
-        <member name="P:ClubManagerBackup.Dtos.EventDto.UserId">
+        <member name="P:ClubManagerBackup.Dtos.EventDto.UserID">
             <summary>
             
             </summary>

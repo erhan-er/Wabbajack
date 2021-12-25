@@ -87,6 +87,6 @@ namespace ClubManagerBackup.Entities
       /// 
       /// </summary>
       /// <value></value>
-      public int UserID { get; set; }
+      public int UserId { get; set; }
    }
 }
