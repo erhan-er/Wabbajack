@@ -139,7 +139,7 @@ function ClubAccordion({ clubPresidentID, name, clubDescription, facebookLink, i
                   <strong>Description:</strong>{clubDescription}
                </div>
             </div>
-            <Link to= "/Club-Page" state= {{clubPresidentID, name, clubDescription, facebookLink, id, instagramLink, linkedinLink, telegramLink, whatsappLink, imageURL}} className={classes.button_box}>
+            <Link to= "/Club-Page" state= {{clubPresidentID: clubPresidentID, name: name, clubDescription: clubDescription, facebookLink: facebookLink, id: id, instagramLink: instagramLink, linkedinLink: linkedinLink, telegramLink: telegramLink, whatsappLink: whatsappLink, imageURL: imageURL}} className={classes.button_box}>
                <Button className={classes.button} variant="contained" color="info" endIcon={<ArrowForwardIosIcon />}>See Details</Button>
             </Link>
          </ModifiedAccordionDetails>
