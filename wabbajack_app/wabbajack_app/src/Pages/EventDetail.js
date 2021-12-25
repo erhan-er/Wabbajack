@@ -144,22 +144,27 @@ function EventDetail({dispatch}) {
    const classes = style();
    const location = useLocation();
    console.log(location);
+   console.log(location.state.id);
+
+   function category() {
+
+   }
 
    return(
       <Box className = {classes.root}>
          <Appbar PageName = {"Event Detail"}/>
          <Box className = {classes.body}>
             <Box className = {classes.detail}>
-               <img src={location.state.ImageURL} alt="Club Name" className = {classes.image}/>
+               <img src={location.state.imageURL} alt={location.state.clubName} className = {classes.image}/>
                <Box className = {classes.description_box}>
-                  <Box className = {classes.club_name}><strong>{location.state.ClubID}</strong></Box>
-                  <Box className = {classes.activity_name}><strong>{location.state.Name}</strong></Box>
-                  <Box className = {classes.description}><strong>Description: </strong>{location.state.Description}</Box>
+                  <Box className = {classes.club_name}><strong>{location.state.clubName}</strong></Box>
+                  <Box className = {classes.activity_name}><strong>{location.state.name}</strong></Box>
+                  <Box className = {classes.description}><strong>Description: </strong>{location.state.description}</Box>
                   <Box className = {classes.info}>
-                     <Box className = {classes.date}><strong>Date: </strong>{location.state.Date}</Box>
+                     <Box className = {classes.date}><strong>Date: </strong>{location.state.date}</Box>
                      {/*<Box className = {classes.time}><strong>Time: </strong>19:00</Box> */}
-                     <Box className = {classes.place}><strong>Place: </strong>{location.state.PlaceID}</Box>
-                     <Box className = {classes.category}><strong>Category: </strong>{location.state.CategoryID}</Box>
+                     <Box className = {classes.place}><strong>Place: </strong>{location.state.placeID}</Box>
+                     <Box className = {classes.category}><strong>Category: </strong>{location.state.categoryID}</Box>
                   </Box>
                </Box>
             </Box>
@@ -169,17 +174,17 @@ function EventDetail({dispatch}) {
                   variant = "contained" 
                   color = "primary" 
                   className = {classes.button} 
-                  onClick = {() => dispatch({type: JOIN_EVENT, payload:{ID: location.state.ID, 
-                                                                        Name: location.state.Name, 
-                                                                        Description: location.state.Description, 
-                                                                        ClubID: location.state.ClubID, 
-                                                                        Date: location.state.Date, 
-                                                                        CategoryID: location.state.CategoryID, 
-                                                                        PlaceID: location.state.PlaceID, 
-                                                                        NotificationID: location.state.NotificationID, 
-                                                                        ImageURL: location.state.ImageURL, 
-                                                                        EventCost: location.state.EventCost, 
-                                                                        Capacity: location.state.Capacity}})}
+                  onClick = {() => dispatch({type: JOIN_EVENT, payload:{ID: location.state.id, 
+                                                                        Name: location.state.name, 
+                                                                        Description: location.state.description, 
+                                                                        ClubID: location.state.clubID, 
+                                                                        Date: location.state.date, 
+                                                                        CategoryID: location.state.categoryID, 
+                                                                        PlaceID: location.state.placeID, 
+                                                                        NotificationID: location.state.notificationID, 
+                                                                        ImageURL: location.state.imageURL, 
+                                                                        EventCost: location.state.eventCost, 
+                                                                        Capacity: location.state.capacity}})}
                >
                   Join
                </Button>
