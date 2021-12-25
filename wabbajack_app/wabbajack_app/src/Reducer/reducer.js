@@ -36,6 +36,26 @@ function reducer(state, action) {
       return state; // do not change this. Redux wants a return.
    }
    if (action === ADD_CLUB) {
+      /*axios.post('http://localhost:5000/api/clubs/add', {
+
+         "name": action.payload.name,
+         "description": action.payload.description,
+         "bugdet": 0,
+         "ImageURL": action.payload.img,
+         "ClubPresidentID": action.payload.id
+
+      })
+         .then(function (response) {
+            if (response.status === 201) {
+               console.log("Club added!")
+            } else {
+               console.log("Something went wrong")
+            }
+
+         })
+         .catch(function (error) {
+            console.log(error)
+         })*/
       return state;
    }
    if (action === DELETE_USER) {
