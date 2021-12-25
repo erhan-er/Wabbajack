@@ -36,7 +36,7 @@ const style = makeStyles({
 
    input: {
       height: "42px",
-      width: "30%",
+      width: "20%",
       borderRadius: "10px",
       border: "solid 1px rgba(0, 0, 0, 0.5)",
       "@media screen and (max-width: 686px)": {

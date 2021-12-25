@@ -164,13 +164,14 @@ function App() {
     axios.get("http://localhost:5000/api/places").then((res) => {
       setPlaces(new Array(res.data.length).fill(0));
       const newBuildings = [];
+      
       const newPlaces = res.data.map((place, index) => {
         newBuildings.push = place.building;
         return place
       });
       let uniqueBuildings = [...new Set(newBuildings)];
       uniqueBuildings.sort();
-
+      setBuildings( new Array );
       setBuildings(uniqueBuildings);
       setPlaces(newPlaces);
     });

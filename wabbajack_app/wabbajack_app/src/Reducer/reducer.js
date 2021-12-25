@@ -195,6 +195,8 @@ function reducer(state, action) {
       return state;
    }
    if (action.type === CREATE_EVENT) {
+      console.log("geldin");
+      console.log(action.payload);
       return state;
    }
    if (action.type === CLUB_FILTER) {

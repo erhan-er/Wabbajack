@@ -135,7 +135,7 @@ const style = makeStyles({
    },
 
    number: {
-      width: "90%",
+      width: "80%",
       marginTop: "10px",
       height: "36px",
       border: "solid 1px rgba(0, 0, 0, 0.5)",
@@ -181,7 +181,12 @@ function CreateEventComponent({ buildings, places, categories, dispatch}) {
    }, [building, place, category])
 
    function PlacePrinter() {
-      if ( building !== undefined ) {
+      if ( building === "" ) {
+         places.map((filterPlace, index) => {
+            return <MenuItem value={filterPlace.room} key = {index}>{filterPlace.room}</MenuItem>
+         })
+      }
+      else if ( building !== "" ) {
          places.filter((place) => place.building === building).map((filterPlace, index) => {
             return <MenuItem value={filterPlace} key = {index}>{filterPlace}</MenuItem>
          });
@@ -249,10 +254,9 @@ function CreateEventComponent({ buildings, places, categories, dispatch}) {
                                  label="Category"
                                  onChange={handleCategory}
                               >
-                                 <MenuItem value="Sports">Sports</MenuItem>
                                  {
                                     categories.map((category, index) => {
-                                       return <MenuItem value={category}>{category}</MenuItem>
+                                       return <MenuItem value={category.categoryName} key = {index}>{category.categoryName}</MenuItem>
                                     })
                                  }
                               </Select>
@@ -274,7 +278,19 @@ function CreateEventComponent({ buildings, places, categories, dispatch}) {
                   <Box className={classes.img}>
                      <Box className={classes.space_description}>Upload Image: If the image is not uploaded, the club's logo will be shown to students.</Box>
                      <input type="url" name="image" id="image" className={classes.number} />
-                     <Button variant="contained" color="primary" sx={{ marginTop: "50px" }} onClick = {() => dispatch({type: CREATE_EVENT})}>Create Event</Button>
+                     <Button variant="contained" color="primary" sx={{ marginTop: "50px" }} onClick = {() => dispatch({type: CREATE_EVENT, payload: {name: document.getElementById("Name").value, 
+                                                                                                                                                   description: document.getElementById("Description").value, 
+                                                                                                                                                   building: building, 
+                                                                                                                                                   room: place, 
+                                                                                                                                                   date: document.getElementById("Date").value,
+                                                                                                                                                   time: document.getElementById("Time").value,
+                                                                                                                                                   category: category, 
+                                                                                                                                                   budget: document.getElementById("Budget").value,
+                                                                                                                                                   capacity: document.getElementById("space").value,
+                                                                                                                                                   img: document.getElementById("image").value}})}
+                     >
+                        Create Event
+                     </Button>
                   </Box>
                </Box>
             </Box>
