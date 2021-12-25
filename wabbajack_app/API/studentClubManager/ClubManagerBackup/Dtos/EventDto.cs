@@ -39,7 +39,7 @@ namespace ClubManagerBackup.Dtos
       /// Cost of the event in the database.
       /// </summary>
       /// <value>Cost of the event.</value>
-      public int Cost { get; set; }
+      public int EventCost { get; set; }
       /// <summary>
       /// Capacity of the event in the database.
       /// </summary>
@@ -59,7 +59,13 @@ namespace ClubManagerBackup.Dtos
       /// Image URL of the event in the database.
       /// </summary>
       /// <value>Image URL of the event.</value>
+      /// 
       public string ImageURL { get; set; }
+      /// <summary>
+      /// ID of the club board member that created the event.
+      /// </summary>
+      /// <value>ID of the club board member that created the event.</value>
+      public int ClubBoardMemberID { get; set; }
 
       /// <summary>
       /// Discriminator to differentiate Club and Student events.
