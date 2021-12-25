@@ -7,9 +7,11 @@ import { ADD_USER, ADD_CLUB, DELETE_USER, DELETE_CLUB,
 
 function reducer(state, action) {
 
-   if ( action === ADD_USER ) {
-      let newStudents = state.students;
-      return state;
+   if ( action.type === ADD_USER ) {
+      // Payload contains: name, id, email, img
+      // You can reach them by writing action.payload.name for example.
+      console.log(action.payload); // You can also see the payloads in console
+      return state; // do not change this. Redux wants a return.
    }
    if ( action === ADD_CLUB ) {
       return state;
