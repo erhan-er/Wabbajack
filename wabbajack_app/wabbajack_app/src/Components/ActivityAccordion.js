@@ -11,8 +11,8 @@ import { Link } from "react-router-dom";
 
 
 const ModifiedAccordion = styled((props) => (
-   <Accordion {...props}/>
-))(({theme}) => ({
+   <Accordion {...props} />
+))(({ theme }) => ({
    backgroundColor: "#000080",
    borderRadius: "20px",
    '&:not(:last-child)': {
@@ -25,8 +25,8 @@ const ModifiedAccordion = styled((props) => (
 }));
 
 const ModifiedAccordionDetails = styled((props) => (
-   <AccordionDetails {...props}/>
-))(({theme}) => ({
+   <AccordionDetails {...props} />
+))(({ theme }) => ({
    "@media screen and (max-width: 960px)": {
       padding: 0,
    },
@@ -59,7 +59,7 @@ const style = makeStyles({
    activity_date: {
       fontSize: "16px",
    },
-   
+
    activity_budget: {
       fontSize: "16px",
       width: "200px",
@@ -125,35 +125,35 @@ const style = makeStyles({
    },
 });
 
-function ActivityAccordion ({id, name, description, clubID, date = 0, categoryID, placeID, imageURL, eventCost = 0, capacity = 0, PageName = "See All Events"}) {
+function ActivityAccordion({ id, name, description, clubID, clubName, date = 0, categoryID, placeID, imageURL, eventCost = 0, capacity = 0, PageName = "See All Events" }) {
 
    const classes = style();
 
    return (
-      <ModifiedAccordion className = {classes.accordion}>
+      <ModifiedAccordion className={classes.accordion}>
          <AccordionSummary
-            expandIcon={<ExpandMoreIcon className = {classes.expand_icon}/>}
+            expandIcon={<ExpandMoreIcon className={classes.expand_icon} />}
          >
-            <Box className = {classes.activity_summary}>
-               <Box className = {classes.activity_name}>{name}</Box>
-               <Box className = {classes.activity_date}>Date: {date}</Box>
-               {PageName === "Budget"? <Box className = {classes.activity_budget}>Expense: ₺{eventCost}</Box>: ""}
+            <Box className={classes.activity_summary}>
+               <Box className={classes.activity_name}>{name}</Box>
+               <Box className={classes.activity_date}>Date: {date}</Box>
+               {PageName === "Budget" ? <Box className={classes.activity_budget}>Expense: ₺{eventCost}</Box> : ""}
             </Box>
          </AccordionSummary>
-         <ModifiedAccordionDetails className = {classes.activity_detail}>
-            <Box className = {classes.activity_detail_description}>
-               <Box className = {classes.club_name}>{clubID}</Box>
-               <Box className = {classes.details}>{description}</Box>
+         <ModifiedAccordionDetails className={classes.activity_detail}>
+            <Box className={classes.activity_detail_description}>
+               <Box className={classes.club_name}>{clubName}</Box>
+               <Box className={classes.details}>{description}</Box>
             </Box>
 
-            <Box className = {classes.information}>
+            <Box className={classes.information}>
                <Box>Place: {placeID}</Box>
                <Box>Date: {date}</Box>
                {/*<Box>Time: {Date}</Box>*/}
             </Box>
-               <Link to = "/Event-Detail" state = {{id, name, description, clubID, date, categoryID, placeID, imageURL, eventCost, capacity}} className = {classes.button_box}>
-                  <Button className = {classes.button} variant = "contained" color= "info" endIcon = {<ArrowForwardIosIcon />}>See Details</Button>
-               </Link>
+            <Link to="/Event-Detail" state={{ id, name, description, clubID, date, categoryID, placeID, imageURL, eventCost, capacity }} className={classes.button_box}>
+               <Button className={classes.button} variant="contained" color="info" endIcon={<ArrowForwardIosIcon />}>See Details</Button>
+            </Link>
          </ModifiedAccordionDetails>
       </ModifiedAccordion>
    );
