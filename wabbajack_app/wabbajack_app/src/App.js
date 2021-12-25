@@ -56,6 +56,7 @@ function App() {
     buildings: buildings,
     filteredEvents: events,
     filteredClubs: clubs,
+    signin: signin
   };
 
   const store = createStore(rootReducer, dataStore);
@@ -187,34 +188,37 @@ function App() {
     console.log(buildings);
   }, [signin === true]);
 
+  useEffect(() => {
+
+  }, [signin])
   return (
     <Provider store={store}>
       <BrowserRouter>
         <Box className="App">
           <Routes>
-            <Route path="/Add-Clubs" element={<ProtectedRoute authed={signin}><AddClubs /></ProtectedRoute>} />
-            <Route path="/Add-User" element={<ProtectedRoute authed={signin}><AddUser /></ProtectedRoute>} />
-            <Route path="/Budget" element={<ProtectedRoute authed={signin}><Budget /></ProtectedRoute>} />
-            <Route path="/Club-Page" element={<ProtectedRoute authed={signin}><ClubPage /></ProtectedRoute>} />
-            <Route path="/Create-Event" element={<ProtectedRoute authed={signin}><CreateEvent /></ProtectedRoute>} />
-            <Route path="/Edit-Club" element={<ProtectedRoute authed={signin}><EditClubs /></ProtectedRoute>} />
-            <Route path="/Event-Detail" element={<ProtectedRoute authed={signin}><EventDetail /></ProtectedRoute>} />
-            <Route path="/Event-Page" element={<ProtectedRoute authed={signin}><EventPage /></ProtectedRoute>} />
-            <Route path="/Event-Requests" element={<ProtectedRoute authed={signin}><EventRequests /></ProtectedRoute>} />
-            <Route path="/Followed-Clubs" element={<ProtectedRoute authed={signin}><FollowedClubs /></ProtectedRoute>} />
-            <Route path="/Home" element={<ProtectedRoute authed={signin}> <Home /> </ProtectedRoute>} />
-            <Route path="/Ignored-Clubs" element={<ProtectedRoute authed={signin}><IgnoredClubs /></ProtectedRoute>} />
-            <Route path="/Joined-Clubs" element={<ProtectedRoute authed={signin}><JoinedClubs /></ProtectedRoute>} />
+            <Route path="/Add-Clubs" element={<ProtectedRoute><AddClubs /></ProtectedRoute>} />
+            <Route path="/Add-User" element={<ProtectedRoute><AddUser /></ProtectedRoute>} />
+            <Route path="/Budget" element={<ProtectedRoute><Budget /></ProtectedRoute>} />
+            <Route path="/Club-Page" element={<ProtectedRoute><ClubPage /></ProtectedRoute>} />
+            <Route path="/Create-Event" element={<ProtectedRoute><CreateEvent /></ProtectedRoute>} />
+            <Route path="/Edit-Club" element={<ProtectedRoute><EditClubs /></ProtectedRoute>} />
+            <Route path="/Event-Detail" element={<ProtectedRoute><EventDetail /></ProtectedRoute>} />
+            <Route path="/Event-Page" element={<ProtectedRoute><EventPage /></ProtectedRoute>} />
+            <Route path="/Event-Requests" element={<ProtectedRoute><EventRequests /></ProtectedRoute>} />
+            <Route path="/Followed-Clubs" element={<ProtectedRoute><FollowedClubs /></ProtectedRoute>} />
+            <Route path="/Home" element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
+            <Route path="/Ignored-Clubs" element={<ProtectedRoute><IgnoredClubs /></ProtectedRoute>} />
+            <Route path="/Joined-Clubs" element={<ProtectedRoute><JoinedClubs /></ProtectedRoute>} />
             <Route exact path="/" element={<LoginPage setEmailPassword={setEmailPassword} handleLoginRequest={handleLoginRequest} />} />
-            <Route path="/My-Club" element={<ProtectedRoute authed={signin}><MyClub /></ProtectedRoute>} />
-            <Route path="/My-Information" element={<ProtectedRoute authed={signin}><MyInformation /></ProtectedRoute>} />
-            <Route path="/See-All-Club-Members" element={<ProtectedRoute authed={signin}><SeeAllClubMembers /></ProtectedRoute>} />
-            <Route path="/See-All-Clubs" element={<ProtectedRoute authed={signin}><SeeAllClubs /></ProtectedRoute>} />
-            <Route path="/See-All-Events" element={<ProtectedRoute authed={signin}><SeeAllEvents /></ProtectedRoute>} />
-            <Route path="/See-All-Friends" element={<ProtectedRoute authed={signin}><SeeAllFriends /></ProtectedRoute>} />
-            <Route path="/See-All-Students" element={<ProtectedRoute authed={signin}><SeeAllStudents /></ProtectedRoute>} />
-            <Route path="/Settings" element={<ProtectedRoute authed={signin}><Settings /></ProtectedRoute>} />
-            <Route path="/Student-Create-Event" element={<ProtectedRoute authed={signin}><StudentCreateEvent/></ProtectedRoute>}/>
+            <Route path="/My-Club" element={<ProtectedRoute><MyClub /></ProtectedRoute>} />
+            <Route path="/My-Information" element={<ProtectedRoute><MyInformation /></ProtectedRoute>} />
+            <Route path="/See-All-Club-Members" element={<ProtectedRoute><SeeAllClubMembers /></ProtectedRoute>} />
+            <Route path="/See-All-Clubs" element={<ProtectedRoute><SeeAllClubs /></ProtectedRoute>} />
+            <Route path="/See-All-Events" element={<ProtectedRoute><SeeAllEvents /></ProtectedRoute>} />
+            <Route path="/See-All-Friends" element={<ProtectedRoute><SeeAllFriends /></ProtectedRoute>} />
+            <Route path="/See-All-Students" element={<ProtectedRoute><SeeAllStudents /></ProtectedRoute>} />
+            <Route path="/Settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+            <Route path="/Student-Create-Event" element={<ProtectedRoute><StudentCreateEvent/></ProtectedRoute>}/>
           </Routes>
         </Box>
       </BrowserRouter>
