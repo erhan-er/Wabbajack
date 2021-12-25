@@ -82,7 +82,13 @@ namespace ClubManagerBackup.Controllers
             ImageURL = clubDto.ImageURL,
             ClubPresidentID = clubDto.ClubPresidentID,
             //StudentsClubMembers = clubDto.StudentsClubMembers,
-            ClubBudget = clubDto.ClubBudget
+            ClubBudget = clubDto.ClubBudget,
+            WhatsappLink = clubDto.WhatsappLink,
+            InstagramLink = clubDto.InstagramLink,
+            LinkedinLink = clubDto.LinkedinLink,
+            TelegramLink = clubDto.TelegramLink,
+            FacebookLink = clubDto.FacebookLink,
+            TwitterLink = clubDto.TwitterLink
          };
 
          var x = await clubRepository.AddClub(clubToCreate);

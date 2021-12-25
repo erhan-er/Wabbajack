@@ -958,24 +958,6 @@
             </summary>
             <value>Members of the club.</value>
         </member>
-        <member name="P:ClubManagerBackup.Entities.Club.StudentsClubFollowers">
-            <summary>
-            Followers of the club in the database.
-            </summary>
-            <value>Followers of the club.</value>
-        </member>
-        <member name="P:ClubManagerBackup.Entities.Club.StudentsJoinRequests">
-            <summary>
-            Join requests of the club in the database.
-            </summary>
-            <value>Join requests of the club.</value>
-        </member>
-        <member name="P:ClubManagerBackup.Entities.Club.EventsUpcoming">
-            <summary>
-            Upcoming events of the club in the database.
-            </summary>
-            <value></value>
-        </member>
         <member name="P:ClubManagerBackup.Entities.Club.EventsOld">
             <summary>
             Old events of the club in the database.
@@ -1327,6 +1309,12 @@
             Description of the club in the database.
             </summary>
             <value>Description of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.ClubPresidentID">
+            <summary>
+            ID of the club president in the database.
+            </summary>
+            <value>ClubPresidentID</value>
         </member>
         <member name="P:ClubManagerBackup.Dtos.ClubDto.StudentsClubMembers">
             <summary>

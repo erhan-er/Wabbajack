@@ -42,7 +42,13 @@ function reducer(state, action) {
          "description": action.payload.description,
          "bugdet": 0,
          "ImageURL": action.payload.img,
-         "ClubPresidentID": action.payload.id
+         "ClubPresidentID": action.payload.id,
+         "Whatsapplink":action.payload.whatsapp,
+         "Telegramlink":action.payload.Telegram,
+         "Facebooklink":action.payload.Facebook,
+         "Ingstagramlink":action.payload.Ingstagram,
+         "Twitterlink":action.payload.Twitter,
+         "Linkedinlink":action.payload.Linkedin
 
       })
          .then(function (response) {
