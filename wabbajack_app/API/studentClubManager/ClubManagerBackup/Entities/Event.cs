@@ -38,6 +38,7 @@ namespace ClubManagerBackup.Entities
       /// </summary>
       /// <value>ID of the owner club of the event.</value>
       public int ClubID { get; set; }
+      public string ClubName { get; set; }
       /// <summary>
       /// Date of the event in the database.
       /// </summary>

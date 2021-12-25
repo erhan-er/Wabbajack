@@ -24,6 +24,7 @@ namespace ClubManagerBackup.Controllers
    public class EventController : Controller
    {
       private IEventRepository eventRepository;
+      private IClubRepository clubRepository;
       private IConfiguration configuration;
       private IMapper mapper;
       private Context.EventHandler eventHandler;
@@ -36,9 +37,10 @@ namespace ClubManagerBackup.Controllers
       /// <param name="configuration">Configuration reference.</param>
       /// <param name="mapper">Mapper reference.</param>
       /// <param name="context">Database reference.</param>
-      public EventController(IEventRepository eventRepository, IConfiguration configuration, IMapper mapper, DataContext context)
+      public EventController(IEventRepository eventRepository, IConfiguration configuration, IMapper mapper, DataContext context, IClubRepository clubRepository)
       {
          this.eventRepository = eventRepository;
+         this.clubRepository = clubRepository;
          this.configuration = configuration;
          this.context = context;
          this.mapper = mapper;
@@ -70,7 +72,9 @@ namespace ClubManagerBackup.Controllers
             UserId = eventDto.UserID,
             ClubBoardMemberID = eventDto.ClubBoardMemberID,
             PlaceID = eventDto.PlaceID,
+            Date = eventDto.Date,
             CategoryID = eventDto.CategoryID,
+            ClubName = clubRepository.GetClubById(eventDto.CategoryID).Name,
             ImageURL = eventDto.ImageURL,
             Name = eventDto.Name,
             Description = eventDto.Description,

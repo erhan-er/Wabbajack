@@ -100,6 +100,7 @@ namespace ClubManagerBackup.Controllers
             Capacity = eventDto.Capacity,
             UserId = eventDto.UserID,
             Name = eventDto.Name,
+            Date = eventDto.Date,
             ImageURL = eventDto.ImageURL,
             Description = eventDto.Description,
             IsApproved = eventDto.IsApproved,
@@ -123,18 +124,18 @@ namespace ClubManagerBackup.Controllers
          return StatusCode(201);
       }
 
-        [HttpPost("{id}/changepassword")]
-        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto changePasswordDto)
-        {
-            if (changePasswordDto.Password != changePasswordDto.ConfirmPassword)
-            {
-                return BadRequest();
-            }
+      [HttpPost("{id}/changepassword")]
+      public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto changePasswordDto)
+      {
+         if (changePasswordDto.Password != changePasswordDto.ConfirmPassword)
+         {
+            return BadRequest();
+         }
 
-            var user = await userRepository.ChangePassword(changePasswordDto.Mail, changePasswordDto.Password);
+         var user = await userRepository.ChangePassword(changePasswordDto.Mail, changePasswordDto.Password);
 
-            return StatusCode(201);
-        }
+         return StatusCode(201);
+      }
 
-    }
+   }
 }

@@ -20,6 +20,7 @@ namespace ClubManagerBackup.Dtos
       /// </summary>
       /// <value>Name of the event.</value>
       public string Name { get; set; }
+      public DateTime Date { get; set; }
       /// <summary>
       /// Description of the event in the database.
       /// </summary>
@@ -35,6 +36,7 @@ namespace ClubManagerBackup.Dtos
       /// </summary>
       /// <value>ID of the event's category.</value>
       public int CategoryID { get; set; }
+
       /// <summary>
       /// Cost of the event in the database.
       /// </summary>
@@ -50,6 +52,8 @@ namespace ClubManagerBackup.Dtos
       /// </summary>
       /// <value>ID of the event's owner club.</value>
       public int ClubID { get; set; }
+
+      public string ClubName { get; set; }
       /// <summary>
       /// 
       /// </summary>

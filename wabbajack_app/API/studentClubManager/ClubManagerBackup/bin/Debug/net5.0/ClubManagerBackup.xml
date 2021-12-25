@@ -796,7 +796,7 @@
             Controller class for Events.
             </summary>
         </member>
-        <member name="M:ClubManagerBackup.Controllers.EventController.#ctor(ClubManagerBackup.Context.IEventRepository,Microsoft.Extensions.Configuration.IConfiguration,AutoMapper.IMapper,ClubManagerBackup.Context.DataContext)">
+        <member name="M:ClubManagerBackup.Controllers.EventController.#ctor(ClubManagerBackup.Context.IEventRepository,Microsoft.Extensions.Configuration.IConfiguration,AutoMapper.IMapper,ClubManagerBackup.Context.DataContext,ClubManagerBackup.Context.IClubRepository)">
             <summary>
             Constructor for EventController.
             </summary>
