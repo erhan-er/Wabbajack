@@ -54,6 +54,7 @@ namespace ClubManagerBackup.Entities
       /// </summary>
       /// <value>ID of the place that event takes place.</value>
       public int PlaceID { get; set; }
+      public string PlaceName { get; set; }
       /// <summary>
       /// Notificaton of the event.
       /// </summary>

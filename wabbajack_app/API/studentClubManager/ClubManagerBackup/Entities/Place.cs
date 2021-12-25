@@ -25,5 +25,6 @@ namespace ClubManagerBackup.Entities
       /// </summary>
       /// <value>Room name of the place.</value>
       public string Room { get; set; }
+      public string PlaceName { get; set; }
    }
 }
