@@ -37,6 +37,7 @@ namespace ClubManagerBackup.Dtos
       /// </summary>
       /// <value>ID of the event's category.</value>
       public int CategoryID { get; set; }
+      public string CategoryName { get; set; }
 
       /// <summary>
       /// Cost of the event in the database.

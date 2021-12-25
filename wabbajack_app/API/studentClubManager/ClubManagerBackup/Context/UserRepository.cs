@@ -96,24 +96,24 @@ namespace ClubManagerBackup.Context
          await context.SaveChangesAsync();
       }
 
-        public async Task<User> ChangePassword(string userMail, string password)
-        {
-            var user = await context.Users.FirstOrDefaultAsync(x => x.Mail == userMail);
+      public async Task<User> ChangePassword(string userMail, string password)
+      {
+         var user = await context.Users.FirstOrDefaultAsync(x => x.Mail == userMail);
 
-            if (user == null)
-            {
-                return null;
-            }
+         if (user == null)
+         {
+            return null;
+         }
 
-            byte[] passwordHash, passwordSalt;
-            AuthRepository.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+         byte[] passwordHash, passwordSalt;
+         AuthRepository.CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
+         user.PasswordHash = passwordHash;
+         user.PasswordSalt = passwordSalt;
 
-            context.Users.Update(user);
-            await context.SaveChangesAsync();
-            return user;
-        }
-    }
+         context.Users.Update(user);
+         await context.SaveChangesAsync();
+         return user;
+      }
+   }
 }

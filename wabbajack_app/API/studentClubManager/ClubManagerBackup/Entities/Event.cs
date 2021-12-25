@@ -49,6 +49,7 @@ namespace ClubManagerBackup.Entities
       /// </summary>
       /// <value>ID of the category of the event.</value>
       public int CategoryID { get; set; }
+      public string CategoryName { get; set; }
       /// <summary>
       /// ID of the place of the event in the database.
       /// </summary>

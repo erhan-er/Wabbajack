@@ -25,6 +25,8 @@ namespace ClubManagerBackup.Controllers
    {
       private IEventRepository eventRepository;
       private IClubRepository clubRepository;
+      private ICategoryRepository categoryRepository;
+      private IPlaceRepository placeRepository;
       private IConfiguration configuration;
       private IMapper mapper;
       private Context.EventHandler eventHandler;
@@ -37,12 +39,15 @@ namespace ClubManagerBackup.Controllers
       /// <param name="configuration">Configuration reference.</param>
       /// <param name="mapper">Mapper reference.</param>
       /// <param name="context">Database reference.</param>
-      public EventController(IEventRepository eventRepository, IConfiguration configuration, IMapper mapper, DataContext context, IClubRepository clubRepository)
+      public EventController(IEventRepository eventRepository, IConfiguration configuration, IMapper mapper, DataContext context,
+      ICategoryRepository categoryRepository, IClubRepository clubRepository, IPlaceRepository placeRepository)
       {
          this.eventRepository = eventRepository;
          this.clubRepository = clubRepository;
          this.configuration = configuration;
          this.context = context;
+         this.placeRepository = placeRepository;
+         this.categoryRepository = categoryRepository;
          this.mapper = mapper;
       }
 
@@ -54,7 +59,7 @@ namespace ClubManagerBackup.Controllers
       [HttpPost("create")]
       public async Task<IActionResult> AddEvent([FromBody] EventDto eventDto)
       {
-         if (await eventRepository.EventExists(eventDto.Name))
+         if (await eventRepository.EventExists("asfasfaas" + eventDto.Name))
          {
             ModelState.AddModelError("Name", "Name already exists");
          }
@@ -72,9 +77,10 @@ namespace ClubManagerBackup.Controllers
             UserId = eventDto.UserID,
             ClubBoardMemberID = eventDto.ClubBoardMemberID,
             PlaceID = eventDto.PlaceID,
-            PlaceName = eventDto.PlaceName,
+            PlaceName = placeRepository.GetPlaceByID(eventDto.PlaceID).PlaceName,
             Date = eventDto.Date,
             CategoryID = eventDto.CategoryID,
+            CategoryName = categoryRepository.GetCategoryByID(eventDto.CategoryID).CategoryName,
             ClubName = clubRepository.GetClubById(eventDto.CategoryID).Name,
             ImageURL = eventDto.ImageURL,
             Name = eventDto.Name,
