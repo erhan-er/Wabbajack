@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles";
 import * as React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
-
+import { ADD_USER } from "../Reducer/actions";
 const style = makeStyles({
    root: {
       width: "90%",
@@ -118,9 +118,9 @@ function AddUserComponent({state, dispatch}) {
       <Box className = {classes.root}>
          <Box className = {classes.top_body}>
             <Box className = {classes.left_side}>
-               <input type="text" className = {classes.name} placeholder = "Name"/>
-               <input type="number" className = {classes.id} placeholder = "ID"/>
-               <input type="email" className = {classes.email} placeholder = "Email"/>
+               <input type="text" className = {classes.name} placeholder = "Name" id = "Name"/>
+               <input type="number" className = {classes.id} placeholder = "ID" id = "ID"/>
+               <input type="email" className = {classes.email} placeholder = "Email" id = "Email"/>
                <input type="url" id = "imgUrl" placeholder = "Image URL" className = {classes.image_url} />
                <Button variant = "contained" className = {classes.preview_button} onClick = {() => preview(document.getElementById("imgUrl").value)}>Preview</Button>
             </Box>
@@ -128,7 +128,7 @@ function AddUserComponent({state, dispatch}) {
                <Box className = {classes.image_box}><img alt="Enter a URL" id = "image" className = {classes.image}/></Box>
             </Box>
          </Box>
-         <Button variant = "contained" color = "success" className = {classes.add_button}>Add User</Button>
+         <Button variant = "contained" color = "success" className = {classes.add_button} onClick = {() => dispatch({type: ADD_USER, payload: {name: document.getElementById("Name").value, id: document.getElementById("ID").value, email: document.getElementById("Email").value, img: document.getElementById("imgUrl").value}})}>Add User</Button>
       </Box>
    );
 }
