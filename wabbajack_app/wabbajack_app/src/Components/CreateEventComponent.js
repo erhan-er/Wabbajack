@@ -149,7 +149,7 @@ const style = makeStyles({
       height: "120px",
    },
 });
-function CreateEventComponent({ buildings, places, categories, dispatch}) {
+function CreateEventComponent({ buildings, places, categories, clubs, myInfo, dispatch}) {
    const classes = style();
    //var building = "";
    //var place = "";
@@ -179,6 +179,7 @@ function CreateEventComponent({ buildings, places, categories, dispatch}) {
    useEffect(() => {
       console.log(building);
    }, [building, place, category])
+   
 
    function PlacePrinter() {
       if ( building === "" ) {
@@ -196,6 +197,29 @@ function CreateEventComponent({ buildings, places, categories, dispatch}) {
       }
    }
 
+   function handleCreate() {
+      var clubName = "";
+      var clubId = "";
+      for ( let i = 0; i < clubs.length; i++ ) {
+         if ( clubs[i].clubPresidentID === myInfo.id )
+            clubId = clubs[i].id;
+            clubName = clubs[i].name;
+      }
+      dispatch({type: CREATE_EVENT, payload: {name: document.getElementById("Name").value, 
+                                             clubName: clubName,
+                                             clubId: clubId,
+                                             presidentId: myInfo.id,
+                                             description: document.getElementById("Description").value, 
+                                             building: building, 
+                                             room: place, 
+                                             date: document.getElementById("Date").value,
+                                             time: document.getElementById("Time").value,
+                                             category: category, 
+                                             budget: document.getElementById("Budget").value,
+                                             capacity: document.getElementById("space").value,
+                                             img: document.getElementById("image").value}})
+   }
+   
    return (
       <Box className={classes.root}>
          <Box className={classes.body}>
@@ -278,16 +302,7 @@ function CreateEventComponent({ buildings, places, categories, dispatch}) {
                   <Box className={classes.img}>
                      <Box className={classes.space_description}>Upload Image: If the image is not uploaded, the club's logo will be shown to students.</Box>
                      <input type="url" name="image" id="image" className={classes.number} />
-                     <Button variant="contained" color="primary" sx={{ marginTop: "50px" }} onClick = {() => dispatch({type: CREATE_EVENT, payload: {name: document.getElementById("Name").value, 
-                                                                                                                                                   description: document.getElementById("Description").value, 
-                                                                                                                                                   building: building, 
-                                                                                                                                                   room: place, 
-                                                                                                                                                   date: document.getElementById("Date").value,
-                                                                                                                                                   time: document.getElementById("Time").value,
-                                                                                                                                                   category: category, 
-                                                                                                                                                   budget: document.getElementById("Budget").value,
-                                                                                                                                                   capacity: document.getElementById("space").value,
-                                                                                                                                                   img: document.getElementById("image").value}})}
+                     <Button variant="contained" color="primary" sx={{ marginTop: "50px" }} onClick = {() => handleCreate()}
                      >
                         Create Event
                      </Button>
@@ -299,6 +314,6 @@ function CreateEventComponent({ buildings, places, categories, dispatch}) {
    );
 }
 const mapToStateToProps = state => {
-   return { buildings: state.buildings, places: state.places, categories: state.categories }
+   return { buildings: state.buildings, places: state.places, categories: state.categories, clubs: state.clubs, myInfo: state.myInfo }
 }
 export default connect(mapToStateToProps)(CreateEventComponent)
