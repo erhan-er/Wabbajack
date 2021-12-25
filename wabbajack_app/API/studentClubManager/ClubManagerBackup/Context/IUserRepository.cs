@@ -47,6 +47,11 @@ namespace ClubManagerBackup.Context
       /// <returns>Returns the with given ID.</returns>
       User GetUserByID(int ID);
 
+      /// <summary>
+      /// Finds a user from the database with given mail.
+      /// </summary>
+      /// <param name="mail">Mail of the searched user.</param>
+      /// <returns>Returns the with given ID.</returns>
       User GetUserByMail(string mail);
    }
 }

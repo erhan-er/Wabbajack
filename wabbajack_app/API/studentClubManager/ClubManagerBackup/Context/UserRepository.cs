@@ -55,9 +55,9 @@ namespace ClubManagerBackup.Context
       }
 
       /// <summary>
-      /// Finds a user from the database with given ID.
+      /// Finds a user from the database with given mail.
       /// </summary>
-      /// <param name="ID">ID of the searched user.</param>
+      /// <param name="mail">Mail of the searched user.</param>
       /// <returns>Returns the with given ID.</returns>
       public User GetUserByMail(string mail)
       {
