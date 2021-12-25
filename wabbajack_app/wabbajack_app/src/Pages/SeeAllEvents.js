@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from "react";
 import AppBar from "../Components/AppBar";
-import Accordion from "../Components/ActivityAccordion";
+import ActivityAccordion from "../Components/ActivityAccordion";
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import Pagination from '@mui/material/Pagination';
@@ -52,7 +52,7 @@ function SeeAllEvents({ events, companies}) {
                console.log(item);
                if ( index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
                   return (
-                     <Accordion {...item} PageName = {"See All Events"}/>
+                     <ActivityAccordion key = {index} {...item} PageName = {"See All Events"}/>
                   );
                }
             })}
