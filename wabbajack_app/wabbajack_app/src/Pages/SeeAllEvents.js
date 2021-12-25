@@ -51,6 +51,7 @@ function SeeAllEvents({ filteredEvents }) {
                   );
                }
             })}
+            <ActivityAccordion id={"5"} name={"name"} description={"aeıvonıa"} clubID={"5"} clubName={"club 1"} date={"8492"} categoryID={"5"} placeID={"63"} placeName={"aıeovnıpo"} imageURL={"aeuvnaı"} eventCost={"79348"} capacity = {"732"} PageName = {"See All Events"}/>
             <Box className = {classes.pagination}>
                <Pagination 
                   count={filteredEvents.length / pageSize} 

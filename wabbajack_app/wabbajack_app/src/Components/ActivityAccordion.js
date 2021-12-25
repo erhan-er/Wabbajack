@@ -149,9 +149,8 @@ function ActivityAccordion({ id, name, description, clubID, clubName, date = 0, 
             <Box className={classes.information}>
                <Box>Place: {placeName}</Box>
                <Box>Date: {date}</Box>
-               {/*<Box>Time: {Date}</Box>*/}
             </Box>
-            <Link to="/Event-Detail" state={{ id: id, name: name, description: description, clubID: clubID, date: date, categoryID: categoryID, placeID: placeName, imageURL: imageURL, eventCost: eventCost, capacity: capacity }} className={classes.button_box}>
+            <Link to="/Event-Detail" state={{ id: id, name: name, description: description, clubID: clubID, clubName: clubName, date: date, categoryID: categoryID, placeID: placeName, imageURL: imageURL, eventCost: eventCost, capacity: capacity }} className={classes.button_box}>
                <Button className={classes.button} variant="contained" color="info" endIcon={<ArrowForwardIosIcon />}>See Details</Button>
             </Link>
          </ModifiedAccordionDetails>
