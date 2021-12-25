@@ -6,7 +6,7 @@ import Photo from "../Images/Bilkent.png";
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import Pagination from '@mui/material/Pagination';
-
+import { connect } from "react-redux";
 const style = makeStyles({
    root: {
 
@@ -30,7 +30,7 @@ const style = makeStyles({
    },
 });
 
-function JoinedClubs ({ clubs }) {
+function JoinedClubs ({ clubs, myInfo }) {
    const classes = style();
    const [pageSize, setPageSize] = useState(10);
    const [page, setPage] = React.useState(1);
@@ -42,16 +42,18 @@ function JoinedClubs ({ clubs }) {
       <Box className={classes.root}>
          <AppBar PageName={"Joined Clubs"} />
          <Box className={classes.club_box}>
-            {/*clubs.map((item, index) => {
+            {clubs.map((item, index) => {
+               let count = 0;
                for ( let i = 0; i < item.studentsClubMembers.length; i++ ) {
-                  if ( myInfo.id === )
-               } 
-               if (index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
-                  return (
-                     <Accordion {...item} key = {index}/>
-                  );
+                  if ( myInfo.id === item.studentsClubMembers[i].id ) {
+                     count++;
+                     return <Accordion {...item} key = {index} />
+                  }
                }
-            })*/}
+               if ( count === 0 ) {
+                  return <Box>You have not joined to any club!</Box>
+               }
+            })}
             <Box className={classes.pagination}>
                <Pagination
                   count={10}
