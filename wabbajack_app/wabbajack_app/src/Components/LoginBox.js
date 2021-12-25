@@ -88,7 +88,9 @@ function LoginBox({ setEmailPassword, handleLoginRequest }) {
                <Button variant="contained" color="info" className={classes.button}>About</Button>
             </Box>
             <Box>
-               <Button variant="text" color="error" className={classes.forget_password}>Forget Password?</Button>
+               <Link to="/Forget-Password">
+                  <Button variant="text" color="error" className={classes.forget_password}>Forget Password?</Button>
+               </Link>
             </Box>
          </Box>
       </Box>
