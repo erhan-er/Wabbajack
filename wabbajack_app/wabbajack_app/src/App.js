@@ -63,21 +63,6 @@ function App() {
 
   const store = createStore(rootReducer, dataStore);
 
-  //** SORTING FUNCTION **\\
-  function sortOn(arr, prop) {
-    arr.sort(
-      function (a, b) {
-        if (a[prop] < b[prop])
-          return -1;
-        else if (a[prop] > b[prop])
-          return 1;
-        else
-          return 0;
-      }
-    );
-  };
-  //** END OF SORTING FUNCTION **\\
-
   function setEmailPassword(newEmail, newPassword) {
     email = newEmail;
     password = newPassword;
@@ -171,12 +156,16 @@ function App() {
         newBuildings.push = place.building;
         return place
       });
+      
       let uniqueBuildings = [...new Set(newBuildings)];
-      uniqueBuildings.sort();
-      setBuildings( new Array );
+      let newUniquesBuildings = uniqueBuildings.sort();
       setBuildings(uniqueBuildings);
       setPlaces(newPlaces);
     });
+  }
+
+  function fetchJoinedClubs() {
+
   }
 
   useEffect(() => {
