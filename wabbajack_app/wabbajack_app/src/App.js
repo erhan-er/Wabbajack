@@ -23,6 +23,8 @@ import SeeAllFriends from './Pages/SeeAllFriends';
 import SeeAllStudents from './Pages/SeeAllStudents';
 import Settings from "./Pages/Settings";
 import StudentCreateEvent from "./Pages/StudentCreateEvent";
+import ForgetPassword from "./Pages/ForgetPassword";
+
 import Box from "@mui/material/Box";
 import axios from 'axios';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -79,7 +81,7 @@ function App() {
   function setEmailPassword(newEmail, newPassword) {
     email = newEmail;
     password = newPassword;
-    //setSignin(true); // delete this
+    setSignin(true); // delete this
     console.log(signin);
   }
 
@@ -188,9 +190,6 @@ function App() {
     console.log(buildings);
   }, [signin === true]);
 
-  useEffect(() => {
-
-  }, [signin])
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -219,6 +218,7 @@ function App() {
             <Route path="/See-All-Students" element={<ProtectedRoute><SeeAllStudents /></ProtectedRoute>} />
             <Route path="/Settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
             <Route path="/Student-Create-Event" element={<ProtectedRoute><StudentCreateEvent/></ProtectedRoute>}/>
+            <Route path="/Forget-Password" element={<ForgetPassword/>}></Route>
           </Routes>
         </Box>
       </BrowserRouter>

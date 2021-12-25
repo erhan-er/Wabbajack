@@ -6,7 +6,7 @@ import {
    FOLLOW_CLUB, UNFOLLOW_CLUB, IGNORE_CLUB, UNIGNORE_CLUB,
    JOIN_EVENT, WITHDRAW_EVENT, INVITE_FRIEND, CHANGE_PASSWORD,
    ADD_CATEGORY, FILTER_EVENTS, EDIT_CLUB, CREATE_EVENT,
-   CLUB_FILTER, STUDENT_CREATE_EVENT
+   CLUB_FILTER, STUDENT_CREATE_EVENT, RESET_PASSWORD
 } from "./actions";
 
 function reducer(state, action) {
@@ -237,6 +237,10 @@ function reducer(state, action) {
       return { ...state, filteredEvents: newFilteredEvents }
    }
    if (action.type === STUDENT_CREATE_EVENT) {
+      return state;
+   }
+   if (action.type === RESET_PASSWORD) {
+      console.log(action.payload);
       return state;
    }
    return state;
