@@ -70,7 +70,7 @@ namespace ClubManagerBackup.Controllers
       /// </summary>
       /// <param name="">ID of event to be searched.</param>
       /// <returns></returns>
-      [HttpGet("{mail}")]
+      [HttpGet("mail/{mail}")]
       public IActionResult GetUserByMail(string mail)
       {
          var user = userRepository.GetUserByMail(mail);

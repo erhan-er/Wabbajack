@@ -867,6 +867,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ClubManagerBackup.Controllers.UserController.GetUserByID(System.Int32)">
+            <summary>
+            Gets event with given ID.
+            </summary>
+            <param name="ID">ID of event to be searched.</param>
+            <returns></returns>
+        </member>
         <member name="M:ClubManagerBackup.Controllers.UserController.GetUserByMail(System.String)">
             <summary>
             Gets event with given ID.
