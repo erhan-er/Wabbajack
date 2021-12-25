@@ -5,7 +5,7 @@ import {
    ADD_FRIEND, REMOVE_FRIEND, JOIN_CLUB, WITHDRAW_CLUB,
    FOLLOW_CLUB, UNFOLLOW_CLUB, IGNORE_CLUB, UNIGNORE_CLUB,
    JOIN_EVENT, WITHDRAW_EVENT, INVITE_FRIEND, CHANGE_EMAIL,
-   CHANGE_PASSWORD, ADD_CATEGORY, FILTER_EVENTS
+   CHANGE_PASSWORD, ADD_CATEGORY, FILTER_EVENTS, EDIT_CLUB
 } from "./actions";
 
 function reducer(state, action) {
@@ -35,14 +35,23 @@ function reducer(state, action) {
       console.log(action.payload); // You can also see the payloads in console
       return state; // do not change this. Redux wants a return.
    }
-   if (action === ADD_CLUB) {
-      /*axios.post('http://localhost:5000/api/clubs/add', {
+   if (action.type === ADD_CLUB) {
+      console.log(action.payload);
+      axios.post('http://localhost:5000/api/clubs/add', {
 
          "name": action.payload.name,
          "description": action.payload.description,
          "bugdet": 0,
          "ImageURL": action.payload.img,
-         "ClubPresidentID": action.payload.id
+         "ClubPresidentID": action.payload.id,
+         "ImageURL": action.payload.img,
+         "ClubPresidentID": action.payload.id,
+         "Whatsapplink": action.payload.whatsapp,
+         "Telegramlink": action.payload.Telegram,
+         "Facebooklink": action.payload.Facebook,
+         "Ingstagramlink": action.payload.Ingstagram,
+         "Twitterlink": action.payload.Twitter,
+         "Linkedinlink": action.payload.Linkedin
 
       })
          .then(function (response) {
@@ -55,9 +64,14 @@ function reducer(state, action) {
          })
          .catch(function (error) {
             console.log(error)
-         })*/
+         })
       return state;
    }
+   if ( action.type === EDIT_CLUB ) {
+      console.log(action.payload);
+      return state;
+   }
+
    if (action === DELETE_USER) {
       return state;
    }

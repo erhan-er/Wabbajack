@@ -56,12 +56,9 @@ function App() {
     console.log(signin);
   }
   
-
-  useEffect(() => {}, [signin]);
-
   async function handleLoginRequest() {
     setSubmitted(true)
-    /*
+    
     axios.post('http://localhost:5000/api/auth/login', {
 
       "mail": email,
@@ -81,7 +78,7 @@ function App() {
       .catch(function (error) {
         console.log(error)
         setSubmitted(false)
-      })*/
+      })
   } 
   
   return (
