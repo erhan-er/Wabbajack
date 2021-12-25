@@ -42,10 +42,12 @@ namespace ClubManagerBackup.Entities
       /// </summary>
       /// <value>Members of the club.</value>
       public List<User> StudentsClubMembers { get; set; }
+      /*
       /// <summary>
       /// Followers of the club in the database.
       /// </summary>
       /// <value>Followers of the club.</value>
+      
       public List<User> StudentsClubFollowers { get; set; }
       /// <summary>
       /// Join requests of the club in the database.
@@ -57,11 +59,13 @@ namespace ClubManagerBackup.Entities
       /// </summary>
       /// <value></value>
       public List<Event> EventsUpcoming { get; set; }
+      */
       /// <summary>
       /// Old events of the club in the database.
       /// </summary>
       /// <value>Old events of the club.</value>
       public List<Event> EventsOld { get; set; }
+
       /// <summary>
       /// ID of the president of the club in the database.
       /// </summary>
