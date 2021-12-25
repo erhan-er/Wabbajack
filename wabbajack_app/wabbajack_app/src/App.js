@@ -126,7 +126,7 @@ function App() {
   }
 
   function fetchUserInfo() {
-    axios.get("http://localhost:5000/api/" + email).then((res) => {
+    axios.get("http://localhost:5000/api/users/mail/" + email).then((res) => {
       setMyInfo(res.data);
     });
   }
