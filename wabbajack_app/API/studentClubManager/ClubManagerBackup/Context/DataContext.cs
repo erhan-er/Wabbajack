@@ -38,5 +38,6 @@ namespace ClubManagerBackup.Context
       public DbSet<Student> Students { get; set; }
       public DbSet<StudentEvent> StudentEvents { get; set; }
       public DbSet<User> Users { get; set; }
+      public DbSet<UserToClub> UserToClubs { get; set; }
    }
 }

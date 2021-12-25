@@ -130,23 +130,23 @@ namespace ClubManagerBackup.Controllers
       [HttpPost("{id}/changepassword")]
       public async Task<IActionResult> ChangePassword([FromBody] ResetPasswordDto resetPasswordDto)
       {
-            if (userRepository.GetUserByMail(resetPasswordDto.Mail) == null)
-            {
-                ModelState.AddModelError("Mail", "Mail does not exists!");
-            }
+         if (userRepository.GetUserByMail(resetPasswordDto.Mail) == null)
+         {
+            ModelState.AddModelError("Mail", "Mail does not exists!");
+         }
 
-            if (resetPasswordDto.Password != resetPasswordDto.ConfirmPassword)
-             {
-                return BadRequest();
-             }
+         if (resetPasswordDto.Password != resetPasswordDto.ConfirmPassword)
+         {
+            return BadRequest();
+         }
 
-            var user = userRepository.GetUserByMail(resetPasswordDto.Mail);
+         var user = userRepository.GetUserByMail(resetPasswordDto.Mail);
 
 
-            if (AuthRepository.VerifyPasswordHash(resetPasswordDto.OldPassword, user.PasswordHash, user.PasswordSalt) == false)
-            {
-                return BadRequest();
-            }
+         if (AuthRepository.VerifyPasswordHash(resetPasswordDto.OldPassword, user.PasswordHash, user.PasswordSalt) == false)
+         {
+            return BadRequest();
+         }
 
 
          user = await userRepository.ChangePassword(resetPasswordDto.Mail, resetPasswordDto.Password);
@@ -155,9 +155,9 @@ namespace ClubManagerBackup.Controllers
       }
 
       [HttpPost("joinClub")]
-      public async Task<ActionResult> JoinClub([FromBody] UserToClubDto userToClubDto )
+      public async Task<ActionResult> JoinClub([FromBody] UserToClubDto userToClubDto)
       {
-         
+
          var userToClub = new UserToClub
          {
             UserId = userToClubDto.UserId,
@@ -166,7 +166,15 @@ namespace ClubManagerBackup.Controllers
 
          await userToClubRepository.Add(userToClub);
          return StatusCode(201);
-         
+
+      }
+
+      [HttpPost("getjoinedevents")]
+      public IActionResult GetUserToClubs()
+      {
+         var userToClubs = userToClubRepository.GetUserToClubs();
+         var usersToClubsToReturn = mapper.Map<List<UserToClubDto>>(userToClubs);
+         return Ok(usersToClubsToReturn);
       }
 
    }
