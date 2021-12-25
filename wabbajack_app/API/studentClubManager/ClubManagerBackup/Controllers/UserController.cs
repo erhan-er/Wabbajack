@@ -126,14 +126,28 @@ namespace ClubManagerBackup.Controllers
       }
 
       [HttpPost("{id}/changepassword")]
-      public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto changePasswordDto)
+      public async Task<IActionResult> ChangePassword([FromBody] ResetPasswordDto resetPasswordDto)
       {
-         if (changePasswordDto.Password != changePasswordDto.ConfirmPassword)
-         {
-            return BadRequest();
-         }
+            if (userRepository.GetUserByMail(resetPasswordDto.Mail) == null)
+            {
+                ModelState.AddModelError("Mail", "Mail does not exists!");
+            }
 
-         var user = await userRepository.ChangePassword(changePasswordDto.Mail, changePasswordDto.Password);
+            if (resetPasswordDto.Password != resetPasswordDto.ConfirmPassword)
+             {
+                return BadRequest();
+             }
+
+            var user = userRepository.GetUserByMail(resetPasswordDto.Mail);
+
+
+            if (AuthRepository.VerifyPasswordHash(resetPasswordDto.OldPassword, user.PasswordHash, user.PasswordSalt) == false)
+            {
+                return BadRequest();
+            }
+
+
+         user = await userRepository.ChangePassword(resetPasswordDto.Mail, resetPasswordDto.Password);
 
          return StatusCode(201);
       }
