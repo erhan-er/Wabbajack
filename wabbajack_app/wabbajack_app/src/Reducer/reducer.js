@@ -6,7 +6,7 @@ import {
    FOLLOW_CLUB, UNFOLLOW_CLUB, IGNORE_CLUB, UNIGNORE_CLUB,
    JOIN_EVENT, WITHDRAW_EVENT, INVITE_FRIEND, CHANGE_PASSWORD,
    ADD_CATEGORY, FILTER_EVENTS, EDIT_CLUB, CREATE_EVENT,
-   CLUB_FILTER
+   CLUB_FILTER, STUDENT_CREATE_EVENT
 } from "./actions";
 
 function reducer(state, action) {
@@ -131,6 +131,12 @@ function reducer(state, action) {
       return state;
    }
    if (action.type === ADD_FRIEND) {
+      // how to use ownProps
+      // action.payload.ownProps.id
+      // action.payload.ownProps.name
+      // action.payload.ownProps.mail
+      // action.payload.ownProps.department
+      // It represents the whole props of a function.
       return state;
    }
    if (action.type === REMOVE_FRIEND) {
@@ -229,6 +235,9 @@ function reducer(state, action) {
    if (action.type === CLUB_FILTER) {
       var newFilteredEvents = state.filteredEvents.filter((event) => event.clubID === action.payload.id);
       return { ...state, filteredEvents: newFilteredEvents }
+   }
+   if (action.type === STUDENT_CREATE_EVENT) {
+      return state;
    }
    return state;
 }

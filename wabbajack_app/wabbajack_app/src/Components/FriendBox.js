@@ -2,6 +2,9 @@ import * as React from "react";
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import Button from "@mui/material/Button";
+import { connect } from "react-redux";
+import { ADD_FRIEND } from "../Reducer/actions";
+import PersonImage from "../Images/image.jpg"
 
 const style = makeStyles({
    box: {
@@ -40,7 +43,7 @@ const style = makeStyles({
    }
 });
 
-function FriendBox ({PersonImage, Name, Id, PageName}) {
+function FriendBox ({name, id, mail, department, PageName}) {
    function ButtonType(PageName){
       if (PageName === "SeeAllFriends"){
          return <Button className = {classes.button} variant = "contained" color = "error">Remove</Button>
@@ -53,10 +56,10 @@ function FriendBox ({PersonImage, Name, Id, PageName}) {
 
    return (
       <Box className = {classes.box}>
-         <img src={PersonImage} alt={Name} className = {classes.img}/>
+         <img src={PersonImage} alt={name} className = {classes.img}/>
          <Box className = {classes.info_box}>
             <Box className = {classes.name}>
-               {Name}
+               {name}
             </Box>
             <Box className = {classes.button_box}>
                {ButtonType(PageName)}
@@ -66,4 +69,8 @@ function FriendBox ({PersonImage, Name, Id, PageName}) {
    );
 }
 
-export default FriendBox
+const mapDispatchToProps = (dispatch, ownProps) => {
+   return { add: () => dispatch({type: ADD_FRIEND, payload: { ownProps }})}
+}
+
+export default connect(null, mapDispatchToProps)(FriendBox)

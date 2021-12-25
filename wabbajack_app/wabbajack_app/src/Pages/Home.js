@@ -54,7 +54,6 @@ function Home({ events }) {
 }
 
 const mapStateToProps = state => {
-   console.log(state);
    return { events: state.events};
 }
 export default connect(mapStateToProps)(Home);

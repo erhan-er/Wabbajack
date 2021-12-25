@@ -52,7 +52,7 @@ function Menu ({open, setIsOpen, userType}) {
    var allMenu = ["Add Clubs", "Add User", "Budget", "Create Event", "Event Requests", 
                   "Followed Clubs", "Home", "Ignored Clubs", "Joined Clubs", "My Club", "My Information", 
                   "See All Club Members", "See All Clubs", "See All Events", "See All Students", 
-                  "See All Friends", "Settings", "Logout"];
+                  "See All Friends", "Settings", "Student Create Event", "Logout"];
 
    function ChooseUserType ( userType ) {
       if (userType === "Student")
