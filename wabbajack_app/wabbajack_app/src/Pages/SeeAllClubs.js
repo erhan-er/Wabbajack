@@ -44,6 +44,7 @@ function SeeAllClubs({ clubs }) {
          <AppBar PageName={"All Clubs"} />
          <Box className={classes.club_box}>
             {clubs.map((item, index) => {
+               console.log(item);
                if (index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
                   return (
                      <Accordion {...item} key = {index}/>
