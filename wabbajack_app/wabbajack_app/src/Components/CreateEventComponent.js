@@ -159,19 +159,16 @@ function CreateEventComponent({ buildings, places, categories, clubs, myInfo, di
    const [category, setCategory] = useState("");
 
    const handleBuilding = (event) => {
-      building = event.target.value;
       setBuilding(event.target.value);
       console.log(building);
    }
 
    const handleClass = (event) => {
-      place = event.target.value;
       setPlace(event.target.value);
       console.log(place);
    }
 
    const handleCategory = (event) => {
-      category = event.target.value;
       setCategory(event.target.value);
       console.log(category);
    }
