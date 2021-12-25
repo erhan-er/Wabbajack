@@ -25,6 +25,11 @@ namespace ClubManagerBackup.Dtos
       /// <value>Description of the club.</value>
       public string ClubDescription { get; set; }
       /// <summary>
+      /// ID of the club president in the database.
+      /// </summary>
+      /// <value>ClubPresidentID</value>
+      public int ClubPresidentID { get; set; }
+      /// <summary>
       /// Members of the club in the database.
       /// </summary>
       /// <value>Members of the club.</value>
