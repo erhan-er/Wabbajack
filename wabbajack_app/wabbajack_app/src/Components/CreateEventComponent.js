@@ -152,25 +152,31 @@ function CreateEventComponent() {
    var building = "";
    var place = "";
    var category = "";
+   const [buildings, setBuildings] = useState("");
+   const [places, setPlaces] = useState("");
+   const [categories, setCategories] = useState("");
 
    const handleBuilding = (event) => {
       building = event.target.value;
+      setBuildings(event.target.value);
       console.log(building);
    }
 
    const handleClass = (event) => {
       place = event.target.value;
+      setPlaces(event.target.value);
       console.log(place);
    }
 
    const handleCategory = (event) => {
       category = event.target.value;
+      setCategories(event.target.value);
       console.log(category);
    }
 
    useEffect(() => {
-      
-   }, [building, place, category])
+      console.log(buildings);   
+   }, [buildings, place, category])
 
    return(
       <Box className = {classes.root}>
@@ -183,7 +189,7 @@ function CreateEventComponent() {
                      <InputLabel>Building</InputLabel>
                      <Select
                         id = "Building"
-                        value = {building}
+                        value = {buildings}
                         label= "Building"
                         onChange = {handleBuilding}
                      >
@@ -207,7 +213,7 @@ function CreateEventComponent() {
                         <InputLabel>Class</InputLabel>
                         <Select
                            id = "Place"
-                           value = {place}
+                           value = {places}
                            label= "Classes"
                            onChange = {handleClass}
                         >
@@ -227,7 +233,7 @@ function CreateEventComponent() {
                               <InputLabel>Category</InputLabel>
                               <Select
                                  id = "Category"
-                                 value = {category}
+                                 value = {categories}
                                  label= "Category"
                                  onChange = {handleCategory}
                               >
