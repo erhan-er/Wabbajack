@@ -30,20 +30,20 @@ function reducer(state, action) {
          .catch(function (error) {
             console.log(error)
          })
-      
       // Payload contains: name, id, email, img
       // You can reach them by writing action.payload.name for example.
       console.log(action.payload); // You can also see the payloads in console
       return state; // do not change this. Redux wants a return.
    }
-   if (action.type === ADD_CLUB) {
-      console.log(action.payload);
-       axios.post('http://localhost:5000/api/clubs/add', {
+   if (action === ADD_CLUB) {
+      /*axios.post('http://localhost:5000/api/clubs/add', {
+
          "name": action.payload.name,
          "description": action.payload.description,
          "bugdet": 0,
          "ImageURL": action.payload.img,
          "ClubPresidentID": action.payload.id
+
       })
          .then(function (response) {
             if (response.status === 201) {
@@ -51,10 +51,11 @@ function reducer(state, action) {
             } else {
                console.log("Something went wrong")
             }
+
          })
          .catch(function (error) {
             console.log(error)
-         })
+         })*/
       return state;
    }
    if (action === DELETE_USER) {
