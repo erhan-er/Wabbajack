@@ -79,6 +79,7 @@ namespace ClubManagerBackup.Controllers
          {
             Name = clubDto.Name,
             ClubDescription = clubDto.ClubDescription,
+            ImageURL = clubDto.ImageURL,
             //StudentsClubMembers = clubDto.StudentsClubMembers,
             ClubBudget = clubDto.ClubBudget
          };

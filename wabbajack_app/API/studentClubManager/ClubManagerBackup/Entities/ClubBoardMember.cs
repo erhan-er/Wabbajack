@@ -6,13 +6,27 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Entities
 {
-    public class ClubBoardMember : User
-    {
-        public ClubBoardMember()
-        {
-            CreatedEvents = new List<Event>();
-        }
-        public String RoleOfMember { get; set; }
-        public List<Event> CreatedEvents { get; set; }
-    }
+   /// <summary>
+   /// Club board member object.
+   /// </summary>
+   public class ClubBoardMember : User
+   {
+      /// <summary>
+      /// Constructor for ClubBoardMember.
+      /// </summary>
+      public ClubBoardMember()
+      {
+         CreatedEvents = new List<Event>();
+      }
+      /// <summary>
+      /// Role of the member in the club.
+      /// </summary>
+      /// <value>Role of the member.</value>
+      public String RoleOfMember { get; set; }
+      /// <summary>
+      /// Created events of the board member.
+      /// </summary>
+      /// <value></value>
+      public List<Event> CreatedEvents { get; set; }
+   }
 }

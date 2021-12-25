@@ -5,10 +5,25 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Entities
 {
-    public class Notification
-    {
-        public int ID { get; set; }
-        public string NotificationName { get; set; }
-        public string notificationDescription { get; set; }
-    }
+   /// <summary>
+   /// Notification object.
+   /// </summary>
+   public class Notification
+   {
+      /// <summary>
+      /// ID of the notification in the database.
+      /// </summary>
+      /// <value>ID of the notification</value>
+      public int ID { get; set; }
+      /// <summary>
+      /// Name of the notification in the database.
+      /// </summary>
+      /// <value>Name of the notification.</value>
+      public string NotificationName { get; set; }
+      /// <summary>
+      /// Description of the notification in the database.
+      /// </summary>
+      /// <value>Description of the notification.</value>
+      public string notificationDescription { get; set; }
+   }
 }

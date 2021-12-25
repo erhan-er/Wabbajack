@@ -6,10 +6,20 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Entities
 {
-    public class StudentEvent : Event
-    {
-        public Admin Admin { get; set; }
-        public int AdminID { get; set; }
-        public bool IsApproved { get; set; }
-    }
+   /// <summary>
+   /// StudentEvent object. StudentEvent is Event.
+   /// </summary>
+   public class StudentEvent : Event
+   {
+      /// <summary>
+      /// ID of the Admin that approval is gone.
+      /// </summary>
+      /// <value>ID of the Admin that approval is gone.</value>
+      public int AdminID { get; set; }
+      /// <summary>
+      /// Approval of the student event.
+      /// </summary>
+      /// <value>Approval of the student event.</value>
+      public bool IsApproved { get; set; }
+   }
 }

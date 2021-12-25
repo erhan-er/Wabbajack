@@ -712,10 +712,10 @@
         </member>
         <member name="M:ClubManagerBackup.Controllers.ClubController.#ctor(ClubManagerBackup.Context.IClubRepository,AutoMapper.IMapper)">
             <summary>
-            Constructor for ClubController 
+            /// 
             </summary>
-            <param name="clubRepository">ClubRepository reference.</param>
-            <param name="mapper">Mapper reference.</param>
+            <param name="clubRepository"></param>
+            <param name="mapper"></param>
         </member>
         <member name="M:ClubManagerBackup.Controllers.ClubController.GetClubs">
             <summary>
@@ -873,6 +873,719 @@
             </summary>
             <param name="eventDto">Data transfer object of student event to be added.</param>
             <returns></returns>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.CategoryDto">
+            <summary>
+            Data transfer object of Category.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.CategoryDto.ID">
+            <summary>
+            ID of the category in the database.
+            </summary>
+            <value>ID of the category.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.CategoryDto.CategoryName">
+            <summary>
+            Name of the category in the database.
+            </summary>
+            <value>Name of the category.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.Admin">
+            <summary>
+            Admin object. Admin is a User.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Entities.Admin.#ctor">
+            <summary>
+            Constructor for admin object.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Admin.RequestedEvents">
+            <summary>
+            List of requested event creation from students.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.Category">
+            <summary>
+            Category object.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Category.ID">
+            <summary>
+            ID of the category in the database.
+            </summary>
+            <value>ID of the category.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Category.CategoryName">
+            <summary>
+            Name of the category in the database.
+            </summary>
+            <value>Name of the category.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.Club">
+            <summary>
+            Club object.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Entities.Club.#ctor">
+            <summary>
+            Constructor for club object.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.ID">
+            <summary>
+            ID of the club in the database.
+            </summary>
+            <value>ID of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.Name">
+            <summary>
+            Name of the club in the database.
+            </summary>
+            <value>Name of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.ClubDescription">
+            <summary>
+            Description of the club in the database.
+            </summary>
+            <value>Description of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.StudentsClubMembers">
+            <summary>
+            Members of the club in the database.
+            </summary>
+            <value>Members of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.StudentsClubFollowers">
+            <summary>
+            Followers of the club in the database.
+            </summary>
+            <value>Followers of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.StudentsJoinRequests">
+            <summary>
+            Join requests of the club in the database.
+            </summary>
+            <value>Join requests of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.EventsUpcoming">
+            <summary>
+            Upcoming events of the club in the database.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.EventsOld">
+            <summary>
+            Old events of the club in the database.
+            </summary>
+            <value>Old events of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.ClubPresidentID">
+            <summary>
+            ID of the president of the club in the database.
+            </summary>
+            <value>ID of the club president.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.ImageURL">
+            <summary>
+            Image URL of the club.
+            </summary>
+            <value>Image URL of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.ClubBudget">
+            <summary>
+            Budget of the club in the database.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Club.ClubRoles">
+            <summary>
+            Club roles of the club.
+            </summary>
+            <value>Club roles.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.ClubBoardMember">
+            <summary>
+            Club board member object.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Entities.ClubBoardMember.#ctor">
+            <summary>
+            Constructor for ClubBoardMember.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.ClubBoardMember.RoleOfMember">
+            <summary>
+            Role of the member in the club.
+            </summary>
+            <value>Role of the member.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.ClubBoardMember.CreatedEvents">
+            <summary>
+            Created events of the board member.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.ClubPresident">
+            <summary>
+            Club president object.
+            </summary>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.ClubRole">
+            <summary>
+            Club roles object.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.ClubRole.ID">
+            <summary>
+            ID of the club role.
+            </summary>
+            <value>Id of the club role.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.ClubRole.ClubRoleName">
+            <summary>
+            Name of the club role.
+            </summary>
+            <value>Name of the club role.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.Event">
+            <summary>
+            Event object.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Entities.Event.#ctor">
+            <summary>
+            Constructor for Event.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.ID">
+            <summary>
+            ID of the event in the database.
+            </summary>
+            <value>ID of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.Name">
+            <summary>
+            Name of the event in the database.
+            </summary>
+            <value>Name of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.Description">
+            <summary>
+            Description of the event in the database.
+            </summary>
+            <value>Description of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.ClubID">
+            <summary>
+            ID of the owner club of the event in the database.
+            </summary>
+            <value>ID of the owner club of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.Date">
+            <summary>
+            Date of the event in the database.
+            </summary>
+            <value>Date of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.CategoryID">
+            <summary>
+            ID of the category of the event in the database.
+            </summary>
+            <value>ID of the category of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.PlaceID">
+            <summary>
+            ID of the place of the event in the database.
+            </summary>
+            <value>ID of the place that event takes place.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.Notification">
+            <summary>
+            Notificaton of the event.
+            </summary>
+            <value>Notification of event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.ImageURL">
+            <summary>
+            Image url of event in the databse.
+            </summary>
+            <value>Image url of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.Cost">
+            <summary>
+            Cost of the event in the database.
+            </summary>
+            <value>Cost of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.Capacity">
+            <summary>
+            Capacity of the event in the database.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.Participants">
+            <summary>
+            Participants of the event in the database.
+            </summary>
+            <value>Participans of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.ClubBoardMemberID">
+            <summary>
+            ID of the club board member that created the event.
+            </summary>
+            <value>ID of the club board member that created the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Event.UserID">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.Notification">
+            <summary>
+            Notification object.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Notification.ID">
+            <summary>
+            ID of the notification in the database.
+            </summary>
+            <value>ID of the notification</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Notification.NotificationName">
+            <summary>
+            Name of the notification in the database.
+            </summary>
+            <value>Name of the notification.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Notification.notificationDescription">
+            <summary>
+            Description of the notification in the database.
+            </summary>
+            <value>Description of the notification.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.Place">
+            <summary>
+            Place object.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Place.ID">
+            <summary>
+            ID of the place in the database.
+            </summary>
+            <value>ID of the place.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Place.Building">
+            <summary>
+            Building name of the place in the database.
+            </summary>
+            <value>Building name of the place.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Place.Room">
+            <summary>
+            Room name of the place in the database.
+            </summary>
+            <value>Room name of the place.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.Student">
+            <summary>
+            Student object. Student is a User.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Entities.Student.#ctor">
+            <summary>
+            Constructor for Student.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Student.FollowedClubs">
+            <summary>
+            Followed clubs of student.
+            </summary>
+            <value>Followed clubs of student.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Student.AppliedEvents">
+            <summary>
+            Participated events of the student.
+            </summary>
+            <value>Participated events of the student.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Student.CreatedEvents">
+            <summary>
+            Created student events of student.
+            </summary>
+            <value>Created student events of student.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Student.Friends">
+            <summary>
+            Friends of the student.
+            </summary>
+            <value>Friends of the student.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.Student.Invitations">
+            <summary>
+            Invitations to events of student.
+            </summary>
+            <value>Invitations to events of student.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.StudentEvent">
+            <summary>
+            StudentEvent object. StudentEvent is Event.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.StudentEvent.AdminID">
+            <summary>
+            ID of the Admin that approval is gone.
+            </summary>
+            <value>ID of the Admin that approval is gone.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.StudentEvent.IsApproved">
+            <summary>
+            Approval of the student event.
+            </summary>
+            <value>Approval of the student event.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Entities.User">
+            <summary>
+            User object.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Entities.User.#ctor">
+            <summary>
+            Constructor for User.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.User.ID">
+            <summary>
+            ID of the user in the database.
+            </summary>
+            <value>ID of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.User.Name">
+            <summary>
+            Name of the user in the database.
+            </summary>
+            <value>Name of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.User.Mail">
+            <summary>
+            Mail of the user in the database.
+            </summary>
+            <value>Mail of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.User.PasswordHash">
+            <summary>
+            Hashed ppassword of the user in the database.
+            </summary>
+            <value>Hashed password of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.User.PasswordSalt">
+            <summary>
+            Salted password of the user in the database.
+            </summary>
+            <value>Salted password of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.User.Department">
+            <summary>
+            Department of the user in the database. 
+            </summary>
+            <value>Department of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.User.Discriminator">
+            <summary>
+            Discriminator of the user to show user type.
+            </summary>
+            <value>Discriminator of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Entities.User.Notifications">
+            <summary>
+            Notifications of the user.
+            </summary>
+            <value>Notifications of the user.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Dtos.ClubDto">
+            <summary>
+            Data transfer object of Club.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.ID">
+            <summary>
+            ID of the club in the database.
+            </summary>
+            <value>ID of the Club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.Name">
+            <summary>
+            Name of the club in the database.
+            </summary>
+            <value>Name of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.ClubDescription">
+            <summary>
+            Description of the club in the database.
+            </summary>
+            <value>Description of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.StudentsClubMembers">
+            <summary>
+            Members of the club in the database.
+            </summary>
+            <value>Members of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.ImageURL">
+            <summary>
+            Image URL of the club.
+            </summary>
+            <value>Image URL of the club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.ClubDto.ClubBudget">
+            <summary>
+            Bugdet of the club in the database.
+            </summary>
+            <value>Bugdet of the club.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Dtos.EventDto">
+            <summary>
+            Data transfer object of Event.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.EventDto.ID">
+            <summary>
+            ID of the event in the database.
+            </summary>
+            <value>ID of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.EventDto.Name">
+            <summary>
+            Name of the event in the database.
+            </summary>
+            <value>Name of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.EventDto.Description">
+            <summary>
+            Description of the event in the database.
+            </summary>
+            <value>Description of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.EventDto.PlaceID">
+            <summary>
+            ID of the place that event will be done in the database.
+            </summary>
+            <value>ID of the place that event takes place.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.EventDto.CategoryID">
+            <summary>
+            ID of the category of event in the database.
+            </summary>
+            <value>ID of the event's category.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.EventDto.Cost">
+            <summary>
+            Cost of the event in the database.
+            </summary>
+            <value>Cost of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.EventDto.Capacity">
+            <summary>
+            Capacity of the event in the database.
+            </summary>
+            <value>Capacity of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.EventDto.ClubID">
+            <summary>
+            ID of the owner club of the event in the database.
+            </summary>
+            <value>ID of the event's owner club.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.EventDto.UserId">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.EventDto.ImageURL">
+            <summary>
+            Image URL of the event in the database.
+            </summary>
+            <value>Image URL of the event.</value>
+        </member>
+        <member name="F:ClubManagerBackup.Dtos.EventDto.Discriminator">
+            <summary>
+            Discriminator to differentiate Club and Student events.
+            </summary>
+        </member>
+        <member name="T:ClubManagerBackup.Dtos.LoginDto">
+            <summary>
+            Data transfer object of Login.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.LoginDto.Mail">
+            <summary>
+            Mail of the user.
+            </summary>
+            <value>Mail of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.LoginDto.Password">
+            <summary>
+            Password of the user.
+            </summary>
+            <value>Password f the user.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Dtos.PlaceDto">
+            <summary>
+            Data transfer object of Place.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.PlaceDto.ID">
+            <summary>
+            ID of the place in the database.
+            </summary>
+            <value>ID of the place.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.PlaceDto.Building">
+            <summary>
+            Building name of the place in the database.
+            </summary>
+            <value>Building name of the place.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.PlaceDto.Room">
+            <summary>
+            Room name of the place in the database.
+            </summary>
+            <value>Room name of the place.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Dtos.RegisterDto">
+            <summary>
+            Data transfer object of Register.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.RegisterDto.Name">
+            <summary>
+            Name of the user to be registered.
+            </summary>
+            <value>Name of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.RegisterDto.Password">
+            <summary>
+            Password of the user to be registered.
+            </summary>
+            <value>Password of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.RegisterDto.Mail">
+            <summary>
+            Mail of the user to be registered.
+            </summary>
+            <value>Mail of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.RegisterDto.Department">
+            <summary>
+            Department of the user to be registered.
+            </summary>
+            <value></value>
+        </member>
+        <member name="F:ClubManagerBackup.Dtos.RegisterDto.Discriminator">
+            <summary>
+            Discriminator to discriminate user types.
+            </summary>
+        </member>
+        <member name="T:ClubManagerBackup.Dtos.StudentEventDto">
+            <summary>
+            Data transfer object of Student Event
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.StudentEventDto.ID">
+            <summary>
+            ID of the student event in the database.
+            </summary>
+            <value>ID of the student event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.StudentEventDto.Name">
+            <summary>
+            Name of the student event in the database.
+            </summary>
+            <value>Name of the student event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.StudentEventDto.Description">
+            <summary>
+            Description of the student event in the database.
+            </summary>
+            <value>Description of the student event.s</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.StudentEventDto.Cost">
+            <summary>
+            Cost of the student event in the database.
+            </summary>
+            <value>Cost of the student event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.StudentEventDto.Capacity">
+            <summary>
+            Capacity of the student event in the database.
+            </summary>
+            <value>Capacity of the student event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.StudentEventDto.UserID">
+            <summary>
+            ID of the student event owner.
+            </summary>
+            <value>ID of the owner student.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.StudentEventDto.ImageURL">
+            /// <summary>
+            Image URL of the event in the database.
+            </summary>
+            <value>Image URL of the event.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.StudentEventDto.IsApproved">
+            <summary>
+            Approval of Admin users.
+            </summary>
+            <value>Approval of Admin users.</value>
+        </member>
+        <member name="F:ClubManagerBackup.Dtos.StudentEventDto.Discriminator">
+            <summary>
+            Discriminator to show this is StudentEvent.
+            </summary>
+        </member>
+        <member name="T:ClubManagerBackup.Dtos.UserDto">
+            <summary>
+            Data transfer object of User.
+            </summary>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.UserDto.ID">
+            <summary>
+            ID of the user in the database.
+            </summary>
+            <value>ID of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.UserDto.Name">
+            <summary>
+            Name of the user in the database.
+            </summary>
+            <value>Name of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.UserDto.Mail">
+            <summary>
+            Mail of the user in the database.
+            </summary>
+            <value>Mail of the user.</value>
+        </member>
+        <member name="P:ClubManagerBackup.Dtos.UserDto.Department">
+            <summary>
+            Department of the user in the database.
+            </summary>
+            <value>Department of the user.</value>
+        </member>
+        <member name="T:ClubManagerBackup.Helpers.AutoMapperProfiles">
+            <summary>
+            Maps similar classes automatically.
+            </summary>
+        </member>
+        <member name="M:ClubManagerBackup.Helpers.AutoMapperProfiles.#ctor">
+            <summary>
+            Constructor of AutoMapperProfile.
+            </summary>
         </member>
     </members>
 </doc>

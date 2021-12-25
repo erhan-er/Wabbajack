@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Entities
 {
-    public class ClubPresident : ClubBoardMember
-    {
-    }
+   /// <summary>
+   /// Club president object.
+   /// </summary>
+   public class ClubPresident : ClubBoardMember
+   {
+   }
 }

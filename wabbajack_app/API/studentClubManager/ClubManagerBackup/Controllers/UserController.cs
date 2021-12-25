@@ -56,6 +56,7 @@ namespace ClubManagerBackup.Controllers
       /// </summary>
       /// <param name="ID">ID of event to be searched.</param>
       /// <returns></returns>
+      [HttpGet("{id}")]
       public IActionResult GetUserByID(int ID)
       {
          var user = userRepository.GetUserByID(ID);
@@ -87,6 +88,7 @@ namespace ClubManagerBackup.Controllers
             Capacity = eventDto.Capacity,
             UserID = eventDto.UserID,
             Name = eventDto.Name,
+            ImageURL = eventDto.ImageURL,
             Description = eventDto.Description,
             IsApproved = eventDto.IsApproved,
             AdminID = 12, // to be changed
