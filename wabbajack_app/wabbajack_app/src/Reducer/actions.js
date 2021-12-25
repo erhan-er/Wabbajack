@@ -15,7 +15,6 @@ export const JOIN_EVENT = "JOIN_EVENT";
 export const CREATE_EVENT = "CREATE_EVENT";
 export const WITHDRAW_EVENT = "WITHDRAW_EVENT";
 export const INVITE_FRIEND = "INVITE_FRIEND";
-export const CHANGE_EMAIL = "CHANGE_EMAIL";
 export const CHANGE_PASSWORD = "CHANGE_PASSWORD";
 export const ADD_CATEGORY = "ADD_CATEGORY";
 export const FILTER_EVENTS = "FILTER_EVENTS";

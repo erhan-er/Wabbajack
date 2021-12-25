@@ -46,7 +46,6 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [places, setPlaces] = useState([]);
   const [buildings, setBuildings] = useState([]);
-  const [companies, setCompanies] = useState([]);
 
   const dataStore = {
     myInfo: myInfo,
@@ -58,7 +57,6 @@ function App() {
     buildings: buildings,
     filteredEvents: events,
     filteredClubs: clubs,
-    companies: companies,
   };
 
   const store = createStore(rootReducer, dataStore);
@@ -178,16 +176,6 @@ function App() {
     });
   }
 
-  function getCompanies() {
-    axios.get("https://getirserver.herokuapp.com/api/companies").then((res) => {
-      setCompanies(new Array(res.data.length).fill(0));
-      const companyArr = res.data.map((company, index) => {
-        return company
-      });
-      setCompanies(companyArr);
-    });
-  }
-
   useEffect(() => {
     fetchClubs();
     fetchUsers();
@@ -195,14 +183,13 @@ function App() {
     fetchUserInfo();
     fetchCategories();
     fetchPlaces();
-    getCompanies();
     console.log(clubs);
     console.log(students);
     console.log(events);
     console.log(myInfo);
     console.log(categories);
     console.log(places);
-    console.log(companies);
+    console.log(buildings);
   }, [signin === true]);
 
   return (
