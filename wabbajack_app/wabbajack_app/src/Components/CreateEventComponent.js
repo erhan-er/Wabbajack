@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 const style = makeStyles({
    root: {
-      width: "90%", 
+      width: "90%",
       marginTop: "25px",
    },
 
@@ -78,7 +78,7 @@ const style = makeStyles({
       flexDirection: "row",
       justifyContent: "space-between",
       marginTop: "20px",
-      
+
    },
 
    body_bottom_left_bottom_right: {
@@ -175,47 +175,47 @@ function CreateEventComponent() {
    }
 
    useEffect(() => {
-      console.log(buildings);   
+      console.log(buildings);
    }, [buildings, place, category])
 
-   return(
-      <Box className = {classes.root}>
-         <Box className = {classes.body}>
-            <Box className = {classes.body_top}>
-               <Box className = {classes.body_top_left}>
-                  <input type="text" id="Name" placeholder="Name of The Event" className = {classes.name}/>
-                  <textarea name="Description" id="Description" cols="30" rows="10" className = {classes.description} placeholder="Description"/>
-                  <FormControl className = {classes.building}>
+   return (
+      <Box className={classes.root}>
+         <Box className={classes.body}>
+            <Box className={classes.body_top}>
+               <Box className={classes.body_top_left}>
+                  <input type="text" id="Name" placeholder="Name of The Event" className={classes.name} />
+                  <textarea name="Description" id="Description" cols="30" rows="10" className={classes.description} placeholder="Description" />
+                  <FormControl className={classes.building}>
                      <InputLabel>Building</InputLabel>
                      <Select
-                        id = "Building"
-                        value = {buildings}
-                        label= "Building"
-                        onChange = {handleBuilding}
+                        id="Building"
+                        value={buildings}
+                        label="Building"
+                        onChange={handleBuilding}
                      >
                         <MenuItem value="A">A Building</MenuItem>
                         <MenuItem value="B">B Building</MenuItem>
                         <MenuItem value="EA">EA Building</MenuItem>
                         <MenuItem value="EE">EE Building</MenuItem>
                         <MenuItem value="H">H Building</MenuItem>
-                        <MenuItem value="V">V Building</MenuItem>
+                        <MenuItem value="EB">EB Building</MenuItem>
                      </Select>
                   </FormControl>
-               </Box>   
-               <Box className = {classes.body_top_right}>
+               </Box>
+               <Box className={classes.body_top_right}>
 
                </Box>
             </Box>
-            <Box className = {classes.body_bottom}>
-               <Box className = {classes.body_bottom_left}>
-                  <Box className = {classes.body_bottom_left_top}>
-                     <FormControl className = {classes.building}>
+            <Box className={classes.body_bottom}>
+               <Box className={classes.body_bottom_left}>
+                  <Box className={classes.body_bottom_left_top}>
+                     <FormControl className={classes.building}>
                         <InputLabel>Class</InputLabel>
                         <Select
-                           id = "Place"
-                           value = {places}
-                           label= "Classes"
-                           onChange = {handleClass}
+                           id="Place"
+                           value={places}
+                           label="Classes"
+                           onChange={handleClass}
                         >
                            <MenuItem value="Z01">Z01</MenuItem>
                            <MenuItem value="Z02">Z02</MenuItem>
@@ -226,39 +226,45 @@ function CreateEventComponent() {
                         </Select>
                      </FormControl>
                   </Box>
-                  <Box className = {classes.body_bottom_left_bottom}>
-                     <Box className = {classes.body_bottom_left_bottom_left}>
-                        <Box className = {classes.category}>
-                           <FormControl className = {classes.building}>
+                  <Box className={classes.body_bottom_left_bottom}>
+                     <Box className={classes.body_bottom_left_bottom_left}>
+                        <Box className={classes.category}>
+                           <FormControl className={classes.building}>
                               <InputLabel>Category</InputLabel>
                               <Select
-                                 id = "Category"
-                                 value = {categories}
-                                 label= "Category"
-                                 onChange = {handleCategory}
+                                 id="Category"
+                                 value={categories}
+                                 label="Category"
+                                 onChange={handleCategory}
                               >
-                                 <MenuItem value="Sports">Z01</MenuItem>
-                                 <MenuItem value="Music">Z02</MenuItem>
+                                 <MenuItem value="Sports">Sports</MenuItem>
+                                 <MenuItem value="Music">Music</MenuItem>
+                                 <MenuItem value="Movie">Movie</MenuItem>
+                                 <MenuItem value="Video Games">Video Games</MenuItem>
+                                 <MenuItem value="Tabletop Games">Tabletop Games</MenuItem>
+                                 <MenuItem value="Literature">Literature</MenuItem>
+                                 <MenuItem value="Engineering">Engineering</MenuItem>
+                                 <MenuItem value="Programming">Programming</MenuItem>
                               </Select>
                            </FormControl>
                         </Box>
-                        <input type="date" id="Date" placeholder="Date" className = {classes.date}/>
-                        <input type="time" name="Time" id="Time" className = {classes.time}/>
+                        <input type="date" id="Date" placeholder="Date" className={classes.date} />
+                        <input type="time" name="Time" id="Time" className={classes.time} />
                      </Box>
-                     <Box className = {classes.body_bottom_left_bottom_right}>
-                        <textarea name="Budget" id="Budget" cols="30" rows="15" placeholder = "Budget Description" className = {classes.budget} />
+                     <Box className={classes.body_bottom_left_bottom_right}>
+                        <textarea name="Budget" id="Budget" cols="30" rows="15" placeholder="Budget Description" className={classes.budget} />
                      </Box>
                   </Box>
                </Box>
-               <Box className = {classes.body_bottom_right}>
-                  <Box className = {classes.space}>
-                     <Box className = {classes.space_description}>Number of Seats: If the number of seats is determined as 0, there will be no limits to seats.</Box>
-                     <input type="number" name="space" id="space" className = {classes.number}/>
+               <Box className={classes.body_bottom_right}>
+                  <Box className={classes.space}>
+                     <Box className={classes.space_description}>Number of Seats: If the number of seats is determined as 0, there will be no limits to seats.</Box>
+                     <input type="number" name="space" id="space" className={classes.number} />
                   </Box>
-                  <Box className = {classes.img}>
-                     <Box className = {classes.space_description}>Upload Image: If the image is not uploaded, the club's logo will be shown to students.</Box>
-                     <input type="url" name="image" id="image" className = {classes.number}/>
-                     <Button variant = "contained" color = "primary" sx= {{marginTop: "50px"}}>Create Event</Button>
+                  <Box className={classes.img}>
+                     <Box className={classes.space_description}>Upload Image: If the image is not uploaded, the club's logo will be shown to students.</Box>
+                     <input type="url" name="image" id="image" className={classes.number} />
+                     <Button variant="contained" color="primary" sx={{ marginTop: "50px" }}>Create Event</Button>
                   </Box>
                </Box>
             </Box>
