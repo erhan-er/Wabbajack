@@ -1,5 +1,6 @@
 export const ADD_USER = "ADD_USER";
 export const ADD_CLUB = "ADD_CLUB";
+export const EDIT_CLUB = "EDIT_CLUB";
 export const DELETE_USER = "DELETE_USER";
 export const DELETE_CLUB = "DELETE_CLUB";
 export const ADD_FRIEND = "ADD_FRIEND";
