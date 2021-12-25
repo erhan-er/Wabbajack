@@ -59,5 +59,6 @@ namespace ClubManagerBackup.Context
       /// </summary>
       /// <param name="userToDelete">User to be deleted.</param>
       Task DeleteUser(User userToDelete);
+        Task<User> ChangePassword(string userMail, string password);
    }
 }

@@ -1,4 +1,5 @@
 ﻿using ClubManagerBackup.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -94,5 +95,25 @@ namespace ClubManagerBackup.Context
          context.Users.Remove(userToDelete);
          await context.SaveChangesAsync();
       }
-   }
+
+        public async Task<User> ChangePassword(string userMail, string password)
+        {
+            var user = await context.Users.FirstOrDefaultAsync(x => x.Mail == userMail);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            byte[] passwordHash, passwordSalt;
+            AuthRepository.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            context.Users.Update(user);
+            await context.SaveChangesAsync();
+            return user;
+        }
+    }
 }
