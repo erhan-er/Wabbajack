@@ -49,9 +49,10 @@ function SeeAllEvents({ events, companies}) {
          <AppBar PageName={"All Events"} />
          <Box className={classes.activity_box}>
             {events.map((item, index) => {
+               console.log(item);
                if ( index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
                   return (
-                     <Accordion PageName = {"See All Events"} {...item} />
+                     <Accordion {...item} PageName = {"See All Events"}/>
                   );
                }
             })}
