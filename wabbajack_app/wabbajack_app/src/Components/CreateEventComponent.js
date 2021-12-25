@@ -208,6 +208,7 @@ function CreateEventComponent({ buildings, places, categories, dispatch}) {
                      >
                         {
                            buildings.map((building, index) => {
+                              console.log(building);
                               return(
                                  <MenuItem value={building} key = {index}>{building}</MenuItem>
                               );

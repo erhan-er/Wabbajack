@@ -1,6 +1,8 @@
 import { Box, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import * as React from "react";
+import { connect } from "react-redux";
+import { CHANGE_PASSWORD } from "../Reducer/actions";
 
 const style = makeStyles({
    root: {
@@ -50,20 +52,13 @@ const style = makeStyles({
    },
 });
 
-function EmailPasswordChange({Type}) {
+function EmailPasswordChange({dispatch}) {
    const classes = style();
 
    var text;
 
-   if ( Type === "email")
-      text = "Email"
-   else
-      text = "Password"
-
    function handleClick() {
-      console.log(Type);
-      console.log(document.getElementById(Type).value);
-      console.log(document.getElementById(text).value);
+      dispatch({type: CHANGE_PASSWORD, payload: {newPassword: document.getElementById("newPassword").value, currentPassword: document.getElementById("confirmPassword").value, email: document.getElementById("email").value}});
    }
 
    return (
@@ -72,12 +67,16 @@ function EmailPasswordChange({Type}) {
             <Box className = {classes.text}>{text} Change</Box>
          </Box>
          <Box className = {classes.body}>
-            <input type = {Type} placeholder = {text} id = {Type} className = {classes.input}/>
-            <input type = "password" placeholder = "Current Password" id = {text} className = {classes.input}/>
+            <input type = "email" placeholder = "Current Email" id = "email" className = {classes.input}/>
+            <input type = "password" placeholder = "New Password" id = "newPassword" className = {classes.input}/>
+            <input type = "password" placeholder = "Confirm Password" id = "confirmPassword" className = {classes.input}/>
             <Button variant = "contained" color = "info" className = {classes.button} onClick = {() => handleClick()}>Change {text}</Button>
          </Box>
       </Box>
    );
 }
 
-export default EmailPasswordChange
+const mapStateToProps = state => {
+   return { myInfo: state.myInfo }
+}
+export default connect(mapStateToProps)(EmailPasswordChange)

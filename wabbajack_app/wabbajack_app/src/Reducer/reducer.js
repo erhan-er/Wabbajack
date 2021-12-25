@@ -4,9 +4,8 @@ import {
    ADD_USER, ADD_CLUB, DELETE_USER, DELETE_CLUB,
    ADD_FRIEND, REMOVE_FRIEND, JOIN_CLUB, WITHDRAW_CLUB,
    FOLLOW_CLUB, UNFOLLOW_CLUB, IGNORE_CLUB, UNIGNORE_CLUB,
-   JOIN_EVENT, WITHDRAW_EVENT, INVITE_FRIEND, CHANGE_EMAIL,
-   CHANGE_PASSWORD, ADD_CATEGORY, FILTER_EVENTS, EDIT_CLUB, 
-   CREATE_EVENT
+   JOIN_EVENT, WITHDRAW_EVENT, INVITE_FRIEND, CHANGE_PASSWORD, 
+   ADD_CATEGORY, FILTER_EVENTS, EDIT_CLUB, CREATE_EVENT
 } from "./actions";
 
 function reducer(state, action) {
@@ -165,10 +164,9 @@ function reducer(state, action) {
    if (action.type === INVITE_FRIEND) {
       return state;
    }
-   if (action.type === CHANGE_EMAIL) {
-      return state;
-   }
    if (action.type === CHANGE_PASSWORD) {
+      console.log(action.payload);
+      console.log(state.myInfo);
       return state;
    }
    if (action.type === ADD_CATEGORY) {

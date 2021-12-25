@@ -34,8 +34,7 @@ function Settings () {
          <Box className = {classes.body}>
 
             <Box>
-               <EmailPasswordChange Type = {"email"}/>
-               <EmailPasswordChange Type = {"password"} />
+               <EmailPasswordChange />
             </Box>
             <Box><ChipBox Type = {"Ignore"}/></Box>
             <Box className = {classes.chip_box}><ChipBox Type = {"Follow"}/></Box>
