@@ -624,6 +624,13 @@
             <param name="ID">ID of the searched user.</param>
             <returns>Returns the with given ID.</returns>
         </member>
+        <member name="M:ClubManagerBackup.Context.UserRepository.GetUserByMail(System.String)">
+            <summary>
+            Finds a user from the database with given ID.
+            </summary>
+            <param name="ID">ID of the searched user.</param>
+            <returns>Returns the with given ID.</returns>
+        </member>
         <member name="M:ClubManagerBackup.Context.UserRepository.GetUsers">
             <summary>
             Gets all users in the database.
@@ -860,11 +867,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ClubManagerBackup.Controllers.UserController.GetUserByID(System.Int32)">
+        <member name="M:ClubManagerBackup.Controllers.UserController.GetUserByMail(System.String)">
             <summary>
             Gets event with given ID.
             </summary>
-            <param name="ID">ID of event to be searched.</param>
+            <param name="">ID of event to be searched.</param>
             <returns></returns>
         </member>
         <member name="M:ClubManagerBackup.Controllers.UserController.AddEvent(ClubManagerBackup.Dtos.StudentEventDto)">
