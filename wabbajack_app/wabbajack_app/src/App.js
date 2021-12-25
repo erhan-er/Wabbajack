@@ -44,23 +44,17 @@ function App() {
 
   var email = "";
   var password = "";
-  var loginSuccessfull = false;
   const [signin, setSignin] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   function setEmailPassword(newEmail, newPassword) {
     email = newEmail;
     password = newPassword;
-    loginSuccessfull = true;
-    console.log(loginSuccessfull);
   }
   
   async function handleLoginRequest() {
     setSubmitted(true)
-    console.log(email)
-    console.log(password)
-    console.log(loginSuccessfull);
-    /*
+    
     axios.post('http://localhost:5000/api/auth/login', {
 
       "mail": email,
@@ -70,16 +64,17 @@ function App() {
       .then(function (response) {
         if (response.status === 200) {
           setSubmitted(false)
-          loginSuccessfull = true;
+          setSignin(true);
         } else {
           console.log("Something went wrong")
+          setSignin(false);
         }
 
       })
       .catch(function (error) {
         console.log(error)
         setSubmitted(false)
-      })*/
+      })
   } 
   
   return (
