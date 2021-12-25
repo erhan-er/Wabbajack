@@ -51,6 +51,7 @@ namespace ClubManagerBackup.Controllers
          return Ok(usersToReturn);
       }
 
+
       /// <summary>
       /// Gets event with given ID.
       /// </summary>
@@ -64,6 +65,18 @@ namespace ClubManagerBackup.Controllers
          return Ok(userToReturn);
       }
 
+      /// <summary>
+      /// Gets event with given ID.
+      /// </summary>
+      /// <param name="">ID of event to be searched.</param>
+      /// <returns></returns>
+      [HttpGet("{mail}")]
+      public IActionResult GetUserByMail(string mail)
+      {
+         var user = userRepository.GetUserByMail(mail);
+         var userToReturn = mapper.Map<UserDto>(user);
+         return Ok(userToReturn);
+      }
       /// <summary>
       /// Adds student event to the user.
       /// </summary>

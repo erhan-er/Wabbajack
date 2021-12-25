@@ -55,6 +55,17 @@ namespace ClubManagerBackup.Context
       }
 
       /// <summary>
+      /// Finds a user from the database with given ID.
+      /// </summary>
+      /// <param name="ID">ID of the searched user.</param>
+      /// <returns>Returns the with given ID.</returns>
+      public User GetUserByMail(string mail)
+      {
+         var user = context.Users.FirstOrDefault(c => c.Mail == mail);
+         return user;
+      }
+
+      /// <summary>
       /// Gets all users in the database.
       /// </summary>
       /// <returns>Returns list of all users.</returns>
