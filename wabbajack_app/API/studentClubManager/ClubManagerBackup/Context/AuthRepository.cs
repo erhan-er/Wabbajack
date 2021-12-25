@@ -55,7 +55,7 @@ namespace ClubManagerBackup.Context
       /// <param name="passwordHash">Hashed password of user in the database.</param>
       /// <param name="passwordSalt">Salted password of user in the database.</param>
       /// <returns>Returns true if entered password matches the user's password in the database, else returns false.</returns>
-      private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+      public static bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
       {
          using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
          {
