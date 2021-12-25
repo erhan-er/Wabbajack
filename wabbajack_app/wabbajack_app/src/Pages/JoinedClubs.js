@@ -42,7 +42,7 @@ function JoinedClubs ({ clubs }) {
       <Box className={classes.root}>
          <AppBar PageName={"Joined Clubs"} />
          <Box className={classes.club_box}>
-            {clubs.map((item, index) => {
+            {/*clubs.map((item, index) => {
                for ( let i = 0; i < item.studentsClubMembers.length; i++ ) {
                   if ( myInfo.id === )
                } 
@@ -51,7 +51,7 @@ function JoinedClubs ({ clubs }) {
                      <Accordion {...item} key = {index}/>
                   );
                }
-            })}
+            })*/}
             <Box className={classes.pagination}>
                <Pagination
                   count={10}
