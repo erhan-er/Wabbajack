@@ -85,5 +85,14 @@ namespace ClubManagerBackup.Context
       {
          return context.SaveChanges() > 0;
       }
+      /// <summary>
+      /// Deletes user from the database.
+      /// </summary>
+      /// <param name="userToDelete">User to be deleted.</param>
+      public async Task DeleteUser(User userToDelete)
+      {
+         context.Users.Remove(userToDelete);
+         await context.SaveChangesAsync();
+      }
    }
 }

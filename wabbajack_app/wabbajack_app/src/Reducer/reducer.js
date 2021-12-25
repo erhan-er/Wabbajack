@@ -93,7 +93,6 @@ function reducer(state, action) {
          })
       return state;
    }
-
    if (action.type === DELETE_USER) {
       axios.post('http://localhost:5000/api/users/delete', {
 
