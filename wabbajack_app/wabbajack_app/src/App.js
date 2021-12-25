@@ -125,14 +125,22 @@ function App() {
     });
   }
 
+  function fetchUserInfo() {
+    axios.get("http://localhost:5000/api/" + email).then((res) => {
+      setMyInfo(res.data);
+    });
+  }
+
   useEffect(() => {
     console.log( "ne oldu");
     fetchClubs();
-    fetchUsers()
-    fetchEvents()
+    fetchUsers();
+    fetchEvents();
+    fetchUserInfo();
     console.log(clubs);
     console.log(students);
     console.log(events);
+    console.log(myInfo);
   },[signin === true]);
 
   return (

@@ -83,4 +83,4 @@ function SeeAllEvents() {
    );
 }
 
-export default SeeAllEvents
+export default connect()(SeeAllEvents)
