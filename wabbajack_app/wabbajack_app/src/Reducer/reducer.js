@@ -30,7 +30,7 @@ function reducer(state, action) {
          .catch(function (error) {
             console.log(error)
          })
-      
+
       // Payload contains: name, id, email, img
       // You can reach them by writing action.payload.name for example.
       console.log(action.payload); // You can also see the payloads in console
@@ -38,12 +38,19 @@ function reducer(state, action) {
    }
    if (action.type === ADD_CLUB) {
       console.log(action.payload);
-       axios.post('http://localhost:5000/api/clubs/add', {
+      axios.post('http://localhost:5000/api/clubs/add', {
          "name": action.payload.name,
          "description": action.payload.description,
          "bugdet": 0,
          "ImageURL": action.payload.img,
-         "ClubPresidentID": action.payload.id
+         "ClubPresidentID": action.payload.id,
+         "Whatsapplink": action.payload.whatsapp,
+         "Telegramlink": action.payload.Telegram,
+         "Facebooklink": action.payload.Facebook,
+         "Ingstagramlink": action.payload.Ingstagram,
+         "Twitterlink": action.payload.Twitter,
+         "Linkedinlink": action.payload.Linkedin
+
       })
          .then(function (response) {
             if (response.status === 201) {
