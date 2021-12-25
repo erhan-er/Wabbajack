@@ -69,6 +69,6 @@ function SeeAllEvents({ filteredEvents }) {
    );
 }
 const mapStateToProps = state => {
-   return { events: state.filteredEvents }
+   return { filteredEvents: state.filteredEvents }
 }
 export default connect(mapStateToProps)(SeeAllEvents)
