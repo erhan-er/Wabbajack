@@ -70,7 +70,6 @@ function LoginBox({ setEmailPassword, setSignin, handleLoginRequest }) {
       console.log(document.getElementById("Email").value);
       console.log(document.getElementById("Password").value);
       setEmailPassword(document.getElementById("Email").value, document.getElementById("Password").value);
-      setSignin(true);
       handleLoginRequest();
    }
 
