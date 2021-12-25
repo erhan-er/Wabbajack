@@ -30,7 +30,7 @@ const style = makeStyles({
    },
 });
 
-function SeeAllEvents({ events }) {
+function SeeAllEvents({ events, companies}) {
    const classes = style();
    const [pageSize, setPageSize] = useState(10);
    const [page, setPage] = React.useState(1);
@@ -39,7 +39,11 @@ function SeeAllEvents({ events }) {
       setPage(value);
    };
 
-
+   companies.map((company, index) => {
+      console.log(company.account);
+   });
+   console.log(events);
+   console.log(companies);
    return (
       <Box className={classes.root}>
          <AppBar PageName={"All Events"} />
@@ -50,9 +54,6 @@ function SeeAllEvents({ events }) {
                      <Accordion PageName = {"See All Events"} {...item} />
                   );
                }
-               return (
-                  <Accordion {...item} />
-               );
             })}
             <Box className = {classes.pagination}>
                <Pagination 
@@ -72,6 +73,6 @@ function SeeAllEvents({ events }) {
    );
 }
 const mapStateToProps = state => {
-   return { events: state.events }
+   return { events: state.events, companies: state.companies }
 }
 export default connect(mapStateToProps)(SeeAllEvents)

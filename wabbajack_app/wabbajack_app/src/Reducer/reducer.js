@@ -5,7 +5,8 @@ import {
    ADD_FRIEND, REMOVE_FRIEND, JOIN_CLUB, WITHDRAW_CLUB,
    FOLLOW_CLUB, UNFOLLOW_CLUB, IGNORE_CLUB, UNIGNORE_CLUB,
    JOIN_EVENT, WITHDRAW_EVENT, INVITE_FRIEND, CHANGE_EMAIL,
-   CHANGE_PASSWORD, ADD_CATEGORY, FILTER_EVENTS, EDIT_CLUB
+   CHANGE_PASSWORD, ADD_CATEGORY, FILTER_EVENTS, EDIT_CLUB, 
+   CREATE_EVENT
 } from "./actions";
 
 function reducer(state, action) {
@@ -129,28 +130,28 @@ function reducer(state, action) {
          })
       return state;
    }
-   if (action === ADD_FRIEND) {
+   if (action.type === ADD_FRIEND) {
       return state;
    }
-   if (action === REMOVE_FRIEND) {
+   if (action.type === REMOVE_FRIEND) {
       return state;
    }
-   if (action === JOIN_CLUB) {
+   if (action.type === JOIN_CLUB) {
       return state;
    }
-   if (action === WITHDRAW_CLUB) {
+   if (action.type === WITHDRAW_CLUB) {
       return state;
    }
-   if (action === FOLLOW_CLUB) {
+   if (action.type === FOLLOW_CLUB) {
       return state;
    }
-   if (action === UNFOLLOW_CLUB) {
+   if (action.type === UNFOLLOW_CLUB) {
       return state;
    }
-   if (action === IGNORE_CLUB) {
+   if (action.type === IGNORE_CLUB) {
       return state;
    }
-   if (action === UNIGNORE_CLUB) {
+   if (action.type === UNIGNORE_CLUB) {
       return state;
    }
    if (action.type === JOIN_EVENT) {
@@ -158,39 +159,27 @@ function reducer(state, action) {
       
       return state;
    }
-   if (action === WITHDRAW_EVENT) {
+   if (action.type === WITHDRAW_EVENT) {
       return state;
    }
-   if (action === INVITE_FRIEND) {
+   if (action.type === INVITE_FRIEND) {
       return state;
    }
-   if (action === CHANGE_EMAIL) {
+   if (action.type === CHANGE_EMAIL) {
       return state;
    }
-   if (action === CHANGE_PASSWORD) {
+   if (action.type === CHANGE_PASSWORD) {
       return state;
    }
    if (action.type === ADD_CATEGORY) {
-      axios.post('http://localhost:5000/api/categories/add', {
-
-         "CategoryName": action.payload.CategoryName
-      })
-         .then(function (response) {
-            if (response.status === 201) {
-               console.log("Category added!")
-            } else {
-               console.log("Something went wrong")
-            }
-
-         })
-         .catch(function (error) {
-            console.log(error)
-         })
       return state;
    }
-   if (action === FILTER_EVENTS) {
+   if (action.type === FILTER_EVENTS) {
       return state;
    }
+   if (action.type === CREATE_EVENT) {
+      return state;
+   } 
    return state;
 }
 

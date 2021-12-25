@@ -13,6 +13,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import { connect } from "react-redux";
 
 const style = makeStyles({
    root: {
@@ -98,10 +99,6 @@ function ClubPage() {
    const classes = style();
    const location = useLocation();
 
-   var activity1 = { activityName: "Activity 1", place: "B Building", date: "20/11/2021", time: "18:00", expense: "5000" };
-   var activity2 = { activityName: "Activity 2", place: "A Building", date: "30/11/2021", time: "20:00" };
-   var activity3 = { activityName: "Activity 3", place: "EA Building", date: "31/12/2021", time: "22:00" };
-
    return (
       <Box className={classes.root}>
          <AppBar PageName={"Club's Page"} />
@@ -137,9 +134,7 @@ function ClubPage() {
                   </Box>
                </Box>
                <Box>
-                  <ActivityAccordion {...activity1} />
-                  <ActivityAccordion {...activity2} />
-                  <ActivityAccordion {...activity3} />
+                  
                </Box>   
             </Box>
             <Box className = {classes.old_events}>
@@ -152,9 +147,9 @@ function ClubPage() {
                   </Box>
                </Box>
                <Box>
-                  <ActivityAccordion {...activity1} />
+                  {/*<ActivityAccordion {...activity1} />
                   <ActivityAccordion {...activity2} />
-                  <ActivityAccordion {...activity3} />
+   <ActivityAccordion {...activity3} />*/}
                </Box>
                
             </Box>
@@ -164,4 +159,4 @@ function ClubPage() {
    );
 }
 
-export default ClubPage
+export default connect()(ClubPage)
