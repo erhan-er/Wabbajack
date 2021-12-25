@@ -32,6 +32,6 @@ function AddClubs () {
 }
 
 const mapStateToProps = state => {
-   console.log(state);
+   return { state }
 };
 export default connect(mapStateToProps)(AddClubs);

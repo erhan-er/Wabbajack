@@ -9,6 +9,8 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import { connect } from "react-redux";
+import { EDIT_CLUB } from "../Reducer/actions";
 
 const style = makeStyles({
    root: {
@@ -150,7 +152,7 @@ const style = makeStyles({
 
 });
 
-function EditClub ({ClubName = "Club Name", Description = "Description", Links, PageName}) {
+function EditClub ({ClubName = "Club Name", Description = "Description", Links, PageName, dispatch}) {
 
    const classes = style();
    function preview( url ) {
@@ -241,9 +243,22 @@ function EditClub ({ClubName = "Club Name", Description = "Description", Links, 
                </Box>
             </Box>
          </Box>
-         <Button variant = "contained" color = "success" sx = {{marginTop: "2vw", marginBottom: "5vw", width: "100%", height: "42px",}}>{PageName === "Edit Club"? "Edit Club" : "Add Club"}</Button>
+         <Button 
+            variant = "contained" 
+            color = "success" 
+            sx = {{marginTop: "2vw", marginBottom: "5vw", width: "100%", height: "42px",}}
+            onClick = {() => dispatch({type: EDIT_CLUB, payload: {name: document.getElementById("ClubName").value, 
+                                                                  description: document.getElementById("Description").value,
+                                                                  img: document.getElementById("imageURL").value}})}
+         >
+            {PageName === "Edit Club"? "Edit Club" : "Add Club"}
+         </Button>
       </Box>     
    );
 }
 
-export default EditClub
+const mapStateToProps = state => {
+   return { state }
+}
+
+export default connect(mapStateToProps)(EditClub)
