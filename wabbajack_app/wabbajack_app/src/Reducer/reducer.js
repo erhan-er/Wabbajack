@@ -38,12 +38,9 @@ function reducer(state, action) {
    if (action.type === ADD_CLUB) {
       console.log(action.payload);
       axios.post('http://localhost:5000/api/clubs/add', {
-
          "name": action.payload.name,
          "description": action.payload.description,
          "bugdet": 0,
-         "ImageURL": action.payload.img,
-         "ClubPresidentID": action.payload.id,
          "ImageURL": action.payload.img,
          "ClubPresidentID": action.payload.id,
          "Whatsapplink": action.payload.whatsapp,

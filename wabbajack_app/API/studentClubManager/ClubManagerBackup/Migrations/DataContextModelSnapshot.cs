@@ -47,8 +47,20 @@ namespace ClubManagerBackup.Migrations
                     b.Property<string>("ClubDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ClubPresidentID")
+                    b.Property<int>("ClubPresidentID")
                         .HasColumnType("int");
+
+                    b.Property<string>("FacebookLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstagramLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkedinLink")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -56,9 +68,16 @@ namespace ClubManagerBackup.Migrations
                     b.Property<int?>("StudentID")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.Property<string>("TelegramLink")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("ClubPresidentID");
+                    b.Property<string>("TwitterLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WhatsappLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
 
                     b.HasIndex("StudentID");
 
@@ -95,13 +114,16 @@ namespace ClubManagerBackup.Migrations
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CategoryID")
+                    b.Property<int>("CategoryID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClubBoardMemberID")
+                    b.Property<int>("ClubBoardMemberID")
                         .HasColumnType("int");
 
                     b.Property<int>("ClubID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Cost")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -114,9 +136,6 @@ namespace ClubManagerBackup.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EventCost")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
 
@@ -126,7 +145,7 @@ namespace ClubManagerBackup.Migrations
                     b.Property<int?>("NotificationID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PlaceID")
+                    b.Property<int>("PlaceID")
                         .HasColumnType("int");
 
                     b.Property<int?>("StudentID")
@@ -137,15 +156,11 @@ namespace ClubManagerBackup.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("CategoryID");
-
                     b.HasIndex("ClubBoardMemberID");
 
                     b.HasIndex("ClubID");
 
                     b.HasIndex("NotificationID");
-
-                    b.HasIndex("PlaceID");
 
                     b.HasIndex("StudentID");
 
@@ -284,9 +299,6 @@ namespace ClubManagerBackup.Migrations
                 {
                     b.HasBaseType("ClubManagerBackup.Entities.User");
 
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("StudentID")
                         .HasColumnType("int");
 
@@ -304,15 +316,9 @@ namespace ClubManagerBackup.Migrations
 
             modelBuilder.Entity("ClubManagerBackup.Entities.Club", b =>
                 {
-                    b.HasOne("ClubManagerBackup.Entities.ClubPresident", "ClubPresident")
-                        .WithMany()
-                        .HasForeignKey("ClubPresidentID");
-
                     b.HasOne("ClubManagerBackup.Entities.Student", null)
                         .WithMany("FollowedClubs")
                         .HasForeignKey("StudentID");
-
-                    b.Navigation("ClubPresident");
                 });
 
             modelBuilder.Entity("ClubManagerBackup.Entities.ClubRole", b =>
@@ -324,15 +330,13 @@ namespace ClubManagerBackup.Migrations
 
             modelBuilder.Entity("ClubManagerBackup.Entities.Event", b =>
                 {
-                    b.HasOne("ClubManagerBackup.Entities.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryID");
-
-                    b.HasOne("ClubManagerBackup.Entities.ClubBoardMember", "ClubBoardMember")
+                    b.HasOne("ClubManagerBackup.Entities.ClubBoardMember", null)
                         .WithMany("CreatedEvents")
-                        .HasForeignKey("ClubBoardMemberID");
+                        .HasForeignKey("ClubBoardMemberID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("ClubManagerBackup.Entities.Club", "Club")
+                    b.HasOne("ClubManagerBackup.Entities.Club", null)
                         .WithMany("EventsOld")
                         .HasForeignKey("ClubID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -342,23 +346,11 @@ namespace ClubManagerBackup.Migrations
                         .WithMany()
                         .HasForeignKey("NotificationID");
 
-                    b.HasOne("ClubManagerBackup.Entities.Place", "Place")
-                        .WithMany()
-                        .HasForeignKey("PlaceID");
-
                     b.HasOne("ClubManagerBackup.Entities.Student", null)
                         .WithMany("AppliedEvents")
                         .HasForeignKey("StudentID");
 
-                    b.Navigation("Category");
-
-                    b.Navigation("Club");
-
-                    b.Navigation("ClubBoardMember");
-
                     b.Navigation("Notification");
-
-                    b.Navigation("Place");
                 });
 
             modelBuilder.Entity("ClubManagerBackup.Entities.Notification", b =>
@@ -385,7 +377,7 @@ namespace ClubManagerBackup.Migrations
 
             modelBuilder.Entity("ClubManagerBackup.Entities.StudentEvent", b =>
                 {
-                    b.HasOne("ClubManagerBackup.Entities.Admin", "Admin")
+                    b.HasOne("ClubManagerBackup.Entities.Admin", null)
                         .WithMany("RequestedEvents")
                         .HasForeignKey("AdminID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -394,8 +386,6 @@ namespace ClubManagerBackup.Migrations
                     b.HasOne("ClubManagerBackup.Entities.Student", null)
                         .WithMany("CreatedEvents")
                         .HasForeignKey("StudentID1");
-
-                    b.Navigation("Admin");
                 });
 
             modelBuilder.Entity("ClubManagerBackup.Entities.Student", b =>
