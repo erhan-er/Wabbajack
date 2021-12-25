@@ -14,6 +14,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { connect } from "react-redux";
+import { CLUB_FILTER } from "../Reducer/actions";
 
 const style = makeStyles({
    root: {
@@ -94,22 +95,28 @@ const style = makeStyles({
    }
 });
 
-function ClubPage() {
+function ClubPage({ students, events, dispatch }) {
 
    const classes = style();
    const location = useLocation();
+
+   var clubid = location.state.id;
 
    return (
       <Box className={classes.root}>
          <AppBar PageName={"Club's Page"} />
          <Box className = {classes.body}>
             <Box className = {classes.club_info}>
-               <img src = {Photo} alt = {location.state.clubName} className = {classes.image} />
+               <img src = {location.state.imageURL} alt = {location.state.name} className = {classes.image} />
                <Box className = {classes.club_description_box}>
                   <Box className = {classes.club_description}>
-                     <Box sx = {{fontSize: "36px"}}><strong> {location.state.clubName} </strong></Box>
-                     <Box><strong>Description:</strong> {location.state.description}</Box>
-                     <Box sx = {{fontSize: "18px", marginTop: "5px"}}><strong>President:</strong> Erhan Er</Box>
+                     <Box sx = {{fontSize: "36px"}}><strong> {location.state.name} </strong></Box>
+                     <Box><strong>Description:</strong> {location.state.clubDescription}</Box>
+                     <Box sx = {{fontSize: "18px", marginTop: "5px"}}><strong>President:</strong>
+                        {
+                           students.filter((student) => student.id === location.state.clubPresidentID).map((user, index) => { return user.name})
+                        }
+                     </Box>
                   </Box>
                   <Box className = {classes.club_social_media}>
                      <Box sx = {{display: "flex", justifyContent: "center"}}><strong>Social Media Accounts</strong></Box>
@@ -128,35 +135,24 @@ function ClubPage() {
                <Box className = {classes.event_box_header}>
                   <Box className = {classes.event_box_header_title}>Upcoming Events</Box>
                   <Box>
-                     <Link to="/See-All-Events">
-                        <Button variant="contained" color="info" size = "large">See All Upcoming Events</Button>
+                     <Link to="/See-All-Events" state = {{clubid}}>
+                        <Button variant="contained" color="info" size = "large" onClick = {() => dispatch({type: CLUB_FILTER, payload: {id: clubid}})}>See All Events</Button>
                      </Link>
                   </Box>
                </Box>
                <Box>
-                  
+                  {
+                     events.filter((event) => event.id === location.state.id).map((item, index) => {
+                        return <ActivityAccordion {...item} />
+                     })
+                  }
                </Box>   
             </Box>
-            <Box className = {classes.old_events}>
-               <Box className = {classes.event_box_header}>
-                  <Box className = {classes.event_box_header_title}> Old Events </Box>
-                  <Box>
-                     <Link to="/See-All-Events">
-                        <Button variant="contained" color="info" size = "large">See All Old Events</Button>
-                     </Link>
-                  </Box>
-               </Box>
-               <Box>
-                  {/*<ActivityAccordion {...activity1} />
-                  <ActivityAccordion {...activity2} />
-   <ActivityAccordion {...activity3} />*/}
-               </Box>
-               
-            </Box>
-            
          </Box>
       </Box >
    );
 }
-
-export default connect()(ClubPage)
+const mapStateToProps = state => {
+   return { students: state.students, events: state.events }
+}
+export default connect(mapStateToProps)(ClubPage)

@@ -30,7 +30,7 @@ const style = makeStyles({
    },
 });
 
-function SeeAllEvents({ events, companies}) {
+function SeeAllEvents({ filteredEvents }) {
    const classes = style();
    const [pageSize, setPageSize] = useState(10);
    const [page, setPage] = React.useState(1);
@@ -39,16 +39,11 @@ function SeeAllEvents({ events, companies}) {
       setPage(value);
    };
 
-   companies.map((company, index) => {
-      console.log(company.account);
-   });
-   console.log(events);
-   console.log(companies);
    return (
       <Box className={classes.root}>
          <AppBar PageName={"All Events"} />
          <Box className={classes.activity_box}>
-            {events.map((item, index) => {
+            {filteredEvents.map((item, index) => {
                console.log(item);
                if ( index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
                   return (
@@ -74,6 +69,6 @@ function SeeAllEvents({ events, companies}) {
    );
 }
 const mapStateToProps = state => {
-   return { events: state.events, companies: state.companies }
+   return { events: state.filteredEvents }
 }
 export default connect(mapStateToProps)(SeeAllEvents)

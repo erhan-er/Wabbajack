@@ -29,19 +29,21 @@ const style = makeStyles({
    }
 });
 
-function Home() {
+function Home({ events }) {
    const classes = style();
-   var activity1 = { activityName: "Activity 1", place: "B Building", date: "20/11/2021", time: "18:00", expense: "5000" };
-   var activity2 = { activityName: "Activity 2", place: "A Building", date: "30/11/2021", time: "20:00" };
-   var activity3 = { activityName: "Activity 3", place: "EA Building", date: "31/12/2021", time: "22:00" };
+
    return (
       <Box className={classes.root}>
          <AppBar PageName={"Home"} />
          <Box className={classes.activity_box}>
             <Box className = {classes.accordion_box}>
-               <Accordion {...activity1} PageName = {"Home"}/>
-               <Accordion {...activity2} />
-               <Accordion {...activity3} />
+               {
+                  events.map((event, index) => {
+                     if ( index < 5 ) {
+                        return <Accordion {...event} PageName = {"Home"}/>
+                     }
+                  })
+               }
             </Box>
             <Link to="/See-All-Events">
                <Button variant="contained" color="info" className={classes.see_all_button}>See All Events</Button>
@@ -53,6 +55,6 @@ function Home() {
 
 const mapStateToProps = state => {
    console.log(state);
-   return {};
+   return { events: state.events};
 }
 export default connect(mapStateToProps)(Home);
