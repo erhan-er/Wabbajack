@@ -33,5 +33,7 @@ namespace ClubManagerBackup.Context
       /// <param name="userName">Username to be checked in the database.</param>
       /// <returns>Returns true if user exists, else return false.</returns>
       Task<bool> UserExists(string userName);
+        Task<bool> UserExistsWithMail(string mail);
+        Task<User> ChangePassword(string userMail, string password);
    }
 }

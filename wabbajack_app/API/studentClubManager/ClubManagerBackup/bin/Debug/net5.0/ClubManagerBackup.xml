@@ -60,6 +60,13 @@
             <param name="userName">Username to be checked in the database.</param>
             <returns>Returns true if user exists, else return false.</returns>
         </member>
+        <member name="M:ClubManagerBackup.Context.AuthRepository.UserExistsWithMail(System.String)">
+            <summary>
+            Checks if given user with user name exists in the database.
+            </summary>
+            <param name="mail">Mail to be checked in the database.</param>
+            <returns>Returns true if user exists, else return false.</returns>
+        </member>
         <member name="T:ClubManagerBackup.Context.CategoryRepository">
             <summary>
             Repository for Category
@@ -664,6 +671,13 @@
             <param name="loginDto">Data transfer object of user to be logged in.</param>
             <returns></returns>
         </member>
+        <member name="M:ClubManagerBackup.Controllers.AuthController.ChangePassword(ClubManagerBackup.Dtos.ChangePasswordDto)">
+            <summary>
+            Logs in user to the system.
+            </summary>
+            <param name="loginDto">Data transfer object of user to be logged in.</param>
+            <returns></returns>
+        </member>
         <member name="T:ClubManagerBackup.Controllers.CategoryController">
             <summary>
             Controller class for Categories
@@ -957,24 +971,6 @@
             Members of the club in the database.
             </summary>
             <value>Members of the club.</value>
-        </member>
-        <member name="P:ClubManagerBackup.Entities.Club.StudentsClubFollowers">
-            <summary>
-            Followers of the club in the database.
-            </summary>
-            <value>Followers of the club.</value>
-        </member>
-        <member name="P:ClubManagerBackup.Entities.Club.StudentsJoinRequests">
-            <summary>
-            Join requests of the club in the database.
-            </summary>
-            <value>Join requests of the club.</value>
-        </member>
-        <member name="P:ClubManagerBackup.Entities.Club.EventsUpcoming">
-            <summary>
-            Upcoming events of the club in the database.
-            </summary>
-            <value></value>
         </member>
         <member name="P:ClubManagerBackup.Entities.Club.EventsOld">
             <summary>

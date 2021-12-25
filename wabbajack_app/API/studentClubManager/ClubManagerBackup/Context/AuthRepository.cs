@@ -90,13 +90,33 @@ namespace ClubManagerBackup.Context
          return user;
       }
 
-      /// <summary>
-      /// Creates hashed and salted password with given password.
-      /// </summary>
-      /// <param name="password">Password to be hashed.</param>
-      /// <param name="passwordHash">Hashed password.</param>
-      /// <param name="passwordSalt">Salted password.</param>
-      private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        public async Task<User> ChangePassword(string userMail, string password)
+        {
+            var user = await context.Users.FirstOrDefaultAsync(x => x.Mail == userMail);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            context.Users.Update(user);
+            await context.SaveChangesAsync();
+            return user;
+        }
+
+        /// <summary>
+        /// Creates hashed and salted password with given password.
+        /// </summary>
+        /// <param name="password">Password to be hashed.</param>
+        /// <param name="passwordHash">Hashed password.</param>
+        /// <param name="passwordSalt">Salted password.</param>
+        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
       {
          using (var hmac = new System.Security.Cryptography.HMACSHA512())
          {
@@ -118,5 +138,20 @@ namespace ClubManagerBackup.Context
          }
          return false;
       }
-   }
+
+
+        /// <summary>
+        /// Checks if given user with user name exists in the database.
+        /// </summary>
+        /// <param name="mail">Mail to be checked in the database.</param>
+        /// <returns>Returns true if user exists, else return false.</returns>
+        public async Task<bool> UserExistsWithMail(string mail)
+        {
+            if (await context.Users.AnyAsync(x => x.Mail == mail))
+            {
+                return true;
+            }
+            return false;
+        }
+    }
 }

@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,6 +107,58 @@ namespace ClubManagerBackup.Controllers
          return Ok(tokenString);
       }
 
+        /// <summary>
+        /// Logs in user to the system.
+        /// </summary>
+        /// <param name="loginDto">Data transfer object of user to be logged in.</param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpPost("login/resetpassword")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto changePasswordDto)
+        {
 
-   }
+            if (!await authRepository.UserExistsWithMail(changePasswordDto.Mail))
+            {
+                ModelState.AddModelError("Mail", "Mail does not exists!");
+            }
+
+            Guid guid = Guid.NewGuid();
+            var psswrd = guid.ToString().Substring(0, 8);
+            var name = changePasswordDto.Mail.Substring(0, changePasswordDto.Mail.IndexOf('@'));
+
+
+            try
+            {
+                using (MailMessage mail = new MailMessage())
+                {
+                    mail.From = new MailAddress("wabbajackproject@gmail.com");
+                    mail.To.Add(changePasswordDto.Mail);
+                    mail.Subject = "Password Recovery";
+                    mail.Body = string.Format("Hi " + name + ",<br /><br />Your password is " + psswrd + ".<br /><br />Thank You.");
+                    mail.IsBodyHtml = true;
+
+                    using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                    {
+                        smtp.Credentials = new NetworkCredential("wabbajackproject@gmail.com", "123456wabba");
+                        smtp.EnableSsl = true;
+                        smtp.Send(mail);
+                        Console.WriteLine("it is sent furkan");
+                        
+                    }
+                }
+
+
+            }
+            catch
+            {
+                Console.WriteLine("error occured furkan");
+            }
+
+            var user = await authRepository.ChangePassword(changePasswordDto.Mail, psswrd);
+
+            return StatusCode(201);
+
+        }
+
+    }
 }
