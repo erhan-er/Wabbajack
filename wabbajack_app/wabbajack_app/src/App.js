@@ -99,10 +99,38 @@ function App() {
     });
   }
 
+  function fetchUsers() {
+    axios.get("http://localhost:5000/api/users").then((res) => {
+      setStudents( new Array(res.data.length).fill(0));
+      const newStudents = res.data.map((student, index) => {
+        return { user: student }
+      });
+
+
+      setStudents(newStudents);
+    });
+  }
+
+  function fetchEvents() {
+    axios.get("http://localhost:5000/api/events").then((res) => {
+      setEvents( new Array(res.data.length).fill(0));
+      const newEvents = res.data.map((event, index) => {
+        return { events: event }
+      });
+
+
+      setEvents(newEvents);
+    });
+  }
+
   useEffect(() => {
     console.log( "ne oldu");
     fetchClubs();
+    fetchUsers()
+    fetchEvents()
     console.log(clubs);
+    console.log(students);
+    console.log(events);
   },[signin === true]);
 
   return (
