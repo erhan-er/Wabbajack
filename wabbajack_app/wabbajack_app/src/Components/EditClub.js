@@ -249,7 +249,13 @@ function EditClub ({ClubName = "Club Name", Description = "Description", Links, 
             sx = {{marginTop: "2vw", marginBottom: "5vw", width: "100%", height: "42px",}}
             onClick = {() => dispatch({type: EDIT_CLUB, payload: {name: document.getElementById("ClubName").value, 
                                                                   description: document.getElementById("Description").value,
-                                                                  img: document.getElementById("imageURL").value}})}
+                                                                  img: document.getElementById("imageURL").value,
+                                                                  whatsapp: document.getElementById("WhatsApp").value,
+                                                                  Telegram: document.getElementById("Telegram").value,
+                                                                  Facebook: document.getElementById("Facebook").value,
+                                                                  Ingstagram: document.getElementById("Instagram").value,
+                                                                  Twitter: document.getElementById("Twitter").value,
+                                                                  Linkedin: document.getElementById("Linkedin").value}})}
          >
             {PageName === "Edit Club"? "Edit Club" : "Add Club"}
          </Button>

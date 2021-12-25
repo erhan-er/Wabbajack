@@ -5,7 +5,7 @@ import {
    ADD_FRIEND, REMOVE_FRIEND, JOIN_CLUB, WITHDRAW_CLUB,
    FOLLOW_CLUB, UNFOLLOW_CLUB, IGNORE_CLUB, UNIGNORE_CLUB,
    JOIN_EVENT, WITHDRAW_EVENT, INVITE_FRIEND, CHANGE_EMAIL,
-   CHANGE_PASSWORD, ADD_CATEGORY, FILTER_EVENTS
+   CHANGE_PASSWORD, ADD_CATEGORY, FILTER_EVENTS, EDIT_CLUB
 } from "./actions";
 
 function reducer(state, action) {
@@ -30,7 +30,6 @@ function reducer(state, action) {
          .catch(function (error) {
             console.log(error)
          })
-
       // Payload contains: name, id, email, img
       // You can reach them by writing action.payload.name for example.
       console.log(action.payload); // You can also see the payloads in console
@@ -58,12 +57,18 @@ function reducer(state, action) {
             } else {
                console.log("Something went wrong")
             }
+
          })
          .catch(function (error) {
             console.log(error)
          })
       return state;
    }
+   if ( action.type === EDIT_CLUB ) {
+      console.log(action.payload);
+      return state;
+   }
+
    if (action === DELETE_USER) {
       return state;
    }

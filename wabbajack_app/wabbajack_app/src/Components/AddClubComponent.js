@@ -298,7 +298,12 @@ function AddClubComponent ({ClubName = "Club Name", Description = "Description",
                                                                description: document.getElementById("Description").value,
                                                                img: document.getElementById("imageURL").value,
                                                                id: document.getElementById("IDImage").value,
-                                                               /*links: [document.getElementById().value, ]*/}})}
+                                                               whatsapp: document.getElementById("WhatsApp").value,
+                                                               Telegram: document.getElementById("Telegram").value,
+                                                               Facebook: document.getElementById("Facebook").value,
+                                                               Ingstagram: document.getElementById("Instagram").value,
+                                                               Twitter: document.getElementById("Twitter").value,
+                                                               Linkedin: document.getElementById("Linkedin").value}})}
          >
             {PageName === "Edit Club"? "Edit Club" : "Add Club"}
          </Button>
