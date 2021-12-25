@@ -2,6 +2,7 @@ import { Box, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import * as React from "react";
 import { useState } from "react";
+import { connect } from "react-redux";
 
 const style = makeStyles({
    root: {
@@ -104,7 +105,7 @@ const style = makeStyles({
    }
 });
 
-function AddUserComponent() {
+function AddUserComponent({state, dispatch}) {
    const classes = style();
 
    const [imageUrl, setImageUrl] = useState("");
@@ -132,4 +133,7 @@ function AddUserComponent() {
    );
 }
 
-export default AddUserComponent
+const mapStateToProps = state => {
+   return { state }
+}
+export default connect(mapStateToProps) (AddUserComponent)

@@ -3,6 +3,7 @@ import AppBar from "../Components/AppBar";
 import Box from '@mui/material/Box';
 import AddUserComponent from "../Components/AddUser";
 import { makeStyles } from "@mui/styles";
+import { connect } from "react-redux";
 
 const style = makeStyles({
    root: {
@@ -29,4 +30,4 @@ function AddUser () {
    );
 }
 
-export default AddUser
+export default connect() (AddUser)
