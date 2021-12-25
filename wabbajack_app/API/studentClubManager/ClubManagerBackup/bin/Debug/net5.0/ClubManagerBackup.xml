@@ -885,7 +885,7 @@
             Controller class for Users
             </summary>
         </member>
-        <member name="M:ClubManagerBackup.Controllers.UserController.#ctor(ClubManagerBackup.Context.IUserRepository,AutoMapper.IMapper,ClubManagerBackup.Context.IEventRepository,ClubManagerBackup.Context.DataContext)">
+        <member name="M:ClubManagerBackup.Controllers.UserController.#ctor(ClubManagerBackup.Context.IUserRepository,AutoMapper.IMapper,ClubManagerBackup.Context.IEventRepository,ClubManagerBackup.Context.DataContext,ClubManagerBackup.Context.IUserToClubRepository)">
             <summary>
             Constructor for EventController.
             </summary>

@@ -20,6 +20,7 @@ namespace ClubManagerBackup.Controllers
    {
       private IUserRepository userRepository;
       private IEventRepository eventRepository;
+      private IUserToClubRepository userToClubRepository;
       private IMapper mapper;
       private Context.EventHandler eventHandler;
       private DataContext context;
@@ -31,12 +32,13 @@ namespace ClubManagerBackup.Controllers
       /// <param name="eventRepository">EventRepository reference.</param>
       /// <param name="mapper">Mapper reference.</param>
       /// <param name="context">Database reference.</param>
-      public UserController(IUserRepository userRepository, IMapper mapper, IEventRepository eventRepository, DataContext context)
+      public UserController(IUserRepository userRepository, IMapper mapper, IEventRepository eventRepository, DataContext context, IUserToClubRepository userToClubRepository)
       {
          this.userRepository = userRepository;
          this.mapper = mapper;
          this.eventRepository = eventRepository;
          this.context = context;
+         this.userToClubRepository = userToClubRepository;
       }
 
       /// <summary>
@@ -150,6 +152,21 @@ namespace ClubManagerBackup.Controllers
          user = await userRepository.ChangePassword(resetPasswordDto.Mail, resetPasswordDto.Password);
 
          return StatusCode(201);
+      }
+
+      [HttpPost("joinClub")]
+      public async Task<ActionResult> JoinClub([FromBody] UserToClubDto userToClubDto )
+      {
+         
+         var userToClub = new UserToClub
+         {
+            UserId = userToClubDto.UserId,
+            ClubId = userToClubDto.ClubId
+         };
+
+         await userToClubRepository.Add(userToClub);
+         return StatusCode(201);
+         
       }
 
    }
