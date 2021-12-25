@@ -241,6 +241,21 @@ function reducer(state, action) {
    }
    if (action.type === RESET_PASSWORD) {
       console.log(action.payload);
+      axios.post('http://localhost:5000/api/auth/login/resetpassword', {
+
+         "mail": action.payload.email
+      })
+         .then(function (response) {
+            if (response.status === 201) {
+               console.log("New Password Sent!")
+            } else {
+               console.log("Something went wrong")
+            }
+
+         })
+         .catch(function (error) {
+            console.log(error)
+         })
       return state;
    }
    return state;

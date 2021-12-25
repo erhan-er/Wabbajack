@@ -30,5 +30,6 @@ namespace ClubManagerBackup.Dtos
       /// </summary>
       /// <value>Department of the user.</value>
       public string Department { get; set; }
+      public string Discriminator { get; set; }
    }
 }

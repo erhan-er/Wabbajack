@@ -59,7 +59,7 @@ namespace ClubManagerBackup.Controllers
       [HttpPost("create")]
       public async Task<IActionResult> AddEvent([FromBody] EventDto eventDto)
       {
-         if (await eventRepository.EventExists("asfasfaas" + eventDto.Name))
+         if (await eventRepository.EventExists(eventDto.Name))
          {
             ModelState.AddModelError("Name", "Name already exists");
          }
