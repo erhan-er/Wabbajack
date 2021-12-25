@@ -1161,18 +1161,6 @@
             </summary>
             <value>Date of the event.</value>
         </member>
-        <member name="P:ClubManagerBackup.Entities.Event.CategoryID">
-            <summary>
-            ID of the category of the event in the database.
-            </summary>
-            <value>ID of the category of the event.</value>
-        </member>
-        <member name="P:ClubManagerBackup.Entities.Event.PlaceID">
-            <summary>
-            ID of the place of the event in the database.
-            </summary>
-            <value>ID of the place that event takes place.</value>
-        </member>
         <member name="P:ClubManagerBackup.Entities.Event.Notification">
             <summary>
             Notificaton of the event.
@@ -1482,17 +1470,11 @@
             </summary>
             <value>Description of the event.</value>
         </member>
-        <member name="P:ClubManagerBackup.Dtos.EventDto.PlaceID">
+        <member name="P:ClubManagerBackup.Dtos.EventDto.PlaceName">
             <summary>
             ID of the place that event will be done in the database.
             </summary>
             <value>ID of the place that event takes place.</value>
-        </member>
-        <member name="P:ClubManagerBackup.Dtos.EventDto.CategoryID">
-            <summary>
-            ID of the category of event in the database.
-            </summary>
-            <value>ID of the event's category.</value>
         </member>
         <member name="P:ClubManagerBackup.Dtos.EventDto.EventCost">
             <summary>

@@ -43,18 +43,9 @@ namespace ClubManagerBackup.Entities
       /// Date of the event in the database.
       /// </summary>
       /// <value>Date of the event.</value>
-      public DateTime Date { get; set; }
-      /// <summary>
-      /// ID of the category of the event in the database.
-      /// </summary>
-      /// <value>ID of the category of the event.</value>
-      public int CategoryID { get; set; }
+      public string Date { get; set; }
       public string CategoryName { get; set; }
-      /// <summary>
-      /// ID of the place of the event in the database.
-      /// </summary>
-      /// <value>ID of the place that event takes place.</value>
-      public int PlaceID { get; set; }
+
       public string PlaceName { get; set; }
       /// <summary>
       /// Notificaton of the event.
