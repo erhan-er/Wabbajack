@@ -66,10 +66,9 @@ namespace ClubManagerBackup.Controllers
       }
 
       /// <summary>
-      /// Gets event with given ID.
+      /// Finds a user from the database with given mail.
       /// </summary>
-      /// <param name="">ID of event to be searched.</param>
-      /// <returns></returns>
+      /// <param name="mail">Mail of the searched user.</param>
       [HttpGet("mail/{mail}")]
       public IActionResult GetUserByMail(string mail)
       {

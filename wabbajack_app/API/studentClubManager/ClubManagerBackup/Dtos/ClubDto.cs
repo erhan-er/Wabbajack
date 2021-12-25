@@ -44,11 +44,35 @@ namespace ClubManagerBackup.Dtos
       /// </summary>
       /// <value>Bugdet of the club.</value>
       public int ClubBudget { get; set; }
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <value></value>
       public string WhatsappLink { get; set; }
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <value></value>
       public string InstagramLink { get; set; }
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <value></value>
       public string FacebookLink { get; set; }
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <value></value>
       public string TelegramLink { get; set; }
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <value></value>
       public string LinkedinLink { get; set; }
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <value></value>
       public string TwitterLink { get; set; }
    }
 }
