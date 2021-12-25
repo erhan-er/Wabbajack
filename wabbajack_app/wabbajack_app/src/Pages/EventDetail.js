@@ -3,7 +3,6 @@ import Appbar from "../Components/AppBar";
 import Photo from "../Images/Bilkent.png"
 import { Box, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { textAlign } from "@mui/system";
 import JoinedUsers from "../Components/EventDetailJoinedUsers";
 
 const style = makeStyles({

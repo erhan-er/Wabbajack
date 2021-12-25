@@ -1,7 +1,7 @@
-import { Box, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Box, Select, MenuItem, FormControl, InputLabel, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const style = makeStyles({
    root: {
@@ -67,8 +67,6 @@ const style = makeStyles({
 
    body_bottom_left: {
       width: "70%",
-      border: "solid 1px"
-
    },
 
    body_bottom_left_top: {
@@ -76,29 +74,104 @@ const style = makeStyles({
    },
 
    body_bottom_left_bottom: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      marginTop: "20px",
+      
+   },
 
+   body_bottom_left_bottom_right: {
+      width: "60%",
+   },
+
+   budget: {
+      width: "99%",
+      resize: "none",
+      fontFamily: "inherit",
+      border: "solid 1px rgba(0, 0, 0, 0.5)",
+      borderRadius: "10px",
+   },
+
+   body_bottom_left_bottom_left: {
+      width: "35%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+   },
+
+   date: {
+      width: "50%",
+      marginBottom: "20px",
+      margin: "0 auto",
+      height: "42px",
+      border: "solid 1px rgba(0, 0, 0, 0.5)",
+   },
+
+   time: {
+      width: "50%",
+      marginBottom: "20px",
+      margin: "0 auto",
+      height: "42px",
+      border: "solid 1px rgba(0, 0, 0, 0.5)",
    },
 
    body_bottom_right: {
       width: "25%",
-      border: "solid 1px"
    },
 
+   space: {
+      border: "solid 1px rgba(0, 0, 0, 0.5)",
+      borderRadius: "10px",
+      height: "120px",
+   },
+
+   space_description: {
+      marginBottom: "10px",
+      marginTop: "10px",
+      color: "rgba(0, 0, 0, 0.5)",
+   },
+
+   number: {
+      width: "90%",
+      marginTop: "10px",
+      height: "36px",
+      border: "solid 1px rgba(0, 0, 0, 0.5)",
+      borderRadius: "10px",
+   },
+
+   img: {
+      marginTop: "30px",
+      border: "solid 1px rgba(0, 0, 0, 0.5)",
+      borderRadius: "10px",
+      height: "120px",
+   },
 });
 function CreateEventComponent() {
    const classes = style();
-   const [building, setBuilding] = useState("");
-   const [place, setPlace] = useState("");
+   var building = "";
+   var place = "";
+   var category = "";
 
    const handleBuilding = (event) => {
-      setBuilding(event.target.value);
+      building = event.target.value;
       console.log(building);
    }
 
    const handleClass = (event) => {
-      setPlace(event.target.value);
+      place = event.target.value;
       console.log(place);
    }
+
+   const handleCategory = (event) => {
+      category = event.target.value;
+      console.log(category);
+   }
+
+   useEffect(() => {
+      
+   }, [building, place, category])
+
    return(
       <Box className = {classes.root}>
          <Box className = {classes.body}>
@@ -149,16 +222,39 @@ function CreateEventComponent() {
                   </Box>
                   <Box className = {classes.body_bottom_left_bottom}>
                      <Box className = {classes.body_bottom_left_bottom_left}>
-                        <Box className = {classes.date}>
-                           <input type="date" id="Date" placeholder="Date"/>
-                           <input type="time" name="Time" id="Time" />
+                        <Box className = {classes.category}>
+                           <FormControl className = {classes.building}>
+                              <InputLabel>Category</InputLabel>
+                              <Select
+                                 id = "Category"
+                                 value = {category}
+                                 label= "Category"
+                                 onChange = {handleCategory}
+                              >
+                                 <MenuItem value="Sports">Z01</MenuItem>
+                                 <MenuItem value="Music">Z02</MenuItem>
+                              </Select>
+                           </FormControl>
                         </Box>
-                        <Box className = {classes.time}></Box>
+                        <input type="date" id="Date" placeholder="Date" className = {classes.date}/>
+                        <input type="time" name="Time" id="Time" className = {classes.time}/>
                      </Box>
-                     <Box className = {classes.body_bottom_left_bottom_right}></Box>
+                     <Box className = {classes.body_bottom_left_bottom_right}>
+                        <textarea name="Budget" id="Budget" cols="30" rows="15" placeholder = "Budget Description" className = {classes.budget} />
+                     </Box>
                   </Box>
                </Box>
-               <Box className = {classes.body_bottom_right}></Box>
+               <Box className = {classes.body_bottom_right}>
+                  <Box className = {classes.space}>
+                     <Box className = {classes.space_description}>Number of Seats: If the number of seats is determined as 0, there will be no limits to seats.</Box>
+                     <input type="number" name="space" id="space" className = {classes.number}/>
+                  </Box>
+                  <Box className = {classes.img}>
+                     <Box className = {classes.space_description}>Upload Image: If the image is not uploaded, the club's logo will be shown to students.</Box>
+                     <input type="url" name="image" id="image" className = {classes.number}/>
+                     <Button variant = "contained" color = "primary" sx= {{marginTop: "50px"}}>Create Event</Button>
+                  </Box>
+               </Box>
             </Box>
          </Box>
       </Box>

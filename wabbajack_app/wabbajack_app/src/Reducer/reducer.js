@@ -8,6 +8,7 @@ import { ADD_USER, ADD_CLUB, DELETE_USER, DELETE_CLUB,
 function reducer(state, action) {
 
    if ( action === ADD_USER ) {
+      let newStudents = state.students;
       return state;
    }
    if ( action === ADD_CLUB ) {

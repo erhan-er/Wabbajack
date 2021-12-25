@@ -44,17 +44,24 @@ function App() {
 
   var email = "";
   var password = "";
+  //var login = false;
+  //var signin = false;
   const [signin, setSignin] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   function setEmailPassword(newEmail, newPassword) {
     email = newEmail;
     password = newPassword;
+    setSignin(true);
+    console.log(signin);
   }
   
+
+  useEffect(() => {}, [signin]);
+
   async function handleLoginRequest() {
     setSubmitted(true)
-    
+    /*
     axios.post('http://localhost:5000/api/auth/login', {
 
       "mail": email,
@@ -74,7 +81,7 @@ function App() {
       .catch(function (error) {
         console.log(error)
         setSubmitted(false)
-      })
+      })*/
   } 
   
   return (
@@ -95,7 +102,7 @@ function App() {
             <Route path="/Home" element={<ProtectedRoute authed = {signin}> <Home /> </ProtectedRoute>} />
             <Route path="/Ignored-Clubs" element={<ProtectedRoute authed = {signin}><IgnoredClubs /></ProtectedRoute>} />
             <Route path="/Joined-Clubs" element={<ProtectedRoute authed = {signin}><JoinedClubs /></ProtectedRoute>} />
-            <Route exact path="/" element={<LoginPage setEmailPassword={setEmailPassword} setSignin = {setSignin} handleLoginRequest={handleLoginRequest} />}/>
+            <Route exact path="/" element={<LoginPage setEmailPassword={setEmailPassword} handleLoginRequest={handleLoginRequest} />}/>
             <Route path="/My-Club" element={<ProtectedRoute authed = {signin}><MyClub /></ProtectedRoute>} />
             <Route path="/My-Information" element={<ProtectedRoute authed = {signin}><MyInformation /></ProtectedRoute>} />
             <Route path="/See-All-Club-Members" element={<ProtectedRoute authed = {signin}><SeeAllClubMembers /></ProtectedRoute>} />
