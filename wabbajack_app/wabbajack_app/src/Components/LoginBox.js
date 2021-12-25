@@ -63,7 +63,7 @@ const style = makeStyles({
 
 });
 
-function LoginBox({ setEmailPassword, setSignin, handleLoginRequest }) {
+function LoginBox({ setEmailPassword, handleLoginRequest }) {
    const classes = style();
    
    function handleLogin() {

@@ -69,7 +69,7 @@ const style = makeStyles({
       height: "42px",
    }, 
 });
-function ChipBox({ Type }) {
+function ChipBox({ Type, PageName = "Settings"}) {
    // variables
    const classes = style();
    const [pageSize, setPageSize] = useState(9);
@@ -91,14 +91,30 @@ function ChipBox({ Type }) {
    }
 
    function pageSizeController() {
-      if ( screenSize <= 852 && screenSize > 686 )
-         setPageSize(7);
-      else if ( screenSize <= 686 && screenSize > 520 )
-         setPageSize(5);
-      else if ( screenSize <= 520 )
-         setPageSize(3);
-      else
-         setPageSize(9);
+      if ( screenSize <= 852 && screenSize > 686 ) {
+         if ( PageName === "Settings")
+            setPageSize(7);
+         else 
+            setPageSize(8);
+      }
+      else if ( screenSize <= 686 && screenSize > 520 ) {
+         if ( PageName === "Settings" )
+            setPageSize(5);
+         else
+            setPageSize(6);
+      }
+      else if ( screenSize <= 520 ) {
+         if ( PageName === "Settings" )
+            setPageSize(3);
+         else
+            setPageSize(4);
+      }
+      else {
+         if ( PageName === "Settings" )
+            setPageSize(9);
+         else
+            setPageSize(10);
+      }
    }
 
    // Database gelince buraları sil
@@ -171,11 +187,10 @@ function ChipBox({ Type }) {
          <Box className = {classes.body}>
             <Box className = {classes.box}>
                {clubList()}
-               <Chip className = {classes.chip} label = "See More" onClick = {() => setOpen(true)}/>
+               { PageName === "Settings"? <Chip className = {classes.chip} label = "See More" onClick = {() => setOpen(true)}/>: 0}
             </Box>
          </Box>
          <Button color = "primary" variant = "contained" className = {classes.button}>{buttonText}</Button>
-         
       </Box>
    );
 }
