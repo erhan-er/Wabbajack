@@ -52,7 +52,7 @@ function SeeAllEvents({ events, companies}) {
                console.log(item);
                if ( index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
                   return (
-                     <ActivityAccordion key = {index} {...item} PageName = {"See All Events"}/>
+                     <ActivityAccordion key = {index} ID = {item.ID} Name = {item.Name} Description = {item.Description} ClubID = {item.ClubID} Date = {item.Date} PageName = {"See All Events"}/>
                   );
                }
             })}
