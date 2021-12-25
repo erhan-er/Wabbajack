@@ -150,7 +150,7 @@ const style = makeStyles({
       height: "120px",
    },
 });
-function CreateEventComponent({ buildings, places, categories, clubs, myInfo, dispatch}) {
+function CreateEventComponent({ buildings, places, categories, clubs, myInfo, dispatch }) {
    const classes = style();
    //var building = "";
    //var place = "";
@@ -177,17 +177,19 @@ function CreateEventComponent({ buildings, places, categories, clubs, myInfo, di
    useEffect(() => {
       console.log(building);
    }, [building, place, category])
-   
+
 
    function PlacePrinter() {
-      if ( building === "" ) {
+      if (building === "") {
+
          places.map((filterPlace, index) => {
-            return <MenuItem value={filterPlace.room} key = {index}>{filterPlace.room}</MenuItem>
+            return <MenuItem value={filterPlace.room} key={index}>{filterPlace.room}</MenuItem>
          })
       }
-      else if ( building !== "" ) {
+      else if (building !== "") {
+
          places.filter((place) => place.building === building).map((filterPlace, index) => {
-            return <MenuItem value={filterPlace} key = {index}>{filterPlace}</MenuItem>
+            return <MenuItem value={filterPlace} key={index}>{filterPlace}</MenuItem>
          });
       }
       else {
@@ -198,24 +200,28 @@ function CreateEventComponent({ buildings, places, categories, clubs, myInfo, di
    function handleCreate() {
       var clubName = "";
       var clubId = "";
-      for ( let i = 0; i < clubs.length; i++ ) {
-         if ( clubs[i].clubPresidentID === myInfo.id )
+      for (let i = 0; i < clubs.length; i++) {
+         if (clubs[i].clubPresidentID === myInfo.id)
             clubId = clubs[i].id;
-            clubName = clubs[i].name;
+         clubName = clubs[i].name;
       }
-      dispatch({type: CREATE_EVENT, payload: {name: document.getElementById("Name").value, 
-                                             clubName: clubName,
-                                             clubId: clubId,
-                                             presidentId: myInfo.id,
-                                             description: document.getElementById("Description").value, 
-                                             building: building, 
-                                             room: place, 
-                                             date: document.getElementById("Date").value,
-                                             time: document.getElementById("Time").value,
-                                             category: category, 
-                                             budget: document.getElementById("Budget").value,
-                                             capacity: document.getElementById("space").value,
-                                             img: document.getElementById("image").value}})
+      dispatch({
+         type: CREATE_EVENT, payload: {
+            name: document.getElementById("Name").value,
+            clubName: clubName,
+            clubId: clubId,
+            presidentId: myInfo.id,
+            description: document.getElementById("Description").value,
+            building: building,
+            room: place,
+            date: document.getElementById("Date").value,
+            time: document.getElementById("Time").value,
+            category: category,
+            budget: document.getElementById("Budget").value,
+            capacity: document.getElementById("space").value,
+            img: document.getElementById("image").value
+         }
+      })
    }
 
    return (
@@ -229,15 +235,15 @@ function CreateEventComponent({ buildings, places, categories, clubs, myInfo, di
                      <InputLabel>Building</InputLabel>
                      <Select
                         id="Building"
-                        value={buildings}
+                        value={building}
                         label="Building"
                         onChange={handleBuilding}
                      >
                         {
                            buildings.map((building, index) => {
                               console.log(building);
-                              return(
-                                 <MenuItem value={building} key = {index}>{building}</MenuItem>
+                              return (
+                                 <MenuItem value={building} key={index}>{building}</MenuItem>
                               );
                            })
                         }
@@ -255,12 +261,14 @@ function CreateEventComponent({ buildings, places, categories, clubs, myInfo, di
                         <InputLabel>Class</InputLabel>
                         <Select
                            id="Place"
-                           value={places}
+                           value={place}
                            label="Classes"
                            onChange={handleClass}
                         >
                            {
-                              PlacePrinter()
+                              places.map((filterPlace, index) => {
+                                 return <MenuItem value={filterPlace.room} key={index}>{filterPlace.room}</MenuItem>
+                              })
                            }
                         </Select>
                      </FormControl>
@@ -272,13 +280,13 @@ function CreateEventComponent({ buildings, places, categories, clubs, myInfo, di
                               <InputLabel>Category</InputLabel>
                               <Select
                                  id="Category"
-                                 value={categories}
+                                 value={category}
                                  label="Category"
                                  onChange={handleCategory}
                               >
                                  {
                                     categories.map((category, index) => {
-                                       return <MenuItem value={category.categoryName} key = {index}>{category.categoryName}</MenuItem>
+                                       return <MenuItem value={category.categoryName} key={index}>{category.categoryName}</MenuItem>
                                     })
                                  }
                               </Select>
@@ -300,7 +308,7 @@ function CreateEventComponent({ buildings, places, categories, clubs, myInfo, di
                   <Box className={classes.img}>
                      <Box className={classes.space_description}>Upload Image: If the image is not uploaded, the club's logo will be shown to students.</Box>
                      <input type="url" name="image" id="image" className={classes.number} />
-                     <Button variant="contained" color="primary" sx={{ marginTop: "50px" }} onClick = {() => handleCreate()}
+                     <Button variant="contained" color="primary" sx={{ marginTop: "50px" }} onClick={() => handleCreate()}
                      >
                         Create Event
                      </Button>

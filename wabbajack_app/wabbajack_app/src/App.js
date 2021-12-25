@@ -47,6 +47,7 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [places, setPlaces] = useState([]);
   const [buildings, setBuildings] = useState([]);
+  const [mail, setMail] = useState("");
 
   const dataStore = {
     myInfo: myInfo,
@@ -64,9 +65,10 @@ function App() {
   const store = createStore(rootReducer, dataStore);
 
   function setEmailPassword(newEmail, newPassword) {
+    setMail(newEmail);
     email = newEmail;
     password = newPassword;
-    setSignin(true); // delete this
+    //setSignin(true); // delete this
     console.log(signin);
   }
 
@@ -130,7 +132,9 @@ function App() {
   }
 
   function fetchUserInfo() {
-    axios.get("http://localhost:5000/api/users/mail/" + email).then((res) => {
+    axios.get("http://localhost:5000/api/users/mail/" + mail).then((res) => {
+      console.log(mail);
+      console.log(res.data);
       setMyInfo(res.data);
     });
   }
@@ -151,12 +155,12 @@ function App() {
     axios.get("http://localhost:5000/api/places").then((res) => {
       setPlaces(new Array(res.data.length).fill(0));
       const newBuildings = [];
-      
+
       const newPlaces = res.data.map((place, index) => {
-        newBuildings.push = place.building;
+        newBuildings.push(place.building);
         return place
       });
-      
+
       let uniqueBuildings = [...new Set(newBuildings)];
       let newUniquesBuildings = uniqueBuildings.sort();
       setBuildings(uniqueBuildings);
@@ -206,8 +210,8 @@ function App() {
             <Route path="/See-All-Friends" element={<ProtectedRoute><SeeAllFriends /></ProtectedRoute>} />
             <Route path="/See-All-Students" element={<ProtectedRoute><SeeAllStudents /></ProtectedRoute>} />
             <Route path="/Settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-            <Route path="/Student-Create-Event" element={<ProtectedRoute><StudentCreateEvent/></ProtectedRoute>}/>
-            <Route path="/Forget-Password" element={<ForgetPassword/>}></Route>
+            <Route path="/Student-Create-Event" element={<ProtectedRoute><StudentCreateEvent /></ProtectedRoute>} />
+            <Route path="/Forget-Password" element={<ForgetPassword />}></Route>
           </Routes>
         </Box>
       </BrowserRouter>

@@ -203,7 +203,15 @@ function reducer(state, action) {
    }
    if (action.type === CREATE_EVENT) {
       console.log("geldin");
-      axios.post('http://localhost:5000/api/events/create', {
+      console.log(state.myInfo.id)
+      var link = "";
+      if (state.myInfo.discriminator === "Student") {
+         link = "users/create/"
+      }
+      else {
+         link = "events/create"
+      }
+      axios.post('http://localhost:5000/api/' + link, {
          "clubID": action.payload.clubId,
          "eventCost": action.payload.budget,
          "capacity": action.payload.capacity,
