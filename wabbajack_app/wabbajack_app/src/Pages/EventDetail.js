@@ -143,6 +143,7 @@ const style = makeStyles({
 function EventDetail({dispatch}) {
    const classes = style();
    const location = useLocation();
+   console.log(location);
 
    return(
       <Box className = {classes.root}>

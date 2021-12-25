@@ -2,6 +2,8 @@ import { Box, Select, MenuItem, FormControl, InputLabel, Button } from "@mui/mat
 import { makeStyles } from "@mui/styles";
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { CREATE_EVENT } from "../Reducer/actions";
 
 const style = makeStyles({
    root: {
@@ -147,36 +149,47 @@ const style = makeStyles({
       height: "120px",
    },
 });
-function CreateEventComponent() {
+function CreateEventComponent({ buildings, places, categories, dispatch}) {
    const classes = style();
-   var building = "";
-   var place = "";
-   var category = "";
-   const [buildings, setBuildings] = useState("");
-   const [places, setPlaces] = useState("");
-   const [categories, setCategories] = useState("");
+   //var building = "";
+   //var place = "";
+   //var category = "";
+   const [building, setBuilding] = useState("");
+   const [place, setPlace] = useState("");
+   const [category, setCategory] = useState("");
 
    const handleBuilding = (event) => {
       building = event.target.value;
-      setBuildings(event.target.value);
+      setBuilding(event.target.value);
       console.log(building);
    }
 
    const handleClass = (event) => {
       place = event.target.value;
-      setPlaces(event.target.value);
+      setPlace(event.target.value);
       console.log(place);
    }
 
    const handleCategory = (event) => {
       category = event.target.value;
-      setCategories(event.target.value);
+      setCategory(event.target.value);
       console.log(category);
    }
 
    useEffect(() => {
-      console.log(buildings);
-   }, [buildings, place, category])
+      console.log(building);
+   }, [building, place, category])
+
+   function PlacePrinter() {
+      if ( building !== undefined ) {
+         places.filter((place) => place.building === building).map((filterPlace, index) => {
+            return <MenuItem value={filterPlace} key = {index}>{filterPlace}</MenuItem>
+         });
+      }
+      else {
+         return 0;
+      }
+   }
 
    return (
       <Box className={classes.root}>
@@ -193,12 +206,13 @@ function CreateEventComponent() {
                         label="Building"
                         onChange={handleBuilding}
                      >
-                        <MenuItem value="A">A Building</MenuItem>
-                        <MenuItem value="B">B Building</MenuItem>
-                        <MenuItem value="EA">EA Building</MenuItem>
-                        <MenuItem value="EE">EE Building</MenuItem>
-                        <MenuItem value="H">H Building</MenuItem>
-                        <MenuItem value="EB">EB Building</MenuItem>
+                        {
+                           buildings.map((building, index) => {
+                              return(
+                                 <MenuItem value={building} key = {index}>{building}</MenuItem>
+                              );
+                           })
+                        }
                      </Select>
                   </FormControl>
                </Box>
@@ -217,12 +231,9 @@ function CreateEventComponent() {
                            label="Classes"
                            onChange={handleClass}
                         >
-                           <MenuItem value="Z01">Z01</MenuItem>
-                           <MenuItem value="Z02">Z02</MenuItem>
-                           <MenuItem value="Z03">Z03</MenuItem>
-                           <MenuItem value="Z04">Z04</MenuItem>
-                           <MenuItem value="Z05">Z05</MenuItem>
-                           <MenuItem value="Z06">Z06</MenuItem>
+                           {
+                              PlacePrinter()
+                           }
                         </Select>
                      </FormControl>
                   </Box>
@@ -238,13 +249,11 @@ function CreateEventComponent() {
                                  onChange={handleCategory}
                               >
                                  <MenuItem value="Sports">Sports</MenuItem>
-                                 <MenuItem value="Music">Music</MenuItem>
-                                 <MenuItem value="Movie">Movie</MenuItem>
-                                 <MenuItem value="Video Games">Video Games</MenuItem>
-                                 <MenuItem value="Tabletop Games">Tabletop Games</MenuItem>
-                                 <MenuItem value="Literature">Literature</MenuItem>
-                                 <MenuItem value="Engineering">Engineering</MenuItem>
-                                 <MenuItem value="Programming">Programming</MenuItem>
+                                 {
+                                    categories.map((category, index) => {
+                                       return <MenuItem value={category}>{category}</MenuItem>
+                                    })
+                                 }
                               </Select>
                            </FormControl>
                         </Box>
@@ -264,7 +273,7 @@ function CreateEventComponent() {
                   <Box className={classes.img}>
                      <Box className={classes.space_description}>Upload Image: If the image is not uploaded, the club's logo will be shown to students.</Box>
                      <input type="url" name="image" id="image" className={classes.number} />
-                     <Button variant="contained" color="primary" sx={{ marginTop: "50px" }}>Create Event</Button>
+                     <Button variant="contained" color="primary" sx={{ marginTop: "50px" }} onClick = {() => dispatch({type: CREATE_EVENT})}>Create Event</Button>
                   </Box>
                </Box>
             </Box>
@@ -272,5 +281,7 @@ function CreateEventComponent() {
       </Box>
    );
 }
-
-export default CreateEventComponent
+const mapToStateToProps = state => {
+   return { buildings: state.buildings, places: state.places, categories: state.categories }
+}
+export default connect(mapToStateToProps)(CreateEventComponent)

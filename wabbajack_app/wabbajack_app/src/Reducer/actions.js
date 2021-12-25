@@ -12,6 +12,7 @@ export const UNFOLLOW_CLUB = "UNFOLLOW_CLUB";
 export const IGNORE_CLUB = "IGNORE_CLUB";
 export const UNIGNORE_CLUB = "UNIGNORE_CLUB";
 export const JOIN_EVENT = "JOIN_EVENT";
+export const CREATE_EVENT = "CREATE_EVENT";
 export const WITHDRAW_EVENT = "WITHDRAW_EVENT";
 export const INVITE_FRIEND = "INVITE_FRIEND";
 export const CHANGE_EMAIL = "CHANGE_EMAIL";

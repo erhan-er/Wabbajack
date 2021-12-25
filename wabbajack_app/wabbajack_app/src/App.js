@@ -32,9 +32,7 @@ import { useEffect, useState } from 'react';
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
-
   
-
   var email = "";
   var password = "";
   //var login = false;
@@ -45,17 +43,40 @@ function App() {
   const [clubs, setClubs] = useState([]);
   const [students, setStudents] = useState([]);
   const [events, setEvents] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [places, setPlaces] = useState([]);
+  const [buildings, setBuildings] = useState([]);
+  const [companies, setCompanies] = useState([]);
 
   const dataStore = {
     myInfo: myInfo,
     clubs: clubs,
     students: students,
     events: events,
+    categories: categories,
+    places: places,
+    buildings: buildings,
     filteredEvents: events,
     filteredClubs: clubs,
+    companies: companies,
   };
 
   const store = createStore(rootReducer, dataStore);
+
+  //** SORTING FUNCTION **\\
+  function sortOn( arr, prop) {
+    arr.sort(
+        function(a, b) {
+          if (a[prop] < b[prop])
+              return -1;
+          else if (a[prop] > b[prop])
+              return 1;
+          else
+            return 0;
+        }
+    );
+  };
+  //** END OF SORTING FUNCTION **\\
 
   function setEmailPassword(newEmail, newPassword) {
     email = newEmail;
@@ -93,9 +114,8 @@ function App() {
     axios.get("http://localhost:5000/api/clubs").then((res) => {
       setClubs( new Array(res.data.length).fill(0));
       const newClubs = res.data.map((club, index) => {
-        return { club: club }
+        return club
       });
-
 
       setClubs(newClubs);
     });
@@ -105,9 +125,8 @@ function App() {
     axios.get("http://localhost:5000/api/users").then((res) => {
       setStudents( new Array(res.data.length).fill(0));
       const newStudents = res.data.map((student, index) => {
-        return { user: student }
+        return student
       });
-
 
       setStudents(newStudents);
     });
@@ -117,7 +136,7 @@ function App() {
     axios.get("http://localhost:5000/api/events").then((res) => {
       setEvents( new Array(res.data.length).fill(0));
       const newEvents = res.data.map((event, index) => {
-        return { events: event }
+        return events
       });
 
 
@@ -131,16 +150,59 @@ function App() {
     });
   }
 
+  function fetchCategories() {
+    axios.get("http://localhost:5000/api/categories").then((res) => {
+      setCategories( new Array(res.data.length).fill(0));
+      const newCategories = res.data.map((category, index) => {
+        return category
+      });
+
+
+      setCategories(newCategories);
+    });
+  }
+
+  function fetchPlaces() {
+    axios.get("http://localhost:5000/api/places").then((res) => {
+      setPlaces( new Array(res.data.length).fill(0));
+      const newBuildings = [];
+      const newPlaces = res.data.map((place, index) => {
+        newBuildings.push = place.building;
+        return place
+      });
+      let uniqueBuildings = [...new Set(newBuildings)];
+      uniqueBuildings.sort();
+
+      setBuildings(uniqueBuildings);
+      setPlaces(newPlaces);
+    });
+  }
+
+  function getCompanies() {
+    axios.get("https://getirserver.herokuapp.com/api/companies").then((res) => {
+      setCompanies( new Array(res.data.length).fill(0));
+      const companyArr = res.data.map((company, index) => {
+        return company
+      });
+      setCompanies(companyArr);
+    });
+  }
+
   useEffect(() => {
-    console.log( "ne oldu");
     fetchClubs();
     fetchUsers();
     fetchEvents();
     fetchUserInfo();
+    fetchCategories();
+    fetchPlaces();
+    getCompanies();
     console.log(clubs);
     console.log(students);
     console.log(events);
     console.log(myInfo);
+    console.log(categories);
+    console.log(places);
+    console.log(companies);
   },[signin === true]);
 
   return (
