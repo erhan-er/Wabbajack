@@ -53,7 +53,7 @@ function SeeAllEvents({ filteredEvents }) {
             })}
             <Box className = {classes.pagination}>
                <Pagination 
-                  count={10} 
+                  count={filteredEvents.length / pageSize} 
                   color="primary" 
                   size = "large" 
                   showFirstButton 

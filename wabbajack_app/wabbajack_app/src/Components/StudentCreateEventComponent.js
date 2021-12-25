@@ -150,7 +150,7 @@ const style = makeStyles({
       height: "120px",
    },
 });
-function CreateEventComponent({ buildings, places, categories, clubs, myInfo, dispatch}) {
+function StudentCreateEventComponent({ buildings, places, categories, clubs, myInfo, dispatch}) {
    const classes = style();
    //var building = "";
    //var place = "";
@@ -196,17 +196,8 @@ function CreateEventComponent({ buildings, places, categories, clubs, myInfo, di
    }
 
    function handleCreate() {
-      var clubName = "";
-      var clubId = "";
-      for ( let i = 0; i < clubs.length; i++ ) {
-         if ( clubs[i].clubPresidentID === myInfo.id )
-            clubId = clubs[i].id;
-            clubName = clubs[i].name;
-      }
       dispatch({type: CREATE_EVENT, payload: {name: document.getElementById("Name").value, 
-                                             clubName: clubName,
-                                             clubId: clubId,
-                                             presidentId: myInfo.id,
+                                             creatorId: myInfo.id,
                                              description: document.getElementById("Description").value, 
                                              building: building, 
                                              room: place, 
@@ -314,4 +305,4 @@ function CreateEventComponent({ buildings, places, categories, clubs, myInfo, di
 const mapToStateToProps = state => {
    return { buildings: state.buildings, places: state.places, categories: state.categories, clubs: state.clubs, myInfo: state.myInfo }
 }
-export default connect(mapToStateToProps)(CreateEventComponent)
+export default connect(mapToStateToProps)(StudentCreateEventComponent)

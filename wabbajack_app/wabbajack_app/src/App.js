@@ -22,6 +22,7 @@ import SeeAllEvents from './Pages/SeeAllEvents';
 import SeeAllFriends from './Pages/SeeAllFriends';
 import SeeAllStudents from './Pages/SeeAllStudents';
 import Settings from "./Pages/Settings";
+import StudentCreateEvent from "./Pages/StudentCreateEvent";
 import Box from "@mui/material/Box";
 import axios from 'axios';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -35,8 +36,6 @@ function App() {
 
   var email = "";
   var password = "";
-  //var login = false;
-  //var signin = false;
   const [signin, setSignin] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [myInfo, setMyInfo] = useState(0);
@@ -79,7 +78,7 @@ function App() {
   function setEmailPassword(newEmail, newPassword) {
     email = newEmail;
     password = newPassword;
-    setSignin(true);
+    //setSignin(true); // delete this
     console.log(signin);
   }
 
@@ -184,11 +183,6 @@ function App() {
     fetchUserInfo();
     fetchCategories();
     fetchPlaces();
-    console.log(clubs);
-    console.log(students);
-    console.log(events);
-    console.log(myInfo);
-    console.log(categories);
     console.log(places);
     console.log(buildings);
   }, [signin === true]);
@@ -220,6 +214,7 @@ function App() {
             <Route path="/See-All-Friends" element={<ProtectedRoute authed={signin}><SeeAllFriends /></ProtectedRoute>} />
             <Route path="/See-All-Students" element={<ProtectedRoute authed={signin}><SeeAllStudents /></ProtectedRoute>} />
             <Route path="/Settings" element={<ProtectedRoute authed={signin}><Settings /></ProtectedRoute>} />
+            <Route path="/Student-Create-Event" element={<ProtectedRoute authed={signin}><StudentCreateEvent/></ProtectedRoute>}/>
           </Routes>
         </Box>
       </BrowserRouter>
