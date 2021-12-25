@@ -125,7 +125,7 @@ const style = makeStyles({
    },
 });
 
-function ActivityAccordion({ id, name, description, clubID, clubName, date = 0, categoryID, placeID, imageURL, eventCost = 0, capacity = 0, PageName = "See All Events" }) {
+function ActivityAccordion({ id, name, description, clubID, clubName, date = 0, categoryID, placeID, placeName, imageURL, eventCost = 0, capacity = 0, PageName = "See All Events" }) {
 
    const classes = style();
 
@@ -147,7 +147,7 @@ function ActivityAccordion({ id, name, description, clubID, clubName, date = 0, 
             </Box>
 
             <Box className={classes.information}>
-               <Box>Place: {placeID}</Box>
+               <Box>Place: {placeName}</Box>
                <Box>Date: {date}</Box>
                {/*<Box>Time: {Date}</Box>*/}
             </Box>

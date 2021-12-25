@@ -66,6 +66,8 @@ namespace ClubManagerBackup.Controllers
          {
             Room = placeDto.Room,
             Building = placeDto.Building,
+            PlaceName = placeDto.Building + " -" + placeDto.Room
+
          };
          var createdPlace = await placeRepository.AddPlace(placeToCreate);
          return StatusCode(201);

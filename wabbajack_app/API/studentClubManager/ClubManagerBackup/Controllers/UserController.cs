@@ -100,6 +100,7 @@ namespace ClubManagerBackup.Controllers
             Capacity = eventDto.Capacity,
             UserId = eventDto.UserID,
             Name = eventDto.Name,
+            PlaceName = eventDto.PlaceName,
             Date = eventDto.Date,
             ImageURL = eventDto.ImageURL,
             Description = eventDto.Description,

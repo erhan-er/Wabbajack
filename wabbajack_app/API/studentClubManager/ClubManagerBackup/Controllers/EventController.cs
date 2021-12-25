@@ -72,6 +72,7 @@ namespace ClubManagerBackup.Controllers
             UserId = eventDto.UserID,
             ClubBoardMemberID = eventDto.ClubBoardMemberID,
             PlaceID = eventDto.PlaceID,
+            PlaceName = eventDto.PlaceName,
             Date = eventDto.Date,
             CategoryID = eventDto.CategoryID,
             ClubName = clubRepository.GetClubById(eventDto.CategoryID).Name,
