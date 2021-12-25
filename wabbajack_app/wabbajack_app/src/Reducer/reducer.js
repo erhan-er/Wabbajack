@@ -20,7 +20,7 @@ function reducer(state, action) {
 
       })
          .then(function (response) {
-            if (response.status === 200) {
+            if (response.status === 201) {
                console.log("User added!")
             } else {
                console.log("Something went wrong")
