@@ -140,11 +140,25 @@ const style = makeStyles({
 
 });
 
-function EventDetail({ dispatch }) {
+function EventDetail({ joinedEvents, students, dispatch }) {
    const classes = style();
    const location = useLocation();
    console.log(location);
    console.log(location.state.id);
+
+   function printJoinedUser() {
+      joinedEvents.filter((item) => item.eventId === location.state.id).map((event, index) => {
+         var i;
+         var joined = [];
+         for ( i = 0; i < students.length; i++ ) {
+            if ( students[i].id === event.id )
+               joined.push(students[i]);
+         }
+         joined.map((user, index) => {
+            return <JoinedUsers {...user} />
+         }) 
+      })
+   }
 
    function joinedUsers() {
       if ( myInfo.discriminator === "ClubPresident") {
@@ -155,9 +169,9 @@ function EventDetail({ dispatch }) {
                   <input type="search" name="ID" id="SearchById" placeholder="Search By ID" className = {classes.search}/>
                </Box>
                <Box className = {classes.students}>
-                  <JoinedUsers />
-                  <JoinedUsers />
-                  <JoinedUsers />
+                  {
+                     
+                  }
                </Box>
             </Box>
          );
@@ -195,17 +209,7 @@ function EventDetail({ dispatch }) {
                </Button>
             </Box>
             <Box className={classes.border}></Box>
-            <Box className={classes.users}>
-               <Box className={classes.search_box}>
-                  <input type="search" name="Name" id="SearchByName" placeholder="Search By Name" className={classes.search} />
-                  <input type="search" name="ID" id="SearchById" placeholder="Search By ID" className={classes.search} />
-               </Box>
-               <Box className={classes.students}>
-                  <JoinedUsers />
-                  <JoinedUsers />
-                  <JoinedUsers />
-               </Box>
-            </Box>
+            { joinedUsers() }
          </Box>
 
       </Box>
@@ -213,6 +217,6 @@ function EventDetail({ dispatch }) {
 }
 
 const mapToStateToProps = state => {
-   return { state }
+   return { joinedEvents: state.joinedEvents, students: state.students }
 }
 export default connect(mapToStateToProps)(EventDetail)
