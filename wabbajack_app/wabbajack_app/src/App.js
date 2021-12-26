@@ -72,6 +72,11 @@ function App() {
     console.log(signin);
   }
 
+  /** 
+   * async function to login.
+   * async functions expects promise returns.
+   * Axios returns promise.
+  */
   async function handleLoginRequest() {
     setSubmitted(true)
 
@@ -97,6 +102,9 @@ function App() {
       })
   }
 
+  /** 
+   * It fetches club array from the database.
+  */
   function fetchClubs() {
     axios.get("http://localhost:5000/api/clubs").then((res) => {
       setClubs(new Array(res.data.length).fill(0));
@@ -108,6 +116,9 @@ function App() {
     });
   }
 
+  /** 
+   * It fetches user array from the database.
+  */
   function fetchUsers() {
     axios.get("http://localhost:5000/api/users").then((res) => {
       setStudents(new Array(res.data.length).fill(0));
@@ -119,6 +130,9 @@ function App() {
     });
   }
 
+  /** 
+   * It fetches event array from the database.
+  */
   function fetchEvents() {
     axios.get("http://localhost:5000/api/events").then((res) => {
       setEvents(new Array(res.data.length).fill(0));
@@ -126,19 +140,22 @@ function App() {
         return event
       });
 
-
       setEvents(newEvents);
     });
   }
 
+  /** 
+   * It fetches logged in user data from the database.
+  */
   function fetchUserInfo() {
     axios.get("http://localhost:5000/api/users/mail/" + mail).then((res) => {
-      console.log(mail);
-      console.log(res.data);
       setMyInfo(res.data);
     });
   }
 
+  /** 
+   * It fetches category array from the database.
+  */
   function fetchCategories() {
     axios.get("http://localhost:5000/api/categories").then((res) => {
       setCategories(new Array(res.data.length).fill(0));
@@ -146,11 +163,16 @@ function App() {
         return category
       });
 
-
       setCategories(newCategories);
     });
   }
 
+  /** 
+   * It fetches place array from the database.
+   * It also gets building from every place object and puts it in an array.
+   * By converting the building array to a set, it deletes the duplicate buildings.
+   * Then sort is alphabetically.
+  */
   function fetchPlaces() {
     axios.get("http://localhost:5000/api/places").then((res) => {
       setPlaces(new Array(res.data.length).fill(0));
@@ -168,10 +190,6 @@ function App() {
     });
   }
 
-  function fetchJoinedClubs() {
-
-  }
-
   useEffect(() => {
     fetchClubs();
     fetchUsers();
@@ -182,6 +200,7 @@ function App() {
     console.log(places);
     console.log(buildings);
   }, [signin === true]);
+
 
   return (
     <Provider store={store}>

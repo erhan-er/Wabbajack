@@ -8,6 +8,7 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const style = makeStyles({
    root: {
@@ -23,7 +24,7 @@ const style = makeStyles({
    },
 });
 
-function Menu ({open, setIsOpen, userType}) {
+function Menu ({open, setIsOpen, userType, myInfo}) {
    
    const classes = style();
    const [size, setSize] = useState(window.innerWidth);
@@ -54,15 +55,13 @@ function Menu ({open, setIsOpen, userType}) {
                   "See All Club Members", "See All Clubs", "See All Events", "See All Students", 
                   "See All Friends", "Settings", "Student Create Event", "Logout"];
 
-   function ChooseUserType ( userType ) {
-      if (userType === "Student")
+   function ChooseUserType () {
+      if (myInfo.discriminator === "Student")
          return studentMenu;
-      else if ( userType === "President")
+      else if ( myInfo.discriminator === "ClubPresident")
          return presidentMenu;
-      else if ( userType === "Admin")
+      else if ( myInfo.discriminator === "Admin")
          return adminMenu;
-      else
-         return allMenu;
    }
 
    function list (size, open) {
@@ -119,5 +118,7 @@ function Menu ({open, setIsOpen, userType}) {
       </div>
    );
 }
-
-export default Menu
+const mapStateToProps = state => {
+   return { myInfo: state.myInfo }
+}
+export default connect(mapStateToProps)(Menu)
