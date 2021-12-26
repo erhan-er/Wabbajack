@@ -106,6 +106,28 @@ function ClubPage({ students, events, dispatch }) {
    const classes = style();
    const location = useLocation();
 
+   function showEvents() {
+      if ( events.filter((event) => event.id === location.state.id).length > 0 )
+         return(
+            <Box className = {classes.upcoming_events}>
+               <Box className = {classes.event_box_header}>
+                  <Box className = {classes.event_box_header_title}>Upcoming Events</Box>
+                  <Box>
+                     <Link to="/See-All-Events" state = {{clubid: location.state.id}}>
+                        <Button variant="contained" color="info" size = "large" onClick = {() => dispatch({type: CLUB_FILTER, payload: {id: location.state.id}})}>See All Events</Button>
+                     </Link>
+                  </Box>
+               </Box>
+               <Box>
+                  {
+                     events.filter((event) => event.id === location.state.id).map((item, index) => {
+                        return <ActivityAccordion {...item} />
+                     })
+                  }
+               </Box>   
+            </Box>
+         );
+   }
    return (
       <Box className={classes.root}>
          <AppBar PageName={"Club's Page"} />
@@ -138,23 +160,7 @@ function ClubPage({ students, events, dispatch }) {
             <Box className = {classes.button}>
                <Button variant = "contained" onClick = {() => dispatch({type: JOIN_CLUB, payload: {clubId: location.state.id}})}>Join</Button>
             </Box>
-            <Box className = {classes.upcoming_events}>
-               <Box className = {classes.event_box_header}>
-                  <Box className = {classes.event_box_header_title}>Upcoming Events</Box>
-                  <Box>
-                     <Link to="/See-All-Events" state = {{clubid: location.state.id}}>
-                        <Button variant="contained" color="info" size = "large" onClick = {() => dispatch({type: CLUB_FILTER, payload: {id: location.state.id}})}>See All Events</Button>
-                     </Link>
-                  </Box>
-               </Box>
-               <Box>
-                  {
-                     events.filter((event) => event.id === location.state.id).map((item, index) => {
-                        return <ActivityAccordion {...item} />
-                     })
-                  }
-               </Box>   
-            </Box>
+            { showEvents() }
          </Box>
       </Box >
    );
