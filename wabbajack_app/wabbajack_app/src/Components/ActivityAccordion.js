@@ -125,7 +125,7 @@ const style = makeStyles({
    },
 });
 
-function ActivityAccordion({ id, name, description, clubID, clubName, date = 0, categoryID, placeID, placeName, imageURL, eventCost = 0, capacity = 0, PageName = "See All Events" }) {
+function ActivityAccordion({ id, name, description, clubID, clubName, date = 0, categoryID, categoryName, placeID, placeName, imageURL, eventCost = 0, capacity = 0, PageName = "See All Events" }) {
 
    const classes = style();
 
@@ -150,7 +150,7 @@ function ActivityAccordion({ id, name, description, clubID, clubName, date = 0, 
                <Box>Place: {placeName}</Box>
                <Box>Date: {date}</Box>
             </Box>
-            <Link to="/Event-Detail" state={{ id: id, name: name, description: description, clubID: clubID, clubName: clubName, date: date, categoryID: categoryID, placeID: placeName, imageURL: imageURL, eventCost: eventCost, capacity: capacity }} className={classes.button_box}>
+            <Link to="/Event-Detail" state={{ id: id, name: name, description: description, clubID: clubID, clubName: clubName, date: date, categoryID: categoryID, categoryName: categoryName, placeID: placeName, imageURL: imageURL, eventCost: eventCost, capacity: capacity }} className={classes.button_box}>
                <Button className={classes.button} variant="contained" color="info" endIcon={<ArrowForwardIosIcon />}>See Details</Button>
             </Link>
          </ModifiedAccordionDetails>

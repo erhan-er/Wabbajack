@@ -164,7 +164,7 @@ function EventDetail({dispatch}) {
                      <Box className = {classes.date}><strong>Date: </strong>{location.state.date}</Box>
                      {/*<Box className = {classes.time}><strong>Time: </strong>19:00</Box> */}
                      <Box className = {classes.place}><strong>Place: </strong>{location.state.placeID}</Box>
-                     <Box className = {classes.category}><strong>Category: </strong>{location.state.categoryID}</Box>
+                     <Box className = {classes.category}><strong>Category: </strong>{location.state.categoryName}</Box>
                   </Box>
                </Box>
             </Box>
@@ -179,7 +179,8 @@ function EventDetail({dispatch}) {
                                                                         Description: location.state.description, 
                                                                         ClubID: location.state.clubID, 
                                                                         Date: location.state.date, 
-                                                                        CategoryID: location.state.categoryID, 
+                                                                        CategoryID: location.state.categoryID,
+                                                                        Category: location.state.categoryName, 
                                                                         PlaceID: location.state.placeID, 
                                                                         NotificationID: location.state.notificationID, 
                                                                         ImageURL: location.state.imageURL, 

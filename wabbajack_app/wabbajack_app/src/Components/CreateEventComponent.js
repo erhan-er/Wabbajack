@@ -201,9 +201,10 @@ function CreateEventComponent({ buildings, places, categories, clubs, myInfo, di
       var clubName = "";
       var clubId = "";
       for (let i = 0; i < clubs.length; i++) {
-         if (clubs[i].clubPresidentID === myInfo.id)
+         if (clubs[i].clubPresidentID === myInfo.id) {
             clubId = clubs[i].id;
-         clubName = clubs[i].name;
+            clubName = clubs[i].name;
+         }
       }
       dispatch({
          type: CREATE_EVENT, payload: {
