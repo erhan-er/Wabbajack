@@ -78,6 +78,7 @@ namespace ClubManagerBackup.Entities
       /// </summary>
       /// <value></value>
       public int UserId { get; set; }
+      public bool IsApproved { get; set; }
 
       public string Discriminator { get; set; } = "Event";
    }
