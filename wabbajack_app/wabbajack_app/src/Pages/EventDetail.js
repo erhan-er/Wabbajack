@@ -154,13 +154,9 @@ function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
          }
       })
       return(
-         <Box className = {classes.students}>
-            {
-               joined.map((user, index) => {
-                  return <JoinedUsers {...user} />
-               })
-            }
-         </Box>
+         joined.map((user, index) => {
+            return <JoinedUsers {...user} />
+         })
       );
       
    }
