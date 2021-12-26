@@ -119,7 +119,7 @@ const style = makeStyles({
    },
 });
 
-function ClubAccordion({ clubPresidentID, name, clubDescription, facebookLink, id, instagramLink, linkedinLink, telegramLink, whatsappLink, imageURL}) {
+function ClubAccordion({ clubPresidentID, name, clubDescription, facebookLink, id, instagramLink, linkedinLink, telegramLink, twitterLink, whatsappLink, imageURL}) {
 
    const classes = style();
 
@@ -139,7 +139,7 @@ function ClubAccordion({ clubPresidentID, name, clubDescription, facebookLink, i
                   <strong>Description:</strong>{clubDescription}
                </div>
             </div>
-            <Link to= "/Club-Page" state= {{id: id, clubPresidentID: clubPresidentID, name: name, clubDescription: clubDescription, facebookLink: facebookLink, id: id, instagramLink: instagramLink, linkedinLink: linkedinLink, telegramLink: telegramLink, whatsappLink: whatsappLink, imageURL: imageURL}} className={classes.button_box}>
+            <Link to= "/Club-Page" state= {{id: id, clubPresidentID: clubPresidentID, name: name, clubDescription: clubDescription, facebookLink: facebookLink, id: id, instagramLink: instagramLink, linkedinLink: linkedinLink, telegramLink: telegramLink, twitterLink: twitterLink, whatsappLink: whatsappLink, imageURL: imageURL}} className={classes.button_box}>
                <Button className={classes.button} variant="contained" color="info" endIcon={<ArrowForwardIosIcon />}>See Details</Button>
             </Link>
          </ModifiedAccordionDetails>

@@ -7,7 +7,6 @@ import ClubPage from './Pages/ClubPage';
 import CreateEvent from './Pages/CreateEvent';
 import EditClubs from "./Pages/EditClubs";
 import EventDetail from "./Pages/EventDetail";
-import EventPage from "./Pages/EventPage";
 import EventRequests from "./Pages/EventRequests";
 import FollowedClubs from "./Pages/FollowedClubs";
 import Home from "./Pages/Home";
@@ -48,6 +47,8 @@ function App() {
   const [places, setPlaces] = useState([]);
   const [buildings, setBuildings] = useState([]);
   const [mail, setMail] = useState("");
+  const [joinedClubs, setJoinedClubs] = useState("");
+  const [joinedEvents, setJoinedEvents] = useState("");
 
   const dataStore = {
     myInfo: myInfo,
@@ -59,7 +60,9 @@ function App() {
     buildings: buildings,
     filteredEvents: events,
     filteredClubs: clubs,
-    signin: signin
+    signin: signin,
+    joinedClubs: joinedClubs,
+    joinedEvents: joinedEvents,
   };
 
   const store = createStore(rootReducer, dataStore);
@@ -68,7 +71,7 @@ function App() {
     setMail(newEmail);
     email = newEmail;
     password = newPassword;
-    //setSignin(true); // delete this
+    setSignin(true); // delete this
     console.log(signin);
   }
 
@@ -190,6 +193,28 @@ function App() {
     });
   }
 
+  function fetchJoinedClubs() {
+    axios.get("http://localhost:5000/api/users/getjoinedclubs").then((res) => {
+      setJoinedClubs(new Array(res.data.length).fill(0));
+      const newJoinedClubs = res.data.map((joinedClub, index) => {
+        return joinedClub
+      });
+
+      setJoinedClubs(newJoinedClubs);
+    });
+  }
+
+  function fetchJoinedEvents() {
+    axios.get("http://localhost:5000/api/users/getjoinedclubs").then((res) => {
+      setJoinedEvents(new Array(res.data.length).fill(0));
+      const newJoinedEvents = res.data.map((joinedEvents, index) => {
+        return joinedEvents
+      });
+
+      setJoinedEvents(newJoinedEvents);
+    });
+  }
+
   useEffect(() => {
     fetchClubs();
     fetchUsers();
@@ -197,8 +222,10 @@ function App() {
     fetchUserInfo();
     fetchCategories();
     fetchPlaces();
-    console.log(places);
-    console.log(buildings);
+    fetchJoinedClubs();
+    fetchJoinedEvents();
+    console.log(joinedClubs);
+    console.log(joinedEvents);
   }, [signin === true]);
 
 
@@ -214,7 +241,6 @@ function App() {
             <Route path="/Create-Event" element={<ProtectedRoute><CreateEvent /></ProtectedRoute>} />
             <Route path="/Edit-Club" element={<ProtectedRoute><EditClubs /></ProtectedRoute>} />
             <Route path="/Event-Detail" element={<ProtectedRoute><EventDetail /></ProtectedRoute>} />
-            <Route path="/Event-Page" element={<ProtectedRoute><EventPage /></ProtectedRoute>} />
             <Route path="/Event-Requests" element={<ProtectedRoute><EventRequests /></ProtectedRoute>} />
             <Route path="/Followed-Clubs" element={<ProtectedRoute><FollowedClubs /></ProtectedRoute>} />
             <Route path="/Home" element={<ProtectedRoute> <Home /> </ProtectedRoute>} />

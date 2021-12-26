@@ -13,8 +13,9 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import TelegramIcon from '@mui/icons-material/Telegram';
 import { connect } from "react-redux";
-import { CLUB_FILTER } from "../Reducer/actions";
+import { CLUB_FILTER, JOIN_CLUB } from "../Reducer/actions";
 
 const style = makeStyles({
    root: {
@@ -75,6 +76,10 @@ const style = makeStyles({
       justifyContent: "center"
    },
 
+   button: {
+      width: "100%",
+   },
+
    upcoming_events: {
       marginTop: "25px",
    },
@@ -119,16 +124,19 @@ function ClubPage({ students, events, dispatch }) {
                   <Box className = {classes.club_social_media}>
                      <Box sx = {{display: "flex", justifyContent: "center"}}><strong>Social Media Accounts</strong></Box>
                      <Box className = {classes.link_box}>
-                        <IconButton size="large"><FacebookIcon fontSize="large" /></IconButton>
-                        <IconButton size="large"><WhatsAppIcon fontSize="large" /></IconButton>
-                        <IconButton size="large"><TwitterIcon fontSize="large" /></IconButton>
-                        <IconButton size="large"><LinkedInIcon fontSize="large" /></IconButton>
-                        <IconButton size="large"><InstagramIcon fontSize="large" /></IconButton>
+                        <IconButton size="large" onClick = {() => window.open(location.state.facebookLink, "_blank")}><FacebookIcon fontSize="large" /></IconButton>
+                        <IconButton size="large" onClick = {() => window.open(location.state.whatsappLink, "_blank")}><WhatsAppIcon fontSize="large" /></IconButton>
+                        <IconButton size="large" onClick = {() => window.open(location.state.instagramLink, "_blank")}><InstagramIcon fontSize="large" /></IconButton>
+                        <IconButton size="large" onClick = {() => window.open(location.state.twitterLink, "_blank")}><TwitterIcon fontSize="large" /></IconButton>
+                        <IconButton size="large" onClick = {() => window.open(location.state.linkedinLink, "_blank")}><LinkedInIcon fontSize="large" /></IconButton>
+                        <IconButton size="large" onClick = {() => window.open(location.state.telegramLink, "_blank")}><TelegramIcon fontSize="large" /></IconButton>
                      </Box>
                   </Box>
                </Box>
             </Box>
-
+            <Box className = {classes.button}>
+               <Button variant = "contained" onClick = {() => dispatch({type: JOIN_CLUB, payload: {clubId: location.state.id}})}>Join</Button>
+            </Box>
             <Box className = {classes.upcoming_events}>
                <Box className = {classes.event_box_header}>
                   <Box className = {classes.event_box_header_title}>Upcoming Events</Box>
