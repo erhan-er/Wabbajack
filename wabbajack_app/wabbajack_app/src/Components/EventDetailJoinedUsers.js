@@ -86,7 +86,6 @@ function EventDetailJoinedUsers({ name, id, department, mail}) {
                <img src={Photo} alt={name} className = {classes.image}/>
                <Box className = {classes.info}>
                   <Box><strong>Name: </strong>{name}</Box>
-                  <Box><strong>ID: </strong>{mail}</Box>
                </Box>
             </Box>
             <Box className = {classes.button_box}>
