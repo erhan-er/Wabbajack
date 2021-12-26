@@ -21,6 +21,7 @@ namespace ClubManagerBackup.Controllers
       private IUserRepository userRepository;
       private IEventRepository eventRepository;
       private IUserToClubRepository userToClubRepository;
+      private IUserToEventRepository userToEventRepository;
       private IMapper mapper;
       private Context.EventHandler eventHandler;
       private DataContext context;
@@ -32,8 +33,10 @@ namespace ClubManagerBackup.Controllers
       /// <param name="eventRepository">EventRepository reference.</param>
       /// <param name="mapper">Mapper reference.</param>
       /// <param name="context">Database reference.</param>
-      public UserController(IUserRepository userRepository, IMapper mapper, IEventRepository eventRepository, DataContext context, IUserToClubRepository userToClubRepository)
+      public UserController(IUserRepository userRepository, IMapper mapper, IEventRepository eventRepository, DataContext context, IUserToClubRepository userToClubRepository,
+      IUserToEventRepository userToEventRepository)
       {
+         this.userToEventRepository = userToEventRepository;
          this.userRepository = userRepository;
          this.mapper = mapper;
          this.eventRepository = eventRepository;
@@ -103,12 +106,13 @@ namespace ClubManagerBackup.Controllers
             UserId = eventDto.UserID,
             Name = eventDto.Name,
             PlaceName = eventDto.PlaceName,
+            CategoryName = eventDto.CategoryName,
             Date = eventDto.Date,
             ImageURL = eventDto.ImageURL,
             Description = eventDto.Description,
             IsApproved = eventDto.IsApproved,
-            AdminID = 12, // to be changed
-            ClubID = 10
+            AdminID = 13, // to be changed
+            ClubID = 15
          };
          eventHandler = new Context.EventHandler(StudentEventCreator.getInstance());
          var createdEvent = await eventHandler.CreateEvent(eventToCreate, context);
@@ -169,7 +173,7 @@ namespace ClubManagerBackup.Controllers
 
       }
 
-      [HttpGet("getjoinedevents")]
+      [HttpGet("getjoinedclubs")]
       public IActionResult GetUserToClubs()
       {
          var userToClubs = userToClubRepository.GetUserToClubs();
@@ -177,5 +181,25 @@ namespace ClubManagerBackup.Controllers
          return Ok(usersToClubsToReturn);
       }
 
+
+      [HttpPost("joinevent")]
+      public async Task<IActionResult> JoinEvent([FromBody] UserToEventDto userToEventDto)
+      {
+         var userToEvent = new UserToEvent
+         {
+            UserId = userToEventDto.UserId,
+            EventId = userToEventDto.EventId
+         };
+         await userToEventRepository.Add(userToEvent);
+         return StatusCode(201);
+      }
+
+      [HttpGet("getjoinedevents")]
+      public IActionResult GetUserToEvents()
+      {
+         var userToEvents = userToEventRepository.GetUserToEvents();
+         var usersToEventsToReturn = mapper.Map<List<UserToEventDto>>(userToEvents);
+         return Ok(usersToEventsToReturn);
+      }
    }
 }

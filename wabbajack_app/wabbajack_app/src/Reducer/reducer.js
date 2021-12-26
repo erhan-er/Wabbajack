@@ -162,6 +162,22 @@ function reducer(state, action) {
    }
    if (action.type === JOIN_EVENT) {
       console.log(action.payload);
+      axios.post('http://localhost:5000/api/users/joinevent', {
+         "userid": state.myInfo.id,
+         "eventid": action.payload.ID
+
+      })
+         .then(function (response) {
+            if (response.status === 201) {
+               console.log("Joined event!")
+            } else {
+               console.log("Something went wrong")
+            }
+
+         })
+         .catch(function (error) {
+            console.log(error)
+         })
 
       return state;
    }
@@ -216,7 +232,6 @@ function reducer(state, action) {
          "eventCost": action.payload.budget,
          "capacity": action.payload.capacity,
          "userId": state.myInfo.id,
-         "clubBoardMemberID": state.myInfo.id,
          "placeName": action.payload.building + "-" + action.payload.room,
          "date": action.payload.date + " " + action.payload.time + ":00",
          "categoryName": action.payload.category,

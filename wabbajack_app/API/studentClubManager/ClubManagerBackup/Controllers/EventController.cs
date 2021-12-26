@@ -75,7 +75,6 @@ namespace ClubManagerBackup.Controllers
             EventCost = eventDto.EventCost,
             Capacity = eventDto.Capacity,
             UserId = eventDto.UserID,
-            ClubBoardMemberID = eventDto.ClubBoardMemberID,
             PlaceName = eventDto.PlaceName,
             Date = eventDto.Date,
             CategoryName = eventDto.CategoryName,
@@ -83,7 +82,7 @@ namespace ClubManagerBackup.Controllers
             ImageURL = eventDto.ImageURL,
             Name = eventDto.Name,
             Description = eventDto.Description,
-            AdminID = 10, // to be changed
+            AdminID = 15, // to be changed
             IsApproved = true
          };
          eventHandler = new Context.EventHandler(ClubEventCreator.getInstance());

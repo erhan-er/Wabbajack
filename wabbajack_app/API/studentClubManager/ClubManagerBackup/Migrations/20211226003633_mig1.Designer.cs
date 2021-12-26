@@ -4,14 +4,16 @@ using ClubManagerBackup.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClubManagerBackup.Migrations
 {
    [DbContext(typeof(DataContext))]
-   partial class DataContextModelSnapshot : ModelSnapshot
+   [Migration("20211226003633_mig1")]
+   partial class mig1
    {
-      protected override void BuildModel(ModelBuilder modelBuilder)
+      protected override void BuildTargetModel(ModelBuilder modelBuilder)
       {
 #pragma warning disable 612, 618
          modelBuilder
@@ -155,6 +157,7 @@ namespace ClubManagerBackup.Migrations
                        .HasColumnType("int");
 
                 b.HasKey("ID");
+
 
                 b.HasIndex("ClubID");
 
