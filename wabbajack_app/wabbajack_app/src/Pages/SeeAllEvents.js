@@ -46,9 +46,11 @@ function SeeAllEvents({ filteredEvents }) {
             {filteredEvents.map((item, index) => {
                console.log(item);
                if ( index >= ((page - 1) * pageSize) && index < (page * pageSize)) {
-                  return (
-                     <ActivityAccordion key = {index} {...item} PageName = {"See All Events"}/>
-                  );
+                  if ( item.isApproved ) {
+                     return (
+                        <ActivityAccordion key = {index} {...item} PageName = {"See All Events"}/>
+                     );
+                  }
                }
             })}
             <Box className = {classes.pagination}>
