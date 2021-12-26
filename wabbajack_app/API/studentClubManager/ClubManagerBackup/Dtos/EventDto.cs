@@ -61,11 +61,7 @@ namespace ClubManagerBackup.Dtos
       /// <value>Image URL of the event.</value>
       /// 
       public string ImageURL { get; set; }
-      /// <summary>
-      /// ID of the club board member that created the event.
-      /// </summary>
-      /// <value>ID of the club board member that created the event.</value>
-      public int ClubBoardMemberID { get; set; }
+
 
       /// <summary>
       /// Discriminator to differentiate Club and Student events.

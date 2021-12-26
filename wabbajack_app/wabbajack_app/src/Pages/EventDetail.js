@@ -81,7 +81,7 @@ const style = makeStyles({
       justifyContent: "end",
       marginBottom: "10px",
       "@media screen and (max-width: 1080px)": {
-         flexDirection: "column"   
+         flexDirection: "column"
       }
    },
 
@@ -162,42 +162,31 @@ function EventDetail({myInfo, dispatch}) {
       }
    }
 
-   return(
-      <Box className = {classes.root}>
-         <Appbar PageName = {"Event Detail"}/>
-         <Box className = {classes.body}>
-            <Box className = {classes.detail}>
-               <img src={location.state.imageURL} alt={location.state.clubName} className = {classes.image}/>
-               <Box className = {classes.description_box}>
-                  <Box className = {classes.club_name}><strong>{location.state.clubName}</strong></Box>
-                  <Box className = {classes.activity_name}><strong>{location.state.name}</strong></Box>
-                  <Box className = {classes.description}><strong>Description: </strong>{location.state.description}</Box>
-                  <Box className = {classes.info}>
-                     <Box className = {classes.date}><strong>Date: </strong>{location.state.date}</Box>
+   return (
+      <Box className={classes.root}>
+         <Appbar PageName={"Event Detail"} />
+         <Box className={classes.body}>
+            <Box className={classes.detail}>
+               <img src={location.state.imageURL} alt={location.state.clubName} className={classes.image} />
+               <Box className={classes.description_box}>
+                  <Box className={classes.club_name}><strong>{location.state.clubName}</strong></Box>
+                  <Box className={classes.activity_name}><strong>{location.state.name}</strong></Box>
+                  <Box className={classes.description}><strong>Description: </strong>{location.state.description}</Box>
+                  <Box className={classes.info}>
+                     <Box className={classes.date}><strong>Date: </strong>{location.state.date}</Box>
                      {/*<Box className = {classes.time}><strong>Time: </strong>19:00</Box> */}
-                     <Box className = {classes.place}><strong>Place: </strong>{location.state.placeID}</Box>
-                     <Box className = {classes.category}><strong>Category: </strong>{location.state.categoryName}</Box>
+                     <Box className={classes.place}><strong>Place: </strong>{location.state.placeID}</Box>
+                     <Box className={classes.category}><strong>Category: </strong>{location.state.categoryName}</Box>
                   </Box>
                </Box>
             </Box>
-            <Box className = {classes.button_box}>
-               <Button variant = "contained" color = "success" className = {classes.button}>Invite Friends</Button>
-               <Button 
-                  variant = "contained" 
-                  color = "primary" 
-                  className = {classes.button} 
-                  onClick = {() => dispatch({type: JOIN_EVENT, payload:{ID: location.state.id, 
-                                                                        Name: location.state.name, 
-                                                                        Description: location.state.description, 
-                                                                        ClubID: location.state.clubID, 
-                                                                        Date: location.state.date, 
-                                                                        CategoryID: location.state.categoryID,
-                                                                        Category: location.state.categoryName, 
-                                                                        PlaceID: location.state.placeID, 
-                                                                        NotificationID: location.state.notificationID, 
-                                                                        ImageURL: location.state.imageURL, 
-                                                                        EventCost: location.state.eventCost, 
-                                                                        Capacity: location.state.capacity}})}
+            <Box className={classes.button_box}>
+               <Button variant="contained" color="success" className={classes.button}>Invite Friends</Button>
+               <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                  onClick={() => dispatch({ type: JOIN_EVENT, payload: { ID: location.state.id } })}
                >
                   Join
                </Button>
@@ -205,7 +194,7 @@ function EventDetail({myInfo, dispatch}) {
             <Box className = {classes.border}></Box>
             { joinedUsers() }
          </Box>
-         
+
       </Box>
    );
 }

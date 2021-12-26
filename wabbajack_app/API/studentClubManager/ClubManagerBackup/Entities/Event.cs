@@ -15,7 +15,7 @@ namespace ClubManagerBackup.Entities
       /// </summary>
       public Event()
       {
-         Participants = new List<User>();
+         //Participants = new List<User>();
       }
       // properties
       /// <summary>
@@ -71,16 +71,14 @@ namespace ClubManagerBackup.Entities
       /// Participants of the event in the database.
       /// </summary>
       /// <value>Participans of the event.</value>
-      public List<User> Participants { get; set; }
-      /// <summary>
-      /// ID of the club board member that created the event.
-      /// </summary>
-      /// <value>ID of the club board member that created the event.</value>
-      public int ClubBoardMemberID { get; set; }
+      // public List<User> Participants { get; set; }
+
       /// <summary>
       /// 
       /// </summary>
       /// <value></value>
       public int UserId { get; set; }
+
+      public string Discriminator { get; set; } = "Event";
    }
 }

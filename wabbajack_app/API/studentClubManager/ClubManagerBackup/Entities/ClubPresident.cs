@@ -9,7 +9,7 @@ namespace ClubManagerBackup.Entities
    /// <summary>
    /// Club president object.
    /// </summary>
-   public class ClubPresident : ClubBoardMember
+   public class ClubPresident : Student
    {
    }
 }

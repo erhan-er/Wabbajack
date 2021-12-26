@@ -53,6 +53,7 @@ namespace ClubManagerBackup
          services.AddScoped<IPlaceRepository, PlaceRepository>();
          services.AddScoped<ICategoryRepository, CategoryRepository>();
          services.AddScoped<IUserToClubRepository, UserToClubRepository>();
+         services.AddScoped<IUserToEventRepository, UserToEventRepository>();
          services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
          {
             options.TokenValidationParameters = new TokenValidationParameters
