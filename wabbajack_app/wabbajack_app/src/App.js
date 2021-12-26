@@ -71,7 +71,6 @@ function App() {
     setMail(newEmail);
     email = newEmail;
     password = newPassword;
-    setSignin(true); // delete this
     console.log(signin);
   }
 
