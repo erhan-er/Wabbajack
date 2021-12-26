@@ -29,20 +29,32 @@ const style = makeStyles({
    }
 });
 
-function Home({ events }) {
+function Home({ events, myInfo }) {
    const classes = style();
 
+   function printEvents() {
+      if (myInfo.discirimator === "Admin")
+         return(
+            events.map((event, index) => {
+               if ( !event.isApproved )
+                  return <Accordion {...event} PageName = {"Home"} key = {index}/>
+            })
+         );
+      else
+         return(
+            events.map((event, index) => {
+               if ( event.isApproved )
+                  return <Accordion {...event} PageName = {"Home"} key = {index}/>
+            })
+         );
+   }
    return (
       <Box className={classes.root}>
          <AppBar PageName={"Home"} />
          <Box className={classes.activity_box}>
             <Box className = {classes.accordion_box}>
                {
-                  events.map((event, index) => {
-                     if ( index < 5 ) {
-                        return <Accordion {...event} PageName = {"Home"}/>
-                     }
-                  })
+                  printEvents()
                }
             </Box>
             <Link to="/See-All-Events">
@@ -54,6 +66,6 @@ function Home({ events }) {
 }
 
 const mapStateToProps = state => {
-   return { events: state.events };
+   return { events: state.events, myInfo: state.myInfo };
 }
 export default connect(mapStateToProps)(Home);

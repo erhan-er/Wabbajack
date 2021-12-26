@@ -140,7 +140,7 @@ const style = makeStyles({
 
 });
 
-function EventDetail({ joinedEvents, students, dispatch }) {
+function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
    const classes = style();
    const location = useLocation();
    console.log(location);
@@ -217,6 +217,6 @@ function EventDetail({ joinedEvents, students, dispatch }) {
 }
 
 const mapToStateToProps = state => {
-   return { joinedEvents: state.joinedEvents, students: state.students }
+   return { joinedEvents: state.joinedEvents, students: state.students, myInfo: state.myInfo }
 }
 export default connect(mapToStateToProps)(EventDetail)
