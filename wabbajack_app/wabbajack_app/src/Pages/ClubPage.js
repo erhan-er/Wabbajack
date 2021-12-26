@@ -89,6 +89,7 @@ const style = makeStyles({
    },
 
    event_box_header: {
+      width: "100%",
       display: "flex",
       justifyContent: "space-between",
       marginBottom: "10px",
