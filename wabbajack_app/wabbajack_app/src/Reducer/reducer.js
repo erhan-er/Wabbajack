@@ -143,6 +143,22 @@ function reducer(state, action) {
       return state;
    }
    if (action.type === JOIN_CLUB) {
+      axios.post('http://localhost:5000/api/users/joinclub', {
+         "userid": state.myInfo.id,
+         "clubid": action.payload.clubId
+
+      })
+         .then(function (response) {
+            if (response.status === 201) {
+               console.log("Joined club!")
+            } else {
+               console.log("Something went wrong")
+            }
+
+         })
+         .catch(function (error) {
+            console.log(error)
+         })
       return state;
    }
    if (action.type === WITHDRAW_CLUB) {
