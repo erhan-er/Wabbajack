@@ -21,5 +21,6 @@ namespace ClubManagerBackup.Entities
       /// </summary>
       /// <value>Approval of the student event.</value>
       public bool IsApproved { get; set; }
+      public string Discriminator { get; set; } = "StudentEvent";
    }
 }

@@ -796,7 +796,7 @@
             Controller class for Events.
             </summary>
         </member>
-        <member name="M:ClubManagerBackup.Controllers.EventController.#ctor(ClubManagerBackup.Context.IEventRepository,Microsoft.Extensions.Configuration.IConfiguration,AutoMapper.IMapper,ClubManagerBackup.Context.DataContext,ClubManagerBackup.Context.ICategoryRepository,ClubManagerBackup.Context.IClubRepository,ClubManagerBackup.Context.IPlaceRepository,ClubManagerBackup.Context.IEventToClubRepository)">
+        <member name="M:ClubManagerBackup.Controllers.EventController.#ctor(ClubManagerBackup.Context.IEventRepository,Microsoft.Extensions.Configuration.IConfiguration,AutoMapper.IMapper,ClubManagerBackup.Context.DataContext,ClubManagerBackup.Context.ICategoryRepository,ClubManagerBackup.Context.IClubRepository,ClubManagerBackup.Context.IPlaceRepository)">
             <summary>
             Constructor for EventController.
             </summary>
@@ -885,7 +885,7 @@
             Controller class for Users
             </summary>
         </member>
-        <member name="M:ClubManagerBackup.Controllers.UserController.#ctor(ClubManagerBackup.Context.IUserRepository,AutoMapper.IMapper,ClubManagerBackup.Context.IEventRepository,ClubManagerBackup.Context.DataContext,ClubManagerBackup.Context.IUserToClubRepository)">
+        <member name="M:ClubManagerBackup.Controllers.UserController.#ctor(ClubManagerBackup.Context.IUserRepository,AutoMapper.IMapper,ClubManagerBackup.Context.IEventRepository,ClubManagerBackup.Context.DataContext,ClubManagerBackup.Context.IUserToClubRepository,ClubManagerBackup.Context.IUserToEventRepository)">
             <summary>
             Constructor for EventController.
             </summary>
@@ -1184,18 +1184,6 @@
             Capacity of the event in the database.
             </summary>
             <value></value>
-        </member>
-        <member name="P:ClubManagerBackup.Entities.Event.Participants">
-            <summary>
-            Participants of the event in the database.
-            </summary>
-            <value>Participans of the event.</value>
-        </member>
-        <member name="P:ClubManagerBackup.Entities.Event.ClubBoardMemberID">
-            <summary>
-            ID of the club board member that created the event.
-            </summary>
-            <value>ID of the club board member that created the event.</value>
         </member>
         <member name="P:ClubManagerBackup.Entities.Event.UserId">
             <summary>
@@ -1506,12 +1494,6 @@
             </summary>
             <value>Image URL of the event.</value>
             
-        </member>
-        <member name="P:ClubManagerBackup.Dtos.EventDto.ClubBoardMemberID">
-            <summary>
-            ID of the club board member that created the event.
-            </summary>
-            <value>ID of the club board member that created the event.</value>
         </member>
         <member name="F:ClubManagerBackup.Dtos.EventDto.Discriminator">
             <summary>

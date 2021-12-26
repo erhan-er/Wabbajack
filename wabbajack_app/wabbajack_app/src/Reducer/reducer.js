@@ -216,7 +216,6 @@ function reducer(state, action) {
          "eventCost": action.payload.budget,
          "capacity": action.payload.capacity,
          "userId": state.myInfo.id,
-         "clubBoardMemberID": state.myInfo.id,
          "placeName": action.payload.building + "-" + action.payload.room,
          "date": action.payload.date + " " + action.payload.time + ":00",
          "categoryName": action.payload.category,

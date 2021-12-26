@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ClubManagerBackup.Context
 {
-   public class UserToEventRepository : IUserToEventRepository
+   public class UserToClubRepository : IUserToClubRepository
    {
       private DataContext context;
-      public UserToEventRepository(DataContext context)
+      public UserToClubRepository(DataContext context)
       {
          this.context = context;
       }
@@ -26,10 +26,10 @@ namespace ClubManagerBackup.Context
          await context.SaveChangesAsync();
       }
 
-      public List<UserToEvent> GetUserToEvents()
+      public List<UserToClub> GetUserToClubs()
       {
-         var userToEvents = context.UserToEvents.ToList();
-         return userToEvents;
+         var userToClubs = context.UserToClubs.ToList();
+         return userToClubs;
       }
    }
 }
