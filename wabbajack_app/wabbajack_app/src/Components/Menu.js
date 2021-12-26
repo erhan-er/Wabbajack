@@ -55,13 +55,15 @@ function Menu ({open, setIsOpen, userType, myInfo}) {
                   "See All Club Members", "See All Clubs", "See All Events", "See All Students", 
                   "See All Friends", "Settings", "Student Create Event", "Logout"];
 
-   function ChooseUserType () {
+   function ChooseUserType() {
       if (myInfo.discriminator === "Student")
          return studentMenu;
       else if ( myInfo.discriminator === "ClubPresident")
          return presidentMenu;
       else if ( myInfo.discriminator === "Admin")
          return adminMenu;
+      else
+         return allMenu;
    }
 
    function list (size, open) {
@@ -78,7 +80,7 @@ function Menu ({open, setIsOpen, userType, myInfo}) {
                   Menu
                </ListItem>
                <Divider />
-               { ChooseUserType( userType ).map((text, index) => (
+               { ChooseUserType().map((text, index) => (
                   <Box key = {index}>
                      <Link to = {text === "Logout"? "/" : "/" + text.replace(/ /g, "-")}  style = {{textDecoration: "none", color: "black"}}>
                         <ListItem button key={text}>
