@@ -6,7 +6,7 @@ import { makeStyles } from "@mui/styles";
 import JoinedUsers from "../Components/EventDetailJoinedUsers";
 import { useLocation } from "react-router-dom";
 import { connect } from "react-redux";
-import { JOIN_EVENT } from "../Reducer/actions";
+import { JOIN_EVENT, WITHDRAW_EVENT } from "../Reducer/actions";
 
 const style = makeStyles({
    root: {
@@ -170,7 +170,7 @@ function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
                </Box>
                <Box className = {classes.students}>
                   {
-                     
+                     printJoinedUser()
                   }
                </Box>
             </Box>
@@ -178,6 +178,38 @@ function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
       }
    }
 
+   function isJoined() {
+      var isJoin = false;
+      for ( var i = 0; i < joinedEvents.length; i++ ) {
+         if ( joinedEvents[i].userId === myInfo.id ) {
+            isJoin = true;
+            break;
+         }
+      }
+
+      if ( !isJoin ) 
+         return (
+            <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                  onClick={() => dispatch({ type: JOIN_EVENT, payload: { ID: location.state.id } })}
+               >
+                  Join
+               </Button>
+         );
+      else 
+         return(
+            <Button
+                  variant="contained"
+                  color="error"
+                  className={classes.button}
+                  onClick={() => dispatch({ type: WITHDRAW_EVENT, payload: { ID: location.state.id } })}
+               >
+                  Withdraw
+               </Button>
+         );
+   }
 
    return (
       <Box className={classes.root}>
@@ -191,7 +223,6 @@ function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
                   <Box className={classes.description}><strong>Description: </strong>{location.state.description}</Box>
                   <Box className={classes.info}>
                      <Box className={classes.date}><strong>Date: </strong>{location.state.date}</Box>
-                     {/*<Box className = {classes.time}><strong>Time: </strong>19:00</Box> */}
                      <Box className={classes.place}><strong>Place: </strong>{location.state.placeID}</Box>
                      <Box className={classes.category}><strong>Category: </strong>{location.state.categoryName}</Box>
                   </Box>
@@ -199,14 +230,7 @@ function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
             </Box>
             <Box className={classes.button_box}>
                <Button variant="contained" color="success" className={classes.button}>Invite Friends</Button>
-               <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.button}
-                  onClick={() => dispatch({ type: JOIN_EVENT, payload: { ID: location.state.id } })}
-               >
-                  Join
-               </Button>
+               { isJoined() }
             </Box>
             <Box className={classes.border}></Box>
             { joinedUsers() }
