@@ -42,6 +42,7 @@ namespace ClubManagerBackup.Dtos
       /// </summary>
       /// <value>ID of the owner student.</value>
       public int UserID { get; set; }
+      public string CategoryName { get; set; }
 
       /// /// <summary>
       /// Image URL of the event in the database.
