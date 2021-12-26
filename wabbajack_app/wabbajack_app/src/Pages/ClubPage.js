@@ -100,8 +100,6 @@ function ClubPage({ students, events, dispatch }) {
    const classes = style();
    const location = useLocation();
 
-   var clubid = location.state.id;
-
    return (
       <Box className={classes.root}>
          <AppBar PageName={"Club's Page"} />
@@ -135,8 +133,8 @@ function ClubPage({ students, events, dispatch }) {
                <Box className = {classes.event_box_header}>
                   <Box className = {classes.event_box_header_title}>Upcoming Events</Box>
                   <Box>
-                     <Link to="/See-All-Events" state = {{clubid}}>
-                        <Button variant="contained" color="info" size = "large" onClick = {() => dispatch({type: CLUB_FILTER, payload: {id: clubid}})}>See All Events</Button>
+                     <Link to="/See-All-Events" state = {{clubid: location.state.id}}>
+                        <Button variant="contained" color="info" size = "large" onClick = {() => dispatch({type: CLUB_FILTER, payload: {id: location.state.id}})}>See All Events</Button>
                      </Link>
                   </Box>
                </Box>
