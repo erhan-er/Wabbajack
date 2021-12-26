@@ -145,17 +145,20 @@ function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
    const location = useLocation();
 
    function printJoinedUser() {
+      var joined = [];
       joinedEvents.filter((item) => item.eventId === location.state.id).map((event, index) => {
          var i;
-         var joined = [];
          for ( i = 0; i < students.length; i++ ) {
             if ( students[i].id === event.id )
                joined.push(students[i]);
          }
+      })
+      return(
          joined.map((user, index) => {
             return <JoinedUsers {...user} />
          }) 
-      })
+      );
+      
    }
 
    function joinedUsers() {
