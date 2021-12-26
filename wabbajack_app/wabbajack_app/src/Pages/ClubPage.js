@@ -107,7 +107,7 @@ function ClubPage({ students, events, dispatch }) {
    const location = useLocation();
 
    function showEvents() {
-      if ( events.filter((event) => event.clubId === location.state.id).length > 0 )
+      if ( events.filter((event) => event.clubId === location.state.id).length > 0 ) {
          return(
             <Box className = {classes.upcoming_events}>
                <Box className = {classes.event_box_header}>
@@ -127,6 +127,7 @@ function ClubPage({ students, events, dispatch }) {
                </Box>   
             </Box>
          );
+      }
    }
    return (
       <Box className={classes.root}>
