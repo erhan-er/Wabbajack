@@ -77,16 +77,16 @@ const style = makeStyles({
 
 });
 
-function EventDetailJoinedUsers() {
+function EventDetailJoinedUsers({ name, id, department, mail}) {
    const classes = style();
    return(
       <Box className = {classes.root}>
          <Box className = {classes.body}>
             <Box className = {classes.info_box}>
-               <img src={Photo} alt={"Name"} className = {classes.image}/>
+               <img src={Photo} alt={name} className = {classes.image}/>
                <Box className = {classes.info}>
-                  <Box><strong>Name: </strong>Erhan Er</Box>
-                  <Box><strong>ID: </strong>2180000000</Box>
+                  <Box><strong>Name: </strong>{name}</Box>
+                  <Box><strong>ID: </strong>{id}</Box>
                </Box>
             </Box>
             <Box className = {classes.button_box}>

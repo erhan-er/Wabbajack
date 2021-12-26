@@ -30,7 +30,7 @@ const style = makeStyles({
    },
 });
 
-function JoinedClubs ({ joinedClubs, myInfo }) {
+function JoinedClubs ({ joinedClubs, myInfo, clubs }) {
    const classes = style();
    const [pageSize, setPageSize] = useState(10);
    const [page, setPage] = React.useState(1);
@@ -43,7 +43,12 @@ function JoinedClubs ({ joinedClubs, myInfo }) {
          <AppBar PageName={"Joined Clubs"} />
          <Box className={classes.club_box}>
             {joinedClubs.filter((item) => item.userId === myInfo.id).map((club, index) => {
-               return <Accordion {...club} key = {index} />
+               var i;
+               for ( i = 0; i < clubs.length; i++ ) {
+                  if ( clubs[i].id === club.clubId ) 
+                     break;
+               }
+               return <Accordion {...clubs[i]} key = {index} />
             })}
             <Box className={classes.pagination}>
                <Pagination
@@ -62,6 +67,6 @@ function JoinedClubs ({ joinedClubs, myInfo }) {
    );
 }
 const mapStateToProps = state => {
-   return { joinedClubs: state.joinedClubs, myInfo: state.myInfo }
+   return { joinedClubs: state.joinedClubs, myInfo: state.myInfo, clubs: state.clubs }
 }
 export default connect(mapStateToProps)(JoinedClubs)

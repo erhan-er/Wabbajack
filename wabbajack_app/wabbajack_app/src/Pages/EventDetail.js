@@ -140,9 +140,25 @@ const style = makeStyles({
 
 });
 
-function EventDetail({myInfo, dispatch}) {
+function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
    const classes = style();
    const location = useLocation();
+   console.log(location);
+   console.log(location.state.id);
+
+   function printJoinedUser() {
+      joinedEvents.filter((item) => item.eventId === location.state.id).map((event, index) => {
+         var i;
+         var joined = [];
+         for ( i = 0; i < students.length; i++ ) {
+            if ( students[i].id === event.id )
+               joined.push(students[i]);
+         }
+         joined.map((user, index) => {
+            return <JoinedUsers {...user} />
+         }) 
+      })
+   }
 
    function joinedUsers() {
       if ( myInfo.discriminator === "ClubPresident") {
@@ -153,14 +169,15 @@ function EventDetail({myInfo, dispatch}) {
                   <input type="search" name="ID" id="SearchById" placeholder="Search By ID" className = {classes.search}/>
                </Box>
                <Box className = {classes.students}>
-                  <JoinedUsers />
-                  <JoinedUsers />
-                  <JoinedUsers />
+                  {
+                     
+                  }
                </Box>
             </Box>
          );
       }
    }
+
 
    return (
       <Box className={classes.root}>
@@ -191,7 +208,7 @@ function EventDetail({myInfo, dispatch}) {
                   Join
                </Button>
             </Box>
-            <Box className = {classes.border}></Box>
+            <Box className={classes.border}></Box>
             { joinedUsers() }
          </Box>
 
@@ -200,6 +217,6 @@ function EventDetail({myInfo, dispatch}) {
 }
 
 const mapToStateToProps = state => {
-   return { myInfo: state.myInfo }
+   return { joinedEvents: state.joinedEvents, students: state.students, myInfo: state.myInfo }
 }
 export default connect(mapToStateToProps)(EventDetail)
