@@ -143,19 +143,17 @@ const style = makeStyles({
 function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
    const classes = style();
    const location = useLocation();
-   console.log(location);
-   console.log(location.state.id);
 
    function printJoinedUser() {
       joinedEvents.filter((item) => item.eventId === location.state.id).map((event, index) => {
          var i;
          var joined = [];
          for ( i = 0; i < students.length; i++ ) {
-            if ( students[i].id === event.id )
+            if ( students[i].id === event.userId )
                joined.push(students[i]);
          }
          joined.map((user, index) => {
-            return <JoinedUsers {...user} />
+            return <JoinedUsers {...user} key = {index}/>
          }) 
       })
    }

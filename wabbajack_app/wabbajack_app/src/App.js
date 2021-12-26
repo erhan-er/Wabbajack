@@ -205,7 +205,7 @@ function App() {
   }
 
   function fetchJoinedEvents() {
-    axios.get("http://localhost:5000/api/users/getjoinedclubs").then((res) => {
+    axios.get("http://localhost:5000/api/users/getjoinedevents").then((res) => {
       setJoinedEvents(new Array(res.data.length).fill(0));
       const newJoinedEvents = res.data.map((joinedEvents, index) => {
         return joinedEvents
