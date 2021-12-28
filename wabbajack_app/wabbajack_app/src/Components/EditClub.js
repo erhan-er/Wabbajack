@@ -25,7 +25,7 @@ const style = makeStyles({
       borderRadius: "10px",
       fontFamily: "inherit"
    },
-   
+
    description: {
       marginTop: "2vw",
       border: "solid 1px rgba(0, 0, 0, 0.5)",
@@ -83,7 +83,7 @@ const style = makeStyles({
    links: {
       width: "50%",
       borderRadius: "10px",
-      border: "solid 1px rgba(0, 0, 0, 0.5)", 
+      border: "solid 1px rgba(0, 0, 0, 0.5)",
       height: "480px",
       "@media screen and (max-width: 960px)": {
          marginTop: "2vw",
@@ -102,7 +102,7 @@ const style = makeStyles({
       color: "rgba(0, 0, 0, 0.5)",
       width: "100%",
       height: "20px",
-      
+
    },
 
    link_outer_box: {
@@ -138,7 +138,7 @@ const style = makeStyles({
       display: "flex",
       flexDirection: "row",
    },
-   
+
    link: {
       border: "none",
       maxWidth: "98%",
@@ -152,114 +152,118 @@ const style = makeStyles({
 
 });
 
-function EditClub ({ClubName = "Club Name", Description = "Description", Links, PageName, dispatch}) {
+function EditClub({ ClubName = "Club Name", Description = "Description", Links, PageName, dispatch }) {
 
    const classes = style();
-   function preview( url ) {
+   function preview(url) {
       document.getElementById("image").src = url;
    }
 
    return (
-      <Box className = {classes.root}>
+      <Box className={classes.root}>
          <Box>
             <form action="">
-               <input type="text" id = "ClubName" placeholder = {ClubName} className = {classes.club_name}/>
-               <textarea 
-                  name="Description" 
-                  id="Description" 
-                  cols = "500"
-                  className = {classes.description} 
-                  placeholder = {Description}/>
+               <input type="text" id="ClubName" placeholder={ClubName} className={classes.club_name} />
+               <textarea
+                  name="Description"
+                  id="Description"
+                  cols="500"
+                  className={classes.description}
+                  placeholder={Description} />
             </form>
          </Box>
-         <Box className = {classes.bottom_body}>
-            <Box className = {classes.image}>
-               <Box className = {classes.image_header}>
+         <Box className={classes.bottom_body}>
+            <Box className={classes.image}>
+               <Box className={classes.image_header}>
                   Enter An Image URL: If the image is not uploaded, Bilkent's logo will be shown to users.
                </Box>
-               <Box sx = {{marginTop: "20px"}}>
-                  <input type="url" id = "imageURL" className = {classes.image_input}/>
-                  <Button variant = "contained" color = "primary" className = {classes.preview_button} onClick = {() => preview(document.getElementById("imageURL").value)}>Preview</Button>
+               <Box sx={{ marginTop: "20px" }}>
+                  <input type="url" id="imageURL" className={classes.image_input} />
+                  <Button variant="contained" color="primary" className={classes.preview_button} onClick={() => preview(document.getElementById("imageURL").value)}>Preview</Button>
                </Box>
-               <img  alt="Enter An URL" id = "image" className = {classes.image_preview}/>
+               <img alt="Enter An URL" id="image" className={classes.image_preview} />
             </Box>
-            <Box className = {classes.links}>
-               <Box className = {classes.social_media_header}>Social Media</Box>
-               <Box className = {classes.link_outer_box}>
-                  <Box className = {classes.link_box}>
-                     <Box className = {classes.link_box_header}>
+            <Box className={classes.links}>
+               <Box className={classes.social_media_header}>Social Media</Box>
+               <Box className={classes.link_outer_box}>
+                  <Box className={classes.link_box}>
+                     <Box className={classes.link_box_header}>
                         <Box>WhatsApp</Box>
-                        <Box><WhatsAppIcon sx = {{fontSize: "20px", marginLeft: "5px"}}/></Box>
+                        <Box><WhatsAppIcon sx={{ fontSize: "20px", marginLeft: "5px" }} /></Box>
                      </Box>
                      <Box>
-                        <textarea id="WhatsApp" cols="3000" className = {classes.link}/>
+                        <textarea id="WhatsApp" cols="3000" className={classes.link} />
                      </Box>
                   </Box>
-                  <Box className = {classes.link_box}>
-                     <Box className = {classes.link_box_header}>
+                  <Box className={classes.link_box}>
+                     <Box className={classes.link_box_header}>
                         <Box>Linked In</Box>
-                        <Box><LinkedInIcon sx = {{fontSize: "20px", marginLeft: "5px"}}/></Box>
+                        <Box><LinkedInIcon sx={{ fontSize: "20px", marginLeft: "5px" }} /></Box>
                      </Box>
                      <Box>
-                        <textarea id="Linkedin" cols="3000" className = {classes.link}/>
+                        <textarea id="Linkedin" cols="3000" className={classes.link} />
                      </Box>
                   </Box>
-                  <Box className = {classes.link_box}>
-                     <Box className = {classes.link_box_header}>
+                  <Box className={classes.link_box}>
+                     <Box className={classes.link_box_header}>
                         <Box>Telegram</Box>
-                        <Box><TelegramIcon sx = {{fontSize: "20px", marginLeft: "5px"}}/></Box>
+                        <Box><TelegramIcon sx={{ fontSize: "20px", marginLeft: "5px" }} /></Box>
                      </Box>
                      <Box>
-                        <textarea id="Telegram" cols="3000" className = {classes.link}/>
+                        <textarea id="Telegram" cols="3000" className={classes.link} />
                      </Box>
                   </Box>
-                  <Box className = {classes.link_box}>
-                     <Box className = {classes.link_box_header}>
+                  <Box className={classes.link_box}>
+                     <Box className={classes.link_box_header}>
                         <Box>Twitter</Box>
-                        <Box><TwitterIcon sx = {{fontSize: "20px", marginLeft: "5px"}}/></Box>
+                        <Box><TwitterIcon sx={{ fontSize: "20px", marginLeft: "5px" }} /></Box>
                      </Box>
                      <Box>
-                        <textarea id="Twitter" cols="3000" className = {classes.link}/>
+                        <textarea id="Twitter" cols="3000" className={classes.link} />
                      </Box>
                   </Box>
-                  <Box className = {classes.link_box}>
-                     <Box className = {classes.link_box_header}>
+                  <Box className={classes.link_box}>
+                     <Box className={classes.link_box_header}>
                         <Box>Instagram</Box>
-                        <Box><InstagramIcon sx = {{fontSize: "20px", marginLeft: "5px"}}/></Box>
+                        <Box><InstagramIcon sx={{ fontSize: "20px", marginLeft: "5px" }} /></Box>
                      </Box>
                      <Box>
-                        <textarea id="Instagram" cols="3000" className = {classes.link}/>
+                        <textarea id="Instagram" cols="3000" className={classes.link} />
                      </Box>
                   </Box>
-                  <Box className = {classes.link_box}>
-                     <Box className = {classes.link_box_header}>
+                  <Box className={classes.link_box}>
+                     <Box className={classes.link_box_header}>
                         <Box>Facebook</Box>
-                        <Box><FacebookIcon sx = {{fontSize: "20px", marginLeft: "5px"}}/></Box>
+                        <Box><FacebookIcon sx={{ fontSize: "20px", marginLeft: "5px" }} /></Box>
                      </Box>
                      <Box>
-                        <textarea id="Facebook" cols="3000" className = {classes.link}/>
+                        <textarea id="Facebook" cols="3000" className={classes.link} />
                      </Box>
                   </Box>
                </Box>
             </Box>
          </Box>
-         <Button 
-            variant = "contained" 
-            color = "success" 
-            sx = {{marginTop: "2vw", marginBottom: "5vw", width: "100%", height: "42px",}}
-            onClick = {() => dispatch({type: EDIT_CLUB, payload: {name: document.getElementById("ClubName").value, 
-                                                                  description: document.getElementById("Description").value,
-                                                                  img: document.getElementById("imageURL").value,
-                                                                  whatsapp: document.getElementById("WhatsApp").value,
-                                                                  Telegram: document.getElementById("Telegram").value,
-                                                                  Facebook: document.getElementById("Facebook").value,
-                                                                  Ingstagram: document.getElementById("Instagram").value,
-                                                                  Twitter: document.getElementById("Twitter").value,
-                                                                  Linkedin: document.getElementById("Linkedin").value}})}
+         <Button
+            variant="contained"
+            color="success"
+            sx={{ marginTop: "2vw", marginBottom: "5vw", width: "100%", height: "42px", }}
+            onClick={() => dispatch({
+               type: EDIT_CLUB, payload: {
+                  name: document.getElementById("ClubName").value,
+                  description: document.getElementById("Description").value,
+                  img: document.getElementById("imageURL").value,
+                  whatsapp: document.getElementById("WhatsApp").value,
+                  Telegram: document.getElementById("Telegram").value,
+                  Facebook: document.getElementById("Facebook").value,
+                  Ingstagram: document.getElementById("Instagram").value,
+                  Twitter: document.getElementById("Twitter").value,
+                  Linkedin: document.getElementById("Linkedin").value
+               }
+            })}
          >
-            {PageName === "Edit Club"? "Edit Club" : "Add Club"}
+            {PageName === "Edit Club" ? "Edit Club" : "Add Club"}
          </Button>
-      </Box>     
+      </Box>
    );
 }
 

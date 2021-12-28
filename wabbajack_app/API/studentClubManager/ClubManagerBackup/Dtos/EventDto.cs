@@ -61,7 +61,7 @@ namespace ClubManagerBackup.Dtos
       /// <value>Image URL of the event.</value>
       /// 
       public string ImageURL { get; set; }
-      public bool IsApproved { get; set; }
+      public bool IsApproved { get; set; } = true;
 
 
       /// <summary>

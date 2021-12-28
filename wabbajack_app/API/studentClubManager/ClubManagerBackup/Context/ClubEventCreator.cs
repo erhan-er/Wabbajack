@@ -42,6 +42,7 @@ namespace ClubManagerBackup.Context
       /// <returns></returns>
       public async Task<Event> CreateEvent(StudentEvent newEvent, DataContext context)
       {
+         newEvent.IsApproved = true;
          await context.Events.AddAsync((Event)newEvent);
          await context.SaveChangesAsync();
          return newEvent;

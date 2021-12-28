@@ -22,6 +22,7 @@ function reducer(state, action) {
       })
          .then(function (response) {
             if (response.status === 201) {
+               alert("User Added");
                console.log("User added!")
             } else {
                console.log("Something went wrong")
@@ -38,6 +39,7 @@ function reducer(state, action) {
    }
    if (action.type === ADD_CLUB) {
       console.log(action.payload);
+
       axios.post('http://localhost:5000/api/clubs/add', {
          "name": action.payload.name,
          "ClubDescription": action.payload.description,
@@ -54,7 +56,24 @@ function reducer(state, action) {
       })
          .then(function (response) {
             if (response.status === 201) {
+               alert("Club Added");
+               var newClubs = state.clubs;
                console.log("Club added!")
+               var createdClub = {
+                  name: action.payload.name,
+                  description: action.payload.description,
+                  bugdet: 0,
+                  img: action.payload.img,
+                  id: action.payload.id,
+                  whatsapp: action.payload.whatsapp,
+                  Telegram: action.payload.Telegram,
+                  Facebook: action.payload.Facebook,
+                  Ingstagram: action.payload.Ingstagram,
+                  Twitter: action.payload.Twitter,
+                  Linkedin: action.payload.Linkedin
+               }
+               newClubs.push(createdClub);
+               return { ...state, clubs: newClubs }
             } else {
                console.log("Something went wrong")
             }
@@ -67,7 +86,7 @@ function reducer(state, action) {
    }
    if (action.type === EDIT_CLUB) {
       console.log(action.payload);
-      axios.post('http://localhost:5000/api/clubs/edit', {
+      axios.post('http://localhost:5000/api/clubs/update', {
          "name": action.payload.name,
          "ClubDescription": action.payload.description,
          "bugdet": 0,
@@ -83,6 +102,7 @@ function reducer(state, action) {
       })
          .then(function (response) {
             if (response.status === 201) {
+               alert("Club Edited!");
                console.log("Club edited!")
             } else {
                console.log("Something went wrong")
@@ -150,7 +170,15 @@ function reducer(state, action) {
       })
          .then(function (response) {
             if (response.status === 201) {
+               alert("Joined Club!");
                console.log("Joined club!")
+               var newUserToEvent = state.joinedClubs;
+               var createdUserToEvent = {
+                  id: action.payload.id,
+                  clubId: action.payload.clubId
+               }
+               newUserToEvent.push(createdUserToEvent);
+               return { ...state, joinedClubs: newUserToEvent }
             } else {
                console.log("Something went wrong")
             }
@@ -184,8 +212,16 @@ function reducer(state, action) {
 
       })
          .then(function (response) {
+            console.log("Joined event!")
+            alert("Joined Event");
             if (response.status === 201) {
-               console.log("Joined event!")
+               var newUserToEvent = state.joinedEvents;
+               var createdUserToEvent = {
+                  id: action.payload.id,
+                  ID: action.payload.ID
+               }
+               newUserToEvent.push(createdUserToEvent);
+               return { ...state, joinedEvents: newUserToEvent }
             } else {
                console.log("Something went wrong")
             }
@@ -215,6 +251,7 @@ function reducer(state, action) {
       })
          .then(function (response) {
             if (response.status === 201) {
+               alert("Password Changed!");
                console.log("Password changed!")
             } else {
                console.log("Something went wrong")
@@ -234,7 +271,6 @@ function reducer(state, action) {
       return state;
    }
    if (action.type === CREATE_EVENT) {
-      console.log("geldin");
       console.log(state.myInfo.id)
       var link = "";
       if (state.myInfo.discriminator === "Student") {
@@ -258,7 +294,46 @@ function reducer(state, action) {
 
       }).then(function (response) {
          if (response.status === 201) {
+            alert("Event Created!");
             console.log("Event added!")
+            var newEvents = state.events;
+            if (state.myInfo.discriminator === "Student") {
+               var createdEvent = {
+                  clubId: action.payload.clubID,
+                  eventCost: action.payload.budget,
+                  capacity: action.payload.capacity,
+                  userId: state.myInfo.id,
+                  placeName: action.payload.building + "-" + action.payload.room,
+                  date: action.payload.date + " " + action.payload.time + ":00",
+                  categoryName: action.payload.category,
+                  clubname: action.payload.clubName,
+                  imageURL: action.payload.img,
+                  name: action.payload.name,
+                  description: action.payload.description,
+                  id: 0,
+                  isApproved: false
+               }
+            }
+            else {
+               var createdEvent = {
+                  clubId: action.payload.clubID,
+                  eventCost: action.payload.budget,
+                  capacity: action.payload.capacity,
+                  userId: state.myInfo.id,
+                  placeName: action.payload.building + "-" + action.payload.room,
+                  date: action.payload.date + " " + action.payload.time + ":00",
+                  categoryName: action.payload.category,
+                  clubname: action.payload.clubName,
+                  imageURL: action.payload.img,
+                  name: action.payload.name,
+                  description: action.payload.description,
+                  id: 0,
+                  isApproved: true
+               }
+            }
+
+            newEvents.push(createdEvent);
+            return { ...state, events: newEvents }
          } else {
             console.log("Something went wrong")
          }
@@ -284,6 +359,7 @@ function reducer(state, action) {
       })
          .then(function (response) {
             if (response.status === 201) {
+               alert("New password sent to " + action.payload.email);
                console.log("New Password Sent!")
             } else {
                console.log("Something went wrong")

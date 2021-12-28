@@ -83,10 +83,11 @@ namespace ClubManagerBackup.Controllers
             Name = eventDto.Name,
             Description = eventDto.Description,
             AdminID = 15, // to be changed
-            IsApproved = true
          };
          eventHandler = new Context.EventHandler(ClubEventCreator.getInstance());
          var createdEvent = await eventHandler.CreateEvent(eventToCreate, context);
+         createdEvent.IsApproved = true;
+         await eventRepository.UpdateEvent(createdEvent);
          return StatusCode(201);
       }
 

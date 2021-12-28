@@ -28,7 +28,7 @@ const style = makeStyles({
       flexDirection: "column",
       width: "50%",
       justifyContent: "space-between",
-      alignItems:"center",
+      alignItems: "center",
       "@media screen and (max-width: 840px)": {
          width: "100%",
          minHeight: "300px",
@@ -40,7 +40,7 @@ const style = makeStyles({
       flexDirection: "column",
       width: "50%",
       justifyContent: "space-between",
-      alignItems:"center",
+      alignItems: "center",
       "@media screen and (max-width: 840px)": {
          width: "100%",
          minHeight: "300px",
@@ -55,7 +55,7 @@ const style = makeStyles({
    },
 
    id: {
-      width:  "90%",
+      width: "90%",
       height: "42px",
       border: "solid 1px rgba(0, 0, 0, 0.5)",
       borderRadius: "10px",
@@ -74,7 +74,7 @@ const style = makeStyles({
       border: "solid 1px rgba(0, 0, 0, 0.5)",
       borderRadius: "10px",
    },
-   
+
    image_box: {
       height: "262px",
       width: "262px",
@@ -105,30 +105,30 @@ const style = makeStyles({
    }
 });
 
-function AddUserComponent({state, dispatch}) {
+function AddUserComponent({ state, dispatch }) {
    const classes = style();
 
    const [imageUrl, setImageUrl] = useState("");
 
-   function preview( url ) {
+   function preview(url) {
       document.getElementById("image").src = url;
    }
-   
-   return(
-      <Box className = {classes.root}>
-         <Box className = {classes.top_body}>
-            <Box className = {classes.left_side}>
-               <input type="text" className = {classes.name} placeholder = "Name" id = "Name"/>
-               <input type="number" className = {classes.id} placeholder = "ID" id = "ID"/>
-               <input type="email" className = {classes.email} placeholder = "Email" id = "Email"/>
-               <input type="url" id = "imgUrl" placeholder = "Image URL" className = {classes.image_url} />
-               <Button variant = "contained" className = {classes.preview_button} onClick = {() => preview(document.getElementById("imgUrl").value)}>Preview</Button>
+
+   return (
+      <Box className={classes.root}>
+         <Box className={classes.top_body}>
+            <Box className={classes.left_side}>
+               <input type="text" className={classes.name} placeholder="Name" id="Name" />
+               <input type="password" className={classes.id} placeholder="Password" id="ID" />
+               <input type="email" className={classes.email} placeholder="Email" id="Email" />
+               <input type="text" id="imgUrl" placeholder="Department" className={classes.image_url} />
+               <Button variant="contained" className={classes.preview_button} onClick={() => preview(document.getElementById("imgUrl").value)}>Preview</Button>
             </Box>
-            <Box className = {classes.right_side}>
-               <Box className = {classes.image_box}><img alt="Enter a URL" id = "image" className = {classes.image}/></Box>
+            <Box className={classes.right_side}>
+               <Box className={classes.image_box}><img alt="Enter a URL" id="image" className={classes.image} /></Box>
             </Box>
          </Box>
-         <Button variant = "contained" color = "success" className = {classes.add_button} onClick = {() => dispatch({type: ADD_USER, payload: {name: document.getElementById("Name").value, id: document.getElementById("ID").value, email: document.getElementById("Email").value, img: document.getElementById("imgUrl").value}})}>Add User</Button>
+         <Button variant="contained" color="success" className={classes.add_button} onClick={() => dispatch({ type: ADD_USER, payload: { name: document.getElementById("Name").value, id: document.getElementById("ID").value, email: document.getElementById("Email").value, img: document.getElementById("imgUrl").value } })}>Add User</Button>
       </Box>
    );
 }
@@ -136,4 +136,4 @@ function AddUserComponent({state, dispatch}) {
 const mapStateToProps = state => {
    return { state }
 }
-export default connect(mapStateToProps) (AddUserComponent)
+export default connect(mapStateToProps)(AddUserComponent)

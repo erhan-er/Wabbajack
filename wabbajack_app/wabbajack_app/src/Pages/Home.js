@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
-import { connect } from "react-redux"; 
+import { connect } from "react-redux";
 const style = makeStyles({
    root: {
 
@@ -34,17 +34,17 @@ function Home({ events, myInfo }) {
 
    function printEvents() {
       if (myInfo.discirimator === "Admin")
-         return(
+         return (
             events.map((event, index) => {
-               if ( !event.isApproved )
-                  return <Accordion {...event} PageName = {"Home"} key = {index}/>
+               if (!event.isApproved && index < 6)
+                  return <Accordion {...event} PageName={"Home"} key={index} />
             })
          );
       else
-         return(
+         return (
             events.map((event, index) => {
-               if ( event.isApproved )
-                  return <Accordion {...event} PageName = {"Home"} key = {index}/>
+               if (event.isApproved && index < 6)
+                  return <Accordion {...event} PageName={"Home"} key={index} />
             })
          );
    }
@@ -52,7 +52,7 @@ function Home({ events, myInfo }) {
       <Box className={classes.root}>
          <AppBar PageName={"Home"} />
          <Box className={classes.activity_box}>
-            <Box className = {classes.accordion_box}>
+            <Box className={classes.accordion_box}>
                {
                   printEvents()
                }

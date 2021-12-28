@@ -7,6 +7,7 @@ import JoinedUsers from "../Components/EventDetailJoinedUsers";
 import { useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import { JOIN_EVENT, WITHDRAW_EVENT } from "../Reducer/actions";
+import { useEffect } from "react";
 
 const style = makeStyles({
    root: {
@@ -148,28 +149,28 @@ function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
       var joined = [];
       joinedEvents.filter((item) => item.eventId === location.state.id).map((event, index) => {
          var i;
-         for ( i = 0; i < students.length; i++ ) {
-            if ( students[i].id === event.id )
+         for (i = 0; i < students.length; i++) {
+            if (students[i].id === event.id)
                joined.push(students[i]);
          }
       })
-      return(
+      return (
          joined.map((user, index) => {
             return <JoinedUsers {...user} />
          })
       );
-      
+
    }
 
    function joinedUsers() {
-      if ( myInfo.discriminator === "ClubPresident") {
-         return(
-            <Box className = {classes.users}>
-               <Box className = {classes.search_box}>
-                  <input type="search" name="Name" id="SearchByName" placeholder="Search By Name" className = {classes.search}/>
-                  <input type="search" name="ID" id="SearchById" placeholder="Search By ID" className = {classes.search}/>
+      if (myInfo.discriminator === "ClubPresident") {
+         return (
+            <Box className={classes.users}>
+               <Box className={classes.search_box}>
+                  <input type="search" name="Name" id="SearchByName" placeholder="Search By Name" className={classes.search} />
+                  <input type="search" name="ID" id="SearchById" placeholder="Search By ID" className={classes.search} />
                </Box>
-               <Box className = {classes.students}>
+               <Box className={classes.students}>
                   {
                      printJoinedUser()
                   }
@@ -181,36 +182,38 @@ function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
 
    function isJoined() {
       var isJoin = false;
-      for ( var i = 0; i < joinedEvents.length; i++ ) {
-         if ( joinedEvents[i].userId === myInfo.id ) {
+      for (var i = 0; i < joinedEvents.length; i++) {
+         if (joinedEvents[i].userId === myInfo.id && joinedEvents[i].eventId === location.state.id) {
             isJoin = true;
             break;
          }
       }
 
-      if ( !isJoin ) 
+      if (!isJoin)
          return (
             <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.button}
-                  onClick={() => dispatch({ type: JOIN_EVENT, payload: { ID: location.state.id } })}
-               >
-                  Join
-               </Button>
+               variant="contained"
+               color="primary"
+               className={classes.button}
+               onClick={() => { dispatch({ type: JOIN_EVENT, payload: { ID: location.state.id } }); }}
+            >
+               Join
+            </Button >
          );
-      else 
-         return(
+      else
+         return (
             <Button
-                  variant="contained"
-                  color="error"
-                  className={classes.button}
-                  onClick={() => dispatch({ type: WITHDRAW_EVENT, payload: { ID: location.state.id } })}
-               >
-                  Withdraw
-               </Button>
+               variant="contained"
+               color="error"
+               className={classes.button}
+               onClick={() => { dispatch({ type: WITHDRAW_EVENT, payload: { ID: location.state.id } }) }}
+            >
+               Withdraw
+            </Button>
          );
    }
+
+   useEffect(() => { }, [joinedEvents]);
 
    return (
       <Box className={classes.root}>
@@ -231,10 +234,10 @@ function EventDetail({ joinedEvents, students, myInfo, dispatch }) {
             </Box>
             <Box className={classes.button_box}>
                <Button variant="contained" color="success" className={classes.button}>Invite Friends</Button>
-               { isJoined() }
+               {isJoined()}
             </Box>
             <Box className={classes.border}></Box>
-            { joinedUsers() }
+            {joinedUsers()}
          </Box>
 
       </Box>
